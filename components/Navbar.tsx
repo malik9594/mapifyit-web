@@ -1,13 +1,13 @@
 "use client"
 import React, { useState, useRef, useEffect } from 'react';
-import { Map, Menu, X, ChevronRight, ChevronDown, ShieldCheck, Truck } from 'lucide-react';
+import { Map, Menu, X, ChevronRight, ChevronDown, ShieldCheck, Truck, LogIn, Sparkles } from 'lucide-react';
 
 export default function Navbar({ isScrolled }: { isScrolled: boolean }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [solutionsOpen, setSolutionsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  // Close dropdown when clicking outside
+  // Close desktop dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
@@ -18,78 +18,113 @@ export default function Navbar({ isScrolled }: { isScrolled: boolean }) {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  // Lock body scroll ONLY on mobile when menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [mobileMenuOpen]);
+
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-[#03060D]/80 backdrop-blur-xl border-b border-white/5 py-4' : 'bg-transparent py-6'}`}>
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+    <>
+      {/* --- MASTER NAVBAR CONTAINER --- */}
+      <nav className={`fixed top-0 w-full transition-all duration-300 z-[500] ${isScrolled || mobileMenuOpen ? 'bg-[#03060D]/90 backdrop-blur-xl border-b border-white/5 py-4' : 'bg-transparent py-6'
+        }`}>
+        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between relative z-[510]">
 
-        {/* Logo Section */}
-        <div className="flex items-center gap-2 group cursor-pointer">
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center shadow-[0_0_20px_rgba(37,99,235,0.4)] group-hover:shadow-[0_0_25px_rgba(37,99,235,0.6)] transition-all">
-            <Map className="w-5 h-5 text-white" />
+          {/* Logo Section */}
+          <div className="flex items-center gap-2 group cursor-pointer relative z-[600]">
+            <div className="w-9 h-9 rounded-xl bg-blue-600 flex items-center justify-center shadow-lg shadow-blue-600/20 transition-transform active:scale-90">
+              <Map className="w-5 h-5 text-white" />
+            </div>
+            <span className="text-xl md:text-2xl font-bold text-white tracking-tight">Mapifyit<span className="text-blue-500">.</span></span>
           </div>
-          <span className="text-2xl font-bold text-white tracking-tight">Mapifyit<span className="text-blue-500">.</span></span>
-        </div>
 
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-8 bg-white/5 border border-white/10 px-6 py-2.5 rounded-full backdrop-blur-md relative">
-          <a href="#products" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Products</a>
+          {/* DESKTOP NAVIGATION (Hidden on Mobile) */}
+          <div className="hidden md:flex items-center gap-8 bg-white/5 border border-white/10 px-6 py-2.5 rounded-full backdrop-blur-md">
+            <a href="#products" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Products</a>
 
-          {/* Solutions Dropdown Trigger */}
-          <div className="relative" ref={dropdownRef}>
-            <button
-              onClick={() => setSolutionsOpen(!solutionsOpen)}
-              className={`flex items-center gap-1 text-sm font-medium transition-colors ${solutionsOpen ? 'text-white' : 'text-slate-300 hover:text-white'}`}
-            >
-              Solutions
-              <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${solutionsOpen ? 'rotate-180' : ''}`} />
+            {/* Solutions Dropdown */}
+            <div className="relative" ref={dropdownRef}>
+              <button
+                onClick={() => setSolutionsOpen(!solutionsOpen)}
+                className={`flex items-center gap-1 text-sm font-medium transition-colors ${solutionsOpen ? 'text-white' : 'text-slate-300 hover:text-white'}`}
+              >
+                Solutions <ChevronDown size={14} className={`transition-transform duration-300 ${solutionsOpen ? 'rotate-180' : ''}`} />
+              </button>
+
+              {/* Desktop Dropdown Box */}
+              {solutionsOpen && (
+                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-64 bg-[#0B0F17] border border-white/10 rounded-2xl p-2 shadow-[0_20px_50px_rgba(0,0,0,0.5)] backdrop-blur-2xl z-[700]">
+                  <a href="#ngekyc" className="flex items-start gap-3 p-3 rounded-xl hover:bg-white/5 transition-all group/item">
+                    <div className="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-500 group-hover/item:bg-blue-500 group-hover/item:text-white">
+                      <ShieldCheck size={18} />
+                    </div>
+                    <div>
+                      <p className="text-sm font-bold text-white">ngeKYC</p>
+                      <p className="text-[10px] text-slate-400">Identity Verification</p>
+                    </div>
+                  </a>
+                  <a href="#fms" className="flex items-start gap-3 p-3 rounded-xl hover:bg-white/5 transition-all group/item">
+                    <div className="w-8 h-8 rounded-lg bg-indigo-500/10 flex items-center justify-center text-indigo-500 group-hover/item:bg-indigo-500 group-hover/item:text-white">
+                      <Truck size={18} />
+                    </div>
+                    <div>
+                      <p className="text-sm font-bold text-white">FMS</p>
+                      <p className="text-[10px] text-slate-400">Fleet Management</p>
+                    </div>
+                  </a>
+                </div>
+              )}
+            </div>
+
+            <a href="#infrastructure" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">GIS</a>
+            <a href="#pricing" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Pricing</a>
+          </div>
+
+          {/* Desktop CTA */}
+          <div className="hidden md:flex items-center gap-4">
+            <button className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Log in</button>
+            <button className="px-5 py-2.5 text-sm font-medium text-white rounded-xl bg-blue-600 hover:bg-blue-500 transition-all shadow-lg shadow-blue-600/20">
+              Start Free
             </button>
-
-            {/* Dropdown Menu Box */}
-            {solutionsOpen && (
-              <div className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-64 bg-[#0B0F17] border border-white/10 rounded-2xl p-2 shadow-2xl backdrop-blur-xl">
-                <a href="#ngekyc" className="flex items-start gap-3 p-3 rounded-xl hover:bg-white/5 transition-colors group">
-                  <div className="mt-1 w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-500 group-hover:bg-blue-500 group-hover:text-white transition-all">
-                    <ShieldCheck className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <div className="text-sm font-semibold text-white">ngeKYC</div>
-                    <div className="text-xs text-slate-400">Next-gen identity verification</div>
-                  </div>
-                </a>
-
-                <a href="#fms" className="flex items-start gap-3 p-3 rounded-xl hover:bg-white/5 transition-colors group">
-                  <div className="mt-1 w-8 h-8 rounded-lg bg-indigo-500/10 flex items-center justify-center text-indigo-500 group-hover:bg-indigo-500 group-hover:text-white transition-all">
-                    <Truck className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <div className="text-sm font-semibold text-white">FMS</div>
-                    <div className="text-xs text-slate-400">Fleet Management System</div>
-                  </div>
-                </a>
-              </div>
-            )}
           </div>
 
-          <a href="#infrastructure" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">GIS</a>
-          <a href="#pricing" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Pricing</a>
-          <a href="#contactus" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Contact Us</a>
-          <a href="#developers" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Docs</a>
-        </div>
-
-        {/* CTA Buttons */}
-        <div className="hidden md:flex items-center gap-5">
-          <button className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Log in</button>
-          <button className="group relative px-5 py-2.5 text-sm font-medium text-white rounded-lg bg-blue-600 hover:bg-blue-500 transition-all overflow-hidden">
-            <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]" />
-            <span className="relative z-10 flex items-center gap-2">Start for Free <ChevronRight className="w-4 h-4" /></span>
+          {/* MOBILE TOGGLE - Only shows on Small Screens */}
+          <button
+            className="md:hidden relative z-[600] p-2 text-white bg-white/5 rounded-xl border border-white/10"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
+      </nav>
 
-        {/* Mobile Toggle */}
-        <button className="md:hidden text-slate-300" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-          {mobileMenuOpen ? <X /> : <Menu />}
-        </button>
+      {/* --- SEPARATE MOBILE OVERLAY (Hidden on Desktop) --- */}
+      <div className={`fixed inset-0 w-full h-screen bg-[#03060D] z-[450] transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] md:hidden ${mobileMenuOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0 pointer-events-none'
+        }`}>
+        <div className="flex flex-col h-full pt-32 px-8 pb-10 overflow-y-auto">
+          <div className="space-y-4">
+            <a href="#products" onClick={() => setMobileMenuOpen(false)} className="block text-xl font-bold text-white border-b border-white/5 pb-4">Products</a>
+
+            <div className="space-y-4">
+              <p className="text-[10px] uppercase tracking-widest text-blue-500 font-bold">Solutions</p>
+              <a href="#ngekyc" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-4 text-slate-300"><ShieldCheck className="text-blue-500" /> ngeKYC</a>
+              <a href="#fms" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-4 text-slate-300"><Truck className="text-indigo-500" /> FMS</a>
+            </div>
+
+            <a href="#infrastructure" onClick={() => setMobileMenuOpen(false)} className="block text-xl font-bold text-white border-b border-white/5 pb-4 pt-4">GIS</a>
+            <a href="#pricing" onClick={() => setMobileMenuOpen(false)} className="block text-xl font-bold text-white">Pricing</a>
+          </div>
+
+          <div className="mt-auto space-y-4 pt-10 border-t border-white/5">
+            <button className="w-full py-4 rounded-xl bg-white/5 text-white font-bold border border-white/10 flex items-center justify-center gap-2"><LogIn size={18} /> Log In</button>
+            <button className="w-full py-4 rounded-xl bg-blue-600 text-white font-bold shadow-lg shadow-blue-600/20 flex items-center justify-center gap-2"><Sparkles size={18} /> Get Started</button>
+          </div>
+        </div>
       </div>
-    </nav>
+    </>
   );
 }
