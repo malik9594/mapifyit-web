@@ -1,11 +1,20 @@
 "use client"
 import React, { useState, useRef, useEffect } from 'react';
 import { Map, Menu, X, ChevronRight, ChevronDown, ShieldCheck, Truck, LogIn, Sparkles } from 'lucide-react';
+import Link from 'next/link';
 
-export default function Navbar({ isScrolled }: { isScrolled: boolean }) {
+export default function Navbar() {
+  const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [solutionsOpen, setSolutionsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+
+  // Handle navbar transparency on scroll
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   // Close desktop dropdown when clicking outside
   useEffect(() => {
@@ -35,16 +44,15 @@ export default function Navbar({ isScrolled }: { isScrolled: boolean }) {
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between relative z-[510]">
 
           {/* Logo Section */}
-          <div className="flex items-center gap-2 group cursor-pointer relative z-[600]">
-            <div className="w-9 h-9 rounded-xl bg-blue-600 flex items-center justify-center shadow-lg shadow-blue-600/20 transition-transform active:scale-90">
-              <Map className="w-5 h-5 text-white" />
+          <Link href="/" className="flex items-center gap-2 group cursor-pointer relative z-[600]">
+            <div className="w-15 h-15 rounded-xl bg-white flex items-center justify-center">
+              <img src="/mapifyit-logo.png" alt="Mapifyit Logo" className="w-10 h-7" />
             </div>
-            <span className="text-xl md:text-2xl font-bold text-white tracking-tight">Mapifyit<span className="text-blue-500">.</span></span>
-          </div>
+          </Link>
 
           {/* DESKTOP NAVIGATION (Hidden on Mobile) */}
           <div className="hidden md:flex items-center gap-8 bg-white/5 border border-white/10 px-6 py-2.5 rounded-full backdrop-blur-md">
-            <a href="#products" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Products</a>
+            <Link href="/#products" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Products</Link>
 
             {/* Solutions Dropdown */}
             <div className="relative" ref={dropdownRef}>
@@ -58,7 +66,7 @@ export default function Navbar({ isScrolled }: { isScrolled: boolean }) {
               {/* Desktop Dropdown Box */}
               {solutionsOpen && (
                 <div className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-64 bg-[#0B0F17] border border-white/10 rounded-2xl p-2 shadow-[0_20px_50px_rgba(0,0,0,0.5)] backdrop-blur-2xl z-[700]">
-                  <a href="#ngekyc" className="flex items-start gap-3 p-3 rounded-xl hover:bg-white/5 transition-all group/item">
+                  <Link href="/#ngekyc" onClick={() => setSolutionsOpen(false)} className="flex items-start gap-3 p-3 rounded-xl hover:bg-white/5 transition-all group/item">
                     <div className="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-500 group-hover/item:bg-blue-500 group-hover/item:text-white">
                       <ShieldCheck size={18} />
                     </div>
@@ -66,8 +74,8 @@ export default function Navbar({ isScrolled }: { isScrolled: boolean }) {
                       <p className="text-sm font-bold text-white">ngeKYC</p>
                       <p className="text-[10px] text-slate-400">Identity Verification</p>
                     </div>
-                  </a>
-                  <a href="#fms" className="flex items-start gap-3 p-3 rounded-xl hover:bg-white/5 transition-all group/item">
+                  </Link>
+                  <Link href="/#fms" onClick={() => setSolutionsOpen(false)} className="flex items-start gap-3 p-3 rounded-xl hover:bg-white/5 transition-all group/item">
                     <div className="w-8 h-8 rounded-lg bg-indigo-500/10 flex items-center justify-center text-indigo-500 group-hover/item:bg-indigo-500 group-hover/item:text-white">
                       <Truck size={18} />
                     </div>
@@ -75,13 +83,14 @@ export default function Navbar({ isScrolled }: { isScrolled: boolean }) {
                       <p className="text-sm font-bold text-white">FMS</p>
                       <p className="text-[10px] text-slate-400">Fleet Management</p>
                     </div>
-                  </a>
+                  </Link>
                 </div>
               )}
             </div>
 
-            <a href="#infrastructure" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">GIS</a>
-            <a href="#pricing" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Pricing</a>
+            <Link href="/#gismap" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">GIS</Link>
+            <Link href="/#pricing" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Pricing</Link>
+            <Link href="/#contactus" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Contact Us</Link>
           </div>
 
           {/* Desktop CTA */}
@@ -107,16 +116,17 @@ export default function Navbar({ isScrolled }: { isScrolled: boolean }) {
         }`}>
         <div className="flex flex-col h-full pt-32 px-8 pb-10 overflow-y-auto">
           <div className="space-y-4">
-            <a href="#products" onClick={() => setMobileMenuOpen(false)} className="block text-xl font-bold text-white border-b border-white/5 pb-4">Products</a>
+            <Link href="/#products" onClick={() => setMobileMenuOpen(false)} className="block text-xl font-bold text-white border-b border-white/5 pb-4">Products</Link>
 
             <div className="space-y-4">
               <p className="text-[10px] uppercase tracking-widest text-blue-500 font-bold">Solutions</p>
-              <a href="#ngekyc" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-4 text-slate-300"><ShieldCheck className="text-blue-500" /> ngeKYC</a>
-              <a href="#fms" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-4 text-slate-300"><Truck className="text-indigo-500" /> FMS</a>
+              <Link href="/#ngekyc" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-4 text-slate-300"><ShieldCheck className="text-blue-500" /> ngeKYC</Link>
+              <Link href="/#fms" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-4 text-slate-300"><Truck className="text-indigo-500" /> FMS</Link>
             </div>
 
-            <a href="#infrastructure" onClick={() => setMobileMenuOpen(false)} className="block text-xl font-bold text-white border-b border-white/5 pb-4 pt-4">GIS</a>
-            <a href="#pricing" onClick={() => setMobileMenuOpen(false)} className="block text-xl font-bold text-white">Pricing</a>
+            <Link href="/#gismap" onClick={() => setMobileMenuOpen(false)} className="block text-xl font-bold text-white border-b border-white/5 pb-4 pt-4">GIS</Link>
+            <Link href="/#pricing" onClick={() => setMobileMenuOpen(false)} className="block text-xl font-bold text-white border-b border-white/5 pb-4">Pricing</Link>
+            <Link href="/#contactus" onClick={() => setMobileMenuOpen(false)} className="block text-xl font-bold text-white">Contact Us</Link>
           </div>
 
           <div className="mt-auto space-y-4 pt-10 border-t border-white/5">

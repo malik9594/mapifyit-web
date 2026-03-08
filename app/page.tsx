@@ -1,29 +1,21 @@
 "use client"
-import React, { useState, useEffect } from 'react';
-import Navbar from '@/components/Navbar';
+import React from 'react';
 import Hero from '@/components/Hero';
 import FeatureSuites from '@/components/FeatureSuites';
 import Infrastructure from '@/components/Infrastructure';
-import Footer from '@/components/Footer';
+import Pricing from '@/components/Pricing';
+import ContactUs from '@/components/ContactUs';
 
 /**
  * Main Landing Page Component
- * Assembles modular sections into the final Mapifyit experience
+ * Home page content only. Navbar and Footer are in layout.tsx.
+ * Consolidates all features for a single-page scrolling experience.
  */
 export default function Home() {
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  // Handle navbar transparency on scroll
-  useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   return (
-    <div className="min-h-screen bg-[#03060D] text-slate-300 font-sans selection:bg-blue-500/30 overflow-x-hidden">
+    <div className="relative z-10 pt-32 pb-20">
 
-      {/* GLOBAL ANIMATION KEYFRAMES */}
+      {/* GLOBAL ANIMATION KEYFRAMES - Kept for component-specific animations */}
       <style>{`
         @keyframes scan { 0% { transform: translateY(-100%); } 100% { transform: translateY(200%); } }
         @keyframes ping-slow { 0% { transform: scale(1); opacity: 0.8; } 50% { transform: scale(2.5); opacity: 0; } 100% { transform: scale(1); opacity: 0; } }
@@ -52,16 +44,17 @@ export default function Home() {
         <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:3rem_3rem] [mask-image:radial-gradient(ellipse:70%_70%_at_50%_50%,#000_20%,transparent_100%)]" />
       </div>
 
-      {/* Modular Page Sections */}
-      <Navbar isScrolled={isScrolled} />
+      <Hero />
+      <FeatureSuites />
 
-      <main className="relative z-10 pt-32 pb-20">
-        <Hero />
-        <FeatureSuites />
+      <div id="gismap" className="scroll-mt-20">
         <Infrastructure />
-      </main>
+      </div>
 
-      <Footer />
+      <Pricing />
+      <div id="contactus" className="scroll-mt-20">
+        <ContactUs />
+      </div>
     </div>
   );
 }

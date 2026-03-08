@@ -88,9 +88,17 @@ export default function FeatureSuites() {
                     </div>
                 </Reveal>
                 <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
-                    {suites.map((suite, idx) => (
-                        <FeatureCard key={idx} {...suite} />
-                    ))}
+                    {/* Map Foundations & Location Core */}
+                    <FeatureCard {...suites[0]} />
+                    <FeatureCard {...suites[1]} />
+
+                    {/* Spatial Intelligence & Enterprise Control */}
+                    <div id="fms" className="scroll-mt-32">
+                        <FeatureCard {...suites[2]} />
+                    </div>
+                    <div id="ngekyc" className="scroll-mt-32">
+                        <FeatureCard {...suites[3]} />
+                    </div>
                 </div>
             </div>
         </section>
