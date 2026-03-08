@@ -8,14 +8,15 @@ export default function Footer() {
                 <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-10 mb-16">
                     <div className="col-span-2 lg:col-span-2">
                         <div className="flex items-center gap-2 mb-6">
-                            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center">
-                                <Map className="w-4 h-4 text-white" />
+                            <div className="w-30 h-12 flex items-center justify-center">
+                                {/* <Map className="w-4 h-4 text-white" /> */}
+                                <img src="/mapify-white-bg.png" alt="Mapifyit Logo" className="w-30 h-15" />
+
                             </div>
-                            <span className="text-xl font-bold text-white tracking-tight">Mapifyit</span>
+                            {/* <span className="text-xl font-bold text-white tracking-tight">Mapifyit</span> */}
                         </div>
                         <p className="text-slate-400 max-w-sm mb-8 leading-relaxed">
-                            Enterprise mapping and location intelligence platform designed for accuracy, control, and mission-critical scale.
-                        </p>
+                            Mapifyit is a modern mapping and location intelligence platform designed for organizations that need accuracy, control, and flexibility at scale. We build the infrastructure that powers intelligent maps, navigation, analytics, and AI-driven geospatial systems—across web, mobile, automotive, AR, and next-generation applications.                        </p>
                     </div>
                     <div>
                         <h4 className="text-white font-bold mb-6 tracking-wide text-sm uppercase">Products</h4>
