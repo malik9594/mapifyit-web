@@ -72,15 +72,19 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between relative z-[510]">
 
           {/* Logo Section */}
-          <Link href="/" className="flex items-center gap-2 group cursor-pointer relative z-[600]">
+          <Link href="/" className="flex items-center gap-2 cursor-pointer bg-transparent relative">
             <div className="w-25 h-10 flex items-center justify-center">
-              <img src="/mapify-white-bg.png" alt="Mapifyit Logo" className="w-25 h-15" />
+              <img src="/mapify-white-bg.png" alt="Mapifyit Logo" className="w-25 h-10" />
             </div>
           </Link>
 
           {/* DESKTOP NAVIGATION */}
           <div className="hidden md:flex items-center gap-8 bg-white/5 border border-white/10 px-6 py-2.5 rounded-full backdrop-blur-md">
-            <Link href="/#products" onClick={(e) => scrollToSection(e, 'products')} className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Products</Link>
+            <Link href="/#products" onClick={(e) => scrollToSection(e, 'products')} className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Maps</Link>
+            <Link href="/#gismap" onClick={(e) => scrollToSection(e, 'gismap')} className="text-sm font-medium text-slate-300 hover:text-white transition-colors">GIS</Link>
+            <Link href="/#document"
+              //  onClick={(e) => scrollToSection(e, 'gismap')} 
+              className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Document</Link>
 
             {/* Solutions Dropdown */}
             <div className="relative" ref={dropdownRef}>
@@ -115,7 +119,6 @@ export default function Navbar() {
               )}
             </div>
 
-            <Link href="/#gismap" onClick={(e) => scrollToSection(e, 'gismap')} className="text-sm font-medium text-slate-300 hover:text-white transition-colors">GIS</Link>
             <Link href="/#pricing" onClick={(e) => scrollToSection(e, 'pricing')} className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Pricing</Link>
             <Link href="/#contactus" onClick={(e) => scrollToSection(e, 'contactus')} className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Contact Us</Link>
           </div>

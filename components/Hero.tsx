@@ -10,7 +10,7 @@ import LoginMockup from './LoginMockup';
  */
 export default function Hero() {
   return (
-    <section className="max-w-7xl mx-auto px-6 pt-15 md:pt-18 pb-12 lg:pb-32 overflow-hidden">
+    <section className="max-w-7xl mx-auto px-6 pt-5 md:pt-5 pb-12 lg:pb-32 overflow-hidden">
       <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center">
 
         {/* Left Column: Value Proposition */}
