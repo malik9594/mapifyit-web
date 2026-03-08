@@ -1,3 +1,4 @@
+"use client"
 import React from 'react';
 import { ShieldCheck, Zap } from 'lucide-react';
 import { Reveal } from '@/components/Reveal';
