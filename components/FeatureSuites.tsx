@@ -36,47 +36,85 @@ const FeatureCard = ({ icon: Icon, title, description, features, linkText, color
 );
 
 export default function FeatureSuites() {
+    // const suites = [
+    //     {
+    //         icon: Map,
+    //         title: "Map Foundations",
+    //         description: "The visual and spatial core of Mapifyit. Vector, satellite, indoor maps, and high-performance rendering APIs designed for immersive experiences.",
+    //         features: ["Custom Cartography", "Web & Mobile SDKs", "60fps Vector Rendering"],
+    //         linkText: "Explore AtlasMaps",
+    //         colorClass: { icon: "text-blue-400", bgLight: "bg-blue-500/5", iconContainer: "from-blue-500/20 to-transparent border-blue-500/30", bullet: "bg-blue-500", link: "text-blue-400 hover:text-blue-300" },
+    //         delay: 0
+    //     },
+    //     {
+    //         icon: Navigation,
+    //         title: "Location Core",
+    //         description: "Search, Routing & Navigation Suite. Power fast, accurate location discovery and intelligent movement across real-world environments.",
+    //         features: ["Global Geocoding", "Route Optimization", "Localized Intelligence"],
+    //         linkText: "Explore GeoSearch",
+    //         colorClass: { icon: "text-emerald-400", bgLight: "bg-emerald-500/5", iconContainer: "from-emerald-500/20 to-transparent border-emerald-500/30", bullet: "bg-emerald-500", link: "text-emerald-400 hover:text-emerald-300" },
+    //         delay: 100
+    //     },
+    //     {
+    //         icon: Activity,
+    //         title: "Spatial Intelligence",
+    //         description: "Analytics & Insights Suite. Transform raw location data into actionable intelligence with AI-driven predictive insights.",
+    //         features: ["TrafficPulse™ Monitoring", "Heatmaps & Clusters", "Travel Forecasting"],
+    //         linkText: "Explore Analytics",
+    //         colorClass: { icon: "text-purple-400", bgLight: "bg-purple-500/5", iconContainer: "from-purple-500/20 to-transparent border-purple-500/30", bullet: "bg-purple-500", link: "text-purple-400 hover:text-purple-300" },
+    //         delay: 200
+    //     },
+    //     {
+    //         icon: ShieldCheck,
+    //         title: "Enterprise Control",
+    //         description: "Security & Operations Suite. Turnkey solutions like FleetSense and NG-EKYC built for organizations demanding full visibility.",
+    //         features: ["Fleet Tracking (FMS)", "E-KYC Identity", "Geofencing & Alerts"],
+    //         linkText: "Explore FleetSense",
+    //         colorClass: { icon: "text-amber-400", bgLight: "bg-amber-500/5", iconContainer: "from-amber-500/20 to-transparent border-amber-500/30", bullet: "bg-amber-500", link: "text-amber-400 hover:text-amber-300" },
+    //         delay: 300
+    //     }
+    // ];
+
     const suites = [
         {
             icon: Map,
             title: "Map Foundations",
-            description: "The visual and spatial core of Mapifyit. Vector, satellite, indoor maps, and high-performance rendering APIs designed for immersive experiences.",
-            features: ["Custom Cartography", "Web & Mobile SDKs", "60fps Vector Rendering"],
-            linkText: "Explore AtlasMaps",
+            description: "The visual core of Mapifyit. Deploy high-performance, customizable vector and raster tiles tailored to your brand with sub-second latency.",
+            features: ["Custom Vector & Raster Tiles", "Web & Mobile SDKs", "Infinite Scalability"],
+            linkText: "Explore Map Interfaces",
             colorClass: { icon: "text-blue-400", bgLight: "bg-blue-500/5", iconContainer: "from-blue-500/20 to-transparent border-blue-500/30", bullet: "bg-blue-500", link: "text-blue-400 hover:text-blue-300" },
             delay: 0
         },
         {
             icon: Navigation,
             title: "Location Core",
-            description: "Search, Routing & Navigation Suite. Power fast, accurate location discovery and intelligent movement across real-world environments.",
-            features: ["Global Geocoding", "Route Optimization", "Localized Intelligence"],
-            linkText: "Explore GeoSearch",
+            description: "Precision search, routing, and navigation suite. Instantly translate complex addresses, calculate real-time ETAs, and speed up entry with smart autocomplete.",
+            features: ["Forward & Reverse Geocoding", "Dynamic Routing & ETAs", "Predictive Autocomplete"],
+            linkText: "Explore Location APIs",
             colorClass: { icon: "text-emerald-400", bgLight: "bg-emerald-500/5", iconContainer: "from-emerald-500/20 to-transparent border-emerald-500/30", bullet: "bg-emerald-500", link: "text-emerald-400 hover:text-emerald-300" },
             delay: 100
         },
         {
             icon: Activity,
-            title: "Spatial Intelligence",
-            description: "Analytics & Insights Suite. Transform raw location data into actionable intelligence with AI-driven predictive insights.",
-            features: ["TrafficPulse™ Monitoring", "Heatmaps & Clusters", "Travel Forecasting"],
-            linkText: "Explore Analytics",
+            title: "Specialized GIS",
+            description: "Advanced Geographic Information Systems. Transform raw spatial data into actionable enterprise insights through custom remote sensing and data modeling.",
+            features: ["Spatial Data Modeling", "Remote Sensing Analysis", "Enterprise GIS Integration"],
+            linkText: "Explore GIS Solutions",
             colorClass: { icon: "text-purple-400", bgLight: "bg-purple-500/5", iconContainer: "from-purple-500/20 to-transparent border-purple-500/30", bullet: "bg-purple-500", link: "text-purple-400 hover:text-purple-300" },
             delay: 200
         },
         {
             icon: ShieldCheck,
             title: "Enterprise Control",
-            description: "Security & Operations Suite. Turnkey solutions like FleetSense and NG-EKYC built for organizations demanding full visibility.",
-            features: ["Fleet Tracking (FMS)", "E-KYC Identity", "Geofencing & Alerts"],
-            linkText: "Explore FleetSense",
+            description: "Security and operations suite. Automate compliance with location-backed Next-Gen eKYC and optimize vehicle logistics with real-time Fleet Management.",
+            features: ["Next-Gen eKYC (NgeKYC)", "Fleet Management (FMS)", "Real-Time Geofencing"],
+            linkText: "Explore Security & Ops",
             colorClass: { icon: "text-amber-400", bgLight: "bg-amber-500/5", iconContainer: "from-amber-500/20 to-transparent border-amber-500/30", bullet: "bg-amber-500", link: "text-amber-400 hover:text-amber-300" },
             delay: 300
         }
     ];
-
     return (
-        <section id="products" className="py-32 relative">
+        <section id="products" className="py-10 relative">
             <div className="max-w-7xl mx-auto px-6">
                 <Reveal>
                     <div className="mb-20 md:text-center">

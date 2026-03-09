@@ -4,7 +4,7 @@ import { Reveal } from './Reveal';
 
 export default function Infrastructure() {
     return (
-        <section id="gismap" className="py-32 border-t border-white/5 relative overflow-hidden bg-[#070B14]/30">
+        <section id="gismap" className="py-20 border-t border-white/5 relative overflow-hidden bg-[#070B14]/30">
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-red-600/5 rounded-full blur-[150px] pointer-events-none" />
             <div className="max-w-7xl mx-auto px-6 relative z-10">
                 <div className="grid lg:grid-cols-2 gap-20 items-center">

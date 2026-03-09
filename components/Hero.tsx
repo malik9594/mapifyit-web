@@ -10,29 +10,30 @@ import LoginMockup from './LoginMockup';
  */
 export default function Hero() {
   return (
-    <section className="max-w-7xl mx-auto px-6 pt-5 md:pt-5 pb-12 lg:pb-32 overflow-hidden">
+    <section className="max-w-7xl mx-auto px-6 pt-5 md:pt-5 pb-12 lg:pb-20 overflow-hidden">
       <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center">
 
         {/* Left Column: Value Proposition */}
         <div className="text-center lg:text-left">
           <Reveal delay={0}>
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-[10px] md:text-xs font-semibold text-blue-400 mb-6 md:mb-8 backdrop-blur-sm shadow-[0_0_15px_rgba(59,130,246,0.15)]">
-              <Zap className="w-3.5 h-3.5 fill-blue-500/50" /> Spatial Intelligence, Powered by AI
+              <Zap className="w-3.5 h-3.5 fill-blue-500/50" /> High-Performance Geospatial APIs
             </div>
           </Reveal>
 
           <Reveal delay={100}>
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight mb-6 md:mb-8 leading-[1.1]">
-              Where maps become <br className="hidden md:block" />
+              Build powerful spatial apps <br className="hidden md:block" />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-emerald-400 drop-shadow-[0_0_30px_rgba(59,130,246,0.3)]">
-                intelligence.
+                without the enterprise markup.
               </span>
             </h1>
           </Reveal>
 
           <Reveal delay={200}>
             <p className="text-base md:text-xl text-slate-400 max-w-2xl mx-auto lg:mx-0 mb-8 md:mb-10 leading-relaxed font-light">
-              High-performance Maps APIs, advanced GIS, and location intelligence. Deploy in the cloud, or completely offline for true <strong className="text-white font-medium">enterprise data sovereignty</strong>.
+              Replace legacy providers with our precision Maps API, advanced GIS, and automated fraud management (FMS). Deploy in the cloud or completely on-premise for absolute data sovereignty.
+              {/* High-performance Maps APIs, advanced GIS, and location intelligence. Deploy in the cloud, or completely offline for true <strong className="text-white font-medium">enterprise data sovereignty</strong>. */}
             </p>
           </Reveal>
 
@@ -62,7 +63,7 @@ export default function Hero() {
       </div>
 
       {/* Full-width Map Section (Appears below the split) */}
-      <div className="mt-20 lg:mt-32">
+      <div className="mt-20 lg:mt-20">
         <Reveal delay={500}>
           <div className="text-center mb-10">
             <h2 className="text-sm font-bold text-blue-500 uppercase tracking-widest mb-3">Live Engine Status</h2>

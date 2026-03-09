@@ -16,8 +16,7 @@ export default function Footer() {
                             {/* <span className="text-xl font-bold text-white tracking-tight">Mapifyit</span> */}
                         </div>
                         <p className="text-slate-400 max-w-sm mb-8 leading-relaxed">
-                            Mapifyit is a modern mapping and location intelligence platform designed for organizations that need accuracy, control, and flexibility at scale. We build the infrastructure that powers intelligent maps, navigation, analytics, and AI-driven geospatial systems—across web, mobile, automotive, AR, and next-generation applications.                        </p>
-                    </div>
+                            Mapifyit is an enterprise-grade location intelligence platform. We provide the high-performance mapping APIs, specialized GIS, and security infrastructure like FMS and Next-Gen eKYC that organizations need to build scalable, sovereign geospatial applications.</p>                    </div>
                     <div>
                         <h4 className="text-white font-bold mb-6 tracking-wide text-sm uppercase">Products</h4>
                         <ul className="space-y-3 text-slate-400 text-sm">
