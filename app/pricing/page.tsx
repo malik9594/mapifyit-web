@@ -1,89 +1,93 @@
 "use client"
 import React from 'react';
-import { Check, Zap, Shield, Globe } from 'lucide-react';
+import { Check, ArrowLeft, Zap, Globe, Shield, Cpu, MessageSquare } from 'lucide-react';
+import Link from 'next/link';
 import { Reveal } from '@/components/Reveal';
 
+const PricingTier = ({ title, price, description, features, highlighted = false }: { title: string, price: string, description: string, features: string[], highlighted?: boolean }) => (
+    <div className={`p-8 rounded-[32px] border transition-all duration-500 h-full flex flex-col ${highlighted ? 'bg-blue-600/10 border-blue-500/50 shadow-[0_0_50px_rgba(59,130,246,0.2)] scale-105' : 'bg-[#0B0F17] border-white/5 hover:border-white/10'}`}>
+        <h3 className="text-2xl font-bold mb-2 text-white">{title}</h3>
+        <div className="flex items-baseline gap-1 mb-4">
+            <span className="text-4xl font-extrabold text-white">{price}</span>
+            {price !== 'Custom' && <span className="text-slate-500">/month</span>}
+        </div>
+        <p className="text-slate-400 text-sm mb-8 leading-relaxed italic">{description}</p>
+        <ul className="space-y-4 mb-10 flex-grow">
+            {features.map((feature, i) => (
+                <li key={i} className="flex items-start gap-3 text-sm text-slate-300">
+                    <Check className="w-5 h-5 text-blue-500 shrink-0 mt-0.5" />
+                    {feature}
+                </li>
+            ))}
+        </ul>
+        <button className={`w-full py-4 rounded-xl font-bold transition-all ${highlighted ? 'bg-blue-600 text-white hover:bg-blue-500' : 'bg-white/10 text-white hover:bg-white/20'}`}>
+            {price === 'Custom' ? 'Contact Sales' : 'Get Started'}
+        </button>
+    </div>
+);
+
 export default function PricingPage() {
-    const tiers = [
-        {
-            name: "Developer",
-            price: "$0",
-            desc: "Perfect for testing and side projects.",
-            features: ["50,000 requests/mo", "Basic GIS Suite", "Community Support", "Public Cloud Only"],
-            icon: Zap,
-            color: "blue"
-        },
-        {
-            name: "Professional",
-            price: "$149",
-            desc: "Scaling apps and growing teams.",
-            features: ["500,000 requests/mo", "Advanced GIS Suite", "Priority Email Support", "VPC Deployment", "ngeKYC Lite"],
-            icon: Globe,
-            color: "indigo",
-            popular: true
-        },
-        {
-            name: "Enterprise",
-            price: "Custom",
-            desc: "Mission-critical infrastructure.",
-            features: ["Unlimited requests", "Full GIS Engine", "24/7 Phone Support", "Offline / Air-Gapped", "Full eKYC Suite", "White-labeling"],
-            icon: Shield,
-            color: "emerald"
-        }
-    ];
-
     return (
-        <div className="pt-40 pb-32">
-            <div className="max-w-7xl mx-auto px-6">
-                <div className="text-center mb-20">
-                    <Reveal>
-                        <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight">Simple, Transparent <span className="text-blue-500">Pricing.</span></h1>
-                        <p className="text-slate-400 text-lg max-w-2xl mx-auto">
-                            Choose the right plan for your team. Scale from a prototype to millions of users with ease.
+        <div className="min-h-screen bg-[#03060D] text-white pt-32 pb-20 px-6">
+            <div className="max-w-7xl mx-auto">
+                <Reveal>
+                    <Link href="/" className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors mb-12 group">
+                        <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" /> Back to Home
+                    </Link>
+
+                    <div className="text-center mb-20">
+                        <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight">Flexible <span className="text-blue-500">Plans.</span></h1>
+                        <p className="text-xl text-slate-400 max-w-2xl mx-auto font-light leading-relaxed">
+                            Transparent pricing designed to scale with your organization. No hidden markups, just high-performance spatial infrastructure.
                         </p>
-                    </Reveal>
-                </div>
+                    </div>
 
-                <div className="grid md:grid-cols-3 gap-8">
-                    {tiers.map((tier, i) => (
-                        <Reveal key={i} delay={i * 100}>
-                            <div className={`relative p-8 rounded-3xl bg-[#0B0F17] border border-white/5 h-full flex flex-col transition-all duration-300 hover:border-white/10 ${tier.popular ? 'ring-2 ring-blue-600/50 scale-105 z-10' : ''}`}>
-                                {tier.popular && (
-                                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-blue-600 rounded-full text-[10px] font-bold text-white uppercase tracking-widest">
-                                        Most Popular
-                                    </div>
-                                )}
-
-                                <div className={`w-12 h-12 rounded-xl mb-6 flex items-center justify-center ${tier.color === 'blue' ? 'bg-blue-500/10 text-blue-500' : tier.color === 'indigo' ? 'bg-indigo-500/10 text-indigo-500' : 'bg-emerald-500/10 text-emerald-500'}`}>
-                                    <tier.icon className="w-6 h-6" />
-                                </div>
-
-                                <h3 className="text-2xl font-bold text-white mb-2">{tier.name}</h3>
-                                <div className="flex items-baseline gap-1 mb-4">
-                                    <span className="text-4xl font-bold text-white">{tier.price}</span>
-                                    {tier.price !== 'Custom' && <span className="text-slate-500 text-sm">/mo</span>}
-                                </div>
-                                <p className="text-slate-400 text-sm mb-8 leading-relaxed">{tier.desc}</p>
-
-                                <div className="space-y-4 mb-10 mt-auto">
-                                    {tier.features.map((feature, j) => (
-                                        <div key={j} className="flex items-center gap-3">
-                                            <div className="w-5 h-5 rounded-full bg-white/5 flex items-center justify-center">
-                                                <Check className="w-3 h-3 text-blue-500" />
-                                            </div>
-                                            <span className="text-slate-300 text-sm">{feature}</span>
-                                        </div>
-                                    ))}
-                                </div>
-
-                                <button className={`w-full py-4 rounded-xl font-bold transition-all ${tier.popular ? 'bg-blue-600 text-white hover:bg-md-blue-500 shadow-xl shadow-blue-600/20' : 'bg-white/5 text-white hover:bg-white/10 border border-white/10'}`}>
-                                    {tier.name === 'Enterprise' ? 'Contact Sales' : 'Get Started'}
-                                </button>
-                            </div>
-                        </Reveal>
-                    ))}
-                </div>
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
+                        <PricingTier
+                            title="Developer"
+                            price="$0"
+                            description="Perfect for prototyping and small side-projects."
+                            features={[
+                                "Up to 50,000 requests / month",
+                                "Standard Support",
+                                "Basic SDK Access",
+                                "Static Maps (PNG/WebP)",
+                                "Community Forum Access"
+                            ]}
+                        />
+                        <PricingTier
+                            title="Professional"
+                            price="$499"
+                            description="For growing apps and production-ready systems."
+                            highlighted={true}
+                            features={[
+                                "Up to 500,000 requests / month",
+                                "Priority Email Support",
+                                "Full SDK Features",
+                                "Dynamic Vector Tiles",
+                                "Advanced Autocomplete",
+                                "SLA Guarantees"
+                            ]}
+                        />
+                        <PricingTier
+                            title="Enterprise"
+                            price="Custom"
+                            description="Bespoke infrastructure for global scale and local control."
+                            features={[
+                                "Unlimited Requests",
+                                "Dedicated Technical Account Manager",
+                                "On-Premise / Air-Gapped Deployment",
+                                "Custom Base Maps & Geodata",
+                                "Legal & Compliance Audits",
+                                "White-label Options"
+                            ]}
+                        />
+                    </div>
+                </Reveal>
             </div>
+            {/* Background Glows */}
+            <div className="fixed top-0 right-0 w-[600px] h-[600px] bg-blue-600/5 blur-[150px] -z-10 rounded-full" />
+            <div className="fixed bottom-0 left-0 w-[600px] h-[600px] bg-indigo-600/5 blur-[150px] -z-10 rounded-full" />
         </div>
     );
 }

@@ -80,11 +80,9 @@ export default function Navbar() {
 
           {/* DESKTOP NAVIGATION */}
           <div className="hidden md:flex items-center gap-8 bg-white/5 border border-white/10 px-6 py-2.5 rounded-full backdrop-blur-md">
-            <Link href="/#products" onClick={(e) => scrollToSection(e, 'products')} className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Maps</Link>
+            <Link href="/#maps" onClick={(e) => scrollToSection(e, 'maps')} className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Maps</Link>
             <Link href="/#gismap" onClick={(e) => scrollToSection(e, 'gismap')} className="text-sm font-medium text-slate-300 hover:text-white transition-colors">GIS</Link>
-            <Link href="/#document"
-              //  onClick={(e) => scrollToSection(e, 'gismap')} 
-              className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Document</Link>
+
 
             {/* Solutions Dropdown */}
             <div className="relative" ref={dropdownRef}>
@@ -118,7 +116,10 @@ export default function Navbar() {
                 </div>
               )}
             </div>
-
+            <Link href="https://dev.mapifyit.com/documentation"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Documentation</Link>
             <Link href="/#pricing" onClick={(e) => scrollToSection(e, 'pricing')} className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Pricing</Link>
             <Link href="/#contactus" onClick={(e) => scrollToSection(e, 'contactus')} className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Contact Us</Link>
           </div>
@@ -143,7 +144,7 @@ export default function Navbar() {
         }`}>
         <div className="flex flex-col h-full pt-32 px-8 pb-10 overflow-y-auto">
           <div className="space-y-4">
-            <Link href="/#products" onClick={(e) => scrollToSection(e, 'products')} className="block text-xl font-bold text-white border-b border-white/5 pb-4">Products</Link>
+            <Link href="/#maps" onClick={(e) => scrollToSection(e, 'maps')} className="block text-xl font-bold text-white border-b border-white/5 pb-4">Maps</Link>
             <div className="space-y-4">
               <p className="text-[10px] uppercase tracking-widest text-blue-500 font-bold">Solutions</p>
               <Link href="/#ngekyc" onClick={(e) => scrollToSection(e, 'ngekyc')} className="flex items-center gap-4 text-slate-300"><ShieldCheck className="text-blue-500" /> ngeKYC</Link>

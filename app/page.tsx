@@ -46,12 +46,12 @@ export default function Home() {
 
       <Hero />
       <FeatureSuites />
-
+      <Pricing />
       <div id="gismap" className="scroll-mt-20">
         <Infrastructure />
       </div>
 
-      <Pricing />
+
       <div id="contactus" className="scroll-mt-20">
         <ContactUs />
       </div>

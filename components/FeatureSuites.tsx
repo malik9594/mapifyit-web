@@ -1,6 +1,7 @@
 import React from 'react';
 import { Map, Navigation, Activity, ShieldCheck, ChevronRight } from 'lucide-react';
 import { Reveal } from './Reveal';
+import Link from 'next/link';
 
 interface ColorClass {
     icon: string;
@@ -10,7 +11,7 @@ interface ColorClass {
     link: string;
 }
 
-const FeatureCard = ({ icon: Icon, title, description, features, linkText, colorClass, delay }: { icon: any, title: string, description: string, features: string[], linkText: string, colorClass: ColorClass, delay: number }) => (
+const FeatureCard = ({ icon: Icon, title, description, features, linkText, linkHref, colorClass, delay }: { icon: any, title: string, description: string, features: string[], linkText: string, linkHref: string, colorClass: ColorClass, delay: number }) => (
     <Reveal delay={delay}>
         <div className={`group relative h-full p-1 rounded-3xl bg-gradient-to-b from-white/10 to-transparent overflow-hidden transition-all hover:shadow-[0_0_40px_rgba(59,130,246,0.15)]`}>
             <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${colorClass.bgLight}`} />
@@ -27,116 +28,66 @@ const FeatureCard = ({ icon: Icon, title, description, features, linkText, color
                         </li>
                     ))}
                 </ul>
-                <a href="#" className={`inline-flex items-center gap-2 font-semibold transition-colors ${colorClass.link}`}>
+                <Link href={linkHref} className={`inline-flex items-center gap-2 font-semibold transition-colors ${colorClass.link}`}>
                     {linkText} <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </a>
+                </Link>
             </div>
         </div>
     </Reveal>
 );
 
 export default function FeatureSuites() {
-    // const suites = [
-    //     {
-    //         icon: Map,
-    //         title: "Map Foundations",
-    //         description: "The visual and spatial core of Mapifyit. Vector, satellite, indoor maps, and high-performance rendering APIs designed for immersive experiences.",
-    //         features: ["Custom Cartography", "Web & Mobile SDKs", "60fps Vector Rendering"],
-    //         linkText: "Explore AtlasMaps",
-    //         colorClass: { icon: "text-blue-400", bgLight: "bg-blue-500/5", iconContainer: "from-blue-500/20 to-transparent border-blue-500/30", bullet: "bg-blue-500", link: "text-blue-400 hover:text-blue-300" },
-    //         delay: 0
-    //     },
-    //     {
-    //         icon: Navigation,
-    //         title: "Location Core",
-    //         description: "Search, Routing & Navigation Suite. Power fast, accurate location discovery and intelligent movement across real-world environments.",
-    //         features: ["Global Geocoding", "Route Optimization", "Localized Intelligence"],
-    //         linkText: "Explore GeoSearch",
-    //         colorClass: { icon: "text-emerald-400", bgLight: "bg-emerald-500/5", iconContainer: "from-emerald-500/20 to-transparent border-emerald-500/30", bullet: "bg-emerald-500", link: "text-emerald-400 hover:text-emerald-300" },
-    //         delay: 100
-    //     },
-    //     {
-    //         icon: Activity,
-    //         title: "Spatial Intelligence",
-    //         description: "Analytics & Insights Suite. Transform raw location data into actionable intelligence with AI-driven predictive insights.",
-    //         features: ["TrafficPulse™ Monitoring", "Heatmaps & Clusters", "Travel Forecasting"],
-    //         linkText: "Explore Analytics",
-    //         colorClass: { icon: "text-purple-400", bgLight: "bg-purple-500/5", iconContainer: "from-purple-500/20 to-transparent border-purple-500/30", bullet: "bg-purple-500", link: "text-purple-400 hover:text-purple-300" },
-    //         delay: 200
-    //     },
-    //     {
-    //         icon: ShieldCheck,
-    //         title: "Enterprise Control",
-    //         description: "Security & Operations Suite. Turnkey solutions like FleetSense and NG-EKYC built for organizations demanding full visibility.",
-    //         features: ["Fleet Tracking (FMS)", "E-KYC Identity", "Geofencing & Alerts"],
-    //         linkText: "Explore FleetSense",
-    //         colorClass: { icon: "text-amber-400", bgLight: "bg-amber-500/5", iconContainer: "from-amber-500/20 to-transparent border-amber-500/30", bullet: "bg-amber-500", link: "text-amber-400 hover:text-amber-300" },
-    //         delay: 300
-    //     }
-    // ];
-
     const suites = [
         {
             icon: Map,
-            title: "Map Foundations",
-            description: "The visual core of Mapifyit. Deploy high-performance, customizable vector and raster tiles tailored to your brand with sub-second latency.",
-            features: ["Custom Vector & Raster Tiles", "Web & Mobile SDKs", "Infinite Scalability"],
-            linkText: "Explore Map Interfaces",
+            title: "Predictable Maps API",
+            description: "Render high-resolution vector and satellite tiles at 60fps. Built for mass-scale web and mobile apps with localized address accuracy.",
+            features: [],
+            linkText: "Explore SDKs",
+            linkHref: "/sdks",
             colorClass: { icon: "text-blue-400", bgLight: "bg-blue-500/5", iconContainer: "from-blue-500/20 to-transparent border-blue-500/30", bullet: "bg-blue-500", link: "text-blue-400 hover:text-blue-300" },
             delay: 0
-        },
-        {
-            icon: Navigation,
-            title: "Location Core",
-            description: "Precision search, routing, and navigation suite. Instantly translate complex addresses, calculate real-time ETAs, and speed up entry with smart autocomplete.",
-            features: ["Forward & Reverse Geocoding", "Dynamic Routing & ETAs", "Predictive Autocomplete"],
-            linkText: "Explore Location APIs",
-            colorClass: { icon: "text-emerald-400", bgLight: "bg-emerald-500/5", iconContainer: "from-emerald-500/20 to-transparent border-emerald-500/30", bullet: "bg-emerald-500", link: "text-emerald-400 hover:text-emerald-300" },
-            delay: 100
         },
         {
             icon: Activity,
             title: "Specialized GIS",
             description: "Advanced Geographic Information Systems. Transform raw spatial data into actionable enterprise insights through custom remote sensing and data modeling.",
-            features: ["Spatial Data Modeling", "Remote Sensing Analysis", "Enterprise GIS Integration"],
-            linkText: "Explore GIS Solutions",
+            features: [],
+            linkText: "GIS Reference",
+            linkHref: "/gis",
             colorClass: { icon: "text-purple-400", bgLight: "bg-purple-500/5", iconContainer: "from-purple-500/20 to-transparent border-purple-500/30", bullet: "bg-purple-500", link: "text-purple-400 hover:text-purple-300" },
             delay: 200
         },
         {
             icon: ShieldCheck,
-            title: "Enterprise Control",
-            description: "Security and operations suite. Automate compliance with location-backed Next-Gen eKYC and optimize vehicle logistics with real-time Fleet Management.",
-            features: ["Next-Gen eKYC (NgeKYC)", "Fleet Management (FMS)", "Real-Time Geofencing"],
-            linkText: "Explore Security & Ops",
+            title: "Intelligence Routing",
+            description: "Multi-stop optimization and real-time traffic pulse monitoring. Build logistics systems that calculate the true cost of distance.",
+            features: [],
+            linkText: "Routing Specs",
+            linkHref: "/routing",
             colorClass: { icon: "text-amber-400", bgLight: "bg-amber-500/5", iconContainer: "from-amber-500/20 to-transparent border-amber-500/30", bullet: "bg-amber-500", link: "text-amber-400 hover:text-amber-300" },
             delay: 300
         }
     ];
     return (
-        <section id="products" className="py-10 relative">
+        <section id="maps" className="py-10 relative">
             <div className="max-w-7xl mx-auto px-6">
                 <Reveal>
                     <div className="mb-20 md:text-center">
-                        <h2 className="text-sm font-bold text-blue-500 uppercase tracking-widest mb-3">Feature Suites</h2>
-                        <h3 className="text-3xl md:text-5xl font-bold text-white mb-6">Smarter Maps. Smarter Outcomes.</h3>
+                        <h2 className="text-sm font-bold text-blue-500 uppercase tracking-widest mb-3">Core Ecosystem</h2>
+                        <h3 className="text-3xl md:text-5xl font-bold text-white mb-6">Built for Performance.
+                            Priced for Control.</h3>
                         <p className="text-slate-400 max-w-2xl mx-auto text-lg leading-relaxed">
                             Mapifyit is purpose-built for regions and enterprises where global providers lack precise data, control, or true data sovereignty.
                         </p>
                     </div>
                 </Reveal>
-                <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
-                    {/* Map Foundations & Location Core */}
-                    <FeatureCard {...suites[0]} />
-                    <FeatureCard {...suites[1]} />
-
-                    {/* Spatial Intelligence & Enterprise Control */}
-                    <div id="fms" className="scroll-mt-32">
-                        <FeatureCard {...suites[2]} />
-                    </div>
-                    <div id="ngekyc" className="scroll-mt-32">
-                        <FeatureCard {...suites[3]} />
-                    </div>
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                    {suites.map((suite, index) => (
+                        <div key={index} id={index === 1 ? "fms" : index === 2 ? "ngekyc" : undefined} className="scroll-mt-32">
+                            <FeatureCard {...suite} />
+                        </div>
+                    ))}
                 </div>
             </div>
         </section>

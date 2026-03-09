@@ -1,88 +1,55 @@
 "use client"
 import React from 'react';
-import { Check, Zap, Shield, Globe } from 'lucide-react';
+import { Check, Zap, Shield, Globe, ArrowRight } from 'lucide-react';
 import { Reveal } from '@/components/Reveal';
+import Link from 'next/link';
 
 export default function Pricing() {
-    const tiers = [
-        {
-            name: "Developer",
-            price: "$0",
-            desc: "Perfect for testing and side projects.",
-            features: ["50,000 requests/mo", "Basic GIS Suite", "Community Support", "Public Cloud Only"],
-            icon: Zap,
-            color: "blue"
-        },
-        {
-            name: "Professional",
-            price: "$149",
-            desc: "Scaling apps and growing teams.",
-            features: ["500,000 requests/mo", "Advanced GIS Suite", "Priority Email Support", "VPC Deployment", "ngeKYC Lite"],
-            icon: Globe,
-            color: "indigo",
-            popular: true
-        },
-        {
-            name: "Enterprise",
-            price: "Custom",
-            desc: "Mission-critical infrastructure.",
-            features: ["Unlimited requests", "Full GIS Engine", "24/7 Phone Support", "Offline / Air-Gapped", "Full eKYC Suite", "White-labeling"],
-            icon: Shield,
-            color: "emerald"
-        }
-    ];
-
     return (
-        <section id="pricing" className="py-32 relative scroll-mt-20">
+        <section id="pricing" className="py-10 relative scroll-mt-20">
             <div className="max-w-7xl mx-auto px-6">
-                <div className="text-center mb-20">
-                    <Reveal>
-                        <h2 className="text-sm font-bold text-blue-500 uppercase tracking-widest mb-3">Pricing Plans</h2>
-                        <h3 className="text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight">Simple, Transparent Pricing.</h3>
-                        <p className="text-slate-400 text-lg max-w-2xl mx-auto font-light">
-                            Choose the right plan for your team. Scale from a prototype to millions of users with ease.
-                        </p>
-                    </Reveal>
-                </div>
+                <div className="bg-white/5 border border-white/10 rounded-[40px] p-8 md:p-16 overflow-hidden relative group">
+                    {/* Background Decorative Element */}
+                    <div className="absolute top-0 right-0 w-96 h-96 bg-blue-600/10 blur-[100px] -z-10 rounded-full group-hover:bg-blue-600/20 transition-all duration-700" />
 
-                <div className="grid md:grid-cols-3 gap-8">
-                    {tiers.map((tier, i) => (
-                        <Reveal key={i} delay={i * 100}>
-                            <div className={`relative p-8 rounded-3xl bg-[#0B0F17] border border-white/5 h-full flex flex-col transition-all duration-300 hover:border-white/10 ${tier.popular ? 'ring-2 ring-blue-600/50 scale-105 z-10' : ''}`}>
-                                {tier.popular && (
-                                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-blue-600 rounded-full text-[10px] font-bold text-white uppercase tracking-widest">
-                                        Most Popular
+                    <div className="grid lg:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <Reveal>
+                                <h2 className="text-sm font-bold text-blue-500 uppercase tracking-widest mb-3">Transparent Pricing</h2>
+                                <h3 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight leading-tight">
+                                    Predictable Costs for <br />
+                                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">Unmatched Scalability.</span>
+                                </h3>
+                                <p className="text-slate-400 text-lg leading-relaxed font-light mb-8 max-w-xl">
+                                    Finally, enterprise mapping without the legacy tax. Whether you're a startup or a global organization, our plans are built to give you full control over your spend.
+                                </p>
+                                <div className="flex flex-wrap gap-4 mb-2">
+                                    <div className="flex items-center gap-2 text-sm text-slate-300">
+                                        <div className="w-1.5 h-1.5 rounded-full bg-blue-500" /> No hidden fees
                                     </div>
-                                )}
-
-                                <div className={`w-12 h-12 rounded-xl mb-6 flex items-center justify-center ${tier.color === 'blue' ? 'bg-blue-500/10 text-blue-500' : tier.color === 'indigo' ? 'bg-indigo-500/10 text-indigo-500' : 'bg-emerald-500/10 text-emerald-500'}`}>
-                                    <tier.icon className="w-6 h-6" />
+                                    <div className="flex items-center gap-2 text-sm text-slate-300">
+                                        <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" /> Pay-as-you-grow
+                                    </div>
+                                    <div className="flex items-center gap-2 text-sm text-slate-300">
+                                        <div className="w-1.5 h-1.5 rounded-full bg-purple-500" /> SLA Guarantees
+                                    </div>
                                 </div>
+                            </Reveal>
+                        </div>
 
-                                <h3 className="text-2xl font-bold text-white mb-2">{tier.name}</h3>
-                                <div className="flex items-baseline gap-1 mb-4">
-                                    <span className="text-4xl font-bold text-white">{tier.price}</span>
-                                    {tier.price !== 'Custom' && <span className="text-slate-500 text-sm">/mo</span>}
-                                </div>
-                                <p className="text-slate-400 text-sm mb-8 leading-relaxed">{tier.desc}</p>
-
-                                <div className="space-y-4 mb-10 mt-auto">
-                                    {tier.features.map((feature, j) => (
-                                        <div key={j} className="flex items-center gap-3">
-                                            <div className="w-5 h-5 rounded-full bg-white/5 flex items-center justify-center">
-                                                <Check className="w-3 h-3 text-blue-500" />
-                                            </div>
-                                            <span className="text-slate-300 text-sm">{feature}</span>
-                                        </div>
-                                    ))}
-                                </div>
-
-                                <button className={`w-full py-4 rounded-xl font-bold transition-all ${tier.popular ? 'bg-blue-600 text-white hover:bg-blue-500 shadow-xl shadow-blue-600/20' : 'bg-white/5 text-white hover:bg-white/10 border border-white/10'}`}>
-                                    {tier.name === 'Enterprise' ? 'Contact Sales' : 'Get Started'}
-                                </button>
-                            </div>
-                        </Reveal>
-                    ))}
+                        <div className="flex flex-col items-center lg:items-end gap-6 text-center lg:text-right">
+                            <Reveal delay={200}>
+                                <h4 className="text-2xl font-bold text-white mb-2">Start for <span className="text-blue-500">$0</span> / month</h4>
+                                <p className="text-slate-500 text-sm mb-8 italic">Choose from Developer, Professional, or <br className="hidden md:block" /> Enterprise tiers tailored to your needs.</p>
+                                <Link
+                                    href="/pricing"
+                                    className="px-12 py-5 bg-white text-black font-bold rounded-2xl hover:bg-slate-100 transition-all shadow-[0_20px_40px_rgba(255,255,255,0.1)] flex items-center gap-3 group"
+                                >
+                                    See All Pricing Plans <ArrowRight className="group-hover:translate-x-1 transition-transform" />
+                                </Link>
+                            </Reveal>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
