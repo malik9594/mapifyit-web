@@ -101,7 +101,7 @@ export default function Navbar() {
                       <ShieldCheck size={18} />
                     </div>
                     <div>
-                      <p className="text-sm font-bold text-white">ngeKYC</p>
+                      <p className="text-sm font-bold text-white">NG eKYC</p>
                       <p className="text-[10px] text-slate-400">Identity Verification</p>
                     </div>
                   </Link>
@@ -151,7 +151,7 @@ export default function Navbar() {
 
             <div className="space-y-4 border-b border-white/5 pb-4">
               <p className="text-[10px] uppercase tracking-widest text-blue-500 font-bold">Solutions</p>
-              <Link href="/#ngekyc" onClick={(e) => scrollToSection(e, 'ngekyc')} className="flex items-center gap-4 text-slate-300"><ShieldCheck className="text-blue-500" /> ngeKYC</Link>
+              <Link href="/#ngekyc" onClick={(e) => scrollToSection(e, 'ngekyc')} className="flex items-center gap-4 text-slate-300"><ShieldCheck className="text-blue-500" />NG eKYC</Link>
               <Link href="/#fms" onClick={(e) => scrollToSection(e, 'fms')} className="flex items-center gap-4 text-slate-300"><Truck className="text-indigo-500" /> FMS</Link>
             </div>
 
