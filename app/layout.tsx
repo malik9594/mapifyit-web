@@ -16,10 +16,15 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Mapifyit ",
-  description: "Enterprise mapping and location intelligence platform designed for accuracy, control, and mission-critical scale.",
+  title: "Mapifyit",
+  description: "Enterprise mapping and location intelligence platform...",
   icons: {
-    icon: "/mapifyit-icon.png",
+    icon: [
+      { url: "/fullwhitebackground logo.png", sizes: "16x16", type: "image/png" },
+      { url: "/fullwhitebackground logo.png", sizes: "32x32", type: "image/png" },
+      { url: "/fullwhitebackground logo.png", sizes: "192x192", type: "image/png" },
+    ],
+    apple: "/fullwhitebackground logo.png", // for iOS Safari
   },
 };
 

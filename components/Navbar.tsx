@@ -73,8 +73,8 @@ export default function Navbar() {
 
           {/* Logo Section */}
           <Link href="/" className="flex items-center gap-2 cursor-pointer bg-transparent relative">
-            <div className="w-25 h-10 flex items-center justify-center">
-              <img src="/mapify-white-bg.png" alt="Mapifyit Logo" className="w-25 h-10" />
+            <div className="h-10 flex items-center justify-center">
+              <img src="/mapify-white-bg.png" alt="Mapifyit Logo" className="h-10 w-auto object-contain" />
             </div>
           </Link>
 
