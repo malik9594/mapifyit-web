@@ -2,6 +2,7 @@
 import React from 'react';
 import { Check, ArrowLeft, Zap, Globe, Shield, Cpu, MessageSquare } from 'lucide-react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { Reveal } from '@/components/Reveal';
 
 const PricingTier = ({ title, price, description, features, highlighted = false }: { title: string, price: string, description: string, features: string[], highlighted?: boolean }) => (
@@ -27,13 +28,14 @@ const PricingTier = ({ title, price, description, features, highlighted = false 
 );
 
 export default function PricingPage() {
+    const router = useRouter();
     return (
         <div className="min-h-screen bg-[#03060D] text-white pt-32 pb-20 px-6">
             <div className="max-w-7xl mx-auto">
                 <Reveal>
-                    <Link href="/" className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors mb-12 group">
-                        <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" /> Back to Home
-                    </Link>
+                    <button onClick={() => router.back()} className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors mb-12 group cursor-pointer">
+                        <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" /> Go Back
+                    </button>
 
                     <div className="text-center mb-20">
                         <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight">Flexible <span className="text-blue-500">Plans.</span></h1>

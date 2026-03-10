@@ -2,16 +2,18 @@
 import React from 'react';
 import { Truck, Navigation, Timer, ArrowLeft, BarChart3 } from 'lucide-react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { Reveal } from '@/components/Reveal';
 
 export default function RoutingPage() {
+    const router = useRouter();
     return (
         <div className="min-h-screen bg-[#03060D] text-white pt-32 pb-20 px-6">
             <div className="max-w-4xl mx-auto">
                 <Reveal>
-                    <Link href="/" className="inline-flex items-center gap-2 text-amber-500 hover:text-amber-400 transition-colors mb-12 group">
-                        <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" /> Back to Home
-                    </Link>
+                    <button onClick={() => router.back()} className="inline-flex items-center gap-2 text-amber-500 hover:text-amber-400 transition-colors mb-12 group cursor-pointer">
+                        <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" /> Go Back
+                    </button>
 
                     {/* <div className="inline-flex items-center gap-2 px-3 py-1 bg-amber-500/10 border border-amber-500/20 rounded-full text-xs font-bold text-amber-500 mb-8 uppercase tracking-widest">
                         Logistics Intelligence

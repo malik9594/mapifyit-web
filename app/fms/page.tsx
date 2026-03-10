@@ -2,15 +2,14 @@
 import React from 'react';
 import { Truck, Navigation, Activity, MapPin, Gauge, Shield } from 'lucide-react';
 import { Reveal } from '@/components/Reveal';
-import IsometricMap from '@/components/IsometricMap';
-
+import FMSHeroMockup from '@/components/FMSHeroMockup';
 /**
  * FMS Product Page: Fleet Management System
  */
 export default function FMSPage() {
     return (
         <div className="pt-20">
-            <div className="max-w-7xl mx-auto px-6 pt-32 pb-16">
+            <div className="max-w-7xl mx-auto px-6 pt-20 pb-15">
                 <div className="grid lg:grid-cols-2 gap-16 items-center">
                     <Reveal>
                         <div>
@@ -44,9 +43,9 @@ export default function FMSPage() {
                     </Reveal>
 
                     <Reveal delay={200}>
-                        <div className="relative p-4 rounded-3xl bg-[#0A0F1C] border border-white/10 shadow-2xl">
+                        <div className="relative p-2 md:p-4 rounded-3xl bg-[#0A0F1C] border border-white/10 shadow-2xl">
                             <div className="absolute -top-10 -right-10 w-40 h-40 bg-emerald-600/10 rounded-full blur-[80px]" />
-                            <IsometricMap />
+                            <FMSHeroMockup />
                         </div>
                     </Reveal>
                 </div>

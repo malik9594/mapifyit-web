@@ -81,48 +81,54 @@ export default function Navbar() {
           {/* DESKTOP NAVIGATION */}
           <div className="hidden md:flex items-center gap-8 bg-white/5 border border-white/10 px-6 py-2.5 rounded-full backdrop-blur-md">
             <Link href="/" onClick={(e) => { if (pathname === '/') { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); setSolutionsOpen(false); } }} className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Home</Link>
-            <Link href="/#maps" onClick={(e) => scrollToSection(e, 'maps')} className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Maps</Link>
-            <Link href="/#gismap" onClick={(e) => scrollToSection(e, 'gismap')} className="text-sm font-medium text-slate-300 hover:text-white transition-colors">GIS</Link>
+            <Link href="/maps" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Maps</Link>
+            <Link href="/gis" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">GIS</Link>
 
 
             {/* Solutions Dropdown */}
-            <div className="relative" ref={dropdownRef}>
+            <div
+              className="relative group"
+              ref={dropdownRef}
+              onMouseEnter={() => setSolutionsOpen(true)}
+              onMouseLeave={() => setSolutionsOpen(false)}
+            >
               <button
-                onClick={() => setSolutionsOpen(!solutionsOpen)}
                 className={`flex items-center gap-1 text-sm font-medium transition-colors ${solutionsOpen ? 'text-white' : 'text-slate-300 hover:text-white'}`}
               >
                 Solutions <ChevronDown size={14} className={`transition-transform duration-300 ${solutionsOpen ? 'rotate-180' : ''}`} />
               </button>
 
-              {solutionsOpen && (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-64 bg-[#0B0F17] border border-white/10 rounded-2xl p-2 shadow-[0_20px_50px_rgba(0,0,0,0.5)] backdrop-blur-2xl z-[700]">
-                  <Link href="/#ngekyc" onClick={(e) => scrollToSection(e, 'ngekyc')} className="flex items-start gap-3 p-3 rounded-xl hover:bg-white/5 transition-all group/item">
-                    <div className="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-500 group-hover/item:bg-blue-500 group-hover/item:text-white">
-                      <ShieldCheck size={18} />
-                    </div>
-                    <div>
-                      <p className="text-sm font-bold text-white">NG eKYC</p>
-                      <p className="text-[10px] text-slate-400">Identity Verification</p>
-                    </div>
-                  </Link>
-                  <Link href="/#fms" onClick={(e) => scrollToSection(e, 'fms')} className="flex items-start gap-3 p-3 rounded-xl hover:bg-white/5 transition-all group/item">
-                    <div className="w-8 h-8 rounded-lg bg-indigo-500/10 flex items-center justify-center text-indigo-500 group-hover/item:bg-indigo-500 group-hover/item:text-white">
-                      <Truck size={18} />
-                    </div>
-                    <div>
-                      <p className="text-sm font-bold text-white">FMS</p>
-                      <p className="text-[10px] text-slate-400">Fleet Management</p>
-                    </div>
-                  </Link>
-                </div>
-              )}
+              {/* invisible bridge to prevent closing when moving mouse */}
+              <div className="absolute top-full left-0 w-full h-4 bg-transparent" />
+
+              <div className={`absolute top-full left-1/2 -translate-x-1/2 mt-4 w-64 bg-[#0B0F17]/95 border border-white/10 rounded-2xl p-2 shadow-[0_20px_50px_rgba(0,0,0,0.5)] backdrop-blur-2xl z-[700] transition-all duration-300 ${solutionsOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible translate-y-2'
+                }`}>
+                <Link href="https://ngekyc.mapifyit.com/" target="_blank" rel="noopener noreferrer" onClick={() => setSolutionsOpen(false)} className="flex items-start gap-3 p-3 rounded-xl hover:bg-white/5 transition-all group/item">
+                  <div className="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-500 group-hover/item:bg-blue-500 group-hover/item:text-white">
+                    <ShieldCheck size={18} />
+                  </div>
+                  <div>
+                    <p className="text-sm font-bold text-white">NG eKYC</p>
+                    <p className="text-[10px] text-slate-400">Identity Verification</p>
+                  </div>
+                </Link>
+                <Link href="/fms" onClick={() => setSolutionsOpen(false)} className="flex items-start gap-3 p-3 rounded-xl hover:bg-white/5 transition-all group/item">
+                  <div className="w-8 h-8 rounded-lg bg-indigo-500/10 flex items-center justify-center text-indigo-500 group-hover/item:bg-indigo-500 group-hover/item:text-white">
+                    <Truck size={18} />
+                  </div>
+                  <div>
+                    <p className="text-sm font-bold text-white">FMS</p>
+                    <p className="text-[10px] text-slate-400">Fleet Management</p>
+                  </div>
+                </Link>
+              </div>
             </div>
             <Link href="https://dev.mapifyit.com/documentation"
               target="_blank"
               rel="noopener noreferrer"
               className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Documentation</Link>
-            <Link href="/#pricing" onClick={(e) => scrollToSection(e, 'pricing')} className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Pricing</Link>
-            <Link href="/#contactus" onClick={(e) => scrollToSection(e, 'contactus')} className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Contact Us</Link>
+            <Link href="/pricing" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Pricing</Link>
+            <Link href="/contactus" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Contact Us</Link>
           </div>
 
           <div className="hidden md:flex items-center gap-4">
@@ -146,13 +152,13 @@ export default function Navbar() {
         <div className="flex flex-col h-full pt-32 px-8 pb-10 overflow-y-auto">
           <div className="space-y-4">
             <Link href="/" onClick={(e) => { if (pathname === '/') { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); setMobileMenuOpen(false); } }} className="block text-xl font-bold text-white border-b border-white/5 pb-4">Home</Link>
-            <Link href="/#maps" onClick={(e) => scrollToSection(e, 'maps')} className="block text-xl font-bold text-white border-b border-white/5 pb-4">Maps</Link>
-            <Link href="/#gismap" onClick={(e) => scrollToSection(e, 'gismap')} className="block text-xl font-bold text-white border-b border-white/5 pb-4">GIS</Link>
+            <Link href="/maps" onClick={() => setMobileMenuOpen(false)} className="block text-xl font-bold text-white border-b border-white/5 pb-4">Maps</Link>
+            <Link href="/gis" onClick={() => setMobileMenuOpen(false)} className="block text-xl font-bold text-white border-b border-white/5 pb-4">GIS</Link>
 
             <div className="space-y-4 border-b border-white/5 pb-4">
               <p className="text-[10px] uppercase tracking-widest text-blue-500 font-bold">Solutions</p>
-              <Link href="/#ngekyc" onClick={(e) => scrollToSection(e, 'ngekyc')} className="flex items-center gap-4 text-slate-300"><ShieldCheck className="text-blue-500" />NG eKYC</Link>
-              <Link href="/#fms" onClick={(e) => scrollToSection(e, 'fms')} className="flex items-center gap-4 text-slate-300"><Truck className="text-indigo-500" /> FMS</Link>
+              <Link href="https://ngekyc.mapifyit.com/" target="_blank" rel="noopener noreferrer" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-4 text-slate-300"><ShieldCheck className="text-blue-500" />NG eKYC</Link>
+              <Link href="/fms" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-4 text-slate-300"><Truck className="text-indigo-500" /> FMS</Link>
             </div>
 
             <Link href="https://dev.mapifyit.com/documentation"
@@ -160,8 +166,8 @@ export default function Navbar() {
               rel="noopener noreferrer"
               onClick={() => setMobileMenuOpen(false)}
               className="block text-xl font-bold text-white border-b border-white/5 pb-4">Documentation</Link>
-            <Link href="/#pricing" onClick={(e) => scrollToSection(e, 'pricing')} className="block text-xl font-bold text-white border-b border-white/5 pb-4">Pricing</Link>
-            <Link href="/#contactus" onClick={(e) => scrollToSection(e, 'contactus')} className="block text-xl font-bold text-white">Contact Us</Link>
+            <Link href="/pricing" onClick={() => setMobileMenuOpen(false)} className="block text-xl font-bold text-white border-b border-white/5 pb-4">Pricing</Link>
+            <Link href="/contactus" onClick={() => setMobileMenuOpen(false)} className="block text-xl font-bold text-white">Contact Us</Link>
           </div>
           <div className="mt-auto space-y-4 pt-10 border-t border-white/5">
             <button className="w-full py-4 rounded-xl bg-white/5 text-white font-bold border border-white/10 flex items-center justify-center gap-2"><LogIn size={18} /> Log in</button>

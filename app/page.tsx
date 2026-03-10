@@ -1,10 +1,9 @@
 "use client"
 import React from 'react';
 import Hero from '@/components/Hero';
-import FeatureSuites from '@/components/FeatureSuites';
-import Infrastructure from '@/components/Infrastructure';
-import Pricing from '@/components/Pricing';
-import ContactUs from '@/components/ContactUs';
+import Link from 'next/link';
+import { Map, Layers, ShieldCheck, ChevronRight, Activity } from 'lucide-react';
+import { Reveal } from '@/components/Reveal';
 
 /**
  * Main Landing Page Component
@@ -45,16 +44,86 @@ export default function Home() {
       </div>
 
       <Hero />
-      <FeatureSuites />
-      <Pricing />
-      <div id="gismap" className="scroll-mt-20">
-        <Infrastructure />
-      </div>
 
+      {/* OVERVIEW SECTIONS */}
+      <section className="py-10 relative z-10">
+        <div className="max-w-7xl mx-auto px-6">
+          <Reveal>
+            <div className="text-center mb-16">
+              <h2 className="text-sm font-bold text-blue-500 uppercase tracking-widest mb-3">Core Ecosystem</h2>
+              <h3 className="text-3xl md:text-5xl font-bold text-white">Built for Performance.
+                Priced for Control.</h3>
+            </div>
+          </Reveal>
 
-      <div id="contactus" className="scroll-mt-20">
-        <ContactUs />
-      </div>
+          <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
+            {/* Maps Preview */}
+            <Reveal delay={100}>
+              <div className="group relative h-full p-8 rounded-[22px] bg-[#070B14] border border-white/5 hover:border-blue-500/30 transition-all hover:shadow-[0_0_40px_rgba(59,130,246,0.15)] flex flex-col">
+                <div className="w-14 h-14 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-6 text-blue-400 group-hover:scale-110 transition-transform">
+                  <Map className="w-7 h-7" />
+                </div>
+                <h4 className="text-2xl font-bold text-white mb-3">Predictable Maps API</h4>
+                <p className="text-slate-400 mb-8 leading-relaxed flex-grow">Render high-resolution vector and satellite tiles at 60fps. Built for mass-scale web and mobile apps with localized address accuracy.</p>
+                <Link href="/maps" className="inline-flex items-center gap-2 font-semibold text-blue-400 hover:text-blue-300 transition-colors">
+                  Explore Maps <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </div>
+            </Reveal>
+
+            {/* GIS Preview */}
+            <Reveal delay={200}>
+              <div className="group relative h-full p-8 rounded-[22px] bg-[#070B14] border border-white/5 hover:border-cyan-500/30 transition-all hover:shadow-[0_0_40px_rgba(34,211,238,0.15)] flex flex-col">
+                <div className="w-14 h-14 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center mb-6 text-cyan-400 group-hover:scale-110 transition-transform">
+                  <Activity className="w-7 h-7" />
+                </div>
+                <h4 className="text-2xl font-bold text-white mb-3">Spatial Intelligence</h4>
+                <p className="text-slate-400 mb-8 leading-relaxed flex-grow">Transform massive coordinate datasets into actionable insights with real-time heatmaps and AI-driven movement analytics.</p>
+                <Link href="/gis" className="inline-flex items-center gap-2 font-semibold text-cyan-400 hover:text-cyan-300 transition-colors">
+                  Discover GIS <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </div>
+            </Reveal>
+
+            {/* Routing Preview */}
+            <Reveal delay={300}>
+              <div className="group relative h-full p-8 rounded-[22px] bg-[#070B14] border border-white/5 hover:border-amber-500/30 transition-all hover:shadow-[0_0_40px_rgba(245,158,11,0.15)] flex flex-col">
+                <div className="w-14 h-14 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center mb-6 text-amber-400 group-hover:scale-110 transition-transform">
+                  <ShieldCheck className="w-7 h-7" />
+                </div>
+                <h4 className="text-2xl font-bold text-white mb-3">Intelligent Routing</h4>
+                <p className="text-slate-400 mb-8 leading-relaxed flex-grow">Multi-stop optimization and real-time traffic pulse monitoring. Build logistics systems that calculate the true cost of distance.</p>
+                <Link href="/routing" className="inline-flex items-center gap-2 font-semibold text-amber-400 hover:text-amber-300 transition-colors">
+                  Routing Specs <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </div>
+            </Reveal>
+          </div>
+
+          <div className="mt-20">
+            <Reveal delay={400}>
+              <div className="relative p-1 rounded-3xl bg-gradient-to-r from-blue-500/30 via-cyan-500/30 to-purple-500/30 overflow-hidden group">
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-cyan-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none blur-xl" />
+
+                <div className="relative bg-[#0A101F] rounded-[22px] px-8 py-10 md:py-14 flex flex-col md:flex-row items-center justify-between gap-8 border border-white/5 z-10">
+                  <div className="text-center md:text-left">
+                    <h3 className="text-3xl font-bold text-white mb-4">Transparent, <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Scale-First Pricing.</span></h3>
+                    <p className="text-slate-400 text-lg max-w-xl leading-relaxed">
+                      Deploy flexible mapping infrastructure with predictable costs. Tailored for dynamic scaling, high-performance computing, and guaranteed reliability.
+                    </p>
+                  </div>
+                  <div className="shrink-0 relative">
+                    <div className="absolute -inset-1.5 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-2xl blur-lg opacity-40 group-hover:opacity-100 transition duration-700 animate-pulse pointer-events-none" />
+                    <Link href="/pricing" className="relative flex items-center gap-3 px-8 py-4 bg-white text-[#0A101F] hover:bg-slate-100 font-bold hover:scale-105 active:scale-95 rounded-xl transition-all shadow-2xl">
+                      View Pricing Overview <ChevronRight className="w-5 h-5 text-blue-600" />
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

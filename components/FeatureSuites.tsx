@@ -20,8 +20,8 @@ const FeatureCard = ({ icon: Icon, title, description, features, linkText, linkH
                     <Icon className={`w-7 h-7 ${colorClass.icon}`} />
                 </div>
                 <h4 className="text-2xl font-bold text-white mb-3">{title}</h4>
-                <p className="text-slate-400 mb-8 leading-relaxed flex-grow">{description}</p>
-                <ul className="space-y-3 mb-8">
+                <p className="text-slate-400 mb-4 leading-relaxed flex-grow">{description}</p>
+                <ul className="space-y-3 mb-4">
                     {features.map((f, i) => (
                         <li key={i} className="flex items-center gap-3 text-sm text-slate-300">
                             <div className={`w-1.5 h-1.5 rounded-full ${colorClass.bullet}`} /> {f}
@@ -43,7 +43,7 @@ export default function FeatureSuites() {
             title: "Predictable Maps API",
             description: "Render high-resolution vector and satellite tiles at 60fps. Built for mass-scale web and mobile apps with localized address accuracy.",
             features: [],
-            linkText: "Explore SDKs",
+            linkText: "Explore API's",
             linkHref: "/sdks",
             colorClass: { icon: "text-blue-400", bgLight: "bg-blue-500/5", iconContainer: "from-blue-500/20 to-transparent border-blue-500/30", bullet: "bg-blue-500", link: "text-blue-400 hover:text-blue-300" },
             delay: 0
@@ -60,7 +60,7 @@ export default function FeatureSuites() {
         },
         {
             icon: ShieldCheck,
-            title: "Intelligence Routing",
+            title: "Intelligent Routing",
             description: "Multi-stop optimization and real-time traffic pulse monitoring. Build logistics systems that calculate the true cost of distance.",
             features: [],
             linkText: "Routing Specs",

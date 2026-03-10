@@ -2,16 +2,18 @@
 import React from 'react';
 import { Terminal, Code2, Cpu, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { Reveal } from '@/components/Reveal';
 
 export default function SDKsPage() {
+    const router = useRouter();
     return (
         <div className="min-h-screen bg-[#03060D] text-white pt-32 pb-20 px-6">
             <div className="max-w-4xl mx-auto">
                 <Reveal>
-                    <Link href="/" className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors mb-12 group">
-                        <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" /> Back to Home
-                    </Link>
+                    <button onClick={() => router.back()} className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors mb-12 group cursor-pointer">
+                        <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" /> Go Back
+                    </button>
 
                     {/* <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-500/10 border border-blue-500/20 rounded-full text-xs font-bold text-blue-400 mb-8 uppercase tracking-widest">
                         Documentation
