@@ -80,6 +80,7 @@ export default function Navbar() {
 
           {/* DESKTOP NAVIGATION */}
           <div className="hidden md:flex items-center gap-8 bg-white/5 border border-white/10 px-6 py-2.5 rounded-full backdrop-blur-md">
+            <Link href="/" onClick={(e) => { if (pathname === '/') { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); setSolutionsOpen(false); } }} className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Home</Link>
             <Link href="/#maps" onClick={(e) => scrollToSection(e, 'maps')} className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Maps</Link>
             <Link href="/#gismap" onClick={(e) => scrollToSection(e, 'gismap')} className="text-sm font-medium text-slate-300 hover:text-white transition-colors">GIS</Link>
 
@@ -144,19 +145,27 @@ export default function Navbar() {
         }`}>
         <div className="flex flex-col h-full pt-32 px-8 pb-10 overflow-y-auto">
           <div className="space-y-4">
+            <Link href="/" onClick={(e) => { if (pathname === '/') { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); setMobileMenuOpen(false); } }} className="block text-xl font-bold text-white border-b border-white/5 pb-4">Home</Link>
             <Link href="/#maps" onClick={(e) => scrollToSection(e, 'maps')} className="block text-xl font-bold text-white border-b border-white/5 pb-4">Maps</Link>
-            <div className="space-y-4">
+            <Link href="/#gismap" onClick={(e) => scrollToSection(e, 'gismap')} className="block text-xl font-bold text-white border-b border-white/5 pb-4">GIS</Link>
+
+            <div className="space-y-4 border-b border-white/5 pb-4">
               <p className="text-[10px] uppercase tracking-widest text-blue-500 font-bold">Solutions</p>
               <Link href="/#ngekyc" onClick={(e) => scrollToSection(e, 'ngekyc')} className="flex items-center gap-4 text-slate-300"><ShieldCheck className="text-blue-500" /> ngeKYC</Link>
               <Link href="/#fms" onClick={(e) => scrollToSection(e, 'fms')} className="flex items-center gap-4 text-slate-300"><Truck className="text-indigo-500" /> FMS</Link>
             </div>
-            <Link href="/#gismap" onClick={(e) => scrollToSection(e, 'gismap')} className="block text-xl font-bold text-white border-b border-white/5 pb-4 pt-4">GIS</Link>
+
+            <Link href="https://dev.mapifyit.com/documentation"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block text-xl font-bold text-white border-b border-white/5 pb-4">Documentation</Link>
             <Link href="/#pricing" onClick={(e) => scrollToSection(e, 'pricing')} className="block text-xl font-bold text-white border-b border-white/5 pb-4">Pricing</Link>
             <Link href="/#contactus" onClick={(e) => scrollToSection(e, 'contactus')} className="block text-xl font-bold text-white">Contact Us</Link>
           </div>
           <div className="mt-auto space-y-4 pt-10 border-t border-white/5">
-            <button className="w-full py-4 rounded-xl bg-white/5 text-white font-bold border border-white/10 flex items-center justify-center gap-2"><LogIn size={18} /> Log In</button>
-            <button className="w-full py-4 rounded-xl bg-blue-600 text-white font-bold shadow-lg shadow-blue-600/20 flex items-center justify-center gap-2"><Sparkles size={18} /> Get Started</button>
+            <button className="w-full py-4 rounded-xl bg-white/5 text-white font-bold border border-white/10 flex items-center justify-center gap-2"><LogIn size={18} /> Log in</button>
+            <button className="w-full py-4 rounded-xl bg-blue-600 text-white font-bold shadow-lg shadow-blue-600/20 flex items-center justify-center gap-2"><Sparkles size={18} /> Start Free</button>
           </div>
         </div>
       </div>
