@@ -14,19 +14,19 @@ export default function FMSPage() {
                     <Reveal>
                         <div>
                             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-8">
-                                <Truck className="w-3.5 h-3.5" /> Intelligent Fleet Management
+                                <Truck className="w-3.5 h-3.5" /> Fleet Management System
                             </div>
                             <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight">FMS <span className="text-emerald-500">FleetSense.</span></h1>
                             <p className="text-xl text-slate-400 mb-10 leading-relaxed font-light">
-                                Monitor, optimize, and secure your entire fleet in real-time. FMS FleetSense combines sub-meter GPS accuracy with predictive maintenance and driver performance analytics.
+                                The enterprise-grade <strong>fleet management system</strong> built for mission-critical operations. FleetSense combines <strong>sub-meter GPS accuracy</strong>, predictive maintenance, fuel burn monitoring, and driver behavior analytics — all in a real-time sovereign dashboard with zero third-party data exposure.
                             </p>
 
                             <div className="grid sm:grid-cols-2 gap-6">
                                 {[
-                                    { icon: MapPin, title: "Real-time Tracking", desc: "Live position updates with 1-second latency." },
-                                    { icon: Navigation, title: "Smart Routing", desc: "AI-optimized paths to reduce fuel consumption." },
-                                    { icon: Activity, title: "Telematics", desc: "Deep engine diagnostics and driver behavior." },
-                                    { icon: Gauge, title: "Speed Guard", desc: "Automatic alerts for over-speeding and violations." }
+                                    { icon: MapPin, title: "Real-Time GPS Vehicle Tracking", desc: "Live sub-meter position updates with 1-second ping latency across all fleet assets." },
+                                    { icon: Navigation, title: "AI-Optimized Smart Routing", desc: "Reduce fuel costs with dynamic multi-stop route optimization and traffic-aware navigation." },
+                                    { icon: Activity, title: "Engine & Driver Telematics", desc: "Deep OBD diagnostics: RPM, fuel efficiency, harsh braking, and driver behavior scoring." },
+                                    { icon: Gauge, title: "Speed Guard & Violation Alerts", desc: "Automated over-speed, geofence breach, and idling alerts with real-time notifications." }
                                 ].map((item, i) => (
                                     <div key={i} className="flex gap-4">
                                         <div className="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-500 flex-shrink-0">

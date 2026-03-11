@@ -38,9 +38,9 @@ export default function PricingPage() {
                     </button>
 
                     <div className="text-center mb-20">
-                        <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight">Flexible <span className="text-blue-500">Plans.</span></h1>
+                        <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight">Transparent <span className="text-blue-500">Pricing.</span></h1>
                         <p className="text-xl text-slate-400 max-w-2xl mx-auto font-light leading-relaxed">
-                            Transparent pricing designed to scale with your organization. No hidden markups, just high-performance spatial infrastructure.
+                            Scale-first enterprise pricing built for long-term control. No hidden markups, no usage surprises — just high-performance <strong>location intelligence infrastructure</strong> billed predictably.
                         </p>
                     </div>
 

@@ -19,10 +19,9 @@ export default function RoutingPage() {
                         Logistics Intelligence
                     </div> */}
 
-                    <h1 className="text-5xl md:text-7xl font-bold mb-8 tracking-tight">Intelligence <span className="text-amber-500">Routing.</span></h1>
+                    <h1 className="text-5xl md:text-7xl font-bold mb-8 tracking-tight">Intelligent <span className="text-amber-500">Routing.</span></h1>
                     <p className="text-xl text-slate-400 leading-relaxed font-light mb-16">
-                        Automate logistics and reduce operational costs with our multi-stop route optimization
-                        and real-time traffic pulse monitoring systems.
+                        Enterprise <strong>route optimization engine</strong> for logistics, last-mile delivery, and field operations. Reduce operational costs with <strong>AI-powered multi-stop routing</strong>, real-time traffic pulse monitoring, and accurate ETA predictions.
                     </p>
 
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">

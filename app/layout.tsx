@@ -16,15 +16,75 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Mapifyit",
-  description: "Enterprise mapping and location intelligence platform...",
+  title: {
+    default: "Mapifyit | Enterprise Location Intelligence Platform",
+    template: "%s | Mapifyit",
+  },
+  description:
+    "Mapifyit is an enterprise-grade mapping and location intelligence platform built for accuracy, control, and mission-critical scale. Deploy sovereign GIS, fleet tracking, field force management, and identity verification on your own infrastructure.",
+  keywords: [
+    "location intelligence",
+    "GIS platform",
+    "enterprise mapping",
+    "fleet management system",
+    "field force tracking",
+    "eKYC identity verification",
+    "spatial analytics",
+    "on-premise mapping",
+    "geofencing",
+    "route optimization",
+    "Mapifyit",
+  ],
+  authors: [{ name: "Mapifyit" }],
+  creator: "Mapifyit",
+  publisher: "Mapifyit",
+  metadataBase: new URL("https://mapifyit.com"),
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://mapifyit.com",
+    siteName: "Mapifyit",
+    title: "Mapifyit | Enterprise Location Intelligence Platform",
+    description:
+      "Sovereign enterprise mapping, GIS analytics, fleet tracking, and identity verification. Built for performance. Priced for control.",
+    images: [
+      {
+        url: "/fullwhitebackground logo.png",
+        width: 1200,
+        height: 630,
+        alt: "Mapifyit – Enterprise Location Intelligence",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Mapifyit | Enterprise Location Intelligence",
+    description:
+      "Sovereign enterprise mapping, GIS analytics, fleet tracking, and identity verification. Built for performance. Priced for control.",
+    images: ["/fullwhitebackground logo.png"],
+    creator: "@mapifyit",
+  },
   icons: {
     icon: [
       { url: "/fullwhitebackground logo.png", sizes: "16x16", type: "image/png" },
       { url: "/fullwhitebackground logo.png", sizes: "32x32", type: "image/png" },
       { url: "/fullwhitebackground logo.png", sizes: "192x192", type: "image/png" },
     ],
-    apple: "/fullwhitebackground logo.png", // for iOS Safari
+    apple: "/fullwhitebackground logo.png",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  alternates: {
+    canonical: "https://mapifyit.com",
   },
 };
 

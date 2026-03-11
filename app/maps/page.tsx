@@ -85,11 +85,11 @@ export default function MapsPage() {
                 <div className="mb-32">
                     <div className="text-center mb-12">
                         <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-xs font-bold uppercase tracking-widest text-blue-400 mb-4">
-                            <FileJson className="w-3.5 h-3.5" /> Developer First
+                            <FileJson className="w-3.5 h-3.5" /> REST API Reference
                         </div>
-                        <h3 className="text-3xl md:text-5xl font-bold text-white mb-6">Explore the <span className="text-blue-500">API Hub</span></h3>
+                        <h1 className="text-3xl md:text-5xl font-bold text-white mb-6">Mapifyit <span className="text-blue-500">Maps API Hub</span></h1>
                         <p className="text-slate-400 text-lg max-w-2xl mx-auto">
-                            Plug directly into our REST endpoints for low-level spatial control. All secured behind enterprise-grade infrastructure.
+                            Plug directly into Mapifyit's REST endpoints for low-level spatial control: <strong>vector tile rendering</strong>, <strong>turn-by-turn routing</strong>, <strong>geocoding</strong>, and <strong>reverse geocoding</strong>. All secured behind enterprise-grade infrastructure.
                         </p>
                     </div>
 

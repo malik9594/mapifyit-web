@@ -23,15 +23,15 @@ import GISVisualEngine from './GISVisualEngine';
 
 export default function GeospatialModuleShowcaseCool() {
     const gisTools = [
-        { icon: Route, title: "Terrain Routing", desc: "Elevation-aware pathfinding across complex topography.", color: "cyan" },
-        { icon: Zap, title: "Isochrone Analysis", desc: "Real-time travel-time polygons for reachability zones.", color: "blue" },
-        { icon: MousePointer2, title: "Drawing Tools", desc: "Precision geodesic measurement and annotation tools.", color: "cyan" },
-        { icon: BoxSelect, title: "Spatial Analysis", desc: "Heatmaps, spatial joins, and pattern recognition.", color: "blue" },
-        { icon: Maximize, title: "Buffer Generation", desc: "Automated exclusion and proximity zone alerts.", color: "blue" },
-        { icon: Database, title: "Data Integration", desc: "Import/sync Shapefiles, KML, and GeoJSON offline.", color: "cyan" },
-        { icon: Mountain, title: "DEM Analysis", desc: "Digital Elevation Models for watershed and slope analysis.", color: "blue" },
-        { icon: Scan, title: "LiDAR Processing", desc: "High-density point cloud visualization and classification.", color: "cyan" },
-        { icon: Satellite, title: "Satellite Imagery", desc: "Multi-spectral high-resolution satellite data pipelines.", color: "blue" }
+        { icon: Route, title: "Terrain Routing", desc: "Elevation-aware pathfinding algorithms across complex 3D topography, optimized for defense and infrastructure use cases.", color: "cyan" },
+        { icon: Zap, title: "Isochrone Analysis", desc: "Generate real-time travel-time polygons to identify reachability zones for logistics, emergency response, and urban planning.", color: "blue" },
+        { icon: MousePointer2, title: "Drawing & Annotation Tools", desc: "Geodesic polygon drawing, area measurement, and precision spatial annotation directly on live map layers.", color: "cyan" },
+        { icon: BoxSelect, title: "Spatial Data Analysis", desc: "Enterprise heatmaps, spatial joins, cluster detection, and pattern recognition on massive coordinate datasets.", color: "blue" },
+        { icon: Maximize, title: "Proximity Buffer Generation", desc: "Automated exclusion zone creation, proximity alerts, and geofence buffer management for regulatory compliance.", color: "blue" },
+        { icon: Database, title: "Multi-Format Data Integration", desc: "Seamlessly import, parse, and sync Shapefiles, KML, GeoJSON, and CSV datasets in fully offline environments.", color: "cyan" },
+        { icon: Mountain, title: "DEM / Digital Elevation Models", desc: "High-resolution elevation modeling for watershed delineation, flood risk mapping, and slope analysis workflows.", color: "blue" },
+        { icon: Scan, title: "LiDAR Point Cloud Processing", desc: "Classify, visualize, and extract intelligence from high-density aerial LiDAR scans with custom filter pipelines.", color: "cyan" },
+        { icon: Satellite, title: "Satellite Imagery Integration", desc: "Ingest and analyze multi-spectral, high-resolution satellite imagery for agricultural, environmental, and defense intelligence.", color: "blue" }
     ];
 
     return (
@@ -50,14 +50,14 @@ export default function GeospatialModuleShowcaseCool() {
                     <div className="pb-20">
                         <Reveal>
                             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-cyan-950 border border-cyan-800 text-[11px] sm:text-xs font-bold uppercase tracking-widest text-cyan-300 mb-6">
-                                <Compass className="w-4 h-4" /> Analytic Workspace Suite
+                                <Compass className="w-4 h-4" /> Enterprise GIS Platform
                             </div>
-                            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-[1.1] tracking-tight">
-                                Beyond Simple Maps.<br />
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Spatial Intelligence Engine.</span>
-                            </h2>
+                            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-[1.1] tracking-tight">
+                                Geographic Information Systems<br />
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Built for Enterprise Intelligence.</span>
+                            </h1>
                             <p className="text-slate-400 text-lg mb-10 leading-relaxed">
-                                Mapifyit provides a full-spectrum <strong>Geospatial Toolset</strong>. From <strong>Isochrone analysis</strong> for logistics to <strong>Terrain routing</strong> for defense, our modules are designed to run 100% on-premise without cloud latency.
+                                Mapifyit GIS delivers a full-spectrum <strong>geospatial analytics platform</strong> for enterprise organizations. From <strong>isochrone analysis</strong> and logistics planning to <strong>LiDAR terrain routing</strong> for defense and infrastructure — all modules run 100% on-premise with zero cloud dependencies or data sovereignty risk.
                             </p>
                         </Reveal>
 

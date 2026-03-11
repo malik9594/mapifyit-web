@@ -15,19 +15,19 @@ export default function NgeKYCPage() {
                     <Reveal>
                         <div>
                             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-xs font-bold uppercase tracking-wider text-blue-400 mb-8">
-                                <ShieldCheck className="w-3.5 h-3.5" /> Next-Gen Identity Verification
+                                <ShieldCheck className="w-3.5 h-3.5" /> AI Identity Verification
                             </div>
                             <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight">nge<span className="text-blue-500">KYC</span> Mobile.</h1>
                             <p className="text-xl text-slate-400 mb-10 leading-relaxed font-light">
-                                Secure, AI-driven identity verification designed for modern enterprises. Seamlessly verify users with advanced face matching, document OCR, and liveness detection.
+                                Enterprise-grade <strong>digital identity verification</strong> and <strong>AI-powered eKYC</strong> deployed 100% on-premise. Our biometric engine delivers sub-3-second face matching, automated document OCR, and ISO-certified liveness detection — with no biometric data ever leaving your infrastructure.
                             </p>
 
                             <div className="grid sm:grid-cols-2 gap-6">
                                 {[
-                                    { icon: Fingerprint, title: "Biometric Auth", desc: "Face matching with 99.9% accuracy." },
-                                    { icon: Search, title: "OCR Engine", desc: "Automated data extraction from IDs." },
-                                    { icon: Shield, title: "Fraud Guard", desc: "Anti-spoofing and liveness checks." },
-                                    { icon: Zap, title: "Instant Verify", desc: "Results in under 3 seconds." }
+                                    { icon: Fingerprint, title: "Biometric Face Authentication", desc: "ISO-31 compliant 1:1 face matching with 99.9% accuracy for secure user onboarding." },
+                                    { icon: Search, title: "Document OCR Engine", desc: "Automated extraction of data from passports, CNICs, and national ID documents." },
+                                    { icon: Shield, title: "Anti-Spoofing & Fraud Guard", desc: "3D liveness detection with passive anti-spoof mechanisms to block deepfakes and injection attacks." },
+                                    { icon: Zap, title: "Sub-3 Second Verification", desc: "Full identity verification pipeline completes in under 3 seconds on-device." }
                                 ].map((item, i) => (
                                     <div key={i} className="flex gap-4">
                                         <div className="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-500 flex-shrink-0">

@@ -21,8 +21,7 @@ export default function SDKsPage() {
 
                     <h1 className="text-5xl md:text-7xl font-bold mb-8 tracking-tight">Maps <span className="text-blue-500">SDKs.</span></h1>
                     <p className="text-xl text-slate-400 leading-relaxed font-light mb-16">
-                        Everything you need to build high-performance mapping experiences across Web, iOS, and Android.
-                        Native speed, full customization, and predictable costs.
+                        Native-speed <strong>mapping SDKs</strong> for Web (JavaScript/TypeScript), iOS (Swift), and Android (Kotlin). Build high-performance geospatial applications with <strong>60fps vector tile rendering</strong>, offline support, and full access to the Mapifyit API ecosystem.
                     </p>
 
                     <div className="grid md:grid-cols-2 gap-8 mb-20">
@@ -55,9 +54,9 @@ export default function SDKsPage() {
 
                     <div className="p-12 rounded-[40px] bg-gradient-to-br from-blue-600/20 to-indigo-600/20 border border-white/10 text-center">
                         <Terminal className="w-12 h-12 text-blue-500 mx-auto mb-6" />
-                        <h2 className="text-3xl font-bold mb-4">Start Building</h2>
+                        <h2 className="text-3xl font-bold mb-4">Start Building with Mapifyit</h2>
                         <p className="text-slate-300 max-w-lg mx-auto mb-8">
-                            Ready to replace your legacy provider? Our migration guides help you switch in under an hour.
+                            Replace your legacy mapping provider without re-writing your app. Our comprehensive migration guides and API compatibility layers get you live in under an hour.
                         </p>
                         <button className="px-8 py-4 bg-white text-[#03060D] font-bold rounded-xl hover:bg-slate-100 transition-all">
                             View Documentation

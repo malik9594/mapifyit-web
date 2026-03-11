@@ -17,19 +17,19 @@ export default function FieldForcePage() {
                     <Reveal>
                         <div>
                             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-xs font-bold uppercase tracking-wider text-indigo-400 mb-8">
-                                <Users className="w-3.5 h-3.5" /> Workforce Visibility
+                                <Users className="w-3.5 h-3.5" /> Mobile Workforce Management
                             </div>
                             <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight">Field Force <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">Tracking.</span></h1>
                             <p className="text-xl text-slate-400 mb-10 leading-relaxed font-light">
-                                Maximize field productivity with real-time workforce monitoring. Track live agent movements, verify attendance with geo-fencing, and optimize task distribution for mobile teams.
+                                Enterprise <strong>field force management software</strong> for real-time mobile workforce visibility. Monitor live agent locations, automate geofence-based attendance, dispatch tasks to the nearest agent, and measure true field productivity without manual check-ins.
                             </p>
 
                             <div className="grid sm:grid-cols-2 gap-6">
                                 {[
-                                    { icon: MapPin, title: "Live Monitoring", desc: "Agent tracking with zero battery drain." },
-                                    { icon: Zap, title: "Geofencing", desc: "Automated check-ins/check-outs." },
-                                    { icon: Navigation, title: "Task Dispatch", desc: "Assign jobs to the nearest agent." },
-                                    { icon: BarChart, title: "Analytics", desc: "Measure true field productivity." }
+                                    { icon: MapPin, title: "Live Agent Location Tracking", desc: "Continuous background location updates for all field agents with battery-optimized SDKs." },
+                                    { icon: Zap, title: "Automatic Geofence Attendance", desc: "Trigger check-in and check-out events automatically when agents enter or exit defined territories." },
+                                    { icon: Navigation, title: "Intelligent Task Dispatch", desc: "Assign tasks to the nearest available agent using real-time proximity and workload balancing." },
+                                    { icon: BarChart, title: "Field Productivity Analytics", desc: "Measure route adherence, visit duration, customer coverage, and agent performance over time." }
                                 ].map((item, i) => (
                                     <div key={i} className="flex gap-4">
                                         <div className="w-10 h-10 rounded-lg bg-indigo-500/10 flex items-center justify-center text-indigo-500 flex-shrink-0">
