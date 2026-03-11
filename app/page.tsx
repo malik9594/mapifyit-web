@@ -52,8 +52,7 @@ export default function Home() {
           <Reveal>
             <div className="text-center mb-16">
               <h2 className="text-sm font-bold text-blue-500 uppercase tracking-widest mb-3">Core Ecosystem</h2>
-              <h3 className="text-3xl md:text-5xl font-bold text-white">Built for Performance.
-                Priced for Control.</h3>
+              <h3 className="text-2xl md:text-4xl font-bold text-white">High-performance Maps APIs and GIS infrastructure for scalable mapping and location intelligence.</h3>
             </div>
           </Reveal>
 
@@ -64,8 +63,8 @@ export default function Home() {
                 <div className="w-14 h-14 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-6 text-blue-400 group-hover:scale-110 transition-transform">
                   <Map className="w-7 h-7" />
                 </div>
-                <h4 className="text-2xl font-bold text-white mb-3">Predictable Maps API</h4>
-                <p className="text-slate-400 mb-8 leading-relaxed flex-grow">Render high-resolution vector and satellite tiles at 60fps. Built for mass-scale web and mobile apps with localized address accuracy.</p>
+                <h4 className="text-2xl font-bold text-white mb-3">Predictable Maps API for Geospatial Applications</h4>
+                <p className="text-slate-400 mb-8 leading-relaxed flex-grow">Render high-resolution vector and satellite tiles at 60fps with our Maps API. Perfect for web and mobile GIS applications, offering mass-scale performance and localized address accuracy.</p>
                 <Link href="/maps" className="inline-flex items-center gap-2 font-semibold text-blue-400 hover:text-blue-300 transition-colors">
                   Explore Maps <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
@@ -78,8 +77,8 @@ export default function Home() {
                 <div className="w-14 h-14 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center mb-6 text-cyan-400 group-hover:scale-110 transition-transform">
                   <Activity className="w-7 h-7" />
                 </div>
-                <h4 className="text-2xl font-bold text-white mb-3">Spatial Intelligence</h4>
-                <p className="text-slate-400 mb-8 leading-relaxed flex-grow">Transform massive coordinate datasets into actionable insights with real-time heatmaps and AI-driven movement analytics.</p>
+                <h4 className="text-2xl font-bold text-white mb-3">GIS & Spatial Intelligence Platform</h4>
+                <p className="text-slate-400 mb-8 leading-relaxed flex-grow">Transform massive geospatial datasets into actionable insights with real-time heatmaps, GIS analytics, and AI-driven movement intelligence. Build location intelligence applications for web and mobile platforms.</p>
                 <Link href="/gis" className="inline-flex items-center gap-2 font-semibold text-cyan-400 hover:text-cyan-300 transition-colors">
                   Discover GIS <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
@@ -92,7 +91,7 @@ export default function Home() {
                 <div className="w-14 h-14 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center mb-6 text-amber-400 group-hover:scale-110 transition-transform">
                   <ShieldCheck className="w-7 h-7" />
                 </div>
-                <h4 className="text-2xl font-bold text-white mb-3">Intelligent Routing</h4>
+                <h4 className="text-2xl font-bold text-white mb-3">Intelligent Routing & Route Optimization</h4>
                 <p className="text-slate-400 mb-8 leading-relaxed flex-grow">Multi-stop optimization and real-time traffic pulse monitoring. Build logistics systems that calculate the true cost of distance.</p>
                 <Link href="/routing" className="inline-flex items-center gap-2 font-semibold text-amber-400 hover:text-amber-300 transition-colors">
                   Routing Specs <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -117,11 +116,11 @@ export default function Home() {
                 {/* Left text section */}
                 <div className="text-center md:text-left flex-1">
                   <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-[10px] font-bold uppercase tracking-widest text-blue-400 mb-6 group-hover:bg-blue-500/20 transition-colors">
-                    <ShieldCheck className="w-3 h-3" /> Pricing Configuration
+                    <ShieldCheck className="w-3 h-3" /> Pricing for Geospatial Platforms
                   </div>
                   <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">Transparent, <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Scale-First Pricing.</span></h3>
                   <p className="text-slate-400 text-lg leading-relaxed max-w-2xl">
-                    Deploy flexible mapping infrastructure with predictable costs. Tailored for dynamic scaling, high-performance computing, and guaranteed reliability without vendor lock-in.
+                    Deploy flexible Maps API and geospatial infrastructure with predictable pricing. Tailored for scalable GIS platforms, high-performance computing, and location intelligence solutions, all without vendor lock-in.
                   </p>
                 </div>
 

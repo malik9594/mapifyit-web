@@ -132,7 +132,7 @@ export default function Navbar() {
           </div>
 
           <div className="hidden md:flex items-center gap-4">
-            <button className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Log in</button>
+            <button className="text-sm font-medium text-slate-300 hover:text-white transition-colors" onClick={() => window.open("https://dev.mapifyit.com/login", "_blank")}>Log in</button>
             <button className="px-5 py-2.5 text-sm font-medium text-white rounded-xl bg-blue-600 hover:bg-blue-500 transition-all shadow-lg shadow-blue-600/20">
               Start Free
             </button>
@@ -170,7 +170,7 @@ export default function Navbar() {
             <Link href="/contactus" onClick={() => setMobileMenuOpen(false)} className="block text-xl font-bold text-white">Contact Us</Link>
           </div>
           <div className="mt-auto space-y-4 pt-10 border-t border-white/5">
-            <button className="w-full py-4 rounded-xl bg-white/5 text-white font-bold border border-white/10 flex items-center justify-center gap-2"><LogIn size={18} /> Log in</button>
+            <button className="w-full py-4 rounded-xl bg-white/5 text-white font-bold border border-white/10 flex items-center justify-center gap-2" onClick={() => window.location.href = "https://dev.mapifyit.com/login"}><LogIn size={18} /> Log in</button>
             <button className="w-full py-4 rounded-xl bg-blue-600 text-white font-bold shadow-lg shadow-blue-600/20 flex items-center justify-center gap-2"><Sparkles size={18} /> Start Free</button>
           </div>
         </div>

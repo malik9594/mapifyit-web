@@ -22,10 +22,10 @@ export default function Hero() {
           </Reveal>
 
           <Reveal delay={100}>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight mb-6 md:mb-8 leading-[1.1]">
-              Where maps become <br className="hidden md:block" />
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight mb-6 md:mb-8 leading-[1.1]">
+              Geospatial Data Platform for GIS<br className="hidden md:block" />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-emerald-400 drop-shadow-[0_0_30px_rgba(59,130,246,0.3)]">
-                intelligence.
+                Mapping, and Location Intelligence.
               </span>
             </h1>
           </Reveal>
@@ -34,8 +34,7 @@ export default function Hero() {
             <p className="text-base md:text-xl text-slate-400 max-w-2xl mx-auto lg:mx-0 mb-8 md:mb-10 leading-relaxed font-light">
               {/* Replace legacy providers with our precision Maps API, advanced GIS, and automated fraud management (FMS). Deploy in the cloud or completely on-premise for absolute data sovereignty. */}
               {/* High-performance Maps APIs, advanced GIS, and location intelligence. Deploy in the cloud, or completely offline for true <strong className="text-white font-medium">enterprise data sovereignty</strong>. */}
-              High-performance Maps APIs, advanced GIS, and Routing infrastructure. Deploy in the cloud or air-gapped for true data sovereignty—eliminating the unpredictable scaling costs of legacy providers.
-            </p>
+              High-performance Maps APIs and advanced GIS routing infrastructure for modern geospatial applications. Deploy in the cloud or air-gapped for secure, scalable location intelligence.           </p>
           </Reveal>
 
           <Reveal delay={300}>

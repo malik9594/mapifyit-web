@@ -5,55 +5,55 @@ import Link from 'next/link';
 
 const solutions = [
     {
-        title: "GIS Intelligence",
+        title: "Advanced GIS & Spatial Analytics Platform",
         subtitle: "Spatial Analytics",
-        description: "Transform complex geospatial data into actionable intelligence. Our GIS engine supports high-precision terrain modeling, specialized demographic analysis, and real-time infrastructure mapping.",
+        description: "Transform complex geospatial datasets into actionable intelligence with our GIS platform. Perform high-precision terrain modeling, real-time infrastructure mapping, and specialized demographic analysis. Build enterprise GIS solutions, mapping applications, and location intelligence systems with scalable geospatial analytics.",
         icon: Layers,
         href: "/gis",
         color: "cyan",
         infoPoints: [
-            "Advanced Heatmaps & Density Plotting",
-            "Sovereign Data Modeling Without 3rd Parties",
-            "Raster Image Processing & Terrain Superimposing"
+            "Advanced GIS Heatmaps & Density Analysis",
+            "Sovereign Geospatial Data Modeling",
+            "Raster Image Processing & Terrain Mapping for GIS Applications"
         ]
     },
     {
-        title: "FMS FleetSense",
-        subtitle: "Fleet Management",
-        description: "Take total control of your mobility assets. Real-time sub-meter tracking, fuel monitoring, driver behavior analytics, and AI-driven maintenance scheduling in one unified dashboard.",
+        title: "FMS FleetSense – Fleet Management Platform",
+        subtitle: "Fleet Management & Vehicle Tracking",
+        description: "Take total control of your fleet with FMS FleetSense. Real-time GPS tracking, fuel monitoring, driver behavior analytics, and AI-driven predictive maintenance in one unified fleet management dashboard. Perfect for logistics, transportation, and enterprise mobility operations.",
         icon: Truck,
         href: "/fms",
         color: "emerald",
         infoPoints: [
-            "1-Second Live GPS Ping Latency",
-            "Real-time Fuel Burn & Theft Alerts",
-            "Predictive Maintenance Scheduling"
+            "1-Second Live GPS Fleet Tracking",
+            "Real-time Fuel Burn & Theft Alerts for Vehicles",
+            "AI-Driven Predictive Maintenance Scheduling"
         ]
     },
     {
-        title: "Next-Gen eKYC",
-        subtitle: "Identity Verification",
-        description: "Sovereign identity verification for secure onboarding. AI-powered biometric face matching, document OCR, and liveness detection deployed 100% on your own infrastructure.",
+        title: "Next-Gen eKYC – Digital Identity Verification Platform",
+        subtitle: "Secure eKYC & Identity Verification",
+        description: "Next-Gen eKYC provides sovereign digital identity verification for secure onboarding and KYC compliance. Deploy AI-powered biometric face matching, document OCR, and liveness detection entirely on your own infrastructure. Perfect for banks, fintechs, and enterprise digital identity solutions.",
         icon: ShieldCheck,
         href: "/ngekyc",
         color: "blue",
         infoPoints: [
-            "ISO-Standard Facial Parsing & Matching",
-            "Liveness anti-spoofing Mechanisms",
-            "Instant Verification Under 3 Seconds"
+            "ISO-Standard Biometric Facial Parsing & Matching",
+            "AI-Powered Liveness & Anti-Spoofing Verification",
+            "Instant eKYC Verification in Under 3 Seconds"
         ]
     },
     {
-        title: "Field Force Tracking",
-        subtitle: "Workforce Visibility",
-        description: "Maximize field productivity with real-time workforce monitoring. Track live agent movements, verify attendance with geo-fencing, and optimize task distribution for mobile teams.",
+        title: "Field Force Tracking – Mobile Workforce Management Platform",
+        subtitle: "Real-Time Workforce Visibility & Field Operations",
+        description: "Maximize productivity with our Field Force Tracking platform. Monitor live agent movements, verify attendance via geo-fencing, and optimize task distribution for mobile teams. Ideal for enterprise field workforce management, location tracking, and real-time operational insights.",
         icon: Users,
         href: "/fieldforce",
         color: "indigo",
         infoPoints: [
-            "Live Agent Movement Monitoring",
-            "Automated Geofence Attendance Triggers",
-            "Mobile Team Task Dispatch & Routing"
+            "Real-Time GPS-Based Agent Movement Tracking",
+            "Automated Geo-Fence Attendance Verification",
+            "Mobile Team Task Dispatch & Optimized Routing for Field Operations"
         ]
     }
 ];
@@ -69,13 +69,13 @@ export default function SolutionsOverview() {
                 <Reveal>
                     <div className="text-center mb-16">
                         <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-[10px] font-bold uppercase tracking-widest text-blue-400 mb-6">
-                            <Zap className="w-3 h-3" /> Enterprise Vertical Solutions
+                            <Zap className="w-3 h-3" /> Enterprise GIS & Vertical Solutions
                         </div>
                         <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                            Built for <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Industry Leaders.</span>
+                            Built for <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Industry Leaders & Enterprise Teams</span>
                         </h2>
                         <p className="text-slate-400 max-w-2xl mx-auto text-lg leading-relaxed">
-                            Beyond standard mapping, we build specialized vertical platforms that solve the most complex spatial and security challenges in the enterprise world.
+                            Beyond standard mapping, we deliver specialized GIS platforms and enterprise vertical solutions including NG eKYC, Fleet Management Systems (FMS), and Field Force Tracking. Solve complex spatial and security challenges with scalable Maps APIs and location intelligence for the enterprise world.
                         </p>
                     </div>
                 </Reveal>
