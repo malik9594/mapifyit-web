@@ -4,6 +4,7 @@ import { Phone, Mail, MapPin, Globe } from 'lucide-react';
 
 // ─── Mapifyit Config ────────────────────────────────────────────────────────
 const MAPIFYIT_STYLE_URL = 'https://client.mapifyit.com/api/v1/proxy/tiles/dark';
+// const MAPIFYIT_STYLE_URL = 'http://localhost:5000/api/v1/proxy/tiles/dark';
 const MAPIFYIT_TOKEN = 'mfy_8b0755c081c9204caa20681ddab91d2856c3667a6ad8d9e8';
 
 // Dubai – Citadel Tower, Business Bay
@@ -14,76 +15,42 @@ const DUBAI_LAT = 25.1840;
 export default function ContactUs() {
     const mapContainerRef = useRef<HTMLDivElement>(null);
     const mapRef = useRef<any>(null);
+    const mapInitStarted = useRef(false);
+    const [mapLoaded, setMapLoaded] = React.useState(false);
 
     useEffect(() => {
         let isMounted = true;
 
         async function initMap() {
-            if (!mapContainerRef.current || mapRef.current) return;
-
-            // ── 1. Probe the style endpoint & log response ────────────────
-            console.log(
-                '%c[Mapifyit] Fetching style JSON from:', 'color:#3B82F6;font-weight:bold',
-                MAPIFYIT_STYLE_URL
-            );
-            try {
-                const res = await fetch(MAPIFYIT_STYLE_URL, {
-                    method: 'GET',
-                    headers: {
-                        Authorization: `Bearer ${MAPIFYIT_TOKEN}`,
-                        'Content-Type': 'application/json',
-                    },
-                });
-
-                console.log(
-                    '%c[Mapifyit] Style API — status:', 'color:#10B981;font-weight:bold',
-                    res.status, res.statusText
-                );
-                console.log(
-                    '%c[Mapifyit] Response headers:', 'color:#10B981;font-weight:bold',
-                    Object.fromEntries(res.headers.entries())
-                );
-
-                const body = await res.text();
-                console.log(
-                    '%c[Mapifyit] Style JSON (first 600 chars):', 'color:#F59E0B;font-weight:bold',
-                    body.slice(0, 600)
-                );
-            } catch (err) {
-                console.error('%c[Mapifyit] Style API fetch error:', 'color:#EF4444;font-weight:bold', err);
-            }
-            // ─────────────────────────────────────────────────────────────
-
-            if (!isMounted) return;
+            if (!mapContainerRef.current || mapRef.current || mapInitStarted.current) return;
+            mapInitStarted.current = true;
 
             const maplibregl = (await import('maplibre-gl')).default;
 
-            // ── 2. Initialise map ──────────────────────────────────────────
-            // The Mapifyit endpoint returns a full MapLibre Style JSON (v8),
-            // so we pass the URL directly as `style` and inject the Bearer
-            // token via transformRequest for every request to those domains.
+            if (!isMounted) return;
+
             const map = new maplibregl.Map({
                 container: mapContainerRef.current!,
-                // Pass the style URL directly — MapLibre will fetch + parse it
                 style: MAPIFYIT_STYLE_URL,
                 center: [DUBAI_LNG, DUBAI_LAT],
                 zoom: 14,
                 pitch: 30,
                 bearing: -10,
                 attributionControl: false,
-                // Inject Bearer token on ALL requests to Mapifyit domains
+                fadeDuration: 0,
                 transformRequest: (url: string) => {
                     const isMapifyit =
                         url.includes('mapifyit.com') ||
                         url.includes('client.mapifyit.com') ||
-                        url.includes('tiles.mapifyit.com');
+                        url.includes('tiles.mapifyit.com') ||
+                        url.includes('localhost:5000');
 
                     if (isMapifyit) {
-                        console.log('%c[Mapifyit] transformRequest ↗', 'color:#8B5CF6', url);
                         return {
                             url,
                             headers: {
                                 Authorization: `Bearer ${MAPIFYIT_TOKEN}`,
+                                'Content-Type': 'application/json',
                             },
                         };
                     }
@@ -92,12 +59,10 @@ export default function ContactUs() {
             });
 
             map.on('load', () => {
-                console.log(
-                    '%c[Mapifyit] ✅ Map loaded successfully!',
-                    'color:#10B981;font-weight:bold;font-size:14px'
-                );
+                if (!isMounted) return;
+                console.log('%c[Mapifyit] ✅ Map loaded successfully!', 'color:#10B981;font-weight:bold');
+                setMapLoaded(true);
 
-                // Blue marker on Dubai HQ
                 new maplibregl.Marker({ color: '#3B82F6' })
                     .setLngLat([DUBAI_LNG, DUBAI_LAT])
                     .setPopup(
@@ -115,31 +80,32 @@ export default function ContactUs() {
                 console.error('%c[Mapifyit] ❌ Map error:', 'color:#EF4444;font-weight:bold', e);
             });
 
-            map.on('sourcedataloading', (e: any) => {
-                console.log('%c[Mapifyit] Source loading…', 'color:#6366F1', e.sourceId);
-            });
-
-            map.on('sourcedata', (e: any) => {
-                if (e.isSourceLoaded) {
-                    console.log('%c[Mapifyit] Source ready:', 'color:#10B981', e.sourceId);
-                }
-            });
-
-            map.on('tiledataloading', () => {
-                console.log('%c[Mapifyit] Tile data loading…', 'color:#6366F1');
-            });
-
             mapRef.current = map;
         }
 
-        initMap();
+        // Lazy load the map when it enters viewport
+        const observer = new IntersectionObserver(
+            (entries) => {
+                if (entries[0].isIntersecting) {
+                    observer.disconnect();
+                    initMap();
+                }
+            },
+            { rootMargin: '300px' }
+        );
+
+        if (mapContainerRef.current) {
+            observer.observe(mapContainerRef.current);
+        }
 
         return () => {
             isMounted = false;
+            observer.disconnect();
             if (mapRef.current) {
                 mapRef.current.remove();
                 mapRef.current = null;
             }
+            mapInitStarted.current = false;
         };
     }, []);
 
@@ -179,6 +145,42 @@ export default function ContactUs() {
 
                     {/* ── LEFT: MapLibre map ─────────────────────────────── */}
                     <div className="relative w-full h-[500px] lg:h-[600px] rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
+
+                        {/* Shimmer skeleton fades out once tiles are ready */}
+                        <div
+                            className="absolute inset-0 z-20 pointer-events-none transition-opacity duration-700"
+                            style={{
+                                opacity: mapLoaded ? 0 : 1,
+                                background: '#0B1220',
+                            }}
+                        >
+                            {/* Grid lines */}
+                            <div className="absolute inset-0 opacity-20" style={{
+                                backgroundImage: `
+                                    linear-gradient(rgba(59,130,246,0.2) 1px, transparent 1px),
+                                    linear-gradient(90deg, rgba(59,130,246,0.2) 1px, transparent 1px)
+                                `,
+                                backgroundSize: '40px 40px',
+                            }} />
+                            {/* Sweep shimmer */}
+                            <div className="absolute inset-0" style={{
+                                background: 'linear-gradient(105deg, transparent 35%, rgba(59,130,246,0.06) 50%, transparent 65%)',
+                                animation: 'mfy-shimmer 1.8s linear infinite',
+                            }} />
+                            {/* Spinner */}
+                            <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
+                                <div className="w-10 h-10 rounded-full border-2 border-blue-500/30 border-t-blue-400 animate-spin" />
+                                <span className="text-[11px] text-blue-400/50 font-mono tracking-widest uppercase">
+                                    Loading map…
+                                </span>
+                            </div>
+                            <style>{`
+                                @keyframes mfy-shimmer {
+                                    0%   { transform: translateX(-100%); }
+                                    100% { transform: translateX(200%); }
+                                }
+                            `}</style>
+                        </div>
 
                         {/* Map container */}
                         <div
