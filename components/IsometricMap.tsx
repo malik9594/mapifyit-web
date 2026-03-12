@@ -35,7 +35,7 @@ export default function GlobalRadarMap() {
                     <div
                         className="absolute inset-0 z-0 opacity-60"
                         style={{
-                            backgroundImage: `url('/darkModeWorldMap.png')`,
+                            backgroundImage: `url('/HDbackground.png')`,
                             backgroundSize: 'cover',
                             backgroundPosition: 'center',
                             backgroundRepeat: 'no-repeat',
