@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import GlobalMapPrewarmer from "@/components/GlobalMapPrewarmer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -95,11 +96,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        {/* Preconnect to speed up initial Mapifyit API handshakes */}
+        <link rel="preconnect" href="https://client.mapifyit.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://tiles.mapifyit.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://client.mapifyit.com" />
+        <link rel="dns-prefetch" href="https://tiles.mapifyit.com" />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased selection:bg-blue-500/30 overflow-x-hidden`}
       >
         <div className="min-h-screen bg-[#03060D] text-slate-300 font-sans">
           <Navbar />
+          <GlobalMapPrewarmer />
           {children}
           <WhatsAppButton />
           <Footer />

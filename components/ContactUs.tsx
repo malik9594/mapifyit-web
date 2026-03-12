@@ -3,8 +3,8 @@ import React, { useEffect, useRef } from 'react';
 import { Phone, Mail, MapPin, Globe } from 'lucide-react';
 
 // ─── Mapifyit Config ────────────────────────────────────────────────────────
-const MAPIFYIT_STYLE_URL = 'https://client.mapifyit.com/api/v1/proxy/tiles/dark';
-// const MAPIFYIT_STYLE_URL = 'http://localhost:5000/api/v1/proxy/tiles/dark';
+// const MAPIFYIT_STYLE_URL = 'https://tiles.mapifyit.com/styles/dark-style/style.json';
+const MAPIFYIT_STYLE_URL = 'https://dev-client.mapifyit.com/api/v1/proxy/tiles/dark';
 const MAPIFYIT_TOKEN = 'mfy_8b0755c081c9204caa20681ddab91d2856c3667a6ad8d9e8';
 
 // Dubai – Citadel Tower, Business Bay
@@ -21,86 +21,76 @@ export default function ContactUs() {
     useEffect(() => {
         let isMounted = true;
 
+        // PERFORMANCE: Start pre-loading the heavy engine immediately
+        const preloadEngine = import('maplibre-gl');
+
         async function initMap() {
             if (!mapContainerRef.current || mapRef.current || mapInitStarted.current) return;
             mapInitStarted.current = true;
 
-            const maplibregl = (await import('maplibre-gl')).default;
-
-            if (!isMounted) return;
-
-            const map = new maplibregl.Map({
-                container: mapContainerRef.current!,
-                style: MAPIFYIT_STYLE_URL,
-                center: [DUBAI_LNG, DUBAI_LAT],
-                zoom: 14,
-                pitch: 30,
-                bearing: -10,
-                attributionControl: false,
-                fadeDuration: 0,
-                transformRequest: (url: string) => {
-                    const isMapifyit =
-                        url.includes('mapifyit.com') ||
-                        url.includes('client.mapifyit.com') ||
-                        url.includes('tiles.mapifyit.com') ||
-                        url.includes('localhost:5000');
-
-                    if (isMapifyit) {
-                        return {
-                            url,
-                            headers: {
-                                Authorization: `Bearer ${MAPIFYIT_TOKEN}`,
-                                'Content-Type': 'application/json',
-                            },
-                        };
-                    }
-                    return { url };
-                },
-            });
-
-            map.on('load', () => {
+            try {
+                const maplibregl = (await preloadEngine).default;
                 if (!isMounted) return;
-                console.log('%c[Mapifyit] ✅ Map loaded successfully!', 'color:#10B981;font-weight:bold');
-                setMapLoaded(true);
 
-                new maplibregl.Marker({ color: '#3B82F6' })
-                    .setLngLat([DUBAI_LNG, DUBAI_LAT])
-                    .setPopup(
-                        new maplibregl.Popup({ offset: 25 }).setHTML(
-                            `<div style="font-family:sans-serif;padding:4px 2px">
-                                <strong style="color:#1e293b">Citadel Tower</strong><br/>
-                                <span style="color:#64748b;font-size:12px">Business Bay, Dubai, UAE</span>
-                            </div>`
+                const map = new maplibregl.Map({
+                    container: mapContainerRef.current!,
+                    style: MAPIFYIT_STYLE_URL,
+                    center: [DUBAI_LNG, DUBAI_LAT],
+                    zoom: 14,
+                    pitch: 30,
+                    bearing: -10,
+                    attributionControl: false,
+                    fadeDuration: 0, // Instant geometry rendering
+                    renderWorldCopies: false,
+                    maxTileCacheSize: 200,
+                    transformRequest: (url: string) => {
+                        const isMapifyit =
+                            url.includes('mapifyit.com') ||
+                            url.includes('client.mapifyit.com') ||
+                            url.includes('tiles.mapifyit.com') ||
+                            url.includes('localhost:5000');
+
+                        if (isMapifyit) {
+                            return {
+                                url,
+                                headers: {
+                                    Authorization: `Bearer ${MAPIFYIT_TOKEN}`,
+                                    'Content-Type': 'application/json',
+                                },
+                            };
+                        }
+                        return { url };
+                    },
+                });
+
+                map.on('load', () => {
+                    if (!isMounted) return;
+                    setMapLoaded(true);
+
+                    new maplibregl.Marker({ color: '#3B82F6' })
+                        .setLngLat([DUBAI_LNG, DUBAI_LAT])
+                        .setPopup(
+                            new maplibregl.Popup({ offset: 25 }).setHTML(
+                                `<div style="font-family:sans-serif;padding:4px 2px">
+                                    <strong style="color:#1e293b">Citadel Tower</strong><br/>
+                                    <span style="color:#64748b;font-size:12px">Business Bay, Dubai, UAE</span>
+                                </div>`
+                            )
                         )
-                    )
-                    .addTo(map);
-            });
+                        .addTo(map);
+                });
 
-            map.on('error', (e: any) => {
-                console.error('%c[Mapifyit] ❌ Map error:', 'color:#EF4444;font-weight:bold', e);
-            });
-
-            mapRef.current = map;
+                mapRef.current = map;
+            } catch (e) {
+                console.error('[Mapifyit] Map failed to load:', e);
+            }
         }
 
-        // Lazy load the map when it enters viewport
-        const observer = new IntersectionObserver(
-            (entries) => {
-                if (entries[0].isIntersecting) {
-                    observer.disconnect();
-                    initMap();
-                }
-            },
-            { rootMargin: '300px' }
-        );
-
-        if (mapContainerRef.current) {
-            observer.observe(mapContainerRef.current);
-        }
+        // Trigger loading immediately for instant availability
+        initMap();
 
         return () => {
             isMounted = false;
-            observer.disconnect();
             if (mapRef.current) {
                 mapRef.current.remove();
                 mapRef.current = null;
@@ -144,49 +134,11 @@ export default function ContactUs() {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
 
                     {/* ── LEFT: MapLibre map ─────────────────────────────── */}
-                    <div className="relative w-full h-[500px] lg:h-[600px] rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
-
-                        {/* Shimmer skeleton fades out once tiles are ready */}
-                        <div
-                            className="absolute inset-0 z-20 pointer-events-none transition-opacity duration-700"
-                            style={{
-                                opacity: mapLoaded ? 0 : 1,
-                                background: '#0B1220',
-                            }}
-                        >
-                            {/* Grid lines */}
-                            <div className="absolute inset-0 opacity-20" style={{
-                                backgroundImage: `
-                                    linear-gradient(rgba(59,130,246,0.2) 1px, transparent 1px),
-                                    linear-gradient(90deg, rgba(59,130,246,0.2) 1px, transparent 1px)
-                                `,
-                                backgroundSize: '40px 40px',
-                            }} />
-                            {/* Sweep shimmer */}
-                            <div className="absolute inset-0" style={{
-                                background: 'linear-gradient(105deg, transparent 35%, rgba(59,130,246,0.06) 50%, transparent 65%)',
-                                animation: 'mfy-shimmer 1.8s linear infinite',
-                            }} />
-                            {/* Spinner */}
-                            <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
-                                <div className="w-10 h-10 rounded-full border-2 border-blue-500/30 border-t-blue-400 animate-spin" />
-                                <span className="text-[11px] text-blue-400/50 font-mono tracking-widest uppercase">
-                                    Loading map…
-                                </span>
-                            </div>
-                            <style>{`
-                                @keyframes mfy-shimmer {
-                                    0%   { transform: translateX(-100%); }
-                                    100% { transform: translateX(200%); }
-                                }
-                            `}</style>
-                        </div>
-
-                        {/* Map container */}
+                    <div className="relative w-full h-[500px] lg:h-[600px] rounded-3xl overflow-hidden border border-white/10 shadow-2xl bg-[#0B1220]">
+                        {/* Map container - Instant display, no skeleton */}
                         <div
                             ref={mapContainerRef}
                             className="w-full h-full"
-                            style={{ background: '#0B1220' }}
                         />
 
                         {/* Map Overlay Badge */}

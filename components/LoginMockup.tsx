@@ -1,92 +1,187 @@
 "use client"
 import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { MapPin, Search, Activity, Layers, Cpu, Globe, ArrowRight, Zap } from 'lucide-react';
 
-export default function LoginMockup() {
-    const [step, setStep] = useState('loading'); // 'loading', 'scanning', 'success'
+export default function USAMapifyitShowcase() {
+    const [step, setStep] = useState(0);
 
-    // Simple timer to demo the animation sequence
+    // USA Centric Logistics Locations
+    const locations = [
+        { city: "New York City", desc: "JFK Logistics Hub, NY", color: "text-blue-400", path: "M 40 450 Q 100 300 220 280", coords: "40.7128° N, 74.0060° W" },
+        { city: "Los Angeles", desc: "Port of LA, Long Beach", color: "text-indigo-400", path: "M 220 280 Q 150 150 60 100", coords: "34.0522° N, 118.2437° W" },
+        { city: "Chicago", desc: "O'Hare Int. Terminal", color: "text-emerald-400", path: "M 60 100 Q 180 150 250 50", coords: "41.8781° N, 87.6298° W" },
+    ];
+
     useEffect(() => {
-        const timer1 = setTimeout(() => setStep('scanning'), 2000);
-        const timer2 = setTimeout(() => setStep('success'), 4500);
-        return () => { clearTimeout(timer1); clearTimeout(timer2); };
-    }, []);
+        // Fast sequence: 800ms typing/search, 2000ms show route & telemetry
+        const timer = setTimeout(() => {
+            setStep((prev) => (prev + 1) % (locations.length * 2));
+        }, step % 2 === 0 ? 800 : 2500);
+
+        return () => clearTimeout(timer);
+    }, [step]);
+
+    const isTyping = step % 2 === 0;
+    const locationIndex = Math.floor(step / 2) % locations.length;
+    const current = locations[locationIndex];
 
     return (
-        <div className="relative w-[260px] md:w-[300px] h-[520px] md:h-[600px] rounded-[48px] md:rounded-[56px] mx-auto mt-4 shrink-0 bg-[#0B0F24] shadow-2xl overflow-hidden p-[2px] group/mockup">
-            {/* Border Glow */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200%] h-[200%] bg-[conic-gradient(from_0deg,transparent_0%,transparent_40%,#3B82F6_50%,transparent_60%,transparent_100%)] animate-[border-rotate_4s_linear_infinite] opacity-30" />
+        <div className="relative w-[280px] md:w-[320px] h-[580px] md:h-[650px] rounded-[50px] mx-auto bg-[#0B0F24] shadow-2xl overflow-hidden p-[2px] border border-white/5 font-sans">
+            {/* High-Performance Conic Glow */}
+            <div className="absolute inset-0 bg-[conic-gradient(from_0deg,transparent,rgba(59,130,246,0.2),transparent)] animate-[spin_4s_linear_infinite]" />
 
-            <div className="relative w-full h-full border-[6px] border-[#252838] rounded-[46px] md:rounded-[54px] bg-[#020517] overflow-hidden flex flex-col pt-1">
+            <div className="relative w-full h-full rounded-[48px] bg-[#020517] overflow-hidden flex flex-col">
 
-                {/* --- eKYC Scanning Line --- */}
-                {step !== 'success' && (
-                    <div className="absolute left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#2BC9EE] to-transparent z-50 animate-biometric-scan top-0"
-                        style={{ animationDuration: step === 'scanning' ? '1.5s' : '3s' }} />
-                )}
-
-                {/* Notch */}
-                <div className="absolute top-0 inset-x-0 flex justify-center z-50">
-                    <div className="w-32 h-6 bg-[#252838] rounded-b-3xl" />
+                {/* --- SYSTEM STATUS --- */}
+                <div className="h-8 w-full flex justify-between items-center px-8 pt-4 z-50">
+                    <div className="flex items-center gap-1.5">
+                        <Zap className="w-3 h-3 text-emerald-400 fill-emerald-400" />
+                        <span className="text-[9px] text-emerald-400 font-black tracking-tighter uppercase">USA REGION</span>
+                    </div>
+                    <div className="w-12 h-3.5 bg-black rounded-full" />
+                    <span className="text-[10px] text-white/50 font-mono italic">v4.0</span>
                 </div>
 
-                {/* --- STEP 1 & 2: Login Form / Scanning --- */}
-                <div className={`flex-1 flex flex-col items-center justify-center p-6 transition-all duration-700 ${step === 'success' ? 'opacity-0 scale-90' : 'opacity-100'}`}>
+                {/* --- USA MAP ENGINE --- */}
+                <div className="flex-1 relative overflow-hidden bg-[#050714]">
 
-                    {/* Secure Lens Crosshairs (From your eKYC code) */}
-                    {step === 'scanning' && (
-                        <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-20">
-                            <div className="w-12 h-12 relative opacity-40 animate-pulse">
-                                <div className="w-full h-[2px] bg-white absolute top-1/2 -translate-y-1/2" />
-                                <div className="h-full w-[2px] bg-white absolute left-1/2 -translate-x-1/2" />
+                    {/* Animated Grid - Simulating Map Fetching */}
+                    <motion.div
+                        animate={{
+                            backgroundPosition: isTyping ? ['0px 0px', '100px 100px'] : ['0px 0px', '30px 30px'],
+                            opacity: isTyping ? 0.4 : 0.15
+                        }}
+                        transition={{ duration: isTyping ? 0.5 : 2, repeat: Infinity, ease: "linear" }}
+                        className="absolute inset-0"
+                        style={{ backgroundImage: 'radial-gradient(#3B82F6 1px, transparent 1px)', backgroundSize: '40px 40px' }}
+                    />
+
+                    {/* Technical Coordinate Overlay (Only during search) */}
+                    <AnimatePresence>
+                        {isTyping && (
+                            <motion.div
+                                initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+                                className="absolute inset-0 flex items-center justify-center z-0 pointer-events-none"
+                            >
+                                <span className="text-[40px] font-black text-white/5 rotate-12 whitespace-nowrap">
+                                    {current.coords}
+                                </span>
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
+
+                    {/* --- VECTOR ROUTE DRAWING --- */}
+                    <svg className="absolute inset-0 w-full h-full pointer-events-none z-10">
+                        <AnimatePresence mode="wait">
+                            {!isTyping && (
+                                <motion.path
+                                    key={locationIndex}
+                                    d={current.path}
+                                    fill="transparent"
+                                    stroke="currentColor"
+                                    strokeWidth="4"
+                                    strokeLinecap="round"
+                                    className={current.color.replace('text', 'stroke')}
+                                    initial={{ pathLength: 0 }}
+                                    animate={{ pathLength: 1 }}
+                                    exit={{ opacity: 0 }}
+                                    transition={{ duration: 0.7, ease: "circOut" }}
+                                />
+                            )}
+                        </AnimatePresence>
+                    </svg>
+
+                    {/* --- DYNAMIC PINS --- */}
+                    <div className="absolute inset-0 z-20">
+                        {!isTyping && (
+                            <motion.div
+                                initial={{ scale: 0, y: 20 }}
+                                animate={{ scale: 1, y: 0 }}
+                                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center"
+                            >
+                                <div className="bg-white text-black font-black text-[9px] px-2 py-0.5 rounded shadow-xl mb-1 uppercase tracking-tighter">
+                                    {current.city}
+                                </div>
+                                <MapPin className={`${current.color} w-8 h-8 fill-current/10`} />
+                                <div className={`w-4 h-1 bg-black/40 blur-sm rounded-full mt-1 animate-pulse`} />
+                            </motion.div>
+                        )}
+                    </div>
+
+                    {/* --- TOP UI: USA SEARCH INTERACTION --- */}
+                    <div className="absolute top-8 inset-x-4 z-30">
+                        <div className="bg-[#101425]/95 backdrop-blur-xl border border-white/10 rounded-2xl p-3 shadow-2xl">
+                            <div className="flex items-center gap-3">
+                                <div className="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center">
+                                    <Search className="w-4 h-4 text-blue-400" />
+                                </div>
+                                <div className="flex-1">
+                                    <p className={`text-[7px] font-black tracking-[0.2em] uppercase ${current.color}`}>
+                                        {isTyping ? "Fetching Vector Tiles..." : "USA Engine Active"}
+                                    </p>
+                                    <p className="text-[13px] text-white font-mono truncate tracking-tighter">
+                                        {isTyping ? `${current.city.substring(0, 8)}...` : current.desc}
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                    )}
-
-                    <div className="w-14 h-14 text-[#3B82F6] mb-5 relative">
-                        <svg stroke="currentColor" fill="none" strokeWidth="2" viewBox="0 0 24 24" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-                            <rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
-                            <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-                        </svg>
                     </div>
 
-                    <h3 className="text-white text-xl font-bold mb-2">Secure Login</h3>
-                    <p className="text-gray-500 text-xs text-center mb-8">Verification in progress...</p>
+                    {/* --- BOTTOM UI: ENTERPRISE TELEMETRY --- */}
+                    <AnimatePresence>
+                        {!isTyping && (
+                            <motion.div
+                                initial={{ y: 80, opacity: 0 }}
+                                animate={{ y: 0, opacity: 1 }}
+                                exit={{ y: 80, opacity: 0 }}
+                                transition={{ type: "spring", damping: 15 }}
+                                className="absolute bottom-6 inset-x-4 z-30"
+                            >
+                                <div className="bg-[#0A0D1F]/95 backdrop-blur-3xl border border-white/10 rounded-[32px] p-5 shadow-[0_20px_50px_rgba(0,0,0,0.8)]">
+                                    <div className="flex justify-between items-center mb-5">
+                                        <div className="flex items-center gap-2">
+                                            <Activity className="w-4 h-4 text-emerald-400" />
+                                            <span className="text-[10px] font-black text-white uppercase tracking-widest">Global Sync</span>
+                                        </div>
+                                        <div className="flex -space-x-1">
+                                            <div className="w-5 h-5 rounded-full bg-blue-500 border-2 border-[#020517] flex items-center justify-center z-10">
+                                                <Globe className="w-2.5 h-2.5 text-white" />
+                                            </div>
+                                            <div className="w-5 h-5 rounded-full bg-indigo-500 border-2 border-[#020517] flex items-center justify-center">
+                                                <Cpu className="w-2.5 h-2.5 text-white" />
+                                            </div>
+                                        </div>
+                                    </div>
 
-                    <div className="w-full py-3 rounded-xl text-white font-semibold text-xs flex items-center justify-center bg-[#5C6EEF]/20 border border-[#5C6EEF]/40">
-                        <svg className="w-4 h-4 mr-2 animate-spin" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
-                            <path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83" />
-                        </svg>
-                        {step === 'loading' ? 'Checking ID...' : 'Performing Face Match...'}
-                    </div>
+                                    <div className="grid grid-cols-2 gap-3">
+                                        <div className="bg-white/5 border border-white/5 p-3 rounded-2xl">
+                                            <p className="text-[8px] text-slate-500 uppercase font-black mb-0.5">Route Latency</p>
+                                            <p className="text-sm font-mono font-bold text-blue-400">0.004s</p>
+                                        </div>
+                                        <div className="bg-white/5 border border-white/5 p-3 rounded-2xl">
+                                            <p className="text-[8px] text-slate-500 uppercase font-black mb-0.5">Data Stack</p>
+                                            <p className="text-sm font-mono font-bold text-emerald-400">POSTGIS</p>
+                                        </div>
+                                    </div>
+
+                                    <motion.button
+                                        whileTap={{ scale: 0.96 }}
+                                        className="w-full mt-4 bg-blue-600 py-3.5 rounded-2xl text-[11px] font-black text-white flex items-center justify-center gap-2 shadow-lg shadow-blue-600/40"
+                                    >
+                                        NAVIGATE USA <ArrowRight className="w-3.5 h-3.5" />
+                                    </motion.button>
+                                </div>
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
                 </div>
 
-                {/* --- STEP 3: SUCCESS ANIMATION --- */}
-                <div className={`absolute inset-0 flex flex-col items-center justify-center p-6 transition-all duration-1000 ${step === 'success' ? 'opacity-100 scale-100' : 'opacity-0 scale-150 pointer-events-none'}`}>
-
-                    {/* Big Checkmark SVG (Success) */}
-                    <div className="w-20 h-20 bg-[#10B981]/20 rounded-full flex items-center justify-center mb-6 border-2 border-[#10B981] animate-bounce">
-                        <svg stroke="currentColor" fill="none" strokeWidth="4" viewBox="0 0 24 24" className="text-[#10B981] w-10 h-10" xmlns="http://www.w3.org/2000/svg">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                        </svg>
-                    </div>
-
-                    <h2 className="text-white text-2xl font-bold tracking-tight mb-2">Access Granted</h2>
-                    <div className="px-4 py-1 bg-[#10B981] rounded-full">
-                        <span className="text-white text-[10px] font-bold uppercase tracking-widest">eKYC Verified</span>
-                    </div>
-
-                    <p className="text-gray-400 text-xs text-center mt-6 animate-pulse">
-                        Redirecting to Mapifyit Dashboard...
-                    </p>
+                {/* Home Indicator */}
+                <div className="h-6 w-full flex justify-center items-center pb-2">
+                    <div className="w-20 h-1 bg-white/10 rounded-full" />
                 </div>
-
-                {/* Bottom Glow Overlay */}
-                <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-[#5C6EEF]/20 to-transparent pointer-events-none" />
             </div>
-
-            {/* Hardware Side Buttons */}
-            <div className="absolute top-[90px] -left-[12px] w-[4px] h-[45px] bg-[#252838] rounded-l-md" />
-            <div className="absolute top-[160px] -right-[12px] w-[4px] h-[65px] bg-[#252838] rounded-r-md" />
         </div>
     );
 }
