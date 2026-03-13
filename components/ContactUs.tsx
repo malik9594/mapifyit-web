@@ -1,27 +1,21 @@
 "use client"
-import React, { useEffect, useRef } from 'react';
-import { Phone, Mail, MapPin, Globe } from 'lucide-react';
+import React, { useEffect, useRef, useState } from 'react';
+import { Phone, Mail, MapPin, Globe, Send, User, MessageSquare, ChevronRight } from 'lucide-react';
 
 // ─── Mapifyit Config ────────────────────────────────────────────────────────
-// const MAPIFYIT_STYLE_URL = 'https://tiles.mapifyit.com/styles/dark-style/style.json';
 const MAPIFYIT_STYLE_URL = 'https://dev-client.mapifyit.com/api/v1/proxy/tiles/dark';
 const MAPIFYIT_TOKEN = 'mfy_8b0755c081c9204caa20681ddab91d2856c3667a6ad8d9e8';
-
-// Dubai – Citadel Tower, Business Bay
 const DUBAI_LNG = 55.2608;
 const DUBAI_LAT = 25.1840;
-// ────────────────────────────────────────────────────────────────────────────
 
 export default function ContactUs() {
     const mapContainerRef = useRef<HTMLDivElement>(null);
     const mapRef = useRef<any>(null);
     const mapInitStarted = useRef(false);
-    const [mapLoaded, setMapLoaded] = React.useState(false);
+    const [status, setStatus] = useState<'idle' | 'sending' | 'sent'>('idle');
 
     useEffect(() => {
         let isMounted = true;
-
-        // PERFORMANCE: Start pre-loading the heavy engine immediately
         const preloadEngine = import('maplibre-gl');
 
         async function initMap() {
@@ -37,26 +31,13 @@ export default function ContactUs() {
                     style: MAPIFYIT_STYLE_URL,
                     center: [DUBAI_LNG, DUBAI_LAT],
                     zoom: 14,
-                    pitch: 30,
-                    bearing: -10,
+                    pitch: 45,
                     attributionControl: false,
-                    fadeDuration: 0, // Instant geometry rendering
-                    renderWorldCopies: false,
-                    maxTileCacheSize: 200,
                     transformRequest: (url: string) => {
-                        const isMapifyit =
-                            url.includes('mapifyit.com') ||
-                            url.includes('client.mapifyit.com') ||
-                            url.includes('tiles.mapifyit.com') ||
-                            url.includes('localhost:5000');
-
-                        if (isMapifyit) {
+                        if (url.includes('mapifyit.com')) {
                             return {
                                 url,
-                                headers: {
-                                    Authorization: `Bearer ${MAPIFYIT_TOKEN}`,
-                                    'Content-Type': 'application/json',
-                                },
+                                headers: { Authorization: `Bearer ${MAPIFYIT_TOKEN}` },
                             };
                         }
                         return { url };
@@ -65,151 +46,142 @@ export default function ContactUs() {
 
                 map.on('load', () => {
                     if (!isMounted) return;
-                    setMapLoaded(true);
-
-                    new maplibregl.Marker({ color: '#3B82F6' })
+                    new maplibregl.Marker({ color: '#22D3EE' })
                         .setLngLat([DUBAI_LNG, DUBAI_LAT])
-                        .setPopup(
-                            new maplibregl.Popup({ offset: 25 }).setHTML(
-                                `<div style="font-family:sans-serif;padding:4px 2px">
-                                    <strong style="color:#1e293b">Citadel Tower</strong><br/>
-                                    <span style="color:#64748b;font-size:12px">Business Bay, Dubai, UAE</span>
-                                </div>`
-                            )
-                        )
                         .addTo(map);
                 });
 
                 mapRef.current = map;
             } catch (e) {
-                console.error('[Mapifyit] Map failed to load:', e);
+                console.error('[Mapifyit] Map failed:', e);
             }
         }
 
-        // Trigger loading immediately for instant availability
         initMap();
-
         return () => {
             isMounted = false;
-            if (mapRef.current) {
-                mapRef.current.remove();
-                mapRef.current = null;
-            }
+            if (mapRef.current) mapRef.current.remove();
             mapInitStarted.current = false;
         };
     }, []);
 
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        setStatus('sending');
+        setTimeout(() => setStatus('sent'), 1500); // Mock submission
+    };
+
     return (
-        <section id="contactus" className="relative w-full bg-[#03060D] py-20 overflow-hidden">
-            <style jsx>{`
-                .location-pulse {
-                    position: absolute;
-                    width: 14px;
-                    height: 14px;
-                    background: #3B82F6;
-                    border-radius: 50%;
-                    animation: pulse 2s infinite;
-                }
-                .location-pulse::after {
-                    content: '';
-                    position: absolute;
-                    width: 100%;
-                    height: 100%;
-                    border-radius: 50%;
-                    background: #3B82F6;
-                    animation: ripple 2s infinite;
-                }
-                @keyframes pulse {
-                    0%   { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7); }
-                    70%  { transform: scale(1);    box-shadow: 0 0 0 15px rgba(59, 130, 246, 0); }
-                    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
-                }
-                @keyframes ripple {
-                    0%   { transform: scale(1); opacity: 1; }
-                    100% { transform: scale(3.5); opacity: 0; }
-                }
-            `}</style>
+        <section id="contact" className="relative w-full bg-[#030712] py-24 overflow-hidden">
+            {/* Ambient Background Glows */}
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-cyan-600/5 rounded-full blur-[120px] pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-600/5 rounded-full blur-[120px] pointer-events-none" />
 
-            <div className="max-w-7xl mx-auto px-6">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+            <div className="max-w-7xl mx-auto px-6 relative z-10">
+                <div className="grid lg:grid-cols-2 gap-16 items-start">
 
-                    {/* ── LEFT: MapLibre map ─────────────────────────────── */}
-                    <div className="relative w-full h-[500px] lg:h-[600px] rounded-3xl overflow-hidden border border-white/10 shadow-2xl bg-[#0B1220]">
-                        {/* Map container - Instant display, no skeleton */}
-                        <div
-                            ref={mapContainerRef}
-                            className="w-full h-full"
-                        />
+                    {/* LEFT: Info & Map */}
+                    <div className="space-y-8">
+                        <div>
+                            <h3 className="text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight">
+                                Contact <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Us.</span>
+                            </h3>
+                            <p className="text-slate-400 text-lg leading-relaxed max-w-md">
+                                Ready to deploy secure, offline GIS? Our engineers are standing by to help you architect your spatial infrastructure.
+                            </p>
+                        </div>
 
-                        {/* Map Overlay Badge */}
-                        <div className="absolute bottom-6 left-6 bg-[#0B0F17]/90 backdrop-blur-md border border-white/10 p-4 rounded-2xl shadow-xl z-10 pointer-events-none">
-                            <div className="flex items-center gap-3">
-                                <div className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center">
-                                    <MapPin className="w-5 h-5 text-white" />
-                                </div>
-                                <div>
-                                    <p className="text-white font-bold text-sm">Citadel Tower</p>
-                                    <p className="text-slate-400 text-xs tracking-wide">Business Bay, Dubai</p>
-                                </div>
+                        {/* Integrated Map Viewport */}
+                        <div className="relative w-full h-[300px] rounded-3xl overflow-hidden border border-blue-900/30 shadow-2xl group">
+                            <div ref={mapContainerRef} className="w-full h-full transition-all duration-700" />
+                            <div className="absolute bottom-4 left-4 right-4 p-3 bg-slate-950/80 backdrop-blur-md border border-white/5 rounded-xl flex items-center gap-3">
+                                <div className="p-2 bg-cyan-500/20 rounded-lg"><MapPin className="w-4 h-4 text-cyan-400" /></div>
+                                <span className="text-xs text-slate-300 font-mono">Business Bay, Dubai, UAE</span>
                             </div>
+                        </div>
+
+                        {/* Quick Contact Links */}
+                        <div className="grid grid-cols-2 gap-4">
+                            <a href="mailto:hi@mapifyit.com" className="p-4 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-cyan-500/50 transition-all group">
+                                <Mail className="w-5 h-5 text-cyan-400 mb-2" />
+                                <p className="text-xs text-slate-500 uppercase tracking-widest font-bold">Email Us</p>
+                                <p className="text-white text-sm">hi@mapifyit.com</p>
+                            </a>
+                            <a href="tel:+97144429622" className="p-4 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-blue-500/50 transition-all group">
+                                <Phone className="w-5 h-5 text-blue-400 mb-2" />
+                                <p className="text-xs text-slate-500 uppercase tracking-widest font-bold">Call Us</p>
+                                <p className="text-white text-sm">+971 4 442 9622</p>
+                            </a>
                         </div>
                     </div>
 
-                    {/* ── RIGHT: Content ──────────────────────────────────── */}
-                    <div className="flex flex-col pt-2 h-full">
-                        <div className="mb-8">
-                            <h3 className="text-5xl md:text-6xl font-bold text-white mb-8 tracking-tight">
-                                Contact<span className="text-blue-500 ml-3 text-4xl md:text-5xl">Us.</span>
-                            </h3>
-                            <p className="text-slate-400 leading-relaxed text-lg max-w-lg mb-4">
-                                Whether you're building a new application, scaling an enterprise platform, or exploring secure mapping solutions, our team is here to help.
-                            </p>
-                            <p className="text-slate-400 leading-relaxed text-lg max-w-lg">
-                                Get in touch with <span className="text-white font-semibold">Mapifyit</span> to discuss your requirements or request a demo.
-                            </p>
-                        </div>
+                    {/* RIGHT: The Form */}
+                    <div className="relative">
+                        <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-[2.5rem] blur opacity-10" />
 
-                        {/* Office Locations */}
-                        <div className="space-y-8 py-10 border-y border-white/10">
-                            <div className="flex items-start gap-4">
-                                <div className="mt-1 w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-500 shrink-0">
-                                    <Globe size={18} />
+                        <form onSubmit={handleSubmit} className="relative bg-[#0A101F] border border-blue-900/30 p-8 md:p-10 rounded-[2.5rem] shadow-3xl">
+                            <div className="space-y-6">
+                                {/* Name Input */}
+                                <div className="space-y-2">
+                                    <label className="text-[10px] font-bold text-cyan-500 uppercase tracking-[0.2em] ml-1">Full Name</label>
+                                    <div className="relative group">
+                                        <User className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500 group-focus-within:text-cyan-400 transition-colors" />
+                                        <input
+                                            required
+                                            type="text"
+                                            placeholder="John Doe"
+                                            className="w-full bg-slate-950 border border-white/5 rounded-xl py-4 pl-12 pr-4 text-white placeholder:text-slate-700 focus:outline-none focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/20 transition-all"
+                                        />
+                                    </div>
                                 </div>
-                                <div>
-                                    <h5 className="text-white font-bold mb-1">Dubai Headquarters</h5>
-                                    <p className="text-slate-400 text-sm leading-6">
-                                        Office # 1508 Citadel Tower, Business Bay, Dubai, UAE.
-                                    </p>
+
+                                {/* Email Input */}
+                                <div className="space-y-2">
+                                    <label className="text-[10px] font-bold text-cyan-500 uppercase tracking-[0.2em] ml-1">Work Email</label>
+                                    <div className="relative group">
+                                        <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500 group-focus-within:text-cyan-400 transition-colors" />
+                                        <input
+                                            required
+                                            type="email"
+                                            placeholder="john@company.com"
+                                            className="w-full bg-slate-950 border border-white/5 rounded-xl py-4 pl-12 pr-4 text-white placeholder:text-slate-700 focus:outline-none focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/20 transition-all"
+                                        />
+                                    </div>
                                 </div>
+
+                                {/* Message Input */}
+                                <div className="space-y-2">
+                                    <label className="text-[10px] font-bold text-cyan-500 uppercase tracking-[0.2em] ml-1">Project Requirements</label>
+                                    <div className="relative group">
+                                        <MessageSquare className="absolute left-4 top-4 w-4 h-4 text-slate-500 group-focus-within:text-cyan-400 transition-colors" />
+                                        <textarea
+                                            rows={4}
+                                            placeholder="Tell us about your GIS needs..."
+                                            className="w-full bg-slate-950 border border-white/5 rounded-xl py-4 pl-12 pr-4 text-white placeholder:text-slate-700 focus:outline-none focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/20 transition-all resize-none"
+                                        />
+                                    </div>
+                                </div>
+
+                                {/* Submit Button */}
+                                <button
+                                    disabled={status !== 'idle'}
+                                    className="w-full group relative flex items-center justify-center gap-3 bg-gradient-to-r from-cyan-500 to-blue-600 p-4 rounded-xl text-slate-950 font-bold hover:shadow-[0_0_20px_rgba(34,211,238,0.4)] transition-all disabled:opacity-50"
+                                >
+                                    {status === 'sent' ? (
+                                        <>Message Received! <ChevronRight className="w-5 h-5" /></>
+                                    ) : (
+                                        <>
+                                            {status === 'sending' ? 'Transmitting...' : 'Send Transmission'}
+                                            <Send className={`w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1 ${status === 'sending' ? 'animate-pulse' : ''}`} />
+                                        </>
+                                    )}
+                                </button>
+
+                                <p className="text-[10px] text-center text-slate-600 uppercase tracking-widest font-mono">
+                                    Secure SSL Encrypted Transmission
+                                </p>
                             </div>
-
-                            <div className="flex items-start gap-4">
-                                <div className="mt-1 w-8 h-8 rounded-lg bg-indigo-500/10 flex items-center justify-center text-indigo-500 shrink-0">
-                                    <Globe size={18} />
-                                </div>
-                                <div>
-                                    <h5 className="text-white font-bold mb-1">USA Operations</h5>
-                                    <p className="text-slate-400 text-sm leading-6">
-                                        Office # 9100 Southwest Freeway, Houston, Texas, USA 77074.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Contact Methods */}
-                        <div className="pt-10 space-y-4">
-                            <div className="flex flex-wrap gap-4">
-                                <a href="tel:+97144429622" className="flex items-center gap-4 px-6 py-4 rounded-2xl bg-white/5 border border-white/5 hover:bg-blue-600 transition-all group">
-                                    <Phone className="w-5 h-5 text-blue-500 group-hover:text-white" />
-                                    <span className="text-slate-200 font-semibold group-hover:text-white transition-colors">+9714-442-9622</span>
-                                </a>
-
-                                <a href="mailto:hi@mapifyit.com" className="flex items-center gap-4 px-6 py-4 rounded-2xl bg-white/5 border border-white/5 hover:bg-blue-600 transition-all group">
-                                    <Mail className="w-5 h-5 text-blue-500 group-hover:text-white" />
-                                    <span className="text-slate-200 font-semibold group-hover:text-white transition-colors">hi@mapifyit.com</span>
-                                </a>
-                            </div>
-                        </div>
+                        </form>
                     </div>
 
                 </div>

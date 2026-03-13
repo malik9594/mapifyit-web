@@ -16,11 +16,6 @@ import {
 import { Reveal } from './Reveal';
 import GISVisualEngine from './GISVisualEngine';
 
-// Adopted from the reference image:
-// - Background: #030712 (or very dark blue-black)
-// - Primary Blue: #3B82F6 (Electric Blue)
-// - Cyan Accent: #22D3EE (Light Cyan)
-
 export default function GeospatialModuleShowcaseCool() {
     const gisTools = [
         { icon: Route, title: "Terrain Routing", desc: "Elevation-aware pathfinding algorithms across complex 3D topography, optimized for defense and infrastructure use cases.", color: "cyan" },
@@ -56,7 +51,7 @@ export default function GeospatialModuleShowcaseCool() {
                                 Geographic Information Systems<br />
                                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Built for Enterprise Intelligence.</span>
                             </h1>
-                            <p className="text-slate-400 text-lg mb-10 leading-relaxed">
+                            <p className="text-slate-400 text-lg text-xl mb-10 leading-relaxed">
                                 Mapifyit GIS delivers a full-spectrum <strong>geospatial analytics platform</strong> for enterprise organizations. From <strong>isochrone analysis</strong> and logistics planning to <strong>LiDAR terrain routing</strong> for defense and infrastructure — all modules run 100% on-premise with zero cloud dependencies or data sovereignty risk.
                             </p>
                         </Reveal>
