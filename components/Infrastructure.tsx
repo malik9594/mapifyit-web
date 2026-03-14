@@ -1,9 +1,10 @@
 "use client"
 import React, { useState, useEffect } from 'react';
 import {
-    Route, Zap, Maximize, MousePointer2, BoxSelect, Database,
+    Route, Zap, MousePointer2, BoxSelect, Database,
     Share2, Compass, Settings, Mountain, Scan, Satellite,
-    Crosshair, Activity, Shield, Cpu, ArrowLeft, ExternalLink
+    Crosshair, Activity, Cpu, ArrowLeft, ExternalLink,
+    Layers, ShieldCheck
 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import GISShowcase from './GISShowCase';
@@ -81,13 +82,14 @@ export default function GeospatialModuleShowcaseCool() {
     const gisTools = [
         { icon: Route, title: "Terrain Routing", desc: "Elevation-aware pathfinding algorithms across complex 3D topography.", color: "cyan" },
         { icon: Zap, title: "Isochrone Analysis", desc: "Generate real-time travel-time polygons to identify reachability zones.", color: "blue" },
-        { icon: MousePointer2, title: "Drawing & Annotation", desc: "Geodesic polygon drawing and precision spatial annotation.", color: "cyan" },
-        { icon: BoxSelect, title: "Spatial Data Analysis", desc: "Enterprise heatmaps and cluster detection on massive coordinate datasets.", color: "blue" },
-        { icon: Maximize, title: "Proximity Buffer", desc: "Automated exclusion zone creation and geofence management.", color: "blue" },
-        { icon: Database, title: "Multi-Format Integration", desc: "Import Shapefiles, KML, and GeoJSON in fully offline environments.", color: "cyan" },
-        { icon: Mountain, title: "DEM Elevation Models", desc: "High-resolution elevation modeling for watershed and slope analysis.", color: "blue" },
         { icon: Scan, title: "LiDAR Point Cloud", desc: "Classify and visualize intelligence from high-density aerial LiDAR scans.", color: "cyan" },
-        { icon: Satellite, title: "Satellite Integration", desc: "Analyze multi-spectral satellite imagery for intelligence.", color: "blue" }
+        { icon: Mountain, title: "DEM Elevation Models", desc: "High-resolution elevation modeling for watershed and slope analysis.", color: "blue" },
+        { icon: BoxSelect, title: "Spatial Clustering", desc: "AI-driven pattern detection and heatmap generation across global datasets.", color: "cyan" },
+        { icon: MousePointer2, title: "Vector Digitization", desc: "Precision coordinate drawing for land boundary and infrastructure marking.", color: "blue" },
+        { icon: Satellite, title: "Satellite Feature Sync", desc: "AI extraction of roads and buildings from multi-spectral imagery feeds.", color: "cyan" },
+        { icon: Database, title: "Multi-Format Sync", desc: "Simultaneous alignment of Shapefiles, KML, and GeoJSON into one truth.", color: "blue" },
+        { icon: Layers, title: "Layer Orchestration", desc: "Stacking diverse vector and raster data without loss of spatial precision.", color: "cyan" },
+        { icon: ShieldCheck, title: "Data Sovereignty", desc: "100% air-gapped security for sensitive governmental geospatial intelligence.", color: "blue" }
     ];
 
     return (

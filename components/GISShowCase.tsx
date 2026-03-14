@@ -32,14 +32,20 @@ export default function MapifyitGISLab() {
                 {/* --- MAIN GIS VIEWPORT --- */}
                 <div className="relative h-[800px] w-full bg-[#050508] rounded-[3.5rem] border border-white/10 overflow-hidden shadow-[0_0_120px_rgba(0,0,0,1)]">
 
-                    {/* 1. THE MAP BACKGROUND (Verified Visibility) */}
+                    {/* 1. THE DYNAMIC MAP CORE - Revitalized UI */}
                     <div className="absolute inset-0 z-0 pointer-events-none">
                         <div
-                            className="absolute inset-[-5%] w-[110%] h-[110%] opacity-40 grayscale-[0.3] contrast-[1.5] brightness-[0.7] animate-panning bg-cover bg-center"
-                            style={{ backgroundImage: `url('https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?q=80&w=2000&auto=format&fit=crop')` }}
+                            className="absolute inset-0 opacity-60 grayscale-[0.2] contrast-[1.8] brightness-[1.2] animate-panning bg-cover bg-center"
+                            style={{ backgroundImage: `url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2000&auto=format&fit=crop')` }}
                         />
-                        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:50px_50px] opacity-20" />
-                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_#050508_90%)]" />
+                        {/* Moving Data Grids */}
+                        <div className="absolute inset-0 bg-[linear-gradient(to_right,#22d3ee15_1px,transparent_1px),linear-gradient(to_bottom,#22d3ee15_1px,transparent_1px)] bg-[size:60px_60px] animate-grid-rotate opacity-40" />
+                        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:200px_200px] opacity-20" />
+
+                        {/* Ambient High-Tech Glows */}
+                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_#050508_85%)]" />
+                        <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-cyan-500/10 blur-[150px] animate-pulse" />
+                        <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-blue-600/10 blur-[120px]" />
                     </div>
 
                     {/* 2. GIS EXPERIMENT LAYER (Logic Animations) */}
@@ -100,11 +106,11 @@ export default function MapifyitGISLab() {
                             <div className="flex items-center gap-4">
                                 <div className="flex gap-2">
                                     {SCENES.map((_, i) => (
-                                        <div key={i} className={`w-1.5 h-1.5 rounded-full transition-all duration-500 ${activeScene === i ? 'bg-cyan-400 shadow-[0_0_10px_#22d3ee]' : 'bg-white/10'}`} />
+                                        <div key={i} className={`w-2 h-2 rounded-full transition-all duration-700 ${activeScene === i ? 'bg-cyan-400 shadow-[0_0_15px_#22d3ee]' : 'bg-white/20'}`} />
                                     ))}
                                 </div>
-                                <span className="text-[10px] font-mono text-slate-400 tracking-[0.4em] uppercase flex items-center gap-2">
-                                    <Globe size={14} className="text-cyan-400" /> Mapifyit_Systems_v4.2
+                                <span className="text-[11px] font-mono text-cyan-400/80 tracking-[0.5em] uppercase flex items-center gap-3 drop-shadow-[0_0_8px_rgba(34,211,238,0.5)]">
+                                    <Globe size={16} className="text-cyan-400 animate-spin-slow" /> Mapifyit_Systems_v4.2_Alpha
                                 </span>
                             </div>
                             {/* <div className="px-5 py-2 bg-[#050508]/90 border border-cyan-500/20 rounded-full backdrop-blur-xl">
@@ -113,15 +119,15 @@ export default function MapifyitGISLab() {
                         </div>
 
                         <div className="flex justify-between items-end gap-2 pt-2">
-                            <div className="bg-[#050508]/80 p-6 rounded-3xl border border-white/20 backdrop-blur-xl">
-                                <div className="text-[8px] font-bold text-slate-500 uppercase tracking-widest text-left">Reference_Projection</div>
-                                <div className="text-[12px] font-mono text-slate-300 tracking-tight">LAT 25.1840° N / LNG 55.2608° E</div>
+                            <div className="bg-[#050508]/90 p-6 rounded-3xl border border-white/20 backdrop-blur-3xl shadow-[0_0_20px_rgba(0,0,0,0.5)]">
+                                <div className="text-[9px] font-bold text-cyan-500 uppercase tracking-[0.2em] text-left mb-1">Reference_Projection</div>
+                                <div className="text-[13px] font-mono text-slate-200 tracking-wider drop-shadow-[0_0_5px_rgba(34,211,238,0.4)]">LAT 25.1840° N / LNG 55.2608° E</div>
                             </div>
-                            <div className="text-right bg-[#050508]/80 p-6 rounded-3xl border border-white/20 backdrop-blur-xl">
-                                <div className="text-[8px] font-bold text-cyan-500/50 uppercase flex items-center justify-end gap-2 mb-1 tracking-widest">
-                                    Render_Pipeline <Cpu className="w-3 h-3 text-cyan-400" />
+                            <div className="text-right bg-[#050508]/90 p-6 rounded-3xl border border-white/20 backdrop-blur-3xl shadow-[0_0_20px_rgba(0,0,0,0.5)]">
+                                <div className="text-[9px] font-bold text-blue-400 uppercase flex items-center justify-end gap-2 mb-1 tracking-[0.2em]">
+                                    Render_Pipeline <Cpu className="w-3.5 h-3.5 text-cyan-400" />
                                 </div>
-                                <div className="text-[12px] font-mono text-white tracking-tight italic">60.0 FPS // 4.1ms</div>
+                                <div className="text-[13px] font-mono text-white tracking-wider italic drop-shadow-[0_0_5px_rgba(59,130,246,0.4)]">60.0 FPS // 4.1ms</div>
                             </div>
                         </div>
                     </div>
@@ -149,14 +155,20 @@ export default function MapifyitGISLab() {
                 @keyframes scan-line { 0% { transform: translateY(0); } 100% { transform: translateY(800px); } }
                 @keyframes draw { to { stroke-dashoffset: 0; } }
                 @keyframes panning { 
-                    0% { transform: translate(-2%, -2%) scale(1.1); } 
-                    50% { transform: translate(2%, 2%) scale(1.1); }
-                    100% { transform: translate(-2%, -2%) scale(1.1); } 
+                    0% { transform: translate(-1%, -1%) scale(1.05); } 
+                    50% { transform: translate(1%, 1%) scale(1.05); }
+                    100% { transform: translate(-1%, -1%) scale(1.05); } 
+                }
+                @keyframes grid-rotate {
+                    0% { transform: rotate(0deg) scale(1); }
+                    50% { transform: rotate(2deg) scale(1.1); }
+                    100% { transform: rotate(0deg) scale(1); }
                 }
                 @keyframes spin-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
                 .animate-scan-line { animation: scan-line 12s linear infinite; }
                 .animate-draw { animation: draw 5s ease-in-out infinite; }
-                .animate-panning { animation: panning 40s linear infinite alternate; }
+                .animate-panning { animation: panning 30s linear infinite alternate; }
+                .animate-grid-rotate { animation: grid-rotate 40s ease-in-out infinite; }
                 .animate-spin-slow { animation: spin-slow 30s linear infinite; }
                 .animate-ping-slow { animation: ping 4s cubic-bezier(0, 0, 0.2, 1) infinite; }
                 @keyframes ping { 75%, 100% { transform: scale(2.5); opacity: 0; } }

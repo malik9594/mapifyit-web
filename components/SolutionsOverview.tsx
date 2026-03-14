@@ -48,7 +48,7 @@ const solutions = [
         subtitle: "Real-Time Workforce Visibility & Field Operations",
         description: "Maximize productivity with our Field Force Tracking platform. Monitor live agent movements, verify attendance via geo-fencing, and optimize task distribution for mobile teams. Ideal for enterprise field workforce management, location tracking, and real-time operational insights.",
         icon: Users,
-        href: "/fieldforce",
+        href: "/fft",
         color: "indigo",
         infoPoints: [
             "Real-Time GPS-Based Agent Movement Tracking",
