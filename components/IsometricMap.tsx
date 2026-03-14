@@ -12,7 +12,7 @@ export default function GlobalRadarMap() {
                     100% { transform: translateX(200%); }
                 }
                 .animate-radar {
-                    animation: radar-sweep 5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+                    animation: radar-sweep 5s linear infinite;
                 }
                 @keyframes pulse-ring {
                     0% { transform: scale(0.8); opacity: 0.5; }
@@ -57,22 +57,22 @@ export default function GlobalRadarMap() {
                     </svg>
 
                     {/* API Node 1: New York */}
-                    <div className="absolute top-[38%] left-[50%] w-3 h-3 bg-blue-400 rounded-full shadow-[0_0_15px_#3b82f6] -translate-x-1/2 -translate-y-1/2 z-30">
+                    <div className="absolute top-[10%] left-[15%] w-3 h-3 bg-blue-400 rounded-full shadow-[0_0_15px_#3b82f6] -translate-x-1/2 -translate-y-1/2 z-30">
                         <div className="absolute inset-0 rounded-full border-2 border-blue-400 animate-pulse-ring" />
                     </div>
 
                     {/* API Node 2: London */}
-                    <div className="absolute top-[35%] left-[48%] w-4 h-4 bg-emerald-400 rounded-full shadow-[0_0_20px_#10b981] -translate-x-1/2 -translate-y-1/2 z-30">
+                    <div className="absolute top-[20%] left-[38%] w-4 h-4 bg-emerald-400 rounded-full shadow-[0_0_20px_#10b981] -translate-x-1/2 -translate-y-1/2 z-30">
                         <div className="absolute inset-0 rounded-full border-2 border-emerald-400 animate-pulse-ring" style={{ animationDelay: '0.5s' }} />
                     </div>
 
                     {/* API Node 3: Tokyo */}
-                    <div className="absolute top-[42%] left-[78%] w-3 h-3 bg-blue-400 rounded-full shadow-[0_0_15px_#3b82f6] -translate-x-1/2 -translate-y-1/2 z-30">
+                    <div className="absolute top-[42%] left-[88%] w-3 h-3 bg-blue-400 rounded-full shadow-[0_0_15px_#3b82f6] -translate-x-1/2 -translate-y-1/2 z-30">
                         <div className="absolute inset-0 rounded-full border-2 border-blue-400 animate-pulse-ring" style={{ animationDelay: '1s' }} />
                     </div>
 
                     {/* API Node 4: Sydney */}
-                    <div className="absolute top-[45%] left-[35%] w-3 h-3 bg-purple-400 rounded-full shadow-[0_0_15px_#8b5cf6] -translate-x-1/2 -translate-y-1/2 z-30">
+                    <div className="absolute top-[75%] left-[75%] w-3 h-3 bg-purple-400 rounded-full shadow-[0_0_15px_#8b5cf6] -translate-x-1/2 -translate-y-1/2 z-30">
                         <div className="absolute inset-0 rounded-full border-2 border-purple-400 animate-pulse-ring" style={{ animationDelay: '1.5s' }} />
                     </div>
                 </div>

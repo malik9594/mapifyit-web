@@ -1,5 +1,6 @@
 import React from 'react';
 import { ShieldCheck, Zap } from 'lucide-react';
+import Link from 'next/link';
 import { Reveal } from './Reveal';
 import IsometricMap from './IsometricMap';
 import LoginMockup from './LoginMockup';
@@ -39,12 +40,18 @@ export default function Hero() {
 
           <Reveal delay={300}>
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-              <button className="w-full sm:w-auto px-8 py-4 bg-white text-[#03060D] font-bold rounded-xl hover:bg-slate-100 transition-all flex items-center justify-center gap-2 hover:scale-105 active:scale-95 shadow-[0_0_30px_rgba(255,255,255,0.2)]">
+              <a
+                href="#maps-preview"
+                className="w-full sm:w-auto px-8 py-4 bg-white text-[#03060D] font-bold rounded-xl hover:bg-slate-100 transition-all flex items-center justify-center gap-2 hover:scale-105 active:scale-95 shadow-[0_0_30px_rgba(255,255,255,0.2)] scroll-smooth"
+              >
                 Explore Platform
-              </button>
-              <button className="w-full sm:w-auto px-8 py-4 bg-slate-800/40 border border-slate-700 hover:border-slate-500 text-white font-bold rounded-xl hover:bg-slate-800/80 transition-all flex items-center justify-center gap-2 backdrop-blur-md hover:scale-105 active:scale-95 text-sm md:text-base">
+              </a>
+              <Link
+                href="/contactus"
+                className="w-full sm:w-auto px-8 py-4 bg-slate-800/40 border border-slate-700 hover:border-slate-500 text-white font-bold rounded-xl hover:bg-slate-800/80 transition-all flex items-center justify-center gap-2 backdrop-blur-md hover:scale-105 active:scale-95 text-sm md:text-base"
+              >
                 <ShieldCheck className="w-5 h-5 text-emerald-400" /> Deploy On-Premise
-              </button>
+              </Link>
             </div>
           </Reveal>
         </div>
