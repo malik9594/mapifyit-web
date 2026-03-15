@@ -261,7 +261,7 @@ export default function FftAnimation() {
                 gradient.addColorStop(1, `rgba(${colorPrimaryRGB}, 0)`);
 
                 ctx.strokeStyle = gradient;
-                ctx.lineWidth = 1.2 / cam.zoom;
+                ctx.lineWidth = 2 / cam.zoom;
                 ctx.lineCap = 'round';
                 ctx.beginPath();
                 ctx.moveTo(x, y);
@@ -270,7 +270,7 @@ export default function FftAnimation() {
 
                 ctx.fillStyle = `rgba(255, 255, 255, ${generalOpacity})`;
                 ctx.beginPath();
-                ctx.arc(x, y, 0.8 / cam.zoom, 0, Math.PI * 2);
+                ctx.arc(x, y, 1.2 / cam.zoom, 0, Math.PI * 2);
                 ctx.fill();
             });
 
@@ -393,8 +393,14 @@ export default function FftAnimation() {
 
         render();
 
+        const resizeObserver = new ResizeObserver(() => resize());
+        resizeObserver.observe(container);
+
+        resize();
+
         return () => {
             window.removeEventListener('resize', resize);
+            resizeObserver.disconnect();
             cancelAnimationFrame(animationFrameId);
         };
     }, []);
@@ -405,7 +411,7 @@ export default function FftAnimation() {
             <div
                 id="hero-container"
                 ref={containerRef}
-                className="relative w-full max-w-[1440px] h-[400px] md:h-[600px] bg-[#030712] rounded-xl overflow-hidden shadow-[0_25px_50px_-12px_rgba(0,0,0,0.8)] border border-white/5"
+                className="relative w-full max-w-[1440px] h-[500px] md:h-[700px] bg-[#030712] rounded-3xl overflow-hidden shadow-[0_25px_50px_-12px_rgba(0,0,0,0.8)] border border-white/5"
             >
                 <canvas
                     id="mapCanvas"
