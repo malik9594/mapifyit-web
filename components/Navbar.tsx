@@ -269,7 +269,6 @@ export default function Navbar() {
               className="w-full py-4 rounded-xl bg-white/10 text-white font-bold border border-white/20 flex items-center justify-center gap-2"
             >
               Try Maps <ChevronRight size={18} />
-
             </Link>
             <button className="w-full py-4 rounded-xl bg-white/5 text-white font-bold border border-white/10 flex items-center justify-center gap-2" onClick={() => window.location.href = "https://dev.mapifyit.com/login"}><LogIn size={18} /> Log in</button>
             <button className="w-full py-4 rounded-xl bg-blue-600 text-white font-bold shadow-lg shadow-blue-600/20 flex items-center justify-center gap-2"><Sparkles size={18} /> Start Free</button>
