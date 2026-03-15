@@ -1,6 +1,6 @@
 "use client"
 import React, { useState, useRef, useEffect } from 'react';
-import { Map, Menu, X, ChevronRight, ChevronDown, ShieldCheck, Truck, LogIn, Sparkles } from 'lucide-react';
+import { Map, Menu, X, ChevronRight, ChevronDown, ShieldCheck, Truck, LogIn, Sparkles, Users } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 
@@ -140,7 +140,7 @@ export default function Navbar() {
                 </Link>
                 <Link href="/fft" onClick={() => setSolutionsOpen(false)} className={`flex items-start gap-3 p-3 rounded-xl transition-all group/item ${pathname === '/fft' ? 'bg-white/10' : 'hover:bg-white/5'}`}>
                   <div className={`w-8 h-8 rounded-lg bg-indigo-500/10 flex items-center justify-center text-indigo-500 group-hover/item:bg-indigo-500 group-hover/item:text-white ${pathname === '/fft' ? 'bg-indigo-500 text-white' : ''}`}>
-                    <Truck size={18} />
+                    <Users size={18} />
                   </div>
                   <div>
                     <p className="text-sm font-bold text-white">FFT</p>
@@ -230,7 +230,7 @@ export default function Navbar() {
               <p className="text-[10px] uppercase tracking-widest text-blue-500 font-bold">Solutions</p>
               <Link href="https://ngekyc.mapifyit.com/" target="_blank" rel="noopener noreferrer" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-4 text-slate-300"><ShieldCheck className="text-blue-500" />NG eKYC</Link>
               <Link href="/fms" onClick={() => setMobileMenuOpen(false)} className={`flex items-center gap-4 ${pathname === '/fms' ? 'text-indigo-400' : 'text-slate-300'}`}><Truck className={`${pathname === '/fms' ? 'text-indigo-400' : 'text-indigo-500'}`} /> FMS</Link>
-              <Link href="/fft" onClick={() => setMobileMenuOpen(false)} className={`flex items-center gap-4 ${pathname === '/fft' ? 'text-indigo-400' : 'text-slate-300'}`}><Truck className={`${pathname === '/fft' ? 'text-indigo-400' : 'text-indigo-500'}`} /> FFT</Link>
+              <Link href="/fft" onClick={() => setMobileMenuOpen(false)} className={`flex items-center gap-4 ${pathname === '/fft' ? 'text-indigo-400' : 'text-slate-300'}`}><Users className={`${pathname === '/fft' ? 'text-indigo-400' : 'text-indigo-500'}`} /> FFT</Link>
 
             </div>
 

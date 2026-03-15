@@ -23,16 +23,15 @@ export default function Footer() {
 
     const footerLinks = {
         Products: [
-            { name: "Map Foundations", href: "/maps" },
-            { name: "Location Core", href: "/gis" },
-            { name: "Fleet Management", href: "/fms" },
-            { name: "Identity Verification", href: "https://ngekyc.mapifyit.com/" },
+            { name: "Maps", href: "/maps" },
+            { name: "GIS", href: "/gis" },
+            // { name: "Fleet Management", href: "/fms" },
+            // { name: "Identity Verification", href: "https://ngekyc.mapifyit.com/" },
         ],
         Solutions: [
-            { name: "Mobility Systems", href: "#" },
-            { name: "Civic Intelligence", href: "#" },
-            { name: "Secure Operations", href: "#" },
-            { name: "GeoEnvironmental", href: "#" },
+            { name: "NG ekyc", href: "https://ngekyc.mapifyit.com/" },
+            { name: "Fleet Management System", href: "/fms" },
+            { name: "Field Force Tracking", href: "/fft" },
         ],
         Company: [
             { name: "Pricing", href: "/pricing" },
