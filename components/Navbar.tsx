@@ -138,6 +138,15 @@ export default function Navbar() {
                     <p className="text-[10px] text-slate-400">Fleet Management</p>
                   </div>
                 </Link>
+                <Link href="/fft" onClick={() => setSolutionsOpen(false)} className={`flex items-start gap-3 p-3 rounded-xl transition-all group/item ${pathname === '/fft' ? 'bg-white/10' : 'hover:bg-white/5'}`}>
+                  <div className={`w-8 h-8 rounded-lg bg-indigo-500/10 flex items-center justify-center text-indigo-500 group-hover/item:bg-indigo-500 group-hover/item:text-white ${pathname === '/fft' ? 'bg-indigo-500 text-white' : ''}`}>
+                    <Truck size={18} />
+                  </div>
+                  <div>
+                    <p className="text-sm font-bold text-white">FFT</p>
+                    <p className="text-[10px] text-slate-400">Field Force Tracking</p>
+                  </div>
+                </Link>
               </div>
             </div>
 
@@ -167,6 +176,14 @@ export default function Navbar() {
 
           <div className="hidden md:flex items-center gap-4">
             <button className="text-sm font-medium text-slate-300 hover:text-white transition-colors" onClick={() => window.open("https://dev.mapifyit.com/login", "_blank")}>Log in</button>
+            <Link
+              href="https://maps.mapifyit.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-5 py-2.5 text-sm font-medium text-white rounded-xl bg-white/10 border border-white/20 hover:bg-white/20 transition-all flex items-center gap-2"
+            >
+              Try Maps <ChevronRight size={14} />
+            </Link>
             <button className="px-5 py-2.5 text-sm font-medium text-white rounded-xl bg-blue-600 hover:bg-blue-500 transition-all shadow-lg shadow-blue-600/20">
               Start Free
             </button>
@@ -213,6 +230,8 @@ export default function Navbar() {
               <p className="text-[10px] uppercase tracking-widest text-blue-500 font-bold">Solutions</p>
               <Link href="https://ngekyc.mapifyit.com/" target="_blank" rel="noopener noreferrer" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-4 text-slate-300"><ShieldCheck className="text-blue-500" />NG eKYC</Link>
               <Link href="/fms" onClick={() => setMobileMenuOpen(false)} className={`flex items-center gap-4 ${pathname === '/fms' ? 'text-indigo-400' : 'text-slate-300'}`}><Truck className={`${pathname === '/fms' ? 'text-indigo-400' : 'text-indigo-500'}`} /> FMS</Link>
+              <Link href="/fft" onClick={() => setMobileMenuOpen(false)} className={`flex items-center gap-4 ${pathname === '/fft' ? 'text-indigo-400' : 'text-slate-300'}`}><Truck className={`${pathname === '/fft' ? 'text-indigo-400' : 'text-indigo-500'}`} /> FFT</Link>
+
             </div>
 
             <Link
@@ -242,6 +261,16 @@ export default function Navbar() {
             </Link>
           </div>
           <div className="mt-auto space-y-4 pt-10 border-t border-white/5">
+            <Link
+              href="https://maps.mapifyit.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setMobileMenuOpen(false)}
+              className="w-full py-4 rounded-xl bg-white/10 text-white font-bold border border-white/20 flex items-center justify-center gap-2"
+            >
+              Try Maps <ChevronRight size={18} />
+
+            </Link>
             <button className="w-full py-4 rounded-xl bg-white/5 text-white font-bold border border-white/10 flex items-center justify-center gap-2" onClick={() => window.location.href = "https://dev.mapifyit.com/login"}><LogIn size={18} /> Log in</button>
             <button className="w-full py-4 rounded-xl bg-blue-600 text-white font-bold shadow-lg shadow-blue-600/20 flex items-center justify-center gap-2"><Sparkles size={18} /> Start Free</button>
           </div>
