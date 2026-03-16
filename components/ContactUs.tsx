@@ -1,6 +1,7 @@
 "use client"
 import React, { useEffect, useRef, useState } from 'react';
-import { Phone, Mail, MapPin, Globe, Send, User, MessageSquare, ChevronRight } from 'lucide-react';
+import { Phone, Mail, MapPin, Globe, Send, User, MessageSquare, CheckCircle2 } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 // ─── Mapifyit Config ────────────────────────────────────────────────────────
 const MAPIFYIT_STYLE_URL = 'https://dev-client.mapifyit.com/api/v1/proxy/tiles/dark';
@@ -8,11 +9,17 @@ const MAPIFYIT_TOKEN = 'mfy_8b0755c081c9204caa20681ddab91d2856c3667a6ad8d9e8';
 const DUBAI_LNG = 55.2608;
 const DUBAI_LAT = 25.1840;
 
+// EmailJS Configuration (Replace with your own IDs from emailjs.com)
+const EMAILJS_SERVICE_ID = 'service_zwv3eln'; // e.g., 'service_gmail'
+const EMAILJS_TEMPLATE_ID = 'template_8encwr5'; // e.g., 'template_contact'
+const EMAILJS_PUBLIC_KEY = 'oUCWzxACRZZLpm5ok'; // Found in Account -> Public Key
+
 export default function ContactUs() {
     const mapContainerRef = useRef<HTMLDivElement>(null);
+    const formRef = useRef<HTMLFormElement>(null);
     const mapRef = useRef<any>(null);
     const mapInitStarted = useRef(false);
-    const [status, setStatus] = useState<'idle' | 'sending' | 'sent'>('idle');
+    const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
 
     useEffect(() => {
         let isMounted = true;
@@ -67,8 +74,24 @@ export default function ContactUs() {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
+        if (!formRef.current) return;
+
         setStatus('sending');
-        setTimeout(() => setStatus('sent'), 1500); // Mock submission
+
+        emailjs.sendForm(
+            EMAILJS_SERVICE_ID,
+            EMAILJS_TEMPLATE_ID,
+            formRef.current,
+            EMAILJS_PUBLIC_KEY
+        ).then((result) => {
+            console.log('Email sent successfully:', result.text);
+            setStatus('sent');
+            formRef.current?.reset();
+        }, (error) => {
+            console.error('Failed to send email:', error.text);
+            setStatus('error');
+            setTimeout(() => setStatus('idle'), 3000);
+        });
     };
 
     return (
@@ -119,7 +142,7 @@ export default function ContactUs() {
                     <div className="relative">
                         <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-[2.5rem] blur opacity-10" />
 
-                        <form onSubmit={handleSubmit} className="relative bg-[#0A101F] border border-blue-900/30 p-8 md:p-10 rounded-[2.5rem] shadow-3xl">
+                        <form ref={formRef} onSubmit={handleSubmit} className="relative bg-[#0A101F] border border-blue-900/30 p-8 md:p-10 rounded-[2.5rem] shadow-3xl">
                             <div className="space-y-6">
                                 {/* Name Input */}
                                 <div className="space-y-2">
@@ -128,6 +151,7 @@ export default function ContactUs() {
                                         <User className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500 group-focus-within:text-cyan-400 transition-colors" />
                                         <input
                                             required
+                                            name="from_name"
                                             type="text"
                                             placeholder="John Doe"
                                             className="w-full bg-slate-950 border border-white/5 rounded-xl py-4 pl-12 pr-4 text-white placeholder:text-slate-700 focus:outline-none focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/20 transition-all"
@@ -137,11 +161,12 @@ export default function ContactUs() {
 
                                 {/* Email Input */}
                                 <div className="space-y-2">
-                                    <label className="text-[10px] font-bold text-cyan-500 uppercase tracking-[0.2em] ml-1">Work Email</label>
+                                    <label className="text-[10px] font-bold text-cyan-500 uppercase tracking-[0.2em] ml-1">Email</label>
                                     <div className="relative group">
                                         <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500 group-focus-within:text-cyan-400 transition-colors" />
                                         <input
                                             required
+                                            name="user_email"
                                             type="email"
                                             placeholder="john@company.com"
                                             className="w-full bg-slate-950 border border-white/5 rounded-xl py-4 pl-12 pr-4 text-white placeholder:text-slate-700 focus:outline-none focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/20 transition-all"
@@ -155,6 +180,8 @@ export default function ContactUs() {
                                     <div className="relative group">
                                         <MessageSquare className="absolute left-4 top-4 w-4 h-4 text-slate-500 group-focus-within:text-cyan-400 transition-colors" />
                                         <textarea
+                                            required
+                                            name="message"
                                             rows={4}
                                             placeholder="Tell us about your GIS needs..."
                                             className="w-full bg-slate-950 border border-white/5 rounded-xl py-4 pl-12 pr-4 text-white placeholder:text-slate-700 focus:outline-none focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/20 transition-all resize-none"
@@ -164,18 +191,24 @@ export default function ContactUs() {
 
                                 {/* Submit Button */}
                                 <button
-                                    disabled={status !== 'idle'}
+                                    disabled={status === 'sending' || status === 'sent'}
                                     className="w-full group relative flex items-center justify-center gap-3 bg-gradient-to-r from-cyan-500 to-blue-600 p-4 rounded-xl text-slate-950 font-bold hover:shadow-[0_0_20px_rgba(34,211,238,0.4)] transition-all disabled:opacity-50"
                                 >
                                     {status === 'sent' ? (
-                                        <>Message Received! <ChevronRight className="w-5 h-5" /></>
+                                        <>Request Sent! <CheckCircle2 className="w-5 h-5 text-slate-900" /></>
                                     ) : (
                                         <>
-                                            {status === 'sending' ? 'Transmitting...' : 'Send Transmission'}
+                                            {status === 'sending' ? 'Sending...' : 'Send Request'}
                                             <Send className={`w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1 ${status === 'sending' ? 'animate-pulse' : ''}`} />
                                         </>
                                     )}
                                 </button>
+
+                                {status === 'error' && (
+                                    <p className="text-[10px] text-center text-red-500 uppercase tracking-widest font-mono">
+                                        Failed to send. Please try again or email hi@mapifyit.com
+                                    </p>
+                                )}
 
                                 <p className="text-[10px] text-center text-slate-600 uppercase tracking-widest font-mono">
                                     Secure SSL Encrypted Transmission
