@@ -104,13 +104,26 @@ export default function Footer() {
                                 <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center">
                                     <Mail className="w-4 h-4 text-cyan-500" />
                                 </div>
-                                <span>hello@mapifyit.com</span>
+                                <span>hi@mapifyit.com</span>
                             </div>
                             <div className="flex items-center gap-3 text-slate-400 hover:text-slate-200 transition-colors text-sm">
                                 <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center">
                                     <Phone className="w-4 h-4 text-blue-500" />
                                 </div>
-                                <span>+92 306 1111110</span>
+                                <span>+97144429622</span>
+
+                            </div>
+                            <div className="flex items-center gap-3 text-slate-400 hover:text-slate-200 transition-colors text-sm">
+                                <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center">
+                                    <Phone className="w-4 h-4 text-blue-500" />
+                                </div>
+                                <span>+966535405691</span>
+                            </div>
+                            <div className="flex items-center gap-3 text-slate-400 hover:text-slate-200 transition-colors text-sm">
+                                <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center">
+                                    <Phone className="w-4 h-4 text-blue-500" />
+                                </div>
+                                <span>+18326529278</span>
                             </div>
                         </div>
 
