@@ -56,27 +56,29 @@ export default function Hero() {
           </Reveal>
         </div>
 
-        {/* Right Column: Visual Mockup */}
-        <div className="relative group w-full flex justify-center lg:justify-end">
-          <Reveal delay={400} className="w-full flex justify-center lg:justify-end">
-            <div className="relative z-10 scale-[0.85] sm:scale-100 transition-transform">
+        {/* Right Column: Visual Mockup (Landscape Workstation) */}
+        <div className="relative group w-full">
+          <Reveal delay={400} className="w-full">
+            <div className="relative z-10 w-full transition-all duration-500">
               <LoginMockup />
             </div>
 
-            {/* Background Decorative Elements */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] bg-blue-600/10 rounded-full blur-[100px] -z-10 group-hover:bg-blue-600/20 transition-colors duration-500" />
+            {/* Background Decorative Glow */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-blue-600/5 rounded-full blur-[120px] -z-10 group-hover:bg-blue-600/15 transition-colors duration-1000" />
           </Reveal>
         </div>
       </div>
 
-      {/* Full-width Map Section (Appears below the split) */}
-      <div className="mt-20 lg:mt-20">
+      {/* Full-width Map Section (Isometric Preview) */}
+      <div className="mt-24 lg:mt-32">
         <Reveal delay={500}>
-          <div className="text-center mb-10">
-            <h2 className="text-sm font-bold text-blue-500 uppercase tracking-widest mb-3">Live Engine Status</h2>
-            <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-transparent mx-auto" />
+          <div className="text-center mb-12">
+            <h2 className="text-[10px] md:text-sm font-bold text-blue-500 uppercase tracking-[0.4em] mb-4">Enterprise Spatial Engine Status</h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-transparent mx-auto" />
           </div>
-          <IsometricMap />
+          <div className="max-w-6xl mx-auto rounded-[2rem] overflow-hidden border border-white/5 bg-slate-950/50 backdrop-blur-sm">
+            <IsometricMap />
+          </div>
         </Reveal>
       </div>
     </section>
