@@ -4,9 +4,10 @@ import {
     Route, Zap, MousePointer2, BoxSelect, Database,
     Share2, Compass, Settings, Mountain, Scan, Satellite,
     Crosshair, Activity, Cpu, ArrowLeft, ExternalLink,
-    Layers, ShieldCheck
+    Layers, ShieldCheck, Monitor
 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
+import { Reveal } from '@/components/Reveal';
 import GISShowcase from './GISShowCase';
 
 // --- Internal Component: Improved GIS Visual Screen ---
@@ -126,11 +127,11 @@ export default function GeospatialModuleShowcaseCool() {
                                 <Compass className="w-4 h-4" /> Enterprise GIS Platform
                             </div> */}
                             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight leading-tight">
-                                GIS Built for <br />
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Enterprise Intelligence.</span>
+                                Enterprise GIS Platform  <br />
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">for Global Geospatial Projects</span>
                             </h1>
                             <p className="text-slate-400 text-lg leading-relaxed">
-                                Mapifyit GIS offers a complete enterprise geospatial platform for managing and analyzing spatial data. All modules run <strong>fully on-premise,</strong>giving organizations secure GIS operations without relying on cloud infrastructure.
+                                MapifyIt GIS is a powerful enterprise geospatial platform designed for organizations managing large-scale GIS projects, spatial intelligence, and mission-critical geospatial infrastructure. Built for governments, enterprises, defense organizations, and infrastructure operators, MapifyIt enables teams to deploy and manage advanced GIS systems with full control over their spatial data.Unlike traditional cloud-dependent platforms, MapifyIt GIS can run fully on-premise or within private infrastructure, allowing organizations to operate secure geospatial systems while maintaining complete data sovereignty.
                             </p>
                         </div>
 
@@ -186,6 +187,100 @@ export default function GeospatialModuleShowcaseCool() {
                         </div>
                     </div> */}
                     <GISShowcase />
+                </div>
+
+                {/* --- Extended GIS Content Sections --- */}
+                <div className="mt-2 space-y-5">
+                    {/* section 1: Project Lifecycle & Secure Deployment */}
+                    <div className="grid md:grid-cols-2 gap-16">
+                        <Reveal delay={100}>
+                            <div className="p-8 rounded-3xl border border-white/5 bg-slate-950/40 backdrop-blur-xl hover:border-blue-500/20 transition-all group">
+                                <div className="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 mb-6 group-hover:bg-blue-500 group-hover:text-white transition-all">
+                                    <Layers className="w-6 h-6" />
+                                </div>
+                                <h2 className="text-3xl font-bold text-white mb-6">Designed for Modern GIS Projects</h2>
+                                <p className="text-slate-400 leading-relaxed mb-8">
+                                    MapifyIt supports the full lifecycle of enterprise GIS deployments, from spatial data ingestion and mapping to advanced geospatial analytics and operational intelligence.
+                                </p>
+                                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    {[
+                                        "National and regional GIS platforms",
+                                        "Smart city geospatial systems",
+                                        "Transportation and mobility mapping",
+                                        "Defense and security geospatial intelligence",
+                                        "Utility network and infrastructure mapping",
+                                        "Land management and cadastral systems",
+                                        "Environmental monitoring and disaster response",
+                                        "Asset tracking and field operations"
+                                    ].map((item, idx) => (
+                                        <li key={idx} className="flex items-start gap-3 text-xs text-slate-500 leading-tight">
+                                            <div className="w-1.5 h-1.5 rounded-full bg-blue-500/40 mt-1 flex-shrink-0" />
+                                            {item}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </Reveal>
+
+                        <Reveal delay={300}>
+                            <div className="flex flex-col justify-center">
+                                <h2 className="text-3xl font-bold text-white mb-6">Secure and Flexible Deployment</h2>
+                                <p className="text-slate-400 text-lg leading-relaxed mb-8">
+                                    MapifyIt is built for organizations that require secure, scalable GIS infrastructure. The platform supports on-premise, private cloud, and hybrid deployments, enabling governments and enterprises to manage geospatial data within their own controlled environments.
+                                </p>
+                                <div className="p-6 rounded-2xl bg-emerald-500/5 border border-emerald-500/10 text-emerald-400/80 text-sm leading-relaxed">
+                                    <div className="flex items-center gap-3 mb-3">
+                                        <ShieldCheck className="w-5 h-5" />
+                                        <span className="font-bold uppercase tracking-wider text-xs">Sovereignty Guaranteed</span>
+                                    </div>
+                                    This architecture ensures high security, regulatory compliance, and full ownership of spatial datasets without any third-party exposure.
+                                </div>
+                            </div>
+                        </Reveal>
+                    </div>
+
+                    {/* Section 2: Enterprise Capabilities & Scalable Infrastructure */}
+                    <div className="grid md:grid-cols-2 gap-16 items-center">
+                        <Reveal delay={200} className="order-last md:order-first">
+                            <div className="grid grid-cols-2 gap-4">
+                                {[
+                                    { title: "Spatial Data Management", icon: Database },
+                                    { title: "High-Performance Rendering", icon: Zap },
+                                    { title: "Advanced Analytics", icon: Activity },
+                                    { title: "Custom Visualization", icon: Mountain },
+                                    { title: "Routing & Optimization", icon: Route },
+                                    { title: "Geocoding Suite", icon: Compass },
+                                    { title: "Field Data Collection", icon: Scan },
+                                    { title: "Operational Dashboards", icon: Monitor }
+                                ].map((cap, i) => (
+                                    <div key={i} className="p-4 rounded-xl border border-white/5 bg-slate-900/30 flex flex-col items-center text-center group hover:bg-slate-800/50 transition-all">
+                                        <div className="w-10 h-10 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 mb-3 group-hover:scale-110 transition-transform">
+                                            <cap.icon className="w-5 h-5" />
+                                        </div>
+                                        <span className="text-[10px] font-bold text-slate-400 uppercase tracking-tight">{cap.title}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        </Reveal>
+
+                        <Reveal delay={400}>
+                            <div>
+                                <h2 className="text-3xl font-bold text-white mb-6 uppercase tracking-tight">Enterprise Geospatial Capabilities</h2>
+                                <p className="text-slate-400 text-lg leading-relaxed mb-10">
+                                    Professional-grade tools designed for massive spatial datasets and high-concurrency requests. MapifyIt provides the core engines that power global mapping systems.
+                                </p>
+
+                                <div className="space-y-6">
+                                    <div>
+                                        <h3 className="text-xl font-bold text-white mb-3">Built for Scalable GIS Infrastructure</h3>
+                                        <p className="text-slate-400 leading-relaxed text-sm">
+                                            From city-scale mapping systems to national geospatial platforms, MapifyIt provides the performance and flexibility required for complex geospatial operations. The platform is designed to support high-volume spatial data, real-time analytics, and mission-critical GIS deployments worldwide.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </Reveal>
+                    </div>
                 </div>
             </div>
         </section>
