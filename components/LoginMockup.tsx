@@ -212,7 +212,6 @@
 // }
 
 
-
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
@@ -260,9 +259,9 @@ export default function MapifyAnimation() {
     const layerGroupRef = useRef<any>(null);
 
     // Strict cleanup refs to prevent React crash loops in Next.js Strict Mode
-    const timeoutsRef = useRef<NodeJS.Timeout[]>([]);
-    const intervalsRef = useRef<NodeJS.Timeout[]>([]);
-    const vehicleIntervalRef = useRef<NodeJS.Timeout | null>(null);
+    const timeoutsRef = useRef<any[]>([]);
+    const intervalsRef = useRef<any[]>([]);
+    const vehicleIntervalRef = useRef<any>(null);
     const paneRef = useRef<HTMLDivElement>(null);
 
     // UI State for Overlays
@@ -332,8 +331,10 @@ export default function MapifyAnimation() {
         if (!leafletLoaded || mapRef.current || !mapContainerRef.current) return;
 
         // React Strict Mode protection
-        if ((mapContainerRef.current as any)._leaflet_id) {
-            (mapContainerRef.current as any)._leaflet_id = null;
+        const container = mapContainerRef.current as any;
+        if (container._leaflet_id) {
+            container.innerHTML = '';
+            container._leaflet_id = null;
         }
 
         const L = window.L;
@@ -386,6 +387,8 @@ export default function MapifyAnimation() {
         const map = mapRef.current;
         const group = layerGroupRef.current;
 
+        map.invalidateSize(); // Force Leaflet to update its internal container dimension tracking
+
         const scheduleTimeout = (fn: () => void, delay: number) => timeoutsRef.current.push(setTimeout(fn, delay));
         const scheduleInterval = (fn: () => void, delay: number) => intervalsRef.current.push(setInterval(fn, delay));
 
@@ -409,9 +412,20 @@ export default function MapifyAnimation() {
 
         const duration = SCENE_DURATION / 1000;
 
+        // BUGFIX: Wraps flyTo inside a dimension check. If container size is 0 (due to CSS load order), 
+        // flyTo produces NaN coordinates which crashes the app. setView bypasses the animation calculation gracefully.
+        const safeFlyTo = (center: [number, number], zoom: number, options: any) => {
+            const size = map.getSize();
+            if (size.x > 0 && size.y > 0) {
+                map.flyTo(center, zoom, options);
+            } else {
+                map.setView(center, zoom);
+            }
+        };
+
         switch (currentStep) {
             case 0: {
-                map.flyTo([39.8283, -98.5795], 4, { duration, easeLinearity: 0.1 });
+                safeFlyTo([39.8283, -98.5795], 4, { duration, easeLinearity: 0.1 });
                 drawGrid(L, map, group);
 
                 scheduleTimeout(() => {
@@ -431,9 +445,9 @@ export default function MapifyAnimation() {
                 break;
             }
             case 1: {
-                map.flyTo([40.7128, -74.0060], 12, { duration, easeLinearity: 0.1 });
+                safeFlyTo([40.7128, -74.0060], 12, { duration, easeLinearity: 0.1 });
                 scheduleTimeout(() => {
-                    const coords = [
+                    const coords: [number, number][] = [
                         [40.7128, -74.0060], [40.7580, -73.9855], [40.7306, -73.9866],
                         [40.7061, -74.0092], [40.7484, -73.9857]
                     ];
@@ -448,7 +462,7 @@ export default function MapifyAnimation() {
                 break;
             }
             case 2: {
-                map.flyTo([40.75, -73.98], 14, { duration, easeLinearity: 0.1 });
+                safeFlyTo([40.75, -73.98], 14, { duration, easeLinearity: 0.1 });
                 const text = "coffee near me";
                 let i = 0;
                 const typeInterval = setInterval(() => {
@@ -459,7 +473,7 @@ export default function MapifyAnimation() {
                 intervalsRef.current.push(typeInterval);
 
                 scheduleTimeout(() => {
-                    const coffeeShops = [
+                    const coffeeShops: [number, number][] = [
                         [40.751, -73.981], [40.755, -73.975], [40.748, -73.985],
                         [40.745, -73.982], [40.753, -73.988]
                     ];
@@ -474,8 +488,8 @@ export default function MapifyAnimation() {
                 break;
             }
             case 3: {
-                map.flyTo([37.3346, -122.0090], 15, { duration, easeLinearity: 0.1 });
-                setSearchText("1 Apple Park Way, Cupertino");
+                safeFlyTo([37.3346, -122.0090], 15, { duration, easeLinearity: 0.1 });
+                setSearchText("1 Apple Park Way");
                 scheduleTimeout(() => {
                     L.marker([37.3346, -122.0090], {
                         icon: L.divIcon({ className: 'custom-icon', html: createMarkerIcon(PRIMARY_COLOR) })
@@ -489,9 +503,9 @@ export default function MapifyAnimation() {
             }
             case 4: {
                 setReverseAddress("34.0522, -118.2437");
-                map.flyTo([34.0522, -118.2437], 13, { duration, easeLinearity: 0.1 });
+                safeFlyTo([34.0522, -118.2437], 13, { duration, easeLinearity: 0.1 });
                 scheduleTimeout(() => {
-                    const finalAddr = "Los Angeles, California, USA";
+                    const finalAddr = "Los Angeles, CA, USA";
                     const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
                     let iterations = 0;
                     const scramble = setInterval(() => {
@@ -507,28 +521,29 @@ export default function MapifyAnimation() {
                 break;
             }
             case 5: {
-                map.flyTo([35.8, -120.3], 6, { duration, easeLinearity: 0.1 });
+                safeFlyTo([35.8, -120.3], 6, { duration, easeLinearity: 0.1 });
                 scheduleTimeout(() => {
-                    const sf = [37.7749, -122.4194];
-                    const la = [34.0522, -118.2437];
+                    const sf: [number, number] = [37.7749, -122.4194];
+                    const la: [number, number] = [34.0522, -118.2437];
 
                     L.marker(sf, { icon: L.divIcon({ className: 'custom-icon', html: createMarkerIcon('#fff') }) }).addTo(group);
                     L.marker(la, { icon: L.divIcon({ className: 'custom-icon', html: createMarkerIcon('#fff') }) }).addTo(group);
 
-                    const latlngs = [sf, [36.8, -121.5], [35.5, -119.5], la];
+                    const latlngs: [number, number][] = [sf, [36.8, -121.5], [35.5, -119.5], la];
 
                     const routeLine = L.polyline(latlngs, { color: PRIMARY_COLOR, weight: 4, opacity: 1, className: 'group-hover:brightness-150' }).addTo(group);
                     L.polyline(latlngs, { color: PRIMARY_COLOR, weight: 20, opacity: 0.2, className: 'blur-md animate-fade-in transition-opacity' }).addTo(group);
 
                     // Bugfix: Normalize SVG path length to prevent stroke-dasharray from breaking during map zoom
                     scheduleTimeout(() => {
-                        if (routeLine._path) {
-                            routeLine._path.setAttribute('pathLength', '100');
-                            routeLine._path.style.strokeDasharray = '100';
-                            routeLine._path.style.strokeDashoffset = '100';
-                            void routeLine._path.getBoundingClientRect(); // force reflow
-                            routeLine._path.style.transition = 'stroke-dashoffset 2.5s cubic-bezier(0.25, 1, 0.5, 1) forwards';
-                            routeLine._path.style.strokeDashoffset = '0';
+                        if (routeLine && (routeLine as any)._path) {
+                            const path = (routeLine as any)._path;
+                            path.setAttribute('pathLength', '100');
+                            path.style.strokeDasharray = '100';
+                            path.style.strokeDashoffset = '100';
+                            void path.getBoundingClientRect(); // force reflow
+                            path.style.transition = 'stroke-dashoffset 2.5s cubic-bezier(0.25, 1, 0.5, 1) forwards';
+                            path.style.strokeDashoffset = '0';
                         }
                     }, 50);
 
@@ -537,9 +552,9 @@ export default function MapifyAnimation() {
                 break;
             }
             case 6: {
-                map.flyTo([32.7767, -96.7970], 15, { duration, easeLinearity: 0.1 });
+                safeFlyTo([32.7767, -96.7970], 15, { duration, easeLinearity: 0.1 });
                 scheduleTimeout(() => {
-                    const path = [
+                    const path: [number, number][] = [
                         [32.7767, -96.7970], [32.7780, -96.7970],
                         [32.7780, -96.7940], [32.7810, -96.7940]
                     ];
@@ -587,7 +602,7 @@ export default function MapifyAnimation() {
                 break;
             }
             case 7: {
-                map.flyTo([39.8, -98.5], 5, { duration, easeLinearity: 0.1 });
+                safeFlyTo([39.8, -98.5], 5, { duration, easeLinearity: 0.1 });
                 scheduleTimeout(() => {
                     const chicagoBounds = [[41.9, -87.7], [41.9, -87.5], [41.7, -87.5], [41.7, -87.7]];
                     L.polygon(chicagoBounds as any, { color: '#EB5757', fillColor: '#EB5757', fillOpacity: 0.4, weight: 2, className: 'animate-fade-in' }).addTo(group);
@@ -615,114 +630,128 @@ export default function MapifyAnimation() {
     const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
         if (!paneRef.current) return;
         const rect = paneRef.current.getBoundingClientRect();
-        const x = ((e.clientX - rect.left) / rect.width - 0.5) * 15;
-        const y = ((e.clientY - rect.top) / rect.height - 0.5) * 15;
+        const x = ((e.clientX - rect.left) / rect.width - 0.5) * 10;
+        const y = ((e.clientY - rect.top) / rect.height - 0.5) * 10;
         setMouseOffset({ x, y });
     };
 
     return (
-        <div className="w-full text-white font-sans selection:bg-[#2F80ED] selection:text-white relative perspective-1000">
+        <div className="w-full min-h-[800px] flex items-center justify-center bg-transparent py-12 text-white font-sans selection:bg-[#2F80ED] selection:text-white">
 
-            <div
-                ref={paneRef}
-                onMouseLeave={() => setMouseOffset({ x: 0, y: 0 })}
-                onMouseMove={handleMouseMove}
-                className="relative w-full h-[450px] md:h-[520px] rounded-2xl overflow-hidden bg-[#0a0a0a] bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] border border-[#2F80ED]/30 shadow-[0_0_40px_rgba(47,128,237,0.15)] group transition-all duration-700 ease-out hover:shadow-[0_0_80px_rgba(47,128,237,0.25)] hover:border-[#2F80ED]/50 cursor-crosshair"
-            >
-                {/* Map Layer */}
+            {/* Mobile Device Mockup Frame */}
+            <div className="relative perspective-1000 group drop-shadow-[0_20px_50px_rgba(47,128,237,0.15)] hover:drop-shadow-[0_30px_60px_rgba(47,128,237,0.25)] transition-all duration-700">
+
                 <div
-                    className="absolute -inset-4 transition-transform duration-500 ease-out z-0 pointer-events-none"
-                    style={{
-                        transform: `scale(1.05) translate(${mouseOffset.x}px, ${mouseOffset.y}px)`,
-                        filter: 'brightness(0.85) contrast(1.1)'
-                    }}
+                    ref={paneRef}
+                    onMouseLeave={() => setMouseOffset({ x: 0, y: 0 })}
+                    onMouseMove={handleMouseMove}
+                    className="relative w-[500px] sm:w-[400px] h-[650px] sm:h-[720px] rounded-[3rem] overflow-hidden bg-[#0a0a0a] border-[10px] border-[#1a1a1a] ring-1 ring-white/10 cursor-crosshair transform-gpu transition-transform ease-out"
                 >
-                    <div ref={mapContainerRef} className="w-full h-full" />
-                </div>
-
-                {/* Inner Shadow Gradient overlay to make borders look seamless */}
-                <div className="absolute inset-0 pointer-events-none z-[5] shadow-[inset_0_0_60px_rgba(10,10,10,1)]"></div>
-
-                {/* Scoped UI Overlays */}
-                <div className="absolute inset-0 z-10 pointer-events-none">
-
-                    {/* Search Bar Overlay */}
-                    <div className={`absolute top-6 left-1/2 -translate-x-1/2 w-[85%] sm:w-[22rem] transition-all duration-700 ease-out transform ${[2, 3].includes(currentStep) ? 'translate-y-0 opacity-100' : '-translate-y-4 opacity-0 scale-95'}`}>
-                        <div className="bg-[#111111]/90 backdrop-blur-xl border border-white/10 p-3.5 rounded-xl flex items-center gap-3 w-full shadow-2xl">
-                            <Search className="text-[#888] w-4 h-4 flex-shrink-0" />
-                            <span className="text-sm md:text-base font-medium tracking-wide truncate">{searchText}</span>
-                            <span className="w-[1.5px] h-4 bg-[#2F80ED] animate-pulse ml-1 flex-shrink-0"></span>
-                        </div>
+                    {/* Hardware Details (Notch & Status Bar Area) */}
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-7 bg-[#1a1a1a] rounded-b-2xl z-40 flex items-center justify-center gap-2">
+                        <div className="w-12 h-1.5 bg-black/50 rounded-full"></div>
+                        <div className="w-2 h-2 bg-blue-900/40 rounded-full border border-black/50"></div>
                     </div>
 
-                    {/* Reverse Geocoding Overlay */}
-                    <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-700 ease-out ${currentStep === 4 ? 'scale-100 opacity-100' : 'scale-90 opacity-0'}`}>
-                        <div className="relative flex flex-col items-center">
-                            <Crosshair className="text-[#2F80ED] w-10 h-10 mb-3 drop-shadow-[0_0_10px_#2F80ED] animate-pulse" />
-                            <div className="bg-[#111111]/95 backdrop-blur-xl border border-white/10 px-6 py-3 rounded-xl shadow-2xl text-center">
-                                <div className="text-[10px] md:text-xs text-[#888] mb-1 font-mono uppercase tracking-widest">Location Decoded</div>
-                                <div className="text-sm md:text-base font-medium whitespace-nowrap">{reverseAddress}</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Routing Overlay */}
-                    <div className={`absolute bottom-6 left-6 md:left-8 transition-all duration-700 ease-out transform ${currentStep === 5 ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0 scale-95'}`}>
-                        <div className="bg-[#111111]/95 backdrop-blur-xl border border-white/10 p-5 rounded-xl shadow-2xl flex items-center gap-5">
-                            <div className="flex flex-col items-center gap-1.5">
-                                <div className="w-2 h-2 rounded-full bg-white"></div>
-                                <div className="w-[1.5px] h-6 bg-white/20"></div>
-                                <div className="w-2 h-2 rounded-full bg-[#2F80ED] shadow-[0_0_10px_#2F80ED]"></div>
-                            </div>
-                            <div>
-                                <div className="text-lg md:text-xl font-semibold leading-tight">{routeEta || 'Calculating...'}</div>
-                                <div className="text-xs md:text-sm text-[#888] flex items-center gap-1.5 mt-1">
-                                    <Route className="w-3 h-3" /> Fastest route
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Live Tracking Overlay */}
-                    <div className={`absolute top-6 right-6 md:right-8 transition-all duration-700 ease-out transform ${currentStep === 6 ? 'translate-x-0 opacity-100' : 'translate-x-4 opacity-0 scale-95'}`}>
-                        <div className="bg-[#111111]/95 backdrop-blur-xl border border-white/10 p-5 rounded-xl shadow-2xl w-52 md:w-60">
-                            <div className="flex items-center gap-2 mb-4">
-                                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
-                                <span className="text-[10px] md:text-xs font-medium uppercase tracking-widest text-[#888]">Live SDK Stream</span>
-                            </div>
-                            <div className="flex justify-between items-end">
-                                <div>
-                                    <div className="text-[#888] text-[10px] md:text-xs mb-1">Driver ETA</div>
-                                    <div className="text-2xl font-bold leading-none">{vehicleStatus.eta}</div>
-                                </div>
-                                <div className="text-right">
-                                    <div className="text-[#888] text-[10px] md:text-xs mb-1">Distance</div>
-                                    <div className="text-sm md:text-base font-medium leading-none">{vehicleStatus.dist}</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* GIS Overlay */}
-                    <div className={`absolute bottom-6 right-6 md:right-8 transition-all duration-700 ease-out transform ${currentStep === 7 ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0 scale-95'}`}>
-                        <div className="bg-[#111111]/95 backdrop-blur-xl border border-white/10 px-5 py-3 rounded-xl shadow-2xl flex items-center gap-3">
-                            <Layers className="text-[#EB5757] w-4 h-4" />
-                            <span className="text-xs md:text-sm font-medium text-white/90">Spatial Layering Active</span>
-                        </div>
-                    </div>
-
-                </div>
-
-                {/* Subtle Progress Bar */}
-                <div className="absolute bottom-0 left-0 h-1 bg-white/5 w-full z-20">
+                    {/* Map Layer */}
                     <div
-                        className="h-full bg-[#2F80ED] transition-all ease-linear"
+                        className="absolute -inset-4 transition-transform duration-500 ease-out z-0 pointer-events-none"
                         style={{
-                            width: `${((currentStep + 1) / SCENES.length) * 100}%`,
-                            transitionDuration: `${SCENE_DURATION}ms`
+                            transform: `scale(1.05) translate(${mouseOffset.x}px, ${mouseOffset.y}px)`,
+                            filter: 'brightness(0.85) contrast(1.1)'
                         }}
-                    />
+                    >
+                        <div ref={mapContainerRef} className="w-full h-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
+                    </div>
+
+                    {/* Inner Shadow Gradient overlay to make borders look seamless */}
+                    <div className="absolute inset-0 pointer-events-none z-[5] shadow-[inset_0_0_40px_rgba(10,10,10,1)]"></div>
+
+                    {/* Scoped UI Overlays - Adjusted for Mobile Screen width */}
+                    <div className="absolute inset-0 z-10 pointer-events-none">
+
+                        {/* Search Bar Overlay */}
+                        <div className={`absolute top-12 left-1/2 -translate-x-1/2 w-[85%] transition-all duration-700 ease-out transform ${[2, 3].includes(currentStep) ? 'translate-y-0 opacity-100' : '-translate-y-4 opacity-0 scale-95'}`}>
+                            <div className="bg-[#111111]/90 backdrop-blur-xl border border-white/10 p-3 rounded-xl flex items-center gap-3 w-full shadow-2xl">
+                                <Search className="text-[#888] w-4 h-4 flex-shrink-0" />
+                                <span className="text-xs sm:text-sm font-medium tracking-wide truncate">{searchText}</span>
+                                <span className="w-[1.5px] h-3.5 bg-[#2F80ED] animate-pulse ml-1 flex-shrink-0"></span>
+                            </div>
+                        </div>
+
+                        {/* Reverse Geocoding Overlay */}
+                        <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[85%] transition-all duration-700 ease-out ${currentStep === 4 ? 'scale-100 opacity-100' : 'scale-90 opacity-0'}`}>
+                            <div className="relative flex flex-col items-center">
+                                <Crosshair className="text-[#2F80ED] w-8 h-8 mb-3 drop-shadow-[0_0_10px_#2F80ED] animate-pulse" />
+                                <div className="bg-[#111111]/95 backdrop-blur-xl border border-white/10 px-4 py-3 rounded-xl shadow-2xl text-center w-full">
+                                    <div className="text-[10px] text-[#888] mb-1 font-mono uppercase tracking-widest">Decoded</div>
+                                    <div className="text-xs sm:text-sm font-medium whitespace-nowrap overflow-hidden text-ellipsis">{reverseAddress}</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Routing Overlay */}
+                        <div className={`absolute bottom-8 left-1/2 -translate-x-1/2 w-[90%] transition-all duration-700 ease-out transform ${currentStep === 5 ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0 scale-95'}`}>
+                            <div className="bg-[#111111]/95 backdrop-blur-xl border border-white/10 p-4 rounded-xl shadow-2xl flex items-center gap-4">
+                                <div className="flex flex-col items-center gap-1.5 flex-shrink-0">
+                                    <div className="w-2 h-2 rounded-full bg-white"></div>
+                                    <div className="w-[1.5px] h-6 bg-white/20"></div>
+                                    <div className="w-2 h-2 rounded-full bg-[#2F80ED] shadow-[0_0_10px_#2F80ED]"></div>
+                                </div>
+                                <div className="overflow-hidden">
+                                    <div className="text-base sm:text-lg font-semibold leading-tight truncate">{routeEta || 'Calculating...'}</div>
+                                    <div className="text-[10px] sm:text-xs text-[#888] flex items-center gap-1.5 mt-1">
+                                        <Route className="w-3 h-3 flex-shrink-0" /> Fastest route
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Live Tracking Overlay */}
+                        <div className={`absolute bottom-8 left-1/2 -translate-x-1/2 w-[90%] transition-all duration-700 ease-out transform ${currentStep === 6 ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0 scale-95'}`}>
+                            <div className="bg-[#111111]/95 backdrop-blur-xl border border-white/10 p-4 rounded-xl shadow-2xl w-full">
+                                <div className="flex items-center gap-2 mb-3">
+                                    <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+                                    <span className="text-[10px] font-medium uppercase tracking-widest text-[#888]">Live Stream</span>
+                                </div>
+                                <div className="flex justify-between items-end">
+                                    <div>
+                                        <div className="text-[#888] text-[10px] mb-0.5">Driver ETA</div>
+                                        <div className="text-xl sm:text-2xl font-bold leading-none">{vehicleStatus.eta}</div>
+                                    </div>
+                                    <div className="text-right">
+                                        <div className="text-[#888] text-[10px] mb-0.5">Distance</div>
+                                        <div className="text-sm font-medium leading-none">{vehicleStatus.dist}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* GIS Overlay */}
+                        <div className={`absolute bottom-8 left-1/2 -translate-x-1/2 w-[85%] transition-all duration-700 ease-out transform ${currentStep === 7 ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0 scale-95'}`}>
+                            <div className="bg-[#111111]/95 backdrop-blur-xl border border-white/10 px-4 py-3 rounded-xl shadow-2xl flex items-center justify-center gap-2">
+                                <Layers className="text-[#EB5757] w-4 h-4 flex-shrink-0" />
+                                <span className="text-xs font-medium text-white/90">Spatial Layering Active</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    {/* Subtle Progress Bar mapped to phone bottom */}
+                    <div className="absolute bottom-0 left-0 h-1 bg-white/5 w-full z-20">
+                        <div
+                            className="h-full bg-[#2F80ED] transition-all ease-linear"
+                            style={{
+                                width: `${((currentStep + 1) / SCENES.length) * 100}%`,
+                                transitionDuration: `${SCENE_DURATION}ms`
+                            }}
+                        />
+                    </div>
+
                 </div>
+
+                {/* Home Indicator Line */}
+                <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-24 h-1 bg-white/20 rounded-full z-50"></div>
 
             </div>
 
@@ -746,6 +775,16 @@ export default function MapifyAnimation() {
         @keyframes fadeIn {
           0% { opacity: 0; }
           100% { opacity: 1; }
+        }
+
+        /* Routing Path Animation */
+        .path-animation {
+          stroke-dasharray: 100;
+          stroke-dashoffset: 100;
+          animation: dash 2.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
+        @keyframes dash { 
+          to { stroke-dashoffset: 0; } 
         }
       `}} />
         </div>
