@@ -11,7 +11,7 @@ import FftAnimation from '@/components/FftAnimation';
 export default function FMSPage() {
     const router = useRouter();
     return (
-        <div className="pt-12 md:pt-16">
+        <div className="pt-24 md:pt-32">
             <div className="max-w-7xl mx-auto px-6 pb-15">
                 <div className="grid lg:grid-cols-2 gap-16 items-start">
                     <Reveal>

@@ -11,13 +11,13 @@ import LoginMockup from './LoginMockup';
  */
 export default function Hero() {
   return (
-    <section className="max-w-7xl mx-auto px-6 pt-5 md:pt-5 pb-12 lg:pb-20 overflow-hidden">
-      <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center">
+    <section className="max-w-7xl mx-auto px-6 pt-12 md:pt-16 pb-2 overflow-hidden">
+      <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-start">
 
         {/* Left Column: Value Proposition */}
-        <div className="text-center lg:text-left">
+        <div className="text-center lg:text-left pt-2">
           <Reveal delay={0}>
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-[10px] md:text-xs font-semibold text-blue-400 mb-6 md:mb-8 backdrop-blur-sm shadow-[0_0_15px_rgba(59,130,246,0.15)]">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-[10px] md:text-xs font-semibold text-blue-400 mb-2 md:mb-4 backdrop-blur-sm shadow-[0_0_15px_rgba(59,130,246,0.15)]">
               <Zap className="w-3.5 h-3.5 fill-blue-500/50" /> High-Performance Geospatial APIs
             </div>
           </Reveal>
@@ -33,9 +33,8 @@ export default function Hero() {
 
           <Reveal delay={200}>
             <p className="text-base md:text-xl text-slate-400 max-w-2xl mx-auto lg:mx-0 mb-8 md:mb-10 leading-relaxed font-light">
-              {/* Replace legacy providers with our precision Maps API, advanced GIS, and automated fraud management (FMS). Deploy in the cloud or completely on-premise for absolute data sovereignty. */}
-              {/* High-performance Maps APIs, advanced GIS, and location intelligence. Deploy in the cloud, or completely offline for true <strong className="text-white font-medium">enterprise data sovereignty</strong>. */}
-              High-performance Maps APIs and advanced GIS routing infrastructure for modern geospatial applications. Deploy in the cloud or air-gapped for secure, scalable location intelligence.           </p>
+              High-performance Maps APIs and advanced GIS routing infrastructure for modern geospatial applications. Deploy in the cloud or air-gapped for secure, scalable location intelligence.
+            </p>
           </Reveal>
 
           <Reveal delay={300}>
@@ -70,7 +69,7 @@ export default function Hero() {
       </div>
 
       {/* Full-width Map Section (Isometric Preview) */}
-      <div className="mt-24 lg:mt-32">
+      <div className="mt-10 lg:mt-10">
         <Reveal delay={500}>
           <div className="text-center mb-12">
             <h2 className="text-[10px] md:text-sm font-bold text-blue-500 uppercase tracking-[0.4em] mb-4">Enterprise Spatial Engine Status</h2>

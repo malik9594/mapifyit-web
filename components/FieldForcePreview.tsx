@@ -20,9 +20,9 @@ export default function DiverseFFTAnimation() {
     }, []);
 
     return (
-        <div className="flex items-center justify-center w-full py-10">
+        <div className="flex items-center justify-center w-full">
             {/* --- MOBILE HARDWARE FRAME --- */}
-            <div className="relative w-[450px] sm:w-[400px] h-[620px] sm:h-[700px] bg-[#050505] rounded-[3.2rem] border-[10px] border-[#1a1c22] shadow-[0_0_80px_rgba(99,102,241,0.15)] overflow-hidden scale-[0.9] sm:scale-100 transition-transform">
+            <div className="relative w-[400px] sm:w-[500px] h-[620px] sm:h-[700px] bg-[#050505] rounded-[3.2rem] border-[10px] border-[#1a1c22] shadow-[0_0_80px_rgba(99,102,241,0.15)] overflow-hidden scale-[0.9] sm:scale-100 transition-transform">
 
                 {/* Notch & Status */}
                 <div className="absolute top-0 w-full h-12 flex justify-between items-center px-10 z-50">
@@ -34,7 +34,7 @@ export default function DiverseFFTAnimation() {
                 </div>
 
                 {/* --- DYNAMIC STAGE CONTAINER --- */}
-                <div className="relative h-full w-full bg-[#030303] flex flex-col pt-20">
+                <div className="relative h-full w-full bg-[#030303] flex flex-col pt-12">
 
                     <AnimatePresence mode="wait">
 

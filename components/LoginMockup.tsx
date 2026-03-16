@@ -636,7 +636,7 @@ export default function MapifyAnimation() {
     };
 
     return (
-        <div className="w-full min-h-[800px] flex items-center justify-center bg-transparent py-12 text-white font-sans selection:bg-[#2F80ED] selection:text-white">
+        <div className="w-full flex items-center justify-center bg-transparent py-10 md:py-10 text-white font-sans selection:bg-[#2F80ED] selection:text-white">
 
             {/* Mobile Device Mockup Frame */}
             <div className="relative perspective-1000 group drop-shadow-[0_20px_50px_rgba(47,128,237,0.15)] hover:drop-shadow-[0_30px_60px_rgba(47,128,237,0.25)] transition-all duration-700">
@@ -645,7 +645,7 @@ export default function MapifyAnimation() {
                     ref={paneRef}
                     onMouseLeave={() => setMouseOffset({ x: 0, y: 0 })}
                     onMouseMove={handleMouseMove}
-                    className="relative w-[500px] sm:w-[400px] h-[650px] sm:h-[720px] rounded-[3rem] overflow-hidden bg-[#0a0a0a] border-[10px] border-[#1a1a1a] ring-1 ring-white/10 cursor-crosshair transform-gpu transition-transform ease-out"
+                    className="relative w-[400px] sm:w-[500px] h-[650px] sm:h-[720px] rounded-[3rem] overflow-hidden bg-[#0a0a0a] border-[10px] border-[#1a1a1a] ring-1 ring-white/10 cursor-crosshair transform-gpu transition-transform ease-out"
                 >
                     {/* Hardware Details (Notch & Status Bar Area) */}
                     <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-7 bg-[#1a1a1a] rounded-b-2xl z-40 flex items-center justify-center gap-2">
