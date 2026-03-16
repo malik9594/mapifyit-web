@@ -4,6 +4,7 @@ import { Users, Navigation, MapPin, Zap, ArrowLeft, BarChart, CheckCircle2 } fro
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Reveal } from '@/components/Reveal';
+import FieldForcePreview from '@/components/FieldForcePreview';
 
 export default function FFTPage() {
     const router = useRouter();
@@ -15,15 +16,16 @@ export default function FFTPage() {
                 <div className="absolute bottom-[20%] right-[-5%] w-[35%] h-[35%] rounded-full bg-purple-600/5 blur-[120px]" />
             </div>
 
-            <div className="max-w-7xl mx-auto px-6 pt-32 pb-16 relative z-10">
+            <div className="max-w-7xl mx-auto px-6 pt-25 md:pt-25 relative z-10">
                 <button
                     onClick={() => router.back()}
-                    className="inline-flex items-center gap-2 text-indigo-500 hover:text-indigo-400 transition-colors mb-8 group cursor-pointer font-semibold"
+                    className="group mb-12 flex items-center gap-2 text-slate-400 hover:text-white transition-colors"
                 >
-                    <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" /> Go Back
+                    <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
+                    <span className="text-sm font-medium tracking-wide">Go Back</span>
                 </button>
 
-                <div className="grid lg:grid-cols-2 gap-16 items-center">
+                <div className="grid lg:grid-cols-2 gap-16 items-center pt-2 md:pt-2">
                     <Reveal>
                         <div>
                             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-xs font-bold uppercase tracking-wider text-indigo-400 mb-8 backdrop-blur-sm">
@@ -59,27 +61,13 @@ export default function FFTPage() {
                     </Reveal>
 
                     <Reveal delay={200}>
-                        <div className="relative group p-1.5 rounded-[2.5rem] bg-gradient-to-br from-indigo-500/20 to-purple-500/20 overflow-hidden shadow-2xl">
-                            <div className="absolute inset-0 bg-[#0A0F1C] m-[2px] rounded-[2.4rem] -z-10" />
-                            <div className="relative p-8 md:p-12 rounded-[2.4rem] bg-[#0A0F1C] overflow-hidden min-h-[500px] flex items-center justify-center">
-                                {/* Animated Concentric Circles */}
-                                <div className="absolute inset-0 flex items-center justify-center">
-                                    <div className="w-[300px] h-[300px] rounded-full border border-indigo-500/10 animate-[ping_4s_linear_infinite]" />
-                                    <div className="w-[450px] h-[450px] rounded-full border border-indigo-500/5 animate-[ping_6s_linear_infinite]" />
-                                </div>
+                        <div className="relative group">
+                            {/* Decorative Background Glows */}
+                            <div className="absolute -top-20 -right-20 w-64 h-64 bg-indigo-600/10 rounded-full blur-[100px] animate-pulse" />
+                            <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-purple-600/10 rounded-full blur-[100px] animate-pulse" />
 
-                                <div className="absolute top-0 right-0 w-80 h-80 bg-indigo-500/10 blur-[100px] rounded-full pointer-events-none group-hover:bg-indigo-500/20 transition-colors duration-1000" />
-                                <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:1.5rem_1.5rem]" />
-
-                                <div className="relative z-10 flex flex-col items-center">
-                                    <div className="w-32 h-32 rounded-3xl bg-indigo-500/20 border border-indigo-500/30 flex items-center justify-center text-indigo-400 mb-8 group-hover:scale-110 transition-transform duration-700 shadow-[0_0_50px_rgba(99,102,241,0.2)]">
-                                        <Users className="w-16 h-16" />
-                                    </div>
-                                    <div className="text-center">
-                                        <div className="text-4xl font-bold text-white mb-2 font-mono tracking-tighter">99.8%</div>
-                                        <div className="text-indigo-400 text-xs font-bold uppercase tracking-widest">Tracking Accuracy</div>
-                                    </div>
-                                </div>
+                            <div className="relative z-10">
+                                <FieldForcePreview />
                             </div>
                         </div>
                     </Reveal>
