@@ -14,11 +14,11 @@ import {
 
 export default function Footer() {
     const socialLinks = [
-        { icon: Twitter, href: "#", label: "Twitter" },
-        { icon: Linkedin, href: "#", label: "LinkedIn" },
-        { icon: Facebook, href: "#", label: "Facebook" },
-        { icon: Instagram, href: "#", label: "Instagram" },
-        { icon: Github, href: "#", label: "GitHub" },
+        // { icon: Twitter, href: "#", label: "Twitter" },
+        { icon: Linkedin, href: "https://linkedin.com/company/mapifyit", label: "LinkedIn" },
+        // { icon: Facebook, href: "#", label: "Facebook" },
+        // { icon: Instagram, href: "#", label: "Instagram" },
+        // { icon: Github, href: "#", label: "GitHub" },
     ];
 
     const footerLinks = {
