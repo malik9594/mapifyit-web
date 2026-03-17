@@ -1,21 +1,23 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "FFT – Field Force Tracking & Mobile Workforce Visibility",
+    title: "Field Force Tracking Software | Mobile Workforce Tracking | MapifyIt FFT",
     description:
-        "Mapifyit Field Force Tracking (FFT) provides real-time agent monitoring, geofence-based attendance, and mobile task dispatch to maximize field team productivity and operational efficiency.",
+        "Enterprise-grade Field Force Tracking (FFT) solution with real-time GPS tracking, geofence attendance automation, intelligent task dispatching, and secure on-premises deployment options.",
     keywords: [
-        "field force tracking",
+        "Field Force Tracking",
+        "Mobile Workforce Tracking",
+        "Field Employee GPS Tracking",
+        "Field Service Workforce Management",
+        "Agent Tracking Software",
+        "Field Team Tracking System",
+        "On-Premises Field Tracking",
+        "Secure Workforce Management",
+        "Enterprise Data Privacy",
+        "Self-Hosted SaaS",
         "FFT",
-        "workforce monitoring",
-        "real-time agent tracking",
-        "geofence attendance",
-        "task dispatch software",
-        "mobile workforce management",
-        "field agent management",
         "location-based attendance",
         "field operations software",
-        "enterprise workforce visibility",
     ],
     openGraph: {
         title: "FFT | Field Force Tracking | Mapifyit",
