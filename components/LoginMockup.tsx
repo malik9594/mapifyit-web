@@ -136,13 +136,13 @@ export default function LoginMockup() {
     }, []);
 
     const mapStyles = {
-        bg: theme === 'dark' ? 'bg-[#030712] border-slate-800/50' : 'bg-slate-100 border-slate-300 shadow-inner',
-        grid: theme === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)',
-        fill: theme === 'dark' ? 'rgba(15, 23, 42, 0.6)' : '#cbd5e1',
+        bg: theme === 'dark' ? 'bg-[#030712] border-slate-800/50' : 'bg-slate-50 border-slate-200 shadow-inner',
+        grid: theme === 'dark' ? 'rgba(255,255,255,0.03)' : 'rgba(0,0,0,0.02)',
+        fill: theme === 'dark' ? 'rgba(15, 23, 42, 0.4)' : '#cbd5e1',
         stroke: theme === 'dark' ? '#1e293b' : '#94a3b8',
         textMain: theme === 'dark' ? '#f8fafc' : '#0f172a',
-        textSub: theme === 'dark' ? '#94a3b8' : '#64748b',
-        glow: theme === 'dark' ? 'rgba(3,7,18,1)' : 'rgba(226,232,240,0.8)'
+        textSub: theme === 'dark' ? '#f8fafc' : '#64748b',
+        glow: theme === 'dark' ? 'rgba(3,7,18,0.95)' : 'rgba(226,232,240,0.8)'
     };
 
     useEffect(() => {
@@ -426,10 +426,10 @@ export default function LoginMockup() {
                     </div>
 
                     {/* App Content */}
-                    <div className="relative w-full h-full flex flex-col pt-10">
-                        <div className="px-4 pb-2 z-40 relative">
+                    <div className="relative w-full h-full flex flex-col pt-6">
+                        <div className="px-4 pb-1 z-40 relative">
                             {/* Status Bar / Theme Toggle */}
-                            <div className="flex items-center justify-between mb-3 px-1 mt-2">
+                            <div className="flex items-center justify-between mb-2 px-1 mt-1">
                                 <span className="text-[10px] font-bold tracking-widest uppercase flex items-center gap-1 text-slate-400">
                                     <Navigation2 size={12} className={isAutoPilot ? "text-emerald-500" : "text-amber-500"} />
                                     {isAutoPilot ? 'Demo Sequence' : 'Route Planner'}
@@ -443,9 +443,9 @@ export default function LoginMockup() {
                             </div>
 
                             {/* Waypoints Input Mockup */}
-                            <div className="p-3 rounded-2xl border shadow-sm mb-3 bg-slate-900 border-slate-800">
-                                {waypoints.map((wp, idx) => (
-                                    <div key={idx} className="relative mb-2 last:mb-0 flex items-center gap-2">
+                            <div className="p-3 rounded-2xl border shadow-sm mb-2 bg-slate-900/60 border-slate-800/80 backdrop-blur-md">
+                                {waypoints.filter((wp, idx) => idx === 0 || wp.city || wp.query.length > 0).map((wp, idx) => (
+                                    <div key={idx} className="relative mb-2 last:mb-0 flex items-center gap-2 animate-in fade-in slide-in-from-top-1 duration-300">
                                         <div className="flex flex-col items-center justify-center w-4 relative">
                                             {idx === 0 ? <Target size={12} className="text-blue-500" /> :
                                                 idx === waypoints.length - 1 ? <MapPin size={12} className="text-rose-500" /> :
@@ -455,10 +455,11 @@ export default function LoginMockup() {
 
                                         <input
                                             type="text"
+                                            readOnly={isAutoPilot}
                                             onFocus={() => { setActiveInputIdx(idx); disableAutoPilot(); setSearchResults(Object.values(CITIES)); }}
                                             onChange={(e) => handleWaypointChange(idx, e.target.value)}
                                             className={`flex-1 bg-transparent border-b py-1.5 text-xs focus:outline-none transition-colors border-slate-800 text-white placeholder:text-slate-600 ${activeInputIdx === idx ? 'border-blue-500' : ''}`}
-                                            placeholder={idx === 0 ? "Start location..." : idx === waypoints.length - 1 && waypoints.length > 1 ? "End destination..." : "Add stop..."}
+                                            placeholder={idx === 0 ? "Start location..." : idx === waypoints.length - 1 ? "End destination..." : "Add stop..."}
                                             value={wp.query}
                                         />
                                     </div>
