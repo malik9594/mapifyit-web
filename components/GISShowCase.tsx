@@ -770,50 +770,30 @@ const GISVisualEngine = () => {
 
 export default function GISShowcase() {
     return (
-        <div className="py-10 md:py-20 bg-transparent p-4 md:p-8 flex items-center justify-center font-sans text-white">
-            <div className="w-full max-w-6xl mx-auto">
-                {/* Your Requested UI Wrapper */}
-                <div className="lg:sticky lg:top-32 pb-10 order-first lg:order-last">
-                    <div className="relative group">
-                        <div className="absolute -inset-1.5 bg-gradient-to-r from-blue-700 to-cyan-400 rounded-[2.2rem] blur opacity-10 group-hover:opacity-30 transition duration-1000"></div>
+        <div className="w-full h-full">
+            {/* Your Requested UI Wrapper */}
+            <div className="relative h-full">
+                <div className="relative group h-full">
+                    <div className="absolute -inset-1.5 bg-gradient-to-r from-blue-700 to-cyan-400 rounded-[2.2rem] blur opacity-10 group-hover:opacity-30 transition duration-1000"></div>
 
-                        <div className="relative bg-[#0A101F] border border-blue-950 rounded-[2rem] overflow-hidden shadow-2xl">
-                            {/* Toolbar header */}
-                            <div className="px-6 py-4 border-b border-blue-950/50 bg-slate-950 flex items-center justify-between">
-                                <div className="flex gap-1.5">
-                                    <div className="w-2.5 h-2.5 rounded-full bg-cyan-600 animate-pulse" />
-                                    <div className="w-2.5 h-2.5 rounded-full bg-blue-800" />
-                                    <div className="w-2.5 h-2.5 rounded-full bg-slate-700" />
-                                </div>
-                                <span className="text-[11px] font-mono text-cyan-500 uppercase tracking-widest">Analytic_Workspace_v4</span>
-                                <Settings className="w-4 h-4 text-slate-500 hover:text-cyan-400 transition-colors cursor-pointer" />
+                    <div className="relative h-full bg-[#0A101F] border border-blue-950 rounded-[2rem] overflow-hidden shadow-2xl flex flex-col">
+                        {/* Toolbar header */}
+                        <div className="px-6 py-4 border-b border-blue-950/50 bg-slate-950 flex items-center justify-between shrink-0">
+                            <div className="flex gap-1.5">
+                                <div className="w-2.5 h-2.5 rounded-full bg-cyan-600 animate-pulse" />
+                                <div className="w-2.5 h-2.5 rounded-full bg-blue-800" />
+                                <div className="w-2.5 h-2.5 rounded-full bg-slate-700" />
                             </div>
+                            <span className="text-[11px] font-mono text-cyan-500 uppercase tracking-widest">Analytic_Workspace_v4</span>
+                            <Settings className="w-4 h-4 text-slate-500 hover:text-cyan-400 transition-colors cursor-pointer" />
+                        </div>
 
-                            {/* Viewport content */}
-                            <div className="h-[600px] md:h-[800px] w-full bg-[#080E18] relative">
+                        {/* Viewport content */}
+                        <div className="flex-1 w-full bg-[#080E18] relative min-h-[500px]">
 
-                                {/* Embedded WebGL Engine component */}
-                                <GISVisualEngine />
+                            {/* Embedded WebGL Engine component */}
+                            <GISVisualEngine />
 
-                                {/* Floating Modules Panel */}
-                                {/* <div className="absolute top-6 left-6 w-48 md:w-52 bg-slate-950/90 border border-cyan-900/50 backdrop-blur-xl rounded-2xl p-4 shadow-2xl z-30 pointer-events-none hidden sm:block">
-                                    <div className="flex items-center gap-2 mb-4 border-b border-white/5 pb-2 text-cyan-400">
-                                        <Share2 className="w-3.5 h-3.5" />
-                                        <span className="text-[11px] font-bold text-white uppercase tracking-tight">Active Modules</span>
-                                    </div>
-                                    <div className="space-y-3">
-                                        {['Isochrone Analysis', 'Terrain Routing', 'Spatial Buffer', 'LiDAR Scan'].map((label, i) => (
-                                            <div key={i} className="flex items-center justify-between">
-                                                <span className="text-[10px] md:text-[11px] text-slate-300">{label}</span>
-                                                <div className={`w-7 h-3.5 rounded-full relative ${i % 2 === 0 ? 'bg-cyan-500' : 'bg-blue-500'}`}>
-                                                    <div className="absolute top-0.5 right-0.5 w-2.5 h-2.5 rounded-full bg-white" />
-                                                </div>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div> */}
-
-                            </div>
                         </div>
                     </div>
                 </div>

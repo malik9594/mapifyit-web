@@ -184,7 +184,7 @@ export default function Navbar() {
             >
               Try Maps <ChevronRight size={14} />
             </Link>
-            <button className="px-5 py-2.5 text-sm font-medium text-white rounded-xl bg-blue-600 hover:bg-blue-500 transition-all shadow-lg shadow-blue-600/20">
+            <button className="px-5 py-2.5 text-sm font-medium text-white rounded-xl bg-blue-600 hover:bg-blue-500 transition-all shadow-lg shadow-blue-600/20" onClick={() => window.open("https://dev.mapifyit.com/signup", "_blank")}>
               Start Free
             </button>
           </div>

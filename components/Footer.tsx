@@ -29,7 +29,7 @@ export default function Footer() {
             // { name: "Identity Verification", href: "https://ngekyc.mapifyit.com/" },
         ],
         Solutions: [
-            { name: "NG ekyc", href: "https://ngekyc.mapifyit.com/" },
+            { name: "NG eKYC", href: "https://ngekyc.mapifyit.com/" },
             { name: "Fleet Management System", href: "/fms" },
             { name: "Field Force Tracking", href: "/fft" },
         ],
@@ -84,6 +84,7 @@ export default function Footer() {
                                         <li key={link.name}>
                                             <a
                                                 href={link.href}
+                                                target='_blank'
                                                 className="text-slate-400 hover:text-cyan-400 text-[14px] transition-all flex items-center group relative pl-0 hover:pl-5"
                                             >
                                                 <ChevronRight className="w-3 h-3 absolute left-0 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />

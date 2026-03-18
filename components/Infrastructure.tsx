@@ -4,7 +4,7 @@ import {
     Route, Zap, MousePointer2, BoxSelect, Database,
     Share2, Compass, Settings, Mountain, Scan, Satellite,
     Crosshair, Activity, Cpu, ArrowLeft, ExternalLink,
-    Layers, ShieldCheck, Monitor
+    Layers, ShieldCheck, Monitor, Server, Cloud, Shield, Globe
 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { Reveal } from '@/components/Reveal';
@@ -118,75 +118,43 @@ export default function GeospatialModuleShowcaseCool() {
                     </a>
                 </div>
 
-                <div className="grid lg:grid-cols-2 gap-24 items-start">
-
-                    {/* Left Side: 9 Feature Cards */}
-                    <div className="pb-20">
-                        <div className="mb-12">
-                            {/* <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-cyan-950 border border-cyan-800 text-xs font-bold uppercase tracking-widest text-cyan-300 mb-6">
-                                <Compass className="w-4 h-4" /> Enterprise GIS Platform
-                            </div> */}
-                            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight leading-tight">
-                                Enterprise GIS Platform  <br />
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">for Global Geospatial Projects</span>
-                            </h1>
-                            <p className="text-slate-400 text-lg leading-relaxed">
-                                MapifyIt GIS is a powerful enterprise geospatial platform designed for organizations managing large-scale GIS projects, spatial intelligence, and mission-critical geospatial infrastructure. Built for governments, enterprises, defense organizations, and infrastructure operators, MapifyIt enables teams to deploy and manage advanced GIS systems with full control over their spatial data.Unlike traditional cloud-dependent platforms, MapifyIt GIS can run fully on-premise or within private infrastructure, allowing organizations to operate secure geospatial systems while maintaining complete data sovereignty.
-                            </p>
-                        </div>
-
-                        <div className="grid sm:grid-cols-2 gap-4">
-                            {gisTools.map((tool, i) => (
-                                <div key={i} className="group p-5 rounded-xl border border-white/5 bg-slate-950 hover:bg-slate-900 transition-all">
-                                    <div className={`w-10 h-10 rounded-lg flex items-center justify-center mb-4 border ${tool.color === 'cyan' ? 'border-cyan-800 bg-cyan-950 text-cyan-300' : 'border-blue-800 bg-blue-950 text-blue-300'}`}>
-                                        <tool.icon className="w-5 h-5" />
-                                    </div>
-                                    <h4 className="text-white font-semibold mb-2">{tool.title}</h4>
-                                    <p className="text-slate-500 text-xs leading-relaxed">{tool.desc}</p>
-                                </div>
-                            ))}
-                        </div>
+                <div className="grid lg:grid-cols-2 gap-16 items-center mb-24">
+                    {/* Left Side: Header & Intro */}
+                    <div>
+                        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight leading-tight">
+                            Enterprise GIS Platform  <br />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">for Global Geospatial Projects</span>
+                        </h1>
+                        <p className="text-slate-400 text-lg leading-relaxed">
+                            MapifyIt GIS is a powerful enterprise geospatial platform designed for organizations managing large-scale GIS projects, spatial intelligence, and mission-critical geospatial infrastructure. Built for governments, enterprises, defense organizations, and infrastructure operators, MapifyIt enables teams to deploy and manage advanced GIS systems with full control over their spatial data.
+                        </p>
+                        <p className="text-slate-400 text-lg leading-relaxed mt-4">
+                            Unlike traditional cloud-dependent platforms, MapifyIt GIS can run fully on-premise or within private infrastructure, allowing organizations to operate secure geospatial systems while maintaining complete data sovereignty.
+                        </p>
                     </div>
 
-                    {/* Right Side: Sticky Live Screen */}
-                    {/* <div className="lg:sticky lg:top-32 pb-10 order-first lg:order-last">
-                        <div className="relative group">
-                            <div className="absolute -inset-1.5 bg-gradient-to-r from-blue-700 to-cyan-400 rounded-[2.2rem] blur opacity-10 group-hover:opacity-30 transition duration-1000"></div>
-                            <div className="relative bg-[#0A101F] border border-blue-950 rounded-[2rem] overflow-hidden shadow-2xl">
-                                <div className="px-6 py-4 border-b border-blue-950/50 bg-slate-950 flex items-center justify-between">
-                                    <div className="flex gap-1.5">
-                                        <div className="w-2.5 h-2.5 rounded-full bg-cyan-600 animate-pulse" />
-                                        <div className="w-2.5 h-2.5 rounded-full bg-blue-800" />
-                                        <div className="w-2.5 h-2.5 rounded-full bg-slate-700" />
-                                    </div>
-                                    <span className="text-[11px] font-mono text-cyan-500 uppercase tracking-widest">Analytic_Workspace_v4</span>
-                                    <Settings className="w-4 h-4 text-slate-500 hover:text-cyan-400 transition-colors cursor-pointer" />
-                                </div>
+                    {/* Right Side: Visual Showcase */}
+                    <div className="h-[400px] md:h-[500px] lg:h-[600px] w-full">
+                        <GISShowcase />
+                    </div>
+                </div>
 
-                                <div className="aspect-square md:aspect-[4/5] w-full bg-[#080E18] relative">
-                                    <GISVisualEngine />
-
-                                    <div className="absolute top-6 right-6 w-52 bg-slate-950/90 border border-cyan-900/50 backdrop-blur-xl rounded-2xl p-4 shadow-2xl z-30">
-                                        <div className="flex items-center gap-2 mb-4 border-b border-white/5 pb-2 text-cyan-400">
-                                            <Share2 className="w-3.5 h-3.5" />
-                                            <span className="text-[11px] font-bold text-white uppercase tracking-tight">Active Modules</span>
-                                        </div>
-                                        <div className="space-y-3">
-                                            {['Isochrone Analysis', 'Terrain Routing', 'Spatial Buffer', 'LiDAR Scan'].map((label, i) => (
-                                                <div key={i} className="flex items-center justify-between">
-                                                    <span className="text-[11px] text-slate-300">{label}</span>
-                                                    <div className={`w-7 h-3.5 rounded-full relative ${i % 2 === 0 ? 'bg-cyan-500' : 'bg-blue-500'}`}>
-                                                        <div className="absolute top-0.5 right-0.5 w-2.5 h-2.5 rounded-full bg-white" />
-                                                    </div>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    </div>
+                {/* Bottom Section: 10 Feature Tools Grid (Full Width) */}
+                <div className="mb-24">
+                    <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-cyan-950/30 border border-cyan-800/50 text-[10px] font-bold uppercase tracking-widest text-cyan-400 mb-8">
+                        <Compass className="w-3.5 h-3.5" /> Core Platform Capabilities
+                    </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+                        {gisTools.map((tool, i) => (
+                            <div key={i} className="group p-5 rounded-2xl border border-white/5 bg-slate-950/50 hover:bg-slate-900 transition-all hover:border-cyan-500/30 flex flex-col h-full">
+                                <div className={`w-10 h-10 rounded-xl flex items-center justify-center mb-4 border transition-transform group-hover:scale-110 ${tool.color === 'cyan' ? 'border-cyan-800 bg-cyan-950 text-cyan-300' : 'border-blue-800 bg-blue-950 text-blue-300'}`}>
+                                    <tool.icon className="w-5 h-5" />
                                 </div>
+                                <h4 className="text-white font-semibold mb-2 text-sm">{tool.title}</h4>
+                                <p className="text-slate-500 text-[11px] leading-relaxed line-clamp-2 group-hover:line-clamp-none transition-all">{tool.desc}</p>
                             </div>
-                        </div>
-                    </div> */}
-                    <GISShowcase />
+                        ))}
+                    </div>
                 </div>
 
                 {/* --- Extended GIS Content Sections --- */}
@@ -194,7 +162,7 @@ export default function GeospatialModuleShowcaseCool() {
                     {/* section 1: Project Lifecycle & Secure Deployment */}
                     <div className="grid md:grid-cols-2 gap-16">
                         <Reveal delay={100}>
-                            <div className="p-8 rounded-3xl border border-white/5 bg-slate-950/40 backdrop-blur-xl hover:border-blue-500/20 transition-all group">
+                            <div className="p-8 rounded-3xl border border-white/5 bg-slate-950/40 backdrop-blur-xl hover:border-blue-500/20 transition-all group h-full flex flex-col">
                                 <div className="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 mb-6 group-hover:bg-blue-500 group-hover:text-white transition-all">
                                     <Layers className="w-6 h-6" />
                                 </div>
@@ -202,7 +170,7 @@ export default function GeospatialModuleShowcaseCool() {
                                 <p className="text-slate-400 leading-relaxed mb-8">
                                     MapifyIt supports the full lifecycle of enterprise GIS deployments, from spatial data ingestion and mapping to advanced geospatial analytics and operational intelligence.
                                 </p>
-                                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mt-auto">
                                     {[
                                         "National and regional GIS platforms",
                                         "Smart city geospatial systems",
@@ -213,36 +181,56 @@ export default function GeospatialModuleShowcaseCool() {
                                         "Environmental monitoring and disaster response",
                                         "Asset tracking and field operations"
                                     ].map((item, idx) => (
-                                        <li key={idx} className="flex items-start gap-3 text-xs text-slate-500 leading-tight">
-                                            <div className="w-1.5 h-1.5 rounded-full bg-blue-500/40 mt-1 flex-shrink-0" />
+                                        <div key={idx} className="flex items-center gap-4 p-5 rounded-2xl bg-white/5 border border-white/5 text-[13px] text-slate-200 font-semibold hover:bg-white/10 hover:border-blue-500/30 transition-all">
+                                            <div className="w-2 h-2 rounded-full bg-blue-500 shadow-[0_0_8px_theme(colors.blue.500)] flex-shrink-0" />
                                             {item}
-                                        </li>
+                                        </div>
                                     ))}
-                                </ul>
+                                </div>
                             </div>
                         </Reveal>
 
                         <Reveal delay={300}>
-                            <div className="flex flex-col justify-center">
+                            <div className="p-8 rounded-3xl border border-white/5 bg-slate-950/40 backdrop-blur-xl hover:border-emerald-500/20 transition-all group h-full">
+                                <div className="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 mb-6 group-hover:bg-emerald-500 group-hover:text-white transition-all">
+                                    <ShieldCheck className="w-6 h-6" />
+                                </div>
                                 <h2 className="text-3xl font-bold text-white mb-6">Secure and Flexible Deployment</h2>
-                                <p className="text-slate-400 text-lg leading-relaxed mb-8">
-                                    MapifyIt is built for organizations that require secure, scalable GIS infrastructure. The platform supports on-premise, private cloud, and hybrid deployments, enabling governments and enterprises to manage geospatial data within their own controlled environments.
+                                <p className="text-slate-400 leading-relaxed mb-8">
+                                    MapifyIt is built for organizations that require secure, scalable GIS infrastructure. We offer flexible deployment models to suit your governance needs.
                                 </p>
-                                <div className="p-6 rounded-2xl bg-emerald-500/5 border border-emerald-500/10 text-emerald-400/80 text-sm leading-relaxed">
-                                    <div className="flex items-center gap-3 mb-3">
-                                        <ShieldCheck className="w-5 h-5" />
-                                        <span className="font-bold uppercase tracking-wider text-xs">Sovereignty Guaranteed</span>
-                                    </div>
-                                    This architecture ensures high security, regulatory compliance, and full ownership of spatial datasets without any third-party exposure.
+
+                                <div className="grid grid-cols-1 gap-4 mb-8">
+                                    {[
+                                        { icon: Shield, title: "On-Premise Deployment", desc: "Full air-gapped security behind your own firewall." },
+                                        { icon: Cloud, title: "Private Cloud", desc: "Dedicated instance on AWS, Azure, or Google Cloud." },
+                                        { icon: Server, title: "Secure SaaS", desc: "Managed multi-tenant environment with high compliance." }
+                                    ].map((mode, idx) => (
+                                        <div key={idx} className="flex items-start gap-4 p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-emerald-500/30 transition-colors">
+                                            <div className="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-500 shrink-0">
+                                                <mode.icon className="w-4 h-4" />
+                                            </div>
+                                            <div>
+                                                <h4 className="text-white font-bold text-sm mb-1">{mode.title}</h4>
+                                                <p className="text-slate-500 text-[11px] leading-tight">{mode.desc}</p>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+
+                                <div className="p-4 rounded-xl bg-emerald-500/5 border border-emerald-500/10 text-emerald-400/80 text-[11px] leading-relaxed flex gap-3 items-center mt-auto">
+                                    <ShieldCheck className="w-5 h-5 shrink-0" />
+                                    <span>Ensures high security, regulatory compliance, and full ownership of spatial datasets without third-party exposure.</span>
                                 </div>
                             </div>
                         </Reveal>
                     </div>
 
                     {/* Section 2: Enterprise Capabilities & Scalable Infrastructure */}
-                    <div className="grid md:grid-cols-2 gap-16 items-center">
+                    <div className="grid md:grid-cols-2 gap-16 items-stretch pt-2">
+                        {/* Left Side: Icon Grid (The "Perfect" side) */}
                         <Reveal delay={200} className="order-last md:order-first">
-                            <div className="grid grid-cols-2 gap-4">
+                            <div className="grid grid-cols-2 gap-4 h-full">
                                 {[
                                     { title: "Spatial Data Management", icon: Database },
                                     { title: "High-Performance Rendering", icon: Zap },
@@ -253,7 +241,7 @@ export default function GeospatialModuleShowcaseCool() {
                                     { title: "Field Data Collection", icon: Scan },
                                     { title: "Operational Dashboards", icon: Monitor }
                                 ].map((cap, i) => (
-                                    <div key={i} className="p-4 rounded-xl border border-white/5 bg-slate-900/30 flex flex-col items-center text-center group hover:bg-slate-800/50 transition-all">
+                                    <div key={i} className="p-4 rounded-xl border border-white/5 bg-slate-900/30 flex flex-col items-center justify-center text-center group hover:bg-slate-800/50 transition-all">
                                         <div className="w-10 h-10 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 mb-3 group-hover:scale-110 transition-transform">
                                             <cap.icon className="w-5 h-5" />
                                         </div>
@@ -263,19 +251,36 @@ export default function GeospatialModuleShowcaseCool() {
                             </div>
                         </Reveal>
 
-                        <Reveal delay={400}>
-                            <div>
-                                <h2 className="text-3xl font-bold text-white mb-6 uppercase tracking-tight">Enterprise Geospatial Capabilities</h2>
-                                <p className="text-slate-400 text-lg leading-relaxed mb-10">
-                                    Professional-grade tools designed for massive spatial datasets and high-concurrency requests. MapifyIt provides the core engines that power global mapping systems.
-                                </p>
+                        {/* Right Side: Structured Feature Card (Fixed to match UI/UX) */}
+                        <Reveal delay={400} className="h-full">
+                            <div className="p-8 md:p-10 rounded-[2rem] border border-white/5 bg-slate-950/40 backdrop-blur-xl h-full flex flex-col justify-center relative group">
+                                <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-500/5 blur-[50px] rounded-full -mr-16 -mt-16" />
 
-                                <div className="space-y-6">
-                                    <div>
-                                        <h3 className="text-xl font-bold text-white mb-3">Built for Scalable GIS Infrastructure</h3>
-                                        <p className="text-slate-400 leading-relaxed text-sm">
-                                            From city-scale mapping systems to national geospatial platforms, MapifyIt provides the performance and flexibility required for complex geospatial operations. The platform is designed to support high-volume spatial data, real-time analytics, and mission-critical GIS deployments worldwide.
+                                <div className="relative z-10">
+                                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-[10px] font-bold uppercase tracking-widest text-cyan-400 mb-8">
+                                        <Cpu className="w-3.5 h-3.5" /> High Performance
+                                    </div>
+
+                                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 uppercase tracking-tight">Enterprise Geospatial Capabilities</h2>
+
+                                    <div className="space-y-6 text-slate-400">
+                                        <p className="text-lg leading-relaxed">
+                                            Professional-grade engines designed for massive spatial datasets and high-concurrency requests.
                                         </p>
+                                        <p className="text-sm leading-relaxed font-light pl-6 border-l border-white/10 italic">
+                                            "MapifyIt powers national-scale mapping systems with unrivaled performance at every zoom level."
+                                        </p>
+                                    </div>
+
+                                    <div className="mt-8 pt-8 border-t border-white/5 flex items-center gap-4">
+                                        <div className="flex items-center gap-2">
+                                            <div className="w-2 h-2 rounded-full bg-emerald-500" />
+                                            <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest leading-none">Uptime: 99.9%</span>
+                                        </div>
+                                        <div className="flex items-center gap-2">
+                                            <Globe className="w-3.5 h-3.5 text-blue-500" />
+                                            <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest leading-none">Global Sync</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
