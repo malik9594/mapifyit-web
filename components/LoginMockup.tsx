@@ -79,10 +79,10 @@ const CITIES: Record<string, City> = {
 };
 
 const MODE_CONFIG: Record<TransportMode, ModeConfig> = {
-    car: { id: 'car', label: 'Driving', icon: Car, speedMph: 65, progressStep: 0.005, color: '#3b82f6' },
-    bus: { id: 'bus', label: 'Transit', icon: Bus, speedMph: 45, progressStep: 0.0035, color: '#8b5cf6' },
-    bike: { id: 'bike', label: 'Cycling', icon: Bike, speedMph: 15, progressStep: 0.0015, color: '#10b981' },
-    walk: { id: 'walk', label: 'Walking', icon: Footprints, speedMph: 3, progressStep: 0.0005, color: '#f59e0b' }
+    car: { id: 'car', label: 'Driving', icon: Car, speedMph: 65, progressStep: 0.006, color: '#3b82f6' },
+    bus: { id: 'bus', label: 'Transit', icon: Bus, speedMph: 45, progressStep: 0.005, color: '#8b5cf6' },
+    bike: { id: 'bike', label: 'Cycling', icon: Bike, speedMph: 15, progressStep: 0.0045, color: '#10b981' },
+    walk: { id: 'walk', label: 'Walking', icon: Footprints, speedMph: 3, progressStep: 0.004, color: '#f59e0b' }
 };
 
 const DEMO_SCENARIOS: Scenario[] = [
