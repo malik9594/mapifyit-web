@@ -254,7 +254,7 @@ const RealTimeTrackingVisual = () => (
 
 const GeofenceVisual = () => (
     <GlassCard className="p-4 h-[400px] relative overflow-hidden flex items-center justify-center bg-[#0B0F14]">
-        <Map className="absolute text-[#1F2933] opacity-20 w-[600px] h-[600px]" />
+        {/* <Map className="absolute text-[#1F2933] opacity-20 w-[600px] h-[600px]" /> */}
 
         <div className="relative w-64 h-64 flex items-center justify-center z-10">
             <motion.div
