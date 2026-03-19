@@ -416,7 +416,7 @@ export default function LoginMockup() {
 
                 {/* ── Responsive Phone Frame ── */}
                 {/* Reduced height to 640px/680px for better vertical balance */}
-                <div className="relative w-[280px] h-[580px] sm:w-[320px] sm:h-[650px] md:w-[340px] md:h-[680px] bg-[#0f172a] rounded-[2.5rem] md:rounded-[3rem] border-[8px] md:border-[12px] border-slate-900 shadow-2xl overflow-hidden ring-1 ring-white/10 shrink-0 transition-all duration-300">
+                <div className="relative w-[280px] h-[600px] sm:w-[320px] sm:h-[700px] md:w-[340px] md:h-[740px] bg-[#0f172a] rounded-[2.5rem] md:rounded-[3rem] border-[8px] md:border-[12px] border-slate-900 shadow-2xl overflow-hidden ring-1 ring-white/10 shrink-0 transition-all duration-300">
 
                     {/* Notch */}
                     <div className="absolute top-0 inset-x-0 h-7 flex justify-center z-50 pointer-events-none">
@@ -443,14 +443,14 @@ export default function LoginMockup() {
                             </div>
 
                             {/* Waypoints Input Mockup */}
-                            <div className="p-3 rounded-2xl border shadow-sm mb-2 bg-slate-900/60 border-slate-800/80 backdrop-blur-md">
+                            <div className="p-2.5 rounded-2xl border shadow-sm mb-1.5 bg-slate-900/60 border-slate-800/80 backdrop-blur-md">
                                 {waypoints.filter((wp, idx) => idx === 0 || wp.city || wp.query.length > 0).map((wp, idx) => (
-                                    <div key={idx} className="relative mb-2 last:mb-0 flex items-center gap-2 animate-in fade-in slide-in-from-top-1 duration-300">
+                                    <div key={idx} className="relative mb-1.5 last:mb-0 flex items-center gap-2 animate-in fade-in slide-in-from-top-1 duration-300">
                                         <div className="flex flex-col items-center justify-center w-4 relative">
-                                            {idx === 0 ? <Target size={12} className="text-blue-500" /> :
-                                                idx === waypoints.length - 1 ? <MapPin size={12} className="text-rose-500" /> :
+                                            {idx === 0 ? <Target size={11} className="text-blue-500" /> :
+                                                idx === waypoints.length - 1 ? <MapPin size={11} className="text-rose-500" /> :
                                                     <div className="w-1.5 h-1.5 rounded-full bg-amber-500" />}
-                                            {idx < waypoints.length - 1 && <div className="w-0.5 h-4 my-1 border-l border-dashed border-slate-800" />}
+                                            {idx < waypoints.length - 1 && <div className="w-0.5 h-3 my-0.5 border-l border-dashed border-slate-800" />}
                                         </div>
 
                                         <input
@@ -458,7 +458,7 @@ export default function LoginMockup() {
                                             readOnly={isAutoPilot}
                                             onFocus={() => { setActiveInputIdx(idx); disableAutoPilot(); setSearchResults(Object.values(CITIES)); }}
                                             onChange={(e) => handleWaypointChange(idx, e.target.value)}
-                                            className={`flex-1 bg-transparent border-b py-1.5 text-xs focus:outline-none transition-colors border-slate-800 text-white placeholder:text-slate-600 ${activeInputIdx === idx ? 'border-blue-500' : ''}`}
+                                            className={`flex-1 bg-transparent border-b py-1 text-xs focus:outline-none transition-colors border-slate-800 text-white placeholder:text-slate-600 ${activeInputIdx === idx ? 'border-blue-500' : ''}`}
                                             placeholder={idx === 0 ? "Start location..." : idx === waypoints.length - 1 ? "End destination..." : "Add stop..."}
                                             value={wp.query}
                                         />
@@ -476,7 +476,7 @@ export default function LoginMockup() {
                                         <button
                                             key={mode.id}
                                             onClick={() => { disableAutoPilot(); setTransportMode(mode.id); }}
-                                            className={`flex-1 flex flex-col items-center justify-center py-2 rounded-xl border transition-all ${isActive
+                                            className={`flex-1 flex flex-col items-center justify-center py-1.5 rounded-xl border transition-all ${isActive
                                                 ? 'bg-slate-800 border-slate-600'
                                                 : 'bg-slate-900/50 border-slate-800 hover:bg-slate-800'
                                                 }`}
@@ -493,7 +493,7 @@ export default function LoginMockup() {
 
                         {/* SVG Map Section */}
                         <div
-                            className={`flex-1 relative overflow-hidden mt-2 rounded-[2rem] mx-2 border flex items-center justify-center cursor-crosshair transition-colors duration-700 ${mapStyles.bg}`}
+                            className={`flex-1 relative overflow-hidden mt-1.5 rounded-[2rem] mx-2 border flex items-center justify-center cursor-crosshair transition-colors duration-700 ${mapStyles.bg}`}
                             onClick={() => { if (isAutoPilot) disableAutoPilot(); setActiveInputIdx(null); }}
                         >
                             <div className="absolute inset-0 pointer-events-none transition-colors duration-700"
@@ -630,24 +630,24 @@ export default function LoginMockup() {
                         </div>
 
                         {/* Telemetry HUD */}
-                        <div className={`p-4 transition-all duration-500 ease-out z-20 ${activeRoute ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-                            <div className={`rounded-3xl p-5 shadow-2xl relative overflow-hidden border transition-colors ${gisScanActive ? 'bg-emerald-950 border-emerald-900' : 'bg-slate-900 border-slate-800'}`}>
+                        <div className={`p-3 transition-all duration-500 ease-out z-20 ${activeRoute ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+                            <div className={`rounded-[2rem] p-4 shadow-2xl relative overflow-hidden border transition-colors ${gisScanActive ? 'bg-emerald-950 border-emerald-900' : 'bg-slate-900 border-slate-800'}`}>
                                 <div className={`absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b ${gisScanActive ? 'from-emerald-500/10' : 'from-white/5'} to-transparent pointer-events-none`} />
 
-                                <div className="flex items-center justify-between mb-5">
+                                <div className="flex items-center justify-between mb-3">
                                     <div className="flex items-center gap-2">
                                         {gisScanActive ? (
-                                            <Radar size={16} className="text-emerald-400 animate-spin" style={{ animationDuration: '3s' }} />
+                                            <Radar size={14} className="text-emerald-400 animate-spin" style={{ animationDuration: '3s' }} />
                                         ) : (
-                                            <ActiveIcon size={16} style={{ color: activeRoute ? MODE_CONFIG[activeRoute.mode].color : '#3b82f6' }} />
+                                            <ActiveIcon size={14} style={{ color: activeRoute ? MODE_CONFIG[activeRoute.mode].color : '#3b82f6' }} />
                                         )}
-                                        <h3 className={`text-[10px] font-bold uppercase tracking-widest ${gisScanActive ? 'text-emerald-400' : 'text-white'}`}>
+                                        <h3 className={`text-[9px] font-bold uppercase tracking-widest ${gisScanActive ? 'text-emerald-400' : 'text-white'}`}>
                                             {gisScanActive ? 'GIS Network Scan Active' : (activeRoute ? MODE_CONFIG[activeRoute.mode].label + ' Telemetry' : 'System Telemetry')}
                                         </h3>
                                     </div>
                                 </div>
 
-                                <div className="grid grid-cols-2 gap-3 mb-5">
+                                <div className="grid grid-cols-2 gap-2 mb-3">
                                     <div className={`p-3 rounded-2xl border transition-colors ${gisScanActive ? 'bg-emerald-950/80 border-emerald-800' : 'bg-slate-950/50 border-slate-800'}`}>
                                         <p className={`text-[8px] uppercase font-bold tracking-wider mb-0.5 ${gisScanActive ? 'text-emerald-600' : 'text-slate-400'}`}>
                                             {gisScanActive ? 'Nodes Found' : 'Velocity'}
