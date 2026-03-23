@@ -2,7 +2,7 @@
 import React from 'react';
 import { ShieldCheck, Lock, Fingerprint, Search, Shield, Zap } from 'lucide-react';
 import { Reveal } from '@/components/Reveal';
-import LoginMockup from '@/components/LoginMockup';
+import PhoneMockup from '@/components/PhoneMockup';
 
 /**
  * ngeKYC Product Page: Next-gen Identity Verification
@@ -45,7 +45,7 @@ export default function NgeKYCPage() {
 
                     <Reveal delay={200}>
                         <div className="relative group">
-                            <LoginMockup />
+                            <PhoneMockup />
                             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-blue-600/5 rounded-full blur-[120px] -z-10" />
                         </div>
                     </Reveal>

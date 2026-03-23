@@ -3,7 +3,7 @@ import { ShieldCheck, Zap } from 'lucide-react';
 import Link from 'next/link';
 import { Reveal } from './Reveal';
 import IsometricMap from './IsometricMap';
-import LoginMockup from './LoginMockup';
+import PhoneMockup from './PhoneMockup';
 
 /**
  * Hero Section: The flagship visual component of the landing page.
@@ -59,7 +59,7 @@ export default function Hero() {
         <div className="relative group w-full">
           <Reveal delay={400} className="w-full">
             <div className="relative z-10 w-full transition-all duration-500">
-              <LoginMockup />
+              <PhoneMockup />
             </div>
 
             {/* Background Decorative Glow */}
