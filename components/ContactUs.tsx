@@ -101,7 +101,7 @@ export default function ContactUs() {
             <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-600/5 rounded-full blur-[120px] pointer-events-none" />
 
             <div className="max-w-7xl mx-auto px-6 relative z-10">
-                <div className="grid lg:grid-cols-2 gap-16 items-start">
+                <div className="grid lg:grid-cols-2 gap-16">
 
                     {/* LEFT: Info & Map */}
                     <div className="space-y-8">
@@ -123,29 +123,72 @@ export default function ContactUs() {
                             </div>
                         </div>
 
-                        {/* Quick Contact Links */}
-                        <div className="grid grid-cols-2 gap-4">
-                            <a href="mailto:hi@mapifyit.com" className="p-4 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-cyan-500/50 transition-all group">
-                                <Mail className="w-5 h-5 text-cyan-400 mb-2" />
-                                <p className="text-xs text-slate-500 uppercase tracking-widest font-bold">Email Us</p>
-                                <p className="text-white text-sm">hi@mapifyit.com</p>
-                            </a>
-                            <a href="tel:+97144429622" className="p-4 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-blue-500/50 transition-all group">
-                                <Phone className="w-5 h-5 text-blue-400 mb-2" />
-                                <p className="text-xs text-slate-500 uppercase tracking-widest font-bold">Call Us</p>
-                                <p className="text-white text-sm">+971 4 442 9622</p>
-                            </a>
-                        </div>
-                    </div>
+                        {/* Contact Details Panel */}
+                        <div className="p-7 rounded-[2rem] bg-gradient-to-b from-white/[0.04] to-transparent border border-white/5 shadow-2xl space-y-7">
+                            {/* Actionable Links */}
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pb-7 border-b border-white/5">
+                                <a href="mailto:hi@mapifyit.com" className="flex items-center gap-4 group">
+                                    <div className="flex items-center justify-center w-12 h-12 rounded-full bg-cyan-500/10 text-cyan-400 group-hover:bg-cyan-500 group-hover:text-slate-900 transition-all duration-300 shadow-[0_0_20px_rgba(34,211,238,0)] group-hover:shadow-[0_0_20px_rgba(34,211,238,0.4)] shrink-0">
+                                        <Mail className="w-5 h-5" />
+                                    </div>
+                                    <div>
+                                        <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">Email Us</p>
+                                        <p className="text-sm font-medium text-slate-200 group-hover:text-white transition-colors truncate">hi@mapifyit.com</p>
+                                    </div>
+                                </a>
+                                <a href="tel:+97144429622" className="flex items-center gap-4 group">
+                                    <div className="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/10 text-blue-400 group-hover:bg-blue-500 group-hover:text-slate-900 transition-all duration-300 shadow-[0_0_20px_rgba(59,130,246,0)] group-hover:shadow-[0_0_20px_rgba(59,130,246,0.4)] shrink-0">
+                                        <Phone className="w-5 h-5" />
+                                    </div>
+                                    <div>
+                                        <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">Call Us</p>
+                                        <p className="text-sm font-medium text-slate-200 group-hover:text-white transition-colors truncate">+971 4 442 9622</p>
+                                    </div>
+                                </a>
+                            </div>
+
+                            {/* Global Offices */}
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-6 pt-1">
+                                <div className="flex items-start gap-4 group">
+                                    <div className="flex items-center justify-center w-12 h-12 rounded-full bg-cyan-500/10 text-cyan-400 shrink-0">
+                                        <MapPin className="w-5 h-5" />
+                                    </div>
+                                    <div className="pt-0.5">
+                                        <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1 flex items-center gap-2">
+                                            Dubai HQ
+                                            <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 shadow-[0_0_8px_rgba(34,211,238,0.8)] animate-pulse" />
+                                        </p>
+                                        <p className="text-sm text-slate-400 leading-[1.7] font-medium group-hover:text-slate-200 transition-colors">
+                                            Office #1508 Citadel Tower<br />
+                                            Business Bay, Dubai, UAE
+                                        </p>
+                                    </div>
+                                </div>
+                                <div className="flex items-start gap-4 group">
+                                    <div className="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/10 text-blue-400 shrink-0">
+                                        <MapPin className="w-5 h-5" />
+                                    </div>
+                                    <div className="pt-0.5">
+                                        <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1 flex items-center gap-2">
+                                            USA Branch
+                                        </p>
+                                        <p className="text-sm text-slate-400 leading-[1.7] font-medium group-hover:text-slate-200 transition-colors">
+                                            Office #9100 Southwest Fwy<br />
+                                            Houston, TX 77074, USA
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                    </div>
 
                     {/* RIGHT: The Form */}
-                    <div className="relative">
+                    <div className="relative lg:h-full">
                         <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-[2.5rem] blur opacity-10" />
 
-                        <form ref={formRef} onSubmit={handleSubmit} className="relative bg-[#0A101F] border border-blue-900/30 p-8 md:p-10 rounded-[2.5rem] shadow-3xl">
-                            <div className="space-y-6">
+                        <form ref={formRef} onSubmit={handleSubmit} className="relative lg:h-full flex flex-col bg-[#0A101F] border border-blue-900/30 p-8 md:p-10 rounded-[2.5rem] shadow-3xl">
+                            <div className="flex flex-col flex-1 gap-6">
                                 {/* Name Input */}
-                                <div className="space-y-2">
+                                <div className="space-y-2 shrink-0">
                                     <label className="text-[10px] font-bold text-cyan-500 uppercase tracking-[0.2em] ml-1">Full Name</label>
                                     <div className="relative group">
                                         <User className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500 group-focus-within:text-cyan-400 transition-colors" />
@@ -160,7 +203,7 @@ export default function ContactUs() {
                                 </div>
 
                                 {/* Email Input */}
-                                <div className="space-y-2">
+                                <div className="space-y-2 shrink-0">
                                     <label className="text-[10px] font-bold text-cyan-500 uppercase tracking-[0.2em] ml-1">Email</label>
                                     <div className="relative group">
                                         <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500 group-focus-within:text-cyan-400 transition-colors" />
@@ -175,44 +218,45 @@ export default function ContactUs() {
                                 </div>
 
                                 {/* Message Input */}
-                                <div className="space-y-2">
-                                    <label className="text-[10px] font-bold text-cyan-500 uppercase tracking-[0.2em] ml-1">Project Requirements</label>
-                                    <div className="relative group">
-                                        <MessageSquare className="absolute left-4 top-4 w-4 h-4 text-slate-500 group-focus-within:text-cyan-400 transition-colors" />
+                                <div className="space-y-2 flex-1 flex flex-col">
+                                    <label className="text-[10px] font-bold text-cyan-500 uppercase tracking-[0.2em] ml-1 shrink-0">Project Requirements</label>
+                                    <div className="relative group flex-1 min-h-[140px]">
+                                        <MessageSquare className="absolute left-4 top-4 w-4 h-4 text-slate-500 group-focus-within:text-cyan-400 transition-colors z-10" />
                                         <textarea
                                             required
                                             name="message"
-                                            rows={4}
                                             placeholder="Tell us about your GIS needs..."
-                                            className="w-full bg-slate-950 border border-white/5 rounded-xl py-4 pl-12 pr-4 text-white placeholder:text-slate-700 focus:outline-none focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/20 transition-all resize-none"
+                                            className="absolute inset-0 w-full h-full bg-slate-950 border border-white/5 rounded-xl py-4 pl-12 pr-4 text-white placeholder:text-slate-700 focus:outline-none focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/20 transition-all resize-none"
                                         />
                                     </div>
                                 </div>
 
-                                {/* Submit Button */}
-                                <button
-                                    disabled={status === 'sending' || status === 'sent'}
-                                    className="w-full group relative flex items-center justify-center gap-3 bg-gradient-to-r from-cyan-500 to-blue-600 p-4 rounded-xl text-slate-950 font-bold hover:shadow-[0_0_20px_rgba(34,211,238,0.4)] transition-all disabled:opacity-50"
-                                >
-                                    {status === 'sent' ? (
-                                        <>Request Sent! <CheckCircle2 className="w-5 h-5 text-slate-900" /></>
-                                    ) : (
-                                        <>
-                                            {status === 'sending' ? 'Sending...' : 'Send Request'}
-                                            <Send className={`w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1 ${status === 'sending' ? 'animate-pulse' : ''}`} />
-                                        </>
+                                <div className="shrink-0 space-y-6 pt-2">
+                                    {/* Submit Button */}
+                                    <button
+                                        disabled={status === 'sending' || status === 'sent'}
+                                        className="w-full group relative flex items-center justify-center gap-3 bg-gradient-to-r from-cyan-500 to-blue-600 p-4 rounded-xl text-slate-950 font-bold hover:shadow-[0_0_20px_rgba(34,211,238,0.4)] transition-all disabled:opacity-50"
+                                    >
+                                        {status === 'sent' ? (
+                                            <>Request Sent! <CheckCircle2 className="w-5 h-5 text-slate-900" /></>
+                                        ) : (
+                                            <>
+                                                {status === 'sending' ? 'Sending...' : 'Send Request'}
+                                                <Send className={`w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1 ${status === 'sending' ? 'animate-pulse' : ''}`} />
+                                            </>
+                                        )}
+                                    </button>
+
+                                    {status === 'error' && (
+                                        <p className="text-[10px] text-center text-red-500 uppercase tracking-widest font-mono">
+                                            Failed to send. Please try again or email hi@mapifyit.com
+                                        </p>
                                     )}
-                                </button>
 
-                                {status === 'error' && (
-                                    <p className="text-[10px] text-center text-red-500 uppercase tracking-widest font-mono">
-                                        Failed to send. Please try again or email hi@mapifyit.com
+                                    <p className="text-[10px] text-center text-slate-600 uppercase tracking-widest font-mono">
+                                        Secure SSL Encrypted Transmission
                                     </p>
-                                )}
-
-                                <p className="text-[10px] text-center text-slate-600 uppercase tracking-widest font-mono">
-                                    Secure SSL Encrypted Transmission
-                                </p>
+                                </div>
                             </div>
                         </form>
                     </div>
