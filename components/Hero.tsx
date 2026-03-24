@@ -57,7 +57,7 @@ export default function Hero() {
 
         {/* Right Column: Visual Mockup (Landscape Workstation) */}
         <div className="relative group w-full">
-          <Reveal delay={400} className="w-full">
+          <Reveal delay={300} className="w-full">
             <div className="relative z-10 w-full transition-all duration-500">
               <PhoneMockup />
             </div>

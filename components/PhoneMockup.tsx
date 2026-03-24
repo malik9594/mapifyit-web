@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MapScreen } from "./phone-screens/MapScreen";
 import { SearchScreen } from "./phone-screens/SearchScreen";
@@ -18,12 +18,20 @@ const screens = [
 
 const PhoneMockup = () => {
   const [activeScreen, setActiveScreen] = useState(0);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   useEffect(() => {
-    const interval = setInterval(() => {
+    // Use slower interval on mobile to avoid feeling too fast on smaller screens
+    const isMobile = window.innerWidth < 768;
+    const delay = isMobile ? 3850 : 4000;
+
+    intervalRef.current = setInterval(() => {
       setActiveScreen((prev) => (prev + 1) % screens.length);
-    }, 4000);
-    return () => clearInterval(interval);
+    }, delay);
+
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
   }, []);
 
   const ActiveComponent = screens[activeScreen].component;
@@ -90,16 +98,14 @@ const PhoneMockup = () => {
             className="flex flex-col items-center gap-1.5 group"
           >
             <div
-              className={`h-1.5 rounded-full transition-all duration-500 ${
-                i === activeScreen
-                  ? "w-8 bg-primary glow-primary"
-                  : "w-1.5 bg-muted-foreground/30 group-hover:bg-muted-foreground/50"
-              }`}
+              className={`h-1.5 rounded-full transition-all duration-500 ${i === activeScreen
+                ? "w-8 bg-primary glow-primary"
+                : "w-1.5 bg-muted-foreground/30 group-hover:bg-muted-foreground/50"
+                }`}
             />
             <span
-              className={`text-[10px] font-medium transition-all duration-300 ${
-                i === activeScreen ? "text-primary" : "text-muted-foreground/40"
-              }`}
+              className={`text-[10px] font-medium transition-all duration-300 ${i === activeScreen ? "text-primary" : "text-muted-foreground/40"
+                }`}
             >
               {screen.label}
             </span>
