@@ -204,7 +204,13 @@ export default function Navbar() {
           <div className="space-y-4">
             <Link
               href="/"
-              onClick={(e) => { if (pathname === '/') { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); setMobileMenuOpen(false); } }}
+              onClick={(e) => {
+                setMobileMenuOpen(false);
+                if (pathname === '/') {
+                  e.preventDefault();
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+              }}
               className={`block text-xl font-bold border-b border-white/5 pb-4 ${pathname === '/' ? 'text-blue-500' : 'text-white'}`}
             >
               Home
