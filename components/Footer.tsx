@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import {
     Twitter,
     Linkedin,
@@ -145,14 +146,18 @@ export default function Footer() {
                     </div>
 
                     <div className="flex gap-8">
-                        {["Privacy Policy", "Terms of Service", "Cookie Policy"].map((item) => (
-                            <a
-                                key={item}
-                                href="#"
+                        {[
+                            { name: "Privacy Policy", href: "/privacy-policy" },
+                            { name: "Terms of Service", href: "/terms-of-service" },
+                            { name: "Cookie Policy", href: "#" }
+                        ].map((item) => (
+                            <Link
+                                key={item.name}
+                                href={item.href}
                                 className="text-slate-500 hover:text-slate-300 text-xs transition-colors"
                             >
-                                {item}
-                            </a>
+                                {item.name}
+                            </Link>
                         ))}
                     </div>
 
