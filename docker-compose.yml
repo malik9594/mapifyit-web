@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  web:
+    container_name: mapifyit-web
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # Exposing the port to access the application
+    ports:
+      - "3000:3000"
+    # Ensure the container automatically restarts on errors or server reboots
+    restart: unless-stopped
+    # Define production environment variables here
+    environment:
+      - NODE_ENV=production
+      # - NEXT_PUBLIC_API_URL=https://api.mapifyit.com
+    
+    # Optional: Configure logging to prevent Docker logs from eating up all VM disk space
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+# Optional: Define custom networks if you plan to connect this app to a separate database container later
+# networks:
+#   default:
+#     name: mapifyit_network
