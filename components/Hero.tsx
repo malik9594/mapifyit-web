@@ -15,7 +15,7 @@ export default function Hero() {
       <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center">
 
         {/* Left Column: Value Proposition */}
-        <div className="text-center lg:text-left pt-2">
+        <div className="text-center lg:text-left">
           <Reveal delay={0}>
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-[10px] md:text-xs font-semibold text-blue-400 mb-2 md:mb-4 backdrop-blur-sm shadow-[0_0_15px_rgba(59,130,246,0.15)]">
               <Zap className="w-3.5 h-3.5 fill-blue-500/50" /> High-Performance Geospatial APIs
