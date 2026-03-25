@@ -31,8 +31,8 @@ export default function Footer() {
         ],
         Solutions: [
             { name: "NG eKYC", href: "https://ngekyc.mapifyit.com/" },
-            { name: "Fleet Management System", href: "/fms" },
-            { name: "Field Force Tracking", href: "/fft" },
+            { name: "Fleet Management System", href: "/fleet-management-system" },
+            { name: "Field Force Tracking", href: "/field-force-tracking" },
         ],
         Company: [
             { name: "Pricing", href: "/pricing" },

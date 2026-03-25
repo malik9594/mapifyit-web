@@ -45,7 +45,8 @@ const PricingCard = ({ title, price, highlightedText, description, features, hig
 
         <footer className="mt-auto relative z-10">
             <Link
-                href="/contactus"
+                href="https://dev.mapifyit.com/"
+                target='_blank'
                 className={`w-full py-4 rounded-xl font-bold transition-all flex items-center justify-center gap-2 group/btn ${highlighted ? 'bg-blue-600 text-white hover:bg-blue-500 shadow-[0_0_20px_rgba(59,130,246,0.3)] hover:shadow-[0_0_30px_rgba(59,130,246,0.5)]' : 'bg-white/5 text-white border border-white/10 hover:bg-white/10'}`}
                 aria-label={`Get started with the ${title} plan`}
             >
@@ -139,7 +140,7 @@ export default function PricingPage() {
                                 highlightedText="750,000+ monthly calls"
                                 description="Bespoke infrastructure for global scale."
                                 icon={Crown}
-                                features={["Dedicated Tech Manager", "On-Premise / Air-Gapped", "Custom Geodata & SLA", "White-label Options"]}
+                                features={["Dedicated Tech Manager", "Custom Geodata & SLA", "White-label Options"]}
                             />
                         </div>
                     </Reveal>

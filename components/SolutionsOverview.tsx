@@ -22,7 +22,7 @@ const solutions = [
         subtitle: "Fleet Management & Vehicle Tracking",
         description: "Take total control of your fleet with FMS FleetSense. Real-time GPS tracking, fuel monitoring, driver behavior analytics, and AI-driven predictive maintenance in one unified fleet management dashboard. Perfect for logistics, transportation, and enterprise mobility operations.",
         icon: Truck,
-        href: "/fms",
+        href: "/fleet-management-system",
         color: "emerald",
         infoPoints: [
             "1-Second Live GPS Fleet Tracking",
@@ -48,7 +48,7 @@ const solutions = [
         subtitle: "Real-Time Workforce Visibility & Field Operations",
         description: "Maximize productivity with our Field Force Tracking platform. Monitor live agent movements, verify attendance via geo-fencing, and optimize task distribution for mobile teams. Ideal for enterprise field workforce management, location tracking, and real-time operational insights.",
         icon: Users,
-        href: "/fft",
+        href: "/field-force-tracking",
         color: "indigo",
         infoPoints: [
             "Real-Time GPS-Based Agent Movement Tracking",

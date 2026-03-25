@@ -110,7 +110,7 @@ export default function Navbar() {
               onMouseLeave={() => setSolutionsOpen(false)}
             >
               <button
-                className={`flex items-center gap-1 text-sm font-medium transition-colors ${solutionsOpen || pathname.includes('/fms') ? 'text-white font-bold text-lg  underline' : 'text-slate-300 hover:text-white'}`}
+                className={`flex items-center gap-1 text-sm font-medium transition-colors ${solutionsOpen || pathname.includes('/fleet-management-system') ? 'text-white font-bold text-lg  underline' : 'text-slate-300 hover:text-white'}`}
               >
                 Solutions <ChevronDown size={14} className={`transition-transform duration-300 ${solutionsOpen ? 'rotate-180' : ''}`} />
               </button>
@@ -129,8 +129,8 @@ export default function Navbar() {
                     <p className="text-[10px] text-slate-400">Identity Verification</p>
                   </div>
                 </Link>
-                <Link href="/fms" onClick={() => setSolutionsOpen(false)} className={`flex items-start gap-3 p-3 rounded-xl transition-all group/item ${pathname === '/fms' ? 'bg-white/10' : 'hover:bg-white/5'}`}>
-                  <div className={`w-8 h-8 rounded-lg bg-indigo-500/10 flex items-center justify-center text-indigo-500 group-hover/item:bg-indigo-500 group-hover/item:text-white ${pathname === '/fms' ? 'bg-indigo-500 text-white' : ''}`}>
+                <Link href="/fleet-management-system" onClick={() => setSolutionsOpen(false)} className={`flex items-start gap-3 p-3 rounded-xl transition-all group/item ${pathname === '/fleet-management-system' ? 'bg-white/10' : 'hover:bg-white/5'}`}>
+                  <div className={`w-8 h-8 rounded-lg bg-indigo-500/10 flex items-center justify-center text-indigo-500 group-hover/item:bg-indigo-500 group-hover/item:text-white ${pathname === '/fleet-management-system' ? 'bg-indigo-500 text-white' : ''}`}>
                     <Truck size={18} />
                   </div>
                   <div>
@@ -138,8 +138,8 @@ export default function Navbar() {
                     <p className="text-[10px] text-slate-400">Fleet Management</p>
                   </div>
                 </Link>
-                <Link href="/fft" onClick={() => setSolutionsOpen(false)} className={`flex items-start gap-3 p-3 rounded-xl transition-all group/item ${pathname === '/fft' ? 'bg-white/10' : 'hover:bg-white/5'}`}>
-                  <div className={`w-8 h-8 rounded-lg bg-indigo-500/10 flex items-center justify-center text-indigo-500 group-hover/item:bg-indigo-500 group-hover/item:text-white ${pathname === '/fft' ? 'bg-indigo-500 text-white' : ''}`}>
+                <Link href="/field-force-tracking" onClick={() => setSolutionsOpen(false)} className={`flex items-start gap-3 p-3 rounded-xl transition-all group/item ${pathname === '/field-force-tracking' ? 'bg-white/10' : 'hover:bg-white/5'}`}>
+                  <div className={`w-8 h-8 rounded-lg bg-indigo-500/10 flex items-center justify-center text-indigo-500 group-hover/item:bg-indigo-500 group-hover/item:text-white ${pathname === '/field-force-tracking' ? 'bg-indigo-500 text-white' : ''}`}>
                     <Users size={18} />
                   </div>
                   <div>
@@ -235,8 +235,8 @@ export default function Navbar() {
             <div className="space-y-4 border-b border-white/5 pb-4">
               <p className="text-[10px] uppercase tracking-widest text-blue-500 font-bold">Solutions</p>
               <Link href="https://ngekyc.mapifyit.com/" target="_blank" rel="noopener noreferrer" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-4 text-slate-300"><ShieldCheck className="text-blue-500" />NG eKYC</Link>
-              <Link href="/fms" onClick={() => setMobileMenuOpen(false)} className={`flex items-center gap-4 ${pathname === '/fms' ? 'text-indigo-400' : 'text-slate-300'}`}><Truck className={`${pathname === '/fms' ? 'text-indigo-400' : 'text-indigo-500'}`} /> FMS</Link>
-              <Link href="/fft" onClick={() => setMobileMenuOpen(false)} className={`flex items-center gap-4 ${pathname === '/fft' ? 'text-indigo-400' : 'text-slate-300'}`}><Users className={`${pathname === '/fft' ? 'text-indigo-400' : 'text-indigo-500'}`} /> FFT</Link>
+              <Link href="/fleet-management-system" onClick={() => setMobileMenuOpen(false)} className={`flex items-center gap-4 ${pathname === '/fleet-management-system' ? 'text-indigo-400' : 'text-slate-300'}`}><Truck className={`${pathname === '/fleet-management-system' ? 'text-indigo-400' : 'text-indigo-500'}`} /> FMS</Link>
+              <Link href="/field-force-tracking" onClick={() => setMobileMenuOpen(false)} className={`flex items-center gap-4 ${pathname === '/field-force-tracking' ? 'text-indigo-400' : 'text-slate-300'}`}><Users className={`${pathname === '/field-force-tracking' ? 'text-indigo-400' : 'text-indigo-500'}`} /> FFT</Link>
 
             </div>
 
