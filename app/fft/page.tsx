@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import {
     Map,
@@ -94,10 +95,21 @@ const Hero = () => (
                 </p>
                 <p className="text-lg text-[#A0A8B3] mb-8 leading-relaxed max-w-xl">
                     Our platform enables companies to monitor field agents, delivery staff, service technicians, and sales representatives while optimizing routes, tracking visits, and ensuring accountability in the field. By combining location intelligence with workforce analytics, organizations can make better decisions and improve productivity. </p>
-                {/* <div className="flex flex-col sm:flex-row gap-4">
-                    <PrimaryButton icon>Request Demo</PrimaryButton>
-                    <SecondaryButton>Start Free Trial</SecondaryButton>
-                </div> */}
+                {/* CTA Buttons */}
+                <div className="flex flex-col sm:flex-row gap-4">
+                    <Link
+                        href="/contactus"
+                        className="bg-[#2F80FF] hover:bg-[#4DA3FF] text-white font-medium py-3 px-6 transition-all duration-300 flex items-center justify-center rounded-full gap-2 shadow-[0_0_20px_rgba(47,128,255,0.3)] hover:shadow-[0_0_25px_rgba(77,163,255,0.5)]"
+                    >
+                        Contact Our Team <ArrowRight size={18} />
+                    </Link>
+                    <Link
+                        href="/contactus"
+                        className="bg-transparent border border-[#1F2933] hover:border-[#4DA3FF] text-white font-medium py-3 px-6 transition-all duration-300 flex items-center rounded-full justify-center"
+                    >
+                        Request a Demo
+                    </Link>
+                </div>
                 <div className="mt-10 flex items-center gap-6 text-[#A0A8B3] text-sm">
                     <div className="flex items-center gap-2"><CheckCircle size={16} className="text-[#2F80FF]" /> No credit card required</div>
                     <div className="flex items-center gap-2"><ShieldCheck size={16} className="text-[#2F80FF]" /> Enterprise Grade Security</div>
@@ -524,10 +536,20 @@ const CTASection = () => (
                 <p className="text-xl text-[#A0A8B3] mb-10 max-w-2xl mx-auto">
                     Deploy a secure, intelligent Field Force Tracking platform designed for modern mobile workforce operations.
                 </p>
-                <div className="flex flex-col sm:flex-row justify-center gap-4">
-                    <PrimaryButton className="text-lg py-4 px-8" icon>Request Demo</PrimaryButton>
-                    <SecondaryButton className="text-lg py-4 px-8 bg-[#0F141A]">Contact Sales</SecondaryButton>
-                </div>
+                {/* <div className="flex flex-col sm:flex-row justify-center gap-4">
+                    <Link
+                        href="/contactus"
+                        className="text-lg py-4 px-8 bg-[#2F80FF] hover:bg-[#4DA3FF] text-white font-medium rounded-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(47,128,255,0.3)]"
+                    >
+                        Contact Our Team <ArrowRight size={18} />
+                    </Link>
+                    <Link
+                        href="/contactus"
+                        className="text-lg py-4 px-8 bg-[#0F141A] border border-[#1F2933] hover:border-[#4DA3FF] text-white font-medium rounded-lg transition-all duration-300 flex items-center justify-center"
+                    >
+                        Request a Demo
+                    </Link>
+                </div> */}
             </FadeIn>
         </div>
     </section>
@@ -620,7 +642,7 @@ export default function Page() {
 
                 <BenefitsSection />
                 <IndustriesSection />
-                {/* <CTASection /> */}
+                <CTASection />
             </main>
 
         </div>

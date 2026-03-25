@@ -1,12 +1,13 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
     Map, Navigation, Activity, Bell, Smartphone, Shield,
     Truck, BarChart3, AlertTriangle, Route, Settings,
     Globe, Cpu, Zap, CheckCircle2, ArrowRight, Menu, X,
-    MapPin, Battery, Gauge, Power
+    MapPin, Battery, Gauge, Power, Phone
 } from 'lucide-react';
 
 // --- Global Theme Colors ---
@@ -89,10 +90,22 @@ const Hero = () => {
                         <p className="text-lg md:text-xl text-[#A0A8B3] mb-8 leading-relaxed max-w-xl">
                             MapifyIt’s Fleet Management System (FMS) is an enterprise-grade solution for organizations managing large-scale vehicle fleets, logistics operations, and mission-critical transportation. The platform combines real-time GPS vehicle tracking, AI-driven route optimization, predictive maintenance, fuel monitoring, and driver behavior analytics into a secure, sovereign dashboard with zero third-party data exposure. Fleet operators gain complete visibility and control across vehicles, drivers, routes, and assets, enabling smarter fleet decisions, lower operational costs, and safer operations.
                         </p>
-                        {/* <div className="flex flex-col sm:flex-row gap-4">
-                            <Button primary icon={<ArrowRight className="w-4 h-4" />}>Request Demo</Button>
-                            <Button>View Features</Button>
-                        </div> */}
+                        {/* CTA Buttons */}
+                        <div className="flex flex-col sm:flex-row gap-4">
+                            <Link
+                                href="/contactus"
+                                className="group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full px-6 py-3 text-sm font-medium transition-all duration-300 bg-[#2F80FF] text-white hover:bg-[#4DA3FF] shadow-[0_0_20px_rgba(47,128,255,0.3)] hover:shadow-[0_0_30px_rgba(77,163,255,0.5)]"
+                            >
+                                <Phone className="w-4 h-4" /> Contact Our Team
+                                <span className="transition-transform duration-300 group-hover:translate-x-1"><ArrowRight className="w-4 h-4" /></span>
+                            </Link>
+                            <Link
+                                href="/contactus"
+                                className="group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full px-6 py-3 text-sm font-medium transition-all duration-300 bg-[#0F141A] text-white border border-[#1F2933] hover:border-[#4DA3FF] hover:bg-[#151C24]"
+                            >
+                                Request a Demo
+                            </Link>
+                        </div>
                     </FadeIn>
                 </div>
 
