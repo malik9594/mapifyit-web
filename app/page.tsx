@@ -13,7 +13,7 @@ import { Reveal } from '@/components/Reveal';
  */
 export default function Home() {
   return (
-    <div className="relative z-10 pt-32 pb-20">
+    <div className="relative z-10 pt-25 pb-20">
 
       {/* GLOBAL ANIMATION KEYFRAMES - Kept for component-specific animations */}
       <style>{`

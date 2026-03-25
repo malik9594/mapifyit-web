@@ -14,18 +14,18 @@ export default function ContactPage() {
     React.useEffect(() => {
         const timer = setTimeout(() => {
             setMounted(true);
-        }, 350); 
+        }, 350);
         return () => clearTimeout(timer);
     }, []);
 
     const router = useRouter();
 
     return (
-        <div className="min-h-screen bg-[#03060D] pt-32 pb-20 font-sans">
+        <div className="min-h-screen bg-[#03060D] pt-20 pb-20 font-sans">
             <div className="max-w-7xl mx-auto px-6 pt-0 md:pt-4">
                 <div className="mb-10">
                     <button onClick={() => router.back()} className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors font-semibold group cursor-pointer">
-                        <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" /> 
+                        <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
                         Go Back
                     </button>
                 </div>

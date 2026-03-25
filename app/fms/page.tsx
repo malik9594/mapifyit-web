@@ -70,7 +70,7 @@ const Button = ({ children, primary, className = "", icon, ...props }: { childre
 
 const Hero = () => {
     return (
-        <section className="relative pt-20 pb-10 md:pt-40 md:pb-18 overflow-hidden">
+        <section className="relative pt-20 pb-10 md:pt-22 md:pb-18 overflow-hidden">
             {/* Background Glows */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1000px] h-[500px] bg-[#2F80FF]/20 opacity-50 blur-[120px] rounded-full pointer-events-none" />
 
@@ -642,86 +642,88 @@ const MobileAppsSection = () => {
                 <div className="grid lg:grid-cols-2 gap-16 items-center">
 
                     {/* Phones Mockup */}
-                    <div className="relative h-[600px] flex items-center justify-center">
-                        {/* Background Glow */}
-                        <div className="absolute w-[300px] h-[300px] bg-[#2F80FF]/20 blur-[100px] rounded-full" />
+                    <div className="relative h-[450px] sm:h-[500px] md:h-[600px] w-full flex items-center justify-center">
+                        <div className="absolute inset-0 flex items-center justify-center scale-[0.75] sm:scale-[0.85] md:scale-100 origin-center transition-transform duration-300">
+                            {/* Background Glow */}
+                            <div className="absolute w-[300px] h-[300px] bg-[#2F80FF]/20 blur-[100px] rounded-full pointer-events-none" />
 
-                        {/* Phone 1 (Back) */}
-                        <motion.div
-                            initial={{ x: -50, y: 20, rotate: -5, opacity: 0 }}
-                            whileInView={{ x: -40, y: 20, rotate: -5, opacity: 0.6 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.8 }}
-                            className="absolute w-[260px] h-[540px] rounded-[3rem] border-[8px] border-[#1F2933] bg-[#0B0F14] shadow-2xl overflow-hidden"
-                        >
-                            <div className="absolute top-0 inset-x-0 h-6 bg-[#1F2933] rounded-b-xl w-32 mx-auto z-20" />
-                            {/* Fake UI */}
-                            <div className="p-4 pt-10">
-                                <div className="w-full h-32 bg-[#1F2933] rounded-xl mb-4" />
-                                <div className="space-y-3">
-                                    {[1, 2, 3, 4].map(i => <div key={i} className="w-full h-16 bg-[#1F2933] rounded-xl" />)}
-                                </div>
-                            </div>
-                        </motion.div>
-
-                        {/* Phone 2 (Front) */}
-                        <motion.div
-                            initial={{ x: 50, y: 0, rotate: 5, opacity: 0 }}
-                            whileInView={{ x: 20, y: 0, rotate: 5, opacity: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.8, delay: 0.2 }}
-                            className="absolute w-[280px] h-[580px] rounded-[3rem] border-[8px] border-[#2F80FF]/30 bg-[#0F141A] shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden flex flex-col"
-                        >
-                            <div className="absolute top-0 inset-x-0 h-7 bg-[#0F141A] border-b border-[#2F80FF]/30 rounded-b-2xl w-36 mx-auto z-20 flex justify-center">
-                                <div className="w-12 h-1 bg-[#1F2933] rounded-full mt-2" />
-                            </div>
-
-                            {/* Fake App UI */}
-                            <div className="flex-1 bg-[#0B0F14] relative flex flex-col">
-                                <div className="bg-[#2F80FF] h-48 rounded-b-[2rem] p-6 pt-12 relative overflow-hidden">
-                                    <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl" />
-                                    <h4 className="text-white font-semibold text-lg">Active Fleet</h4>
-                                    <div className="text-3xl font-bold text-white mt-2">1,248</div>
-                                    <div className="text-white/80 text-sm">Vehicles Online</div>
-                                </div>
-
-                                <div className="flex-1 p-4 -mt-6">
-                                    <div className="bg-[#0F141A] rounded-xl p-4 shadow-lg border border-[#1F2933] mb-4 flex gap-4">
-                                        <div className="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center shrink-0">
-                                            <CheckCircle2 className="w-5 h-5 text-green-500" />
-                                        </div>
-                                        <div>
-                                            <div className="text-sm font-semibold text-white">All Systems Normal</div>
-                                            <div className="text-xs text-[#A0A8B3]">Last sync: Just now</div>
-                                        </div>
-                                    </div>
-
+                            {/* Phone 1 (Back) */}
+                            <motion.div
+                                initial={{ x: -50, y: 20, rotate: -5, opacity: 0 }}
+                                whileInView={{ x: -40, y: 20, rotate: -5, opacity: 0.6 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.8 }}
+                                className="absolute w-[260px] h-[540px] rounded-[3rem] border-[8px] border-[#1F2933] bg-[#0B0F14] shadow-2xl overflow-hidden"
+                            >
+                                <div className="absolute top-0 inset-x-0 h-6 bg-[#1F2933] rounded-b-xl w-32 mx-auto z-20" />
+                                {/* Fake UI */}
+                                <div className="p-4 pt-10">
+                                    <div className="w-full h-32 bg-[#1F2933] rounded-xl mb-4" />
                                     <div className="space-y-3">
-                                        <div className="text-xs font-semibold text-[#A0A8B3] uppercase tracking-wider pl-1">Recent Alerts</div>
-                                        {[
-                                            { t: 'Route Deviation', v: 'Veh-84', c: 'text-yellow-500' },
-                                            { t: 'Fuel Critical', v: 'Veh-12', c: 'text-red-500' },
-                                            { t: 'Arrived at Depot', v: 'Veh-99', c: 'text-green-500' }
-                                        ].map((item, i) => (
-                                            <div key={i} className="bg-[#0F141A] rounded-xl p-3 border border-[#1F2933] flex justify-between items-center">
-                                                <div className="flex flex-col">
-                                                    <span className={`text-sm font-medium ${item.c}`}>{item.t}</span>
-                                                    <span className="text-xs text-[#A0A8B3]">{item.v}</span>
-                                                </div>
-                                                <Smartphone className="w-4 h-4 text-[#A0A8B3]" />
-                                            </div>
-                                        ))}
+                                        {[1, 2, 3, 4].map(i => <div key={i} className="w-full h-16 bg-[#1F2933] rounded-xl" />)}
                                     </div>
                                 </div>
+                            </motion.div>
 
-                                <div className="h-16 border-t border-[#1F2933] bg-[#0F141A] flex justify-around items-center px-4">
-                                    <Map className="w-6 h-6 text-[#2F80FF]" />
-                                    <ListIcon className="w-6 h-6 text-[#A0A8B3]" />
-                                    <Bell className="w-6 h-6 text-[#A0A8B3]" />
-                                    <Settings className="w-6 h-6 text-[#A0A8B3]" />
+                            {/* Phone 2 (Front) */}
+                            <motion.div
+                                initial={{ x: 50, y: 0, rotate: 5, opacity: 0 }}
+                                whileInView={{ x: 20, y: 0, rotate: 5, opacity: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.8, delay: 0.2 }}
+                                className="absolute w-[280px] h-[580px] rounded-[3rem] border-[8px] border-[#2F80FF]/30 bg-[#0F141A] shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden flex flex-col pt-[35px]"
+                            >
+                                <div className="absolute top-0 inset-x-0 h-7 bg-[#0F141A] border-b border-[#2F80FF]/30 rounded-b-2xl w-36 mx-auto z-20 flex justify-center">
+                                    <div className="w-12 h-1 bg-[#1F2933] rounded-full mt-2" />
                                 </div>
-                            </div>
-                        </motion.div>
+
+                                {/* Fake App UI */}
+                                <div className="flex-1 bg-[#0B0F14] relative flex flex-col rounded-b-[2rem] overflow-hidden">
+                                    <div className="bg-[#2F80FF] h-48 p-6 pt-12 relative overflow-hidden rounded-b-[2rem]">
+                                        <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl" />
+                                        <h4 className="text-white font-semibold text-lg">Active Fleet</h4>
+                                        <div className="text-3xl font-bold text-white mt-2">1,248</div>
+                                        <div className="text-white/80 text-sm">Vehicles Online</div>
+                                    </div>
+
+                                    <div className="flex-1 p-4 -mt-6">
+                                        <div className="bg-[#0F141A] rounded-xl p-4 shadow-lg border border-[#1F2933] mb-4 flex gap-4 relative z-10">
+                                            <div className="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center shrink-0">
+                                                <CheckCircle2 className="w-5 h-5 text-green-500" />
+                                            </div>
+                                            <div>
+                                                <div className="text-sm font-semibold text-white">All Systems Normal</div>
+                                                <div className="text-xs text-[#A0A8B3]">Last sync: Just now</div>
+                                            </div>
+                                        </div>
+
+                                        <div className="space-y-3">
+                                            <div className="text-xs font-semibold text-[#A0A8B3] uppercase tracking-wider pl-1">Recent Alerts</div>
+                                            {[
+                                                { t: 'Route Deviation', v: 'Veh-84', c: 'text-yellow-500' },
+                                                { t: 'Fuel Critical', v: 'Veh-12', c: 'text-red-500' },
+                                                { t: 'Arrived at Depot', v: 'Veh-99', c: 'text-green-500' }
+                                            ].map((item, i) => (
+                                                <div key={i} className="bg-[#0F141A] rounded-xl p-3 border border-[#1F2933] flex justify-between items-center">
+                                                    <div className="flex flex-col">
+                                                        <span className={`text-sm font-medium ${item.c}`}>{item.t}</span>
+                                                        <span className="text-xs text-[#A0A8B3]">{item.v}</span>
+                                                    </div>
+                                                    <Smartphone className="w-4 h-4 text-[#A0A8B3]" />
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+
+                                    <div className="h-16 border-t border-[#1F2933] bg-[#0F141A] flex justify-around items-center px-4 mt-auto">
+                                        <Map className="w-6 h-6 text-[#2F80FF]" />
+                                        <ListIcon className="w-6 h-6 text-[#A0A8B3]" />
+                                        <Bell className="w-6 h-6 text-[#A0A8B3]" />
+                                        <Settings className="w-6 h-6 text-[#A0A8B3]" />
+                                    </div>
+                                </div>
+                            </motion.div>
+                        </div>
                     </div>
 
                     <FadeIn direction="left">

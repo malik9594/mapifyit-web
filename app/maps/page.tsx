@@ -412,12 +412,12 @@ export default function MapsPage() {
     const currentDoc = apiDocs.find(d => d.id === activeApi) || apiDocs[0];
 
     return (
-        <div className="min-h-screen bg-[#03060D] text-white pt-32 pb-20 font-sans">
+        <div className="min-h-screen bg-[#03060D] text-white pt-20 pb-20 font-sans">
             <div className="max-w-7xl mx-auto px-6 pt-0 md:pt-4">
 
                 <div className="mb-10">
                     <button onClick={() => router.back()} className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors font-semibold group cursor-pointer">
-                        <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" /> 
+                        <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
                         Go Back
                     </button>
                 </div>

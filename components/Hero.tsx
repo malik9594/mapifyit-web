@@ -11,7 +11,7 @@ import PhoneMockup from './PhoneMockup';
  */
 export default function Hero() {
   return (
-    <section className="max-w-7xl mx-auto px-6 pt-0 md:pt-4 pb-2 overflow-hidden">
+    <section className="max-w-7xl mx-auto px-6 pt-0 pb-2 overflow-hidden">
       <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-start">
 
         {/* Left Column: Value Proposition */}

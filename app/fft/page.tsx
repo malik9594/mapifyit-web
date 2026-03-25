@@ -77,11 +77,11 @@ const SecondaryButton = ({ children, className = "" }: { children: React.ReactNo
 
 
 const Hero = () => (
-    <section className="pt-40 pb-20 px-6 relative overflow-hidden">
+    <section className="pt-22 pb-20 relative overflow-hidden">
         {/* Background Glow */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#2F80FF] opacity-[0.05] blur-[120px] rounded-full pointer-events-none" />
 
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
             <FadeIn>
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0F141A] border border-[#1F2933] text-[#4DA3FF] text-sm font-medium mb-6">
                     <Globe size={14} /> Global Enterprise Ready

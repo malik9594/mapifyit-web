@@ -9,11 +9,11 @@ const PricingCard = ({ title, price, highlightedText, description, features, hig
     <article className={`p-8 rounded-[32px] border transition-all duration-500 h-full flex flex-col relative overflow-hidden group hover:-translate-y-2 ${highlighted ? 'bg-gradient-to-b from-blue-600/10 to-[#0B0F17] border-blue-500/50 shadow-[0_0_50px_rgba(59,130,246,0.15)] md:-translate-y-4 hover:shadow-[0_20px_60px_rgba(59,130,246,0.25)]' : 'bg-white/5 backdrop-blur-xl border-white/10 hover:border-white/20 hover:shadow-2xl'}`}>
         {/* Glow effect on hover */}
         <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 blur-[50px] rounded-full group-hover:bg-white/10 transition-colors duration-700 -mr-16 -mt-16 pointer-events-none" />
-        
+
         {highlighted && (
             <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-blue-400 via-indigo-400 to-emerald-400" />
         )}
-        
+
         <header className="mb-6 flex items-start justify-between relative z-10">
             <div>
                 <h3 className="text-2xl font-bold mb-2 text-white">{title}</h3>
@@ -44,8 +44,8 @@ const PricingCard = ({ title, price, highlightedText, description, features, hig
         </ul>
 
         <footer className="mt-auto relative z-10">
-            <Link 
-                href="/contactus" 
+            <Link
+                href="/contactus"
                 className={`w-full py-4 rounded-xl font-bold transition-all flex items-center justify-center gap-2 group/btn ${highlighted ? 'bg-blue-600 text-white hover:bg-blue-500 shadow-[0_0_20px_rgba(59,130,246,0.3)] hover:shadow-[0_0_30px_rgba(59,130,246,0.5)]' : 'bg-white/5 text-white border border-white/10 hover:bg-white/10'}`}
                 aria-label={`Get started with the ${title} plan`}
             >
@@ -71,17 +71,17 @@ export default function PricingPage() {
             { "@type": "Offer", "name": "Enterprise", "price": "449", "priceCurrency": "USD", "eligibilityToPurchase": "Up to 750k calls/month" }
         ]
     };
-    
+
     return (
-        <main className="min-h-screen bg-[#03060D] text-white pt-32 pb-20 px-6 overflow-x-hidden relative">
+        <main className="min-h-screen bg-[#03060D] text-white pt-20 pb-20 overflow-x-hidden relative">
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-            <div className="max-w-7xl mx-auto">
+            <div className="max-w-7xl mx-auto px-4">
                 <header className="mb-12">
                     <Reveal>
                         <div className="pt-0 md:pt-4 mb-10">
                             <button onClick={() => router.back()} className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors font-semibold group cursor-pointer">
-                                <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" /> 
+                                <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
                                 Go Back
                             </button>
                         </div>
@@ -152,11 +152,11 @@ export default function PricingPage() {
                             <h2 id="comparison-heading" className="text-3xl md:text-4xl font-bold text-white mb-4">The Mapifyit Advantage</h2>
                             <p className="text-slate-400 max-w-xl mx-auto text-lg">See exactly how we stack up against the legacy constraints of Google Maps and Mapbox.</p>
                         </div>
-                        
+
                         <div className="overflow-x-auto rounded-[32px] border border-white/10 bg-white/5 backdrop-blur-2xl shadow-[0_0_50px_rgba(0,0,0,0.5)] relative">
                             {/* Decorative Grid inside table container */}
                             <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] bg-repeat opacity-[0.03] pointer-events-none" />
-                            
+
                             <table className="w-full text-sm text-left whitespace-nowrap relative z-10">
                                 <caption className="sr-only">Comparison of mapping API plans between Mapifyit, Google Maps, and Mapbox</caption>
                                 <thead className="bg-[#0B0F17]/80 text-white uppercase font-bold text-xs tracking-widest border-b border-white/10">
@@ -196,12 +196,12 @@ export default function PricingPage() {
                                         <td className="px-8 py-5">$3,200+ <span className="text-xs text-slate-500 block mt-1">(Pro + Overage)</span></td>
                                         <td className="px-8 py-5">$2,800+</td>
                                     </tr>
-                                    
+
                                     {/* Features Comparison */}
                                     <tr className="bg-[#0B0F17]/50 border-y-2 border-white/10">
                                         <td colSpan={4} className="px-8 py-4 text-xs font-black text-slate-400 uppercase tracking-widest">Platform Philosophy & Architecture</td>
                                     </tr>
-                                    
+
                                     <tr className="hover:bg-white/[0.03] transition-colors">
                                         <td className="px-8 py-5 font-medium text-white">Pricing Model</td>
                                         <td className="px-8 py-5 bg-blue-500/[0.02] border-x border-blue-500/10 text-emerald-400 font-medium flex items-center gap-2"><div className="w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center shrink-0"><Check className="w-3 h-3" /></div> Flat Monthly</td>
@@ -212,6 +212,7 @@ export default function PricingPage() {
                                         <td className="px-8 py-5 font-medium text-white">Data Retention</td>
                                         <td className="px-8 py-5 bg-blue-500/[0.02] border-x border-blue-500/10 text-emerald-400 font-medium flex items-center gap-2"><div className="w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center shrink-0"><Check className="w-3 h-3" /></div> Permanent (Yours)</td>
                                         <td className="px-8 py-5 text-red-400/80 flex items-center gap-2"><div className="w-5 h-5 rounded-full bg-red-500/10 flex items-center justify-center shrink-0"><X className="w-3 h-3" /></div> Delete after 30 days</td>
+                                        <td className="px-8 py-5 text-amber-400/80">Delete after 30 days (T&Cs)</td>
                                         <td className="px-8 py-5 text-amber-400/80">Extra "Storage Fee"</td>
                                     </tr>
                                     <tr className="hover:bg-white/[0.03] transition-colors">
@@ -219,12 +220,17 @@ export default function PricingPage() {
                                         <td className="px-8 py-5 bg-blue-500/[0.02] border-x border-blue-500/10 text-emerald-400 font-medium flex items-center gap-2"><div className="w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center shrink-0"><Check className="w-3 h-3" /></div> Open Standards</td>
                                         <td className="px-8 py-5 text-red-400/80 flex items-center gap-2"><div className="w-5 h-5 rounded-full bg-red-500/10 flex items-center justify-center shrink-0"><X className="w-3 h-3" /></div> Proprietary SDKs</td>
                                         <td className="px-8 py-5 text-red-400/80 flex items-center gap-2"><div className="w-5 h-5 rounded-full bg-red-500/10 flex items-center justify-center shrink-0"><X className="w-3 h-3" /></div> High migration costs</td>
+                                        <td className="px-8 py-5 text-amber-400/80">Proprietary SDKs</td>
+                                        <td className="px-8 py-5 text-amber-400/80">Hight Migration Costs</td>
+
                                     </tr>
                                     <tr className="hover:bg-white/[0.03] transition-colors">
                                         <td className="px-8 py-5 font-medium text-white">Privacy Strategy</td>
                                         <td className="px-8 py-5 bg-blue-500/[0.02] border-x border-blue-500/10 text-emerald-400 font-medium flex items-center gap-2"><div className="w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center shrink-0"><Check className="w-3 h-3" /></div> True Sovereignty</td>
                                         <td className="px-8 py-5 text-red-400/80 flex items-center gap-2"><div className="w-5 h-5 rounded-full bg-red-500/10 flex items-center justify-center shrink-0"><X className="w-3 h-3" /></div> Harvested for Ads</td>
                                         <td className="px-8 py-5 text-red-400/80 flex items-center gap-2"><div className="w-5 h-5 rounded-full bg-red-500/10 flex items-center justify-center shrink-0"><X className="w-3 h-3" /></div> Used for Traffic Sets</td>
+                                        <td className="px-8 py-5 text-amber-400/80">Harvested for Ads</td>
+                                        <td className="px-8 py-5 text-amber-400/80">Used for Traffic Sets</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -241,7 +247,7 @@ export default function PricingPage() {
                     </div>
 
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                        
+
                         {/* Box 1 (Spans 2 columns) */}
                         <Reveal className="lg:col-span-2 h-full" delay={50}>
                             <article className="h-full bg-white/5 backdrop-blur-xl border border-white/10 rounded-[32px] p-10 hover:bg-white/[0.07] hover:border-blue-500/30 transition-all duration-500 group relative overflow-hidden">
@@ -332,15 +338,15 @@ export default function PricingPage() {
                     <section className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-[40px] p-1 relative overflow-hidden group shadow-2xl">
                         {/* Animated gradient inner border effect */}
                         <div className="absolute inset-0 bg-gradient-to-r from-blue-400 via-emerald-400 to-purple-400 opacity-20 group-hover:opacity-40 transition-opacity duration-700 blur" />
-                        
+
                         <div className="bg-[#03060D] rounded-[36px] p-10 md:p-16 relative overflow-hidden z-10 flex flex-col md:flex-row items-center justify-between gap-12">
                             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/20 blur-[100px] rounded-full pointer-events-none" />
-                            
+
                             <div className="relative z-10 max-w-xl">
                                 <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight">Stop paying the API tax. Maximize your margins.</h2>
                                 <p className="text-lg text-slate-400 mb-0">Experience enterprise-grade mapping on your terms. We communicate heavily, operate honestly, and scale gracefully with you.</p>
                             </div>
-                            
+
                             <div className="relative z-10 shrink-0">
                                 <Link href="/contactus" className="inline-flex items-center justify-center gap-2 px-10 py-5 bg-white text-black font-extrabold rounded-2xl hover:bg-slate-200 hover:scale-105 active:scale-95 transition-all shadow-[0_0_40px_rgba(255,255,255,0.2)]">
                                     Contact Sales <ArrowRight className="w-5 h-5" />
