@@ -14,7 +14,7 @@ const EMAILJS_SERVICE_ID = 'service_zwv3eln'; // e.g., 'service_gmail'
 const EMAILJS_TEMPLATE_ID = 'template_8encwr5'; // e.g., 'template_contact'
 const EMAILJS_PUBLIC_KEY = 'oUCWzxACRZZLpm5ok'; // Found in Account -> Public Key
 
-export default function ContactUs() {
+export default function ContactUs({ standalone = false }: { standalone?: boolean }) {
     const mapContainerRef = useRef<HTMLDivElement>(null);
     const formRef = useRef<HTMLFormElement>(null);
     const mapRef = useRef<any>(null);
@@ -95,7 +95,7 @@ export default function ContactUs() {
     };
 
     return (
-        <section id="contact" className="relative w-full bg-[#030712] py-24 overflow-hidden">
+        <section id="contact" className={`relative w-full bg-[#030712] overflow-hidden ${standalone ? 'py-0' : 'py-24'}`}>
             {/* Ambient Background Glows */}
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-cyan-600/5 rounded-full blur-[120px] pointer-events-none" />
             <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-600/5 rounded-full blur-[120px] pointer-events-none" />

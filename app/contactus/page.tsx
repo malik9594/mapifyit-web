@@ -1,6 +1,8 @@
 "use client"
 import React from 'react';
 import ContactUs from '@/components/ContactUs';
+import { ArrowLeft } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 /**
  * Contact Us Page
@@ -12,20 +14,25 @@ export default function ContactPage() {
     React.useEffect(() => {
         const timer = setTimeout(() => {
             setMounted(true);
-        }, 350); // 0.2s delay as requested
+        }, 350); 
         return () => clearTimeout(timer);
     }, []);
 
-    return (
-        <div className="pt-20">
-            {/* Background Decor */}
-            <div className="fixed inset-0 z-0 pointer-events-none">
-                <div className="absolute top-[20%] left-[-10%] w-[50%] h-[50%] rounded-full bg-blue-600/5 blur-[150px]" />
-                <div className="absolute bottom-[20%] right-[-10%] w-[40%] h-[40%] rounded-full bg-indigo-600/5 blur-[120px]" />
-            </div>
+    const router = useRouter();
 
-            <div className={`relative z-10 transition-opacity duration-300 ${mounted ? 'opacity-100' : 'opacity-0'}`}>
-                <ContactUs />
+    return (
+        <div className="min-h-screen bg-[#03060D] pt-32 pb-20 font-sans">
+            <div className="max-w-7xl mx-auto px-6 pt-0 md:pt-4">
+                <div className="mb-10">
+                    <button onClick={() => router.back()} className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors font-semibold group cursor-pointer">
+                        <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" /> 
+                        Go Back
+                    </button>
+                </div>
+
+                <div className={`relative z-10 transition-opacity duration-300 ${mounted ? 'opacity-100' : 'opacity-0'}`}>
+                    <ContactUs standalone={true} />
+                </div>
             </div>
         </div>
     );

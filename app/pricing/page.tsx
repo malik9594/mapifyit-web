@@ -73,15 +73,18 @@ export default function PricingPage() {
     };
     
     return (
-        <main className="min-h-screen bg-[#03060D] text-white pt-24 pb-16 px-6 overflow-x-hidden relative">
+        <main className="min-h-screen bg-[#03060D] text-white pt-32 pb-20 px-6 overflow-x-hidden relative">
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
             <div className="max-w-7xl mx-auto">
                 <header className="mb-12">
                     <Reveal>
-                        <button onClick={() => router.back()} className="inline-flex items-center gap-2 text-slate-400 hover:text-white transition-colors mb-8 group cursor-pointer border border-white/10 px-4 py-2 rounded-full bg-white/5 backdrop-blur-md" aria-label="Go backward">
-                            <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" /> Go Back
-                        </button>
+                        <div className="pt-0 md:pt-4 mb-10">
+                            <button onClick={() => router.back()} className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors font-semibold group cursor-pointer">
+                                <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" /> 
+                                Go Back
+                            </button>
+                        </div>
 
                         <div className="text-center">
                             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-xs font-bold uppercase tracking-[0.2em] text-blue-400 mb-6">
