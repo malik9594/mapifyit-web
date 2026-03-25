@@ -100,7 +100,7 @@ export default function GeospatialModuleShowcaseCool() {
             <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-cyan-600/5 rounded-full blur-[150px] pointer-events-none" />
 
             <div className="max-w-7xl mx-auto px-6 relative z-10">
-                <div className="flex justify-between items-center mb-12">
+                <div className="flex justify-between items-center mb-10">
                     <button
                         onClick={() => router.back()}
                         className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors group cursor-pointer"
@@ -118,23 +118,23 @@ export default function GeospatialModuleShowcaseCool() {
                     </a>
                 </div>
 
-                <div className="grid lg:grid-cols-2 gap-16 items-center mb-24">
+                <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-start mb-24">
                     {/* Left Side: Header & Intro */}
-                    <div>
+                    <div className="pt-0 md:pt-4 lg:pr-12 text-center lg:text-left">
                         <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight leading-tight">
                             Enterprise GIS Platform  <br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">for Global Geospatial Projects</span>
                         </h1>
-                        <p className="text-slate-400 text-lg leading-relaxed">
+                        <p className="text-slate-400 text-lg leading-relaxed max-w-2xl mx-auto lg:mx-0">
                             MapifyIt GIS is a powerful enterprise geospatial platform designed for organizations managing large-scale GIS projects, spatial intelligence, and mission-critical geospatial infrastructure. Built for governments, enterprises, defense organizations, and infrastructure operators, MapifyIt enables teams to deploy and manage advanced GIS systems with full control over their spatial data.
                         </p>
-                        <p className="text-slate-400 text-lg leading-relaxed mt-4">
+                        <p className="text-slate-400 text-lg leading-relaxed mt-4 max-w-2xl mx-auto lg:mx-0">
                             Unlike traditional cloud-dependent platforms, MapifyIt GIS can run fully on-premise or within private infrastructure, allowing organizations to operate secure geospatial systems while maintaining complete data sovereignty.
                         </p>
                     </div>
 
                     {/* Right Side: Visual Showcase */}
-                    <div className="h-[400px] md:h-[500px] lg:h-[600px] w-full">
+                    <div className="h-[400px] md:h-[500px] lg:h-[600px] w-full pt-0 md:pt-4">
                         <GISShowcase />
                     </div>
                 </div>

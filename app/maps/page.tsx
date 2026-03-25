@@ -308,7 +308,7 @@
 "use client"
 import React, { useState, useEffect } from 'react';
 import FeatureSuites from '@/components/FeatureSuites';
-import { Map, Layers, Code, Globe, Route, Navigation, Search, Database, Check, Copy, ShieldCheck, Settings } from 'lucide-react';
+import { Map, Layers, Code, Globe, Route, Navigation, Search, Database, Check, Copy, ShieldCheck, Settings, ArrowLeft } from 'lucide-react';
 import { Reveal } from '@/components/Reveal';
 import { useRouter } from 'next/navigation';
 
@@ -412,13 +412,13 @@ export default function MapsPage() {
     const currentDoc = apiDocs.find(d => d.id === activeApi) || apiDocs[0];
 
     return (
-        <div className="min-h-screen bg-[#03060D] text-white pt-25 pb-15 px-6 font-sans">
-            <div className="max-w-7xl mx-auto">
+        <div className="min-h-screen bg-[#03060D] text-white pt-32 pb-20 font-sans">
+            <div className="max-w-7xl mx-auto px-6 pt-0 md:pt-4">
 
-                <div className="mb-12">
+                <div className="mb-10">
                     <button onClick={() => router.back()} className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors font-semibold group cursor-pointer">
-                        <span className="group-hover:-translate-x-1 transition-transform">←</span>
-                        Return to Mapifyit Console
+                        <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" /> 
+                        Go Back
                     </button>
                 </div>
 
