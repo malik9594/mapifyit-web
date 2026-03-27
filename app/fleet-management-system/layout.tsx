@@ -20,7 +20,7 @@ export const metadata: Metadata = {
         title: "FMS FleetSense – Fleet Management System | Mapifyit",
         description:
             "Monitor, optimize, and secure your entire fleet in real-time with sub-meter GPS accuracy, predictive maintenance, and driver performance analytics.",
-        url: "https://mapifyit.com/fms",
+        url: "https://mapifyit.com/fleet-management-system",
     },
     twitter: {
         title: "FMS FleetSense – Fleet Management System | Mapifyit",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
             "Monitor, optimize, and secure your entire fleet in real-time with sub-meter GPS accuracy, predictive maintenance, and driver performance analytics.",
     },
     alternates: {
-        canonical: "https://mapifyit.com/fms",
+        canonical: "https://mapifyit.com/fleet-management-system",
     },
 };
 

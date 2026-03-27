@@ -23,7 +23,7 @@ export const metadata: Metadata = {
         title: "FFT | Field Force Tracking | Mapifyit",
         description:
             "Track live agent movements, automate attendance with geofencing, and optimize task distribution for mobile field teams.",
-        url: "https://mapifyit.com/fft",
+        url: "https://mapifyit.com/field-force-tracking",
     },
     twitter: {
         title: "FFT | Field Force Tracking | Mapifyit",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
             "Track live agent movements, automate attendance with geofencing, and optimize task distribution for mobile field teams.",
     },
     alternates: {
-        canonical: "https://mapifyit.com/fft",
+        canonical: "https://mapifyit.com/field-force-tracking",
     },
 };
 
