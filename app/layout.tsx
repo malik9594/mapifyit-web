@@ -87,7 +87,12 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://mapifyit.com",
   },
+  verification: {
+    google: "google4db3520bca7d7de0", // Search Console Verification
+  },
 };
+
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 export default function RootLayout({
   children,
@@ -97,6 +102,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <GoogleAnalytics />
         {/* Preconnect to speed up initial Mapifyit API handshakes */}
         <link rel="preconnect" href="https://client.mapifyit.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://tiles.mapifyit.com" crossOrigin="anonymous" />
