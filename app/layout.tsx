@@ -88,7 +88,10 @@ export const metadata: Metadata = {
     canonical: "https://mapifyit.com",
   },
   verification: {
-    google: "google4db3520bca7d7de0", // Search Console Verification
+    google: "google4db3520bca7d7de0", // Google Search Console
+    other: {
+      "msvalidate.01": "03109F26A544DA03DF743844C7E17EAE", // Bing Webmaster Tools verification
+    },
   },
 };
 
