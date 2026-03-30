@@ -196,9 +196,9 @@ const Hero = () => {
     );
 };
 
-const FeatureGridSection = ({ title, tag, features }: { title: string, tag: string, features: any[] }) => {
+const FeatureGridSection = ({ title, tag, features, id }: { title: string, tag: string, features: any[], id?: string }) => {
     return (
-        <section className="py-10 overflow-hidden border-y border-[#1F2933] bg-[#0B0F14]" id="features">
+        <section className="py-10 overflow-hidden border-y border-[#1F2933] bg-[#0B0F14]" id={id}>
             <div className="max-w-7xl mx-auto px-6">
                 <FadeIn>
                     <div className="text-center mb-12 max-w-2xl mx-auto">
@@ -225,9 +225,9 @@ const FeatureGridSection = ({ title, tag, features }: { title: string, tag: stri
     );
 };
 
-const FeatureSection = ({ title, tag, features, visual, reverse }: { title: string, tag: string, features: any[], visual: React.ReactNode, reverse?: boolean }) => {
+const FeatureSection = ({ title, tag, features, visual, reverse, id }: { title: string, tag: string, features: any[], visual: React.ReactNode, reverse?: boolean, id?: string }) => {
     return (
-        <section className="py-10 overflow-hidden border-y border-[#1F2933] bg-[#0F141A]/30" id="features">
+        <section className="py-10 overflow-hidden border-y border-[#1F2933] bg-[#0F141A]/30" id={id}>
             <div className="max-w-7xl mx-auto px-6">
                 <div className={`grid lg:grid-cols-2 gap-16 items-center`}>
 
@@ -834,11 +834,13 @@ export default function FMSPage() {
 
                 <div className="relative">
                     <FeatureGridSection
+                        id="tracking"
                         tag="Location Intelligence"
                         title="Real-Time GPS Vehicle Tracking"
                         features={feature1}
                     />
                     <FeatureSection
+                        id="routing"
                         tag="Smart Routing"
                         title="AI-Powered Route Optimization"
                         features={feature2}
@@ -846,6 +848,7 @@ export default function FMSPage() {
                         reverse={true}
                     />
                     <FeatureSection
+                        id="telematics"
                         tag="Deep Diagnostics"
                         title="Vehicle Telematics & Driver Analytics"
                         features={feature3}
@@ -853,6 +856,7 @@ export default function FMSPage() {
                         reverse={false}
                     />
                     <FeatureSection
+                        id="alerts"
                         tag="Proactive Security"
                         title="Intelligent Alerts & Compliance"
                         features={feature4}
