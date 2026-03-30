@@ -167,8 +167,8 @@ export default function Navbar() {
             </Link>
 
             <Link
-              href="/contactus"
-              className={`text-sm font-medium transition-colors ${pathname === '/contactus' ? 'text-white' : 'text-slate-300 hover:text-white'}`}
+              href="/contact-us"
+              className={`text-sm font-medium transition-colors ${pathname === '/contact-us' ? 'text-white' : 'text-slate-300 hover:text-white'}`}
             >
               Contact Us
             </Link>
@@ -259,9 +259,9 @@ export default function Navbar() {
             </Link>
 
             <Link
-              href="/contactus"
+              href="/contact-us"
               onClick={() => setMobileMenuOpen(false)}
-              className={`block text-xl font-bold ${pathname === '/contactus' ? 'text-blue-500' : 'text-white'}`}
+              className={`block text-xl font-bold ${pathname === '/contact-us' ? 'text-blue-500' : 'text-white'}`}
             >
               Contact Us
             </Link>

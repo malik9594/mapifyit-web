@@ -187,7 +187,7 @@ export default function FAQPage() {
                                             </div>
                                         </div>
                                         <a 
-                                            href="/contactus" 
+                                            href="/contact-us" 
                                             className="bg-blue-600 hover:bg-blue-500 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 whitespace-nowrap shadow-[0_0_20px_rgba(37,99,235,0.3)] shrink-0"
                                         >
                                             Get in touch

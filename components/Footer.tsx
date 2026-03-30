@@ -37,7 +37,7 @@ export default function Footer() {
         Company: [
             { name: "Pricing", href: "/pricing" },
             { name: "Documentation", href: "https://dev.mapifyit.com/documentation" },
-            { name: "Contact Us", href: "/contactus" },
+            { name: "Contact Us", href: "/contact-us" },
             { name: "About Us", href: "#" },
         ]
     };

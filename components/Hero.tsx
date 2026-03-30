@@ -46,7 +46,7 @@ export default function Hero() {
                 Explore Platform
               </a>
               <Link
-                href="/contactus"
+                href="/contact-us"
                 className="w-full sm:w-auto px-8 py-4 bg-slate-800/40 border border-slate-700 hover:border-slate-500 text-white font-bold rounded-xl hover:bg-slate-800/80 transition-all flex items-center justify-center gap-2 backdrop-blur-md hover:scale-105 active:scale-95 text-sm md:text-base"
               >
                 <ShieldCheck className="w-5 h-5 text-emerald-400" /> Deploy On-Premise

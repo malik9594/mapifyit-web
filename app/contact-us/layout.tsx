@@ -20,7 +20,7 @@ export const metadata: Metadata = {
         title: "Contact Us | Mapifyit",
         description:
             "Get in touch with Mapifyit for enterprise demos, platform inquiries, and technical support.",
-        url: "https://mapifyit.com/contactus",
+        url: "https://mapifyit.com/contact-us",
     },
     twitter: {
         title: "Contact Us | Mapifyit",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
             "Get in touch with Mapifyit for enterprise demos, platform inquiries, and technical support.",
     },
     alternates: {
-        canonical: "https://mapifyit.com/contactus",
+        canonical: "https://mapifyit.com/contact-us",
     },
 };
 

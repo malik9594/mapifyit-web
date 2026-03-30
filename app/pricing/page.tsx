@@ -349,7 +349,7 @@ export default function PricingPage() {
                             </div>
 
                             <div className="relative z-10 shrink-0">
-                                <Link href="/contactus" className="inline-flex items-center justify-center gap-2 px-10 py-5 bg-white text-black font-extrabold rounded-2xl hover:bg-slate-200 hover:scale-105 active:scale-95 transition-all shadow-[0_0_40px_rgba(255,255,255,0.2)]">
+                                <Link href="/contact-us" className="inline-flex items-center justify-center gap-2 px-10 py-5 bg-white text-black font-extrabold rounded-2xl hover:bg-slate-200 hover:scale-105 active:scale-95 transition-all shadow-[0_0_40px_rgba(255,255,255,0.2)]">
                                     Contact Sales <ArrowRight className="w-5 h-5" />
                                 </Link>
                             </div>

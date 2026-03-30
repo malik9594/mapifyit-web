@@ -81,7 +81,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     // ── Contact ───────────────────────────────────────────
     {
-      url: `${baseUrl}/contactus`,
+      url: `${baseUrl}/contact-us`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.7,

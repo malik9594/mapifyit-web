@@ -93,14 +93,14 @@ const Hero = () => {
                         {/* CTA Buttons */}
                         <div className="flex flex-col sm:flex-row gap-4">
                             <Link
-                                href="/contactus"
+                                href="/contact-us"
                                 className="group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full px-6 py-3 text-sm font-medium transition-all duration-300 bg-[#2F80FF] text-white hover:bg-[#4DA3FF] shadow-[0_0_20px_rgba(47,128,255,0.3)] hover:shadow-[0_0_30px_rgba(77,163,255,0.5)]"
                             >
                                 <Phone className="w-4 h-4" /> Contact Our Team
                                 <span className="transition-transform duration-300 group-hover:translate-x-1"><ArrowRight className="w-4 h-4" /></span>
                             </Link>
                             <Link
-                                href="/contactus"
+                                href="/contact-us"
                                 className="group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full px-6 py-3 text-sm font-medium transition-all duration-300 bg-[#0F141A] text-white border border-[#1F2933] hover:border-[#4DA3FF] hover:bg-[#151C24]"
                             >
                                 Request a Demo

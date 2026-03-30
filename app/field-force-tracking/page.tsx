@@ -98,13 +98,13 @@ const Hero = () => (
                 {/* CTA Buttons */}
                 <div className="flex flex-col sm:flex-row gap-4">
                     <Link
-                        href="/contactus"
+                        href="/contact-us"
                         className="bg-[#2F80FF] hover:bg-[#4DA3FF] text-white font-medium py-3 px-6 transition-all duration-300 flex items-center justify-center rounded-full gap-2 shadow-[0_0_20px_rgba(47,128,255,0.3)] hover:shadow-[0_0_25px_rgba(77,163,255,0.5)]"
                     >
                         Contact Our Team <ArrowRight size={18} />
                     </Link>
                     <Link
-                        href="/contactus"
+                        href="/contact-us"
                         className="bg-transparent border border-[#1F2933] hover:border-[#4DA3FF] text-white font-medium py-3 px-6 transition-all duration-300 flex items-center rounded-full justify-center"
                     >
                         Request a Demo
@@ -538,13 +538,13 @@ const CTASection = () => (
                 </p>
                 {/* <div className="flex flex-col sm:flex-row justify-center gap-4">
                     <Link
-                        href="/contactus"
+                        href="/contact-us"
                         className="text-lg py-4 px-8 bg-[#2F80FF] hover:bg-[#4DA3FF] text-white font-medium rounded-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(47,128,255,0.3)]"
                     >
                         Contact Our Team <ArrowRight size={18} />
                     </Link>
                     <Link
-                        href="/contactus"
+                        href="/contact-us"
                         className="text-lg py-4 px-8 bg-[#0F141A] border border-[#1F2933] hover:border-[#4DA3FF] text-white font-medium rounded-lg transition-all duration-300 flex items-center justify-center"
                     >
                         Request a Demo
