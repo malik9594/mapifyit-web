@@ -47,13 +47,21 @@ export default function GlobalRadarMap() {
                     <div className="absolute top-0 bottom-0 left-0 w-1/2 bg-gradient-to-r from-transparent via-blue-500/10 to-blue-400/40 border-r-2 border-blue-400 blur-[1px] animate-radar z-20 shadow-[10px_0_50px_rgba(59,130,246,0.5)]" />
 
                     {/* Connecting API Lines (SVG) */}
-                    <svg className="absolute inset-0 w-full h-full z-20 overflow-visible" style={{ filter: 'drop-shadow(0 0 6px rgba(59,130,246,0.6))' }}>
+                    <svg
+                        // viewBox="0 0 100 100" preserveAspectRatio="none" 
+                        className="absolute inset-0 w-full h-full z-20 overflow-visible" style={{ filter: 'drop-shadow(0 0 6px rgba(59,130,246,0.6))' }}>
                         {/* New York to London */}
-                        <path d="M 28% 40% Q 40% 30% 48% 35%" stroke="#3b82f6" strokeWidth="2" fill="none" strokeDasharray="4 4" className="animate-[pulse_3s_infinite]" />
+                        <path d="M 15 10 Q 26 5 38 20" stroke="#3b82f6" strokeWidth="2" fill="none" strokeDasharray="4 4" className="animate-[pulse_3s_infinite]"
+                        // vectorEffect="non-scaling-stroke" 
+                        />
                         {/* London to Tokyo */}
-                        <path d="M 48% 35% Q 65% 25% 78% 42%" stroke="#10b981" strokeWidth="1.5" fill="none" opacity="0.6" />
+                        <path d="M 38 20 Q 60 10 88 42" stroke="#10b981" strokeWidth="1.5" fill="none" opacity="0.6"
+                        // vectorEffect="non-scaling-stroke" 
+                        />
                         {/* Tokyo to Sydney */}
-                        <path d="M 78% 42% Q 85% 60% 85% 75%" stroke="#8b5cf6" strokeWidth="2" fill="none" strokeDasharray="6 4" opacity="0.8" />
+                        <path d="M 88 42 Q 95 60 75 75" stroke="#8b5cf6" strokeWidth="2" fill="none" strokeDasharray="6 4" opacity="0.8"
+                        // vectorEffect="non-scaling-stroke"
+                        />
                     </svg>
 
                     {/* API Node 1: New York */}
