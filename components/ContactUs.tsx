@@ -1,18 +1,12 @@
 "use client"
 import React, { useEffect, useRef, useState } from 'react';
-import { Phone, Mail, MapPin, Globe, Send, User, MessageSquare, CheckCircle2 } from 'lucide-react';
-import emailjs from '@emailjs/browser';
+import { Phone, Mail, MapPin, Send, User, MessageSquare, CheckCircle2 } from 'lucide-react';
 
 // ─── Mapifyit Config ────────────────────────────────────────────────────────
 const MAPIFYIT_STYLE_URL = 'https://dev-client.mapifyit.com/api/v1/proxy/tiles/dark';
 const MAPIFYIT_TOKEN = 'mfy_8b0755c081c9204caa20681ddab91d2856c3667a6ad8d9e8';
 const DUBAI_LNG = 55.2608;
 const DUBAI_LAT = 25.1840;
-
-// EmailJS Configuration (Replace with your own IDs from emailjs.com)
-const EMAILJS_SERVICE_ID = 'service_zwv3eln'; // e.g., 'service_gmail'
-const EMAILJS_TEMPLATE_ID = 'template_8encwr5'; // e.g., 'template_contact'
-const EMAILJS_PUBLIC_KEY = 'oUCWzxACRZZLpm5ok'; // Found in Account -> Public Key
 
 export default function ContactUs({ standalone = false }: { standalone?: boolean }) {
     const mapContainerRef = useRef<HTMLDivElement>(null);
@@ -72,26 +66,39 @@ export default function ContactUs({ standalone = false }: { standalone?: boolean
         };
     }, []);
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         if (!formRef.current) return;
 
         setStatus('sending');
 
-        emailjs.sendForm(
-            EMAILJS_SERVICE_ID,
-            EMAILJS_TEMPLATE_ID,
-            formRef.current,
-            EMAILJS_PUBLIC_KEY
-        ).then((result) => {
-            console.log('Email sent successfully:', result.text);
+        const formData = new FormData(formRef.current);
+        const payload = {
+            name: (formData.get('name') ?? '').toString().trim(),
+            email: (formData.get('email') ?? '').toString().trim(),
+            message: (formData.get('message') ?? '').toString().trim(),
+        };
+
+        try {
+            const res = await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload),
+            });
+
+            if (!res.ok) {
+                const errorText = await res.text();
+                throw new Error(errorText || 'Failed to send message');
+            }
+
+            console.log('Email sent successfully via SMTP');
             setStatus('sent');
             formRef.current?.reset();
-        }, (error) => {
-            console.error('Failed to send email:', error.text);
+        } catch (error) {
+            console.error('Failed to send email:', error);
             setStatus('error');
             setTimeout(() => setStatus('idle'), 3000);
-        });
+        }
     };
 
     return (
@@ -194,7 +201,7 @@ export default function ContactUs({ standalone = false }: { standalone?: boolean
                                         <User className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500 group-focus-within:text-cyan-400 transition-colors" />
                                         <input
                                             required
-                                            name="from_name"
+                                            name="name"
                                             type="text"
                                             placeholder="John Doe"
                                             className="w-full bg-slate-950 border border-white/5 rounded-xl py-4 pl-12 pr-4 text-white placeholder:text-slate-700 focus:outline-none focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/20 transition-all"
@@ -209,7 +216,7 @@ export default function ContactUs({ standalone = false }: { standalone?: boolean
                                         <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500 group-focus-within:text-cyan-400 transition-colors" />
                                         <input
                                             required
-                                            name="user_email"
+                                            name="email"
                                             type="email"
                                             placeholder="john@company.com"
                                             className="w-full bg-slate-950 border border-white/5 rounded-xl py-4 pl-12 pr-4 text-white placeholder:text-slate-700 focus:outline-none focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/20 transition-all"
