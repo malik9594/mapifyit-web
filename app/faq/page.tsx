@@ -9,53 +9,73 @@ import { ChevronDown, MessageCircle, HelpCircle, FileText, ShieldCheck } from 'l
 const faqCategories = [
     {
         id: "general",
-        title: "General Questions",
+        title: "General Overview",
         icon: <HelpCircle className="w-4 h-4" />,
         colorClass: "text-blue-400",
         faqs: [
             {
-                question: "What solutions does MapifyIt provide?",
-                answer: "MapifyIt provides a comprehensive suite of location-based services including Maps & Routing via our developer APIs, Geographic Information Systems (GIS), Fleet Management Systems (FMS), and Field Force Tracking (FFT) for enterprise operations."
+                question: "What is MapifyIt?",
+                answer: "MapifyIt is an AI-powered mapping and GIS platform that helps businesses build, analyze, and scale location-based solutions using advanced geospatial intelligence."
             },
             {
-                question: "Is it possible to test the platform before committing?",
-                answer: "Absolutely. We offer trial periods and guided sandbox environments for our enterprise tools. For our developer APIs, there is a generous free tier available immediately upon signup."
+                question: "How is MapifyIt different from Google Maps or other providers?",
+                answer: "Unlike traditional map providers, MapifyIt offers deep localization, offline-first functionality, full data ownership (data sovereignty), and flexible deployment options including cloud, on-premise, or private cloud."
+            },
+            {
+                question: "What industries can use MapifyIt?",
+                answer: "MapifyIt is suitable for logistics & fleet management, smart cities, defense & security, enterprise software, and mobility/transportation. Any business that relies on location data can benefit from our spatial intelligence."
+            },
+            {
+                question: "What is location intelligence in MapifyIt?",
+                answer: "Location intelligence refers to analyzing geographic data to understand patterns, optimize operations, and make smarter business decisions in real time using our advanced spatial engine."
             }
         ]
     },
     {
-        id: "enterprise",
-        title: "Enterprise Solutions",
+        id: "features",
+        title: "Features & Technology",
         icon: <ShieldCheck className="w-4 h-4" />,
         colorClass: "text-indigo-400",
         faqs: [
             {
-                question: "Do you offer on-premises deployment?",
-                answer: "Yes, our enterprise solutions including FMS and FFT can be deployed in a secure SaaS cloud environment, a private cloud, or completely on-premises behind your corporate firewall for ultimate data security and compliance."
-            }
-        ]
-    },
-    {
-        id: "developers",
-        title: "Developer APIs",
-        icon: <FileText className="w-4 h-4" />,
-        colorClass: "text-cyan-400",
-        faqs: [
+                question: "What are the main features of MapifyIt?",
+                answer: "MapifyIt offers mapping & visualization APIs, search, routing & navigation, real-time traffic analytics, fleet tracking, geofencing, and AI-driven spatial intelligence."
+            },
             {
-                question: "How do I get an API key for Maps & Routing?",
-                answer: "You can sign up for a free developer account at dev.mapifyit.com. Once registered, you can generate your API keys from the developer dashboard to access our mapping and routing endpoints."
+                question: "Can MapifyIt work without internet?",
+                answer: "Yes, MapifyIt is designed to work in low-bandwidth or completely offline environments, making it ideal for remote or secure operations where connectivity is limited."
+            },
+            {
+                question: "Does MapifyIt provide APIs for developers?",
+                answer: "Yes, MapifyIt provides developer-friendly APIs and SDKs that allow easy integration across web, mobile, and enterprise applications with minimal effort."
+            },
+            {
+                question: "How does MapifyIt use AI?",
+                answer: "MapifyIt combines AI with geospatial data to predict trends, provide real-time insights, improve decision-making, and automate complex location-based workflows."
+            },
+            {
+                question: "Can MapifyIt be used for real-time tracking?",
+                answer: "Yes, MapifyIt supports real-time tracking, routing, and monitoring, making it ideal for high-precision fleet management and logistics operations."
             }
         ]
     },
     {
-        id: "pricing",
-        title: "Pricing & Billing",
+        id: "platform",
+        title: "Platform & Pricing",
         icon: <MessageCircle className="w-4 h-4" />,
         colorClass: "text-emerald-400",
         faqs: [
             {
-                question: "How does the pricing structure work?",
-                answer: "Our pricing depends on the specific modules you require. Maps APIs are billed on a pay-as-you-go model. Enterprise solutions like FMS and FFT have custom tier-based pricing based on the number of assets or agents. Please visit the Pricing page or Contact Us for a detailed quote."
+                question: "Is MapifyIt scalable for large businesses?",
+                answer: "Yes, MapifyIt is built for massive scalability and can support both startups and enterprise-level operations with flexible infrastructure and modular pricing."
+            },
+            {
+                question: "How does pricing work?",
+                answer: "MapifyIt uses transparent, usage-based pricing, allowing businesses to pay only for what they use without hidden costs or complex licensing agreements."
+            },
+            {
+                question: "Can I start using MapifyIt for free?",
+                answer: "Yes, MapifyIt offers a free tier so users can explore the platform and test our APIs before upgrading to advanced enterprise features."
             }
         ]
     }
