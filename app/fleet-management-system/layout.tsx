@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "FMS FleetSense – Real-Time Fleet Management System",
+    title: "Real-Time Fleet Management System & GPS Vehicle Tracking",
     description:
         "Mapifyit FMS FleetSense provides sub-meter GPS tracking, fuel monitoring, driver behavior analytics, and AI-driven predictive maintenance in a unified enterprise fleet management dashboard.",
     keywords: [

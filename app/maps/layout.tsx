@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Maps API – High-Resolution Vector & Satellite Tile Rendering",
+    title: "Custom Maps API | Vector & Satellite Map Tile Services",
     description:
         "Mapifyit Maps API renders high-resolution vector and satellite tiles at 60fps. Built for mass-scale web and mobile applications with localized address accuracy across regions.",
     keywords: [
