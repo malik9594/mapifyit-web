@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Field Force Tracking Software & Mobile Workforce Management",
+    title: "Field Force Tracking Software | Mobile Workforce Tracking",
     description:
         "Enterprise-grade Field Force Tracking (FFT) solution with real-time GPS tracking, geofence attendance automation, intelligent task dispatching, and secure on-premises deployment options.",
     keywords: [
