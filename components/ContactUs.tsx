@@ -113,9 +113,9 @@ export default function ContactUs({ standalone = false }: { standalone?: boolean
                     {/* LEFT: Info & Map */}
                     <div className="space-y-8">
                         <div>
-                            <h3 className="text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight">
-                                Contact <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Us.</span>
-                            </h3>
+                            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight">
+                                Contact Us
+                            </h1>
                             <p className="text-slate-400 text-lg leading-relaxed max-w-md">
                                 Ready to deploy secure, offline GIS? Our engineers are standing by to help you architect your spatial infrastructure.
                             </p>

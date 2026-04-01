@@ -122,8 +122,7 @@ export default function GeospatialModuleShowcaseCool() {
                     {/* Left Side: Header & Intro */}
                     <div className="pt-0 md:pt-4 lg:pr-12 text-center lg:text-left">
                         <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight leading-tight">
-                            Enterprise GIS Platform  <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">for Global Geospatial Projects</span>
+                            GIS Mapping Tools &amp; Spatial Analysis Solutions by MapifyIt
                         </h1>
                         <p className="text-slate-400 text-lg leading-relaxed max-w-2xl mx-auto lg:mx-0">
                             MapifyIt GIS is a powerful enterprise geospatial platform designed for organizations managing large-scale GIS projects, spatial intelligence, and mission-critical geospatial infrastructure. Built for governments, enterprises, defense organizations, and infrastructure operators, MapifyIt enables teams to deploy and manage advanced GIS systems with full control over their spatial data.
