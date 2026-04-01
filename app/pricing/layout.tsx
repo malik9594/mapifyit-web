@@ -17,13 +17,13 @@ export const metadata: Metadata = {
         "Mapifyit pricing",
     ],
     openGraph: {
-        title: "Pricing – Scale-First Enterprise Plans | Mapifyit",
+        title: "Pricing – Scale-First Enterprise Plans",
         description:
             "Transparent, predictable pricing for enterprise mapping, GIS, fleet management, and identity verification. No vendor lock-in.",
         url: "https://mapifyit.com/pricing",
     },
     twitter: {
-        title: "Pricing | Mapifyit",
+        title: "Pricing",
         description:
             "Transparent, predictable pricing for enterprise mapping, GIS, fleet management, and identity verification. No vendor lock-in.",
     },
