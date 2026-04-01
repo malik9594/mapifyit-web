@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "GIS Intelligence & Spatial Analytics | Mapifyit",
+    title: "GIS Intelligence & Spatial Analytics",
     description:
         "Mapifyit GIS Intelligence delivers high-precision terrain modeling, demographic analysis, DEM/LiDAR processing, and real-time infrastructure mapping for enterprise organizations.",
     keywords: [

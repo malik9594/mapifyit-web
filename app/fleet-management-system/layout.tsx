@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Real-Time Fleet Management System | Mapifyit",
+    title: "Real-Time Fleet Management System",
     description:
         "Mapifyit FMS FleetSense provides sub-meter GPS tracking, fuel monitoring, driver behavior analytics, and AI-driven predictive maintenance in a unified enterprise fleet management dashboard.",
     keywords: [
@@ -17,13 +17,13 @@ export const metadata: Metadata = {
         "FMS fleet sense",
     ],
     openGraph: {
-        title: "FMS FleetSense – Fleet Management System | Mapifyit",
+        title: "Real-Time Fleet Management System | Mapifyit",
         description:
             "Monitor, optimize, and secure your entire fleet in real-time with sub-meter GPS accuracy, predictive maintenance, and driver performance analytics.",
         url: "https://mapifyit.com/fleet-management-system",
     },
     twitter: {
-        title: "FMS FleetSense – Fleet Management System | Mapifyit",
+        title: "Real-Time Fleet Management System | Mapifyit",
         description:
             "Monitor, optimize, and secure your entire fleet in real-time with sub-meter GPS accuracy, predictive maintenance, and driver performance analytics.",
     },
