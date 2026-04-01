@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Intelligent Routing – Multi-Stop Route Optimization",
+    title: "Route Optimization Software | Multi-Stop Routing | Mapifyit",
     description:
         "Mapifyit intelligent routing engine provides multi-stop optimization, real-time traffic pulse monitoring, and cost-per-mile insights to power enterprise logistics and delivery systems.",
     keywords: [

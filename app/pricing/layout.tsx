@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Transparent Scale-First Plans for Enterprise Mapping",
+    title: "Mapifyit Pricing: Scalable Enterprise Mapping Plans",
     description:
         "View Mapifyit's transparent, scale-first pricing for enterprise GIS, fleet management, eKYC, and location intelligence solutions. Deploy flexible infrastructure with predictable costs and no vendor lock-in.",
     keywords: [
