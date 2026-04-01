@@ -17,7 +17,7 @@ type ContactPayload = {
 // Verified with MapifyIT-Webpanel-Backend settings.
 const SMTP_CONFIG = {
     host: 'mail.mapifyit.com',
-    port: 587, // Working STARTTLS port
+    port: 465, // Working SSL/TLS port
     user: 'noreply@system.mapifyit.com',
     // Corrected password with leading hyphen '-'
     pass: '-,55,sSinqUinGEnTErWaRmtElIChIOnsTICe',
@@ -47,15 +47,18 @@ export async function POST(request: Request) {
         }
 
         // 2. Initialize Nodemailer Transporter
-        // Using Port 587 with secure: false and STARTTLS configuration
+        // Using Port 465 with secure: true for implicit SSL/TLS
         const transporter = nodemailer.createTransport({
             host: SMTP_CONFIG.host,
             port: SMTP_CONFIG.port,
-            secure: false, // TLS (STARTTLS)
+            secure: true, // SSL/TLS (Implicit)
             auth: {
                 user: SMTP_CONFIG.user,
                 pass: SMTP_CONFIG.pass,
             },
+            connectionTimeout: 10000,
+            greetingTimeout: 10000,
+            socketTimeout: 10000,
             tls: {
                 // Keep this to ensure connection on private mail servers
                 rejectUnauthorized: false
