@@ -142,7 +142,7 @@ export default function Footer() {
                 {/* Bottom Bar */}
                 <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
                     <div className="text-slate-500 text-xs tracking-wide">
-                        &copy; {new Date().getFullYear()} <span className="text-slate-300 font-medium">Mapifyit</span>. All rights reserved.
+                        &copy; {new Date().getFullYear()} <span className="text-slate-300 font-medium cursor-pointer"><Link href='https://mapifyit.com'>Mapifyit</Link></span>. All rights reserved.
                     </div>
 
                     <div className="flex gap-8">
