@@ -1,7 +1,9 @@
+"use client";
+
 import React from 'react';
 import Link from 'next/link';
 import { Reveal } from '@/components/Reveal';
-import { Scale, Activity, Link as LinkIcon, Database, HardDrive, CreditCard, ShieldCheck, HelpCircle, FileText } from 'lucide-react';
+import { Scale, Activity, Link as LinkIcon, Database, HardDrive, CreditCard, ShieldCheck, HelpCircle } from 'lucide-react';
 
 export default function TermsOfServicePage() {
     const sections = [
@@ -142,7 +144,7 @@ export default function TermsOfServicePage() {
                                         <h2 className="text-2xl font-semibold text-white">Pricing & Billing</h2>
                                     </div>
                                     <div className="text-slate-400 leading-relaxed pl-11">
-                                        <p>Pricing is usage-based or contract-based. Fees are non-refundable. Usage beyond plan limits incurs charges, and taxes/duties are your responsibility. Free trials or beta features may be discontinued at any time and operate "as is".</p>
+                                        <p>Pricing is usage-based or contract-based. Fees are non-refundable. Usage beyond plan limits incurs charges, and taxes/duties are your responsibility. Free trials or beta features may be discontinued at any time and operate &quot;as is&quot;.</p>
                                     </div>
                                 </section>
 

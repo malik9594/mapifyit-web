@@ -1,7 +1,9 @@
+"use client";
+
 import React from 'react';
 import Link from 'next/link';
 import { Reveal } from '@/components/Reveal';
-import { Shield, FileText, Lock, Eye, Database, Globe, UserCheck, Settings, Bell, Server } from 'lucide-react';
+import { Shield, FileText, Eye, Database, Globe, UserCheck, Settings, Bell, Server } from 'lucide-react';
 
 export default function PrivacyPolicyPage() {
     const sections = [
@@ -106,7 +108,7 @@ export default function PrivacyPolicyPage() {
                                         <p>If you leave a comment on our site you may opt-in to saving your name, email address and website in cookies. These are for your convenience so that you do not have to fill in your details again when you leave another comment.</p>
                                         <ul className="list-disc pl-5 space-y-2">
                                             <li><strong className="text-slate-300">Login Page:</strong> We will set a temporary cookie to determine if your browser accepts cookies. This contains no personal data and is discarded when you close your browser.</li>
-                                            <li><strong className="text-slate-300">Login Session:</strong> We run multiple cookies to save your login information and screen choices. Login cookies last two days, screen options last a year. "Remember Me" persists for two weeks.</li>
+                                            <li><strong className="text-slate-300">Login Session:</strong> We run multiple cookies to save your login information and screen choices. Login cookies last two days, screen options last a year. &quot;Remember Me&quot; persists for two weeks.</li>
                                             <li><strong className="text-slate-300">Editing Content:</strong> An additional cookie is saved in your browser when editing articles. It includes no personal data and simply indicates the post ID. Expires after 1 day.</li>
                                         </ul>
                                     </div>
