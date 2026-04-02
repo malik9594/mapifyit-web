@@ -4,25 +4,6 @@ export default function GlobalRadarMap() {
     return (
         <div className="mt-12 md:mt-20 relative w-full h-[300px] sm:h-[400px] md:h-[500px] rounded-2xl md:rounded-3xl border border-white/10 bg-[#070B14]/60 backdrop-blur-xl overflow-hidden shadow-2xl group [perspective:2000px]">
 
-            {/* Custom Animations injected directly for easy plug-and-play */}
-            <style dangerouslySetInnerHTML={{
-                __html: `
-                @keyframes radar-sweep {
-                    0% { transform: translateX(-100%); }
-                    100% { transform: translateX(200%); }
-                }
-                .animate-radar {
-                    animation: radar-sweep 5s linear infinite;
-                }
-                @keyframes pulse-ring {
-                    0% { transform: scale(0.8); opacity: 0.5; }
-                    100% { transform: scale(2.5); opacity: 0; }
-                }
-                .animate-pulse-ring {
-                    animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
-                }
-            `}} />
-
             {/* Background Base & Grid */}
             <div className="absolute inset-0 bg-gradient-to-b from-[#0a1128] to-[#03060D] z-0" />
             <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.1)_1px,transparent_1px)] bg-[size:40px_40px] z-0 opacity-50" />

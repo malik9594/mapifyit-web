@@ -1,15 +1,11 @@
+"use client";
+
 import React from 'react';
 import Link from 'next/link';
 import {
-    Twitter,
     Linkedin,
-    Facebook,
-    Instagram,
-    Github,
     Mail,
     Phone,
-    MapPin,
-    ArrowRight,
     ChevronRight
 } from 'lucide-react';
 

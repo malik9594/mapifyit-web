@@ -3,24 +3,18 @@
 import Script from "next/script";
 
 export default function GoogleAnalytics() {
-  const GA_MEASUREMENT_ID = "G-33X05V9FEN"; // Replace with your measurement ID
+  const gaMeasurementId = "G-33X05V9FEN";
 
   return (
     <>
       <Script
-        src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+        src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
         strategy="afterInteractive"
       />
-      <Script id="google-analytics" strategy="afterInteractive">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', '${GA_MEASUREMENT_ID}', {
-            page_path: window.location.pathname,
-          });
-        `}
-      </Script>
+      <Script
+        src={`/scripts/google-analytics-init.js?id=${gaMeasurementId}`}
+        strategy="afterInteractive"
+      />
     </>
   );
 }
