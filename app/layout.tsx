@@ -64,8 +64,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <head>
+    <html lang="en" suppressHydrationWarning>
+      <head suppressHydrationWarning>
         <GoogleAnalytics />
         {/* Preconnect to speed up initial Mapifyit API handshakes */}
         <link rel="preconnect" href="https://client.mapifyit.com" crossOrigin="anonymous" />
