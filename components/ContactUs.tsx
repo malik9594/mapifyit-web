@@ -117,6 +117,7 @@ export default function ContactUs({ standalone = false }: { standalone?: boolean
         const payload = {
             name: (formData.get('name') ?? '').toString().trim(),
             email: (formData.get('email') ?? '').toString().trim(),
+            phone: (formData.get('phone') ?? '').toString().trim(),
             message: (formData.get('message') ?? '').toString().trim(),
         };
 
@@ -277,6 +278,21 @@ export default function ContactUs({ standalone = false }: { standalone?: boolean
                                             name="email"
                                             type="email"
                                             placeholder="john@company.com"
+                                            className="w-full bg-slate-950 border border-white/5 rounded-xl py-4 pl-12 pr-4 text-white placeholder:text-slate-700 focus:outline-none focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/20 transition-all"
+                                        />
+                                    </div>
+                                </div>
+
+                                {/* Phone Input */}
+                                <div className="space-y-2 shrink-0">
+                                    <label className="text-[10px] font-bold text-cyan-500 uppercase tracking-[0.2em] ml-1">Phone Number</label>
+                                    <div className="relative group">
+                                        <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500 group-focus-within:text-cyan-400 transition-colors" />
+                                        <input
+                                            required
+                                            name="phone"
+                                            type="tel"
+                                            placeholder="+971 50 123 4567"
                                             className="w-full bg-slate-950 border border-white/5 rounded-xl py-4 pl-12 pr-4 text-white placeholder:text-slate-700 focus:outline-none focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/20 transition-all"
                                         />
                                     </div>
