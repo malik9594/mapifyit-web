@@ -1,3 +1,5 @@
+"use client";
+
 import ContactUs from '@/components/ContactUs';
 import { ArrowLeft } from 'lucide-react';
 import Link from 'next/link';

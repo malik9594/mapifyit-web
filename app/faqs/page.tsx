@@ -203,7 +203,7 @@ export default function FAQPage() {
                                             </div>
                                             <div>
                                                 <h3 className="text-white font-bold text-lg">Still have questions?</h3>
-                                                <p className="text-slate-400 text-sm md:text-base">Can't find the answer you're looking for? Please contact our friendly team.</p>
+                                                <p className="text-slate-400 text-sm md:text-base">Can&apos;t find the answer you&apos;re looking for? Please contact our friendly team.</p>
                                             </div>
                                         </div>
                                         <a 

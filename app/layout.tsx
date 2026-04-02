@@ -73,44 +73,6 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://client.mapifyit.com" />
         <link rel="dns-prefetch" href="https://tiles.mapifyit.com" />
 
-        {/* Global JSON-LD: Organization + WebSite structured data */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@graph": [
-                {
-                  "@type": "Organization",
-                  "@id": "https://mapifyit.com/#organization",
-                  name: "Mapifyit",
-                  url: "https://mapifyit.com",
-                  logo: {
-                    "@type": "ImageObject",
-                    url: "https://mapifyit.com/fullwhitebackground logo.png",
-                  },
-                  sameAs: ["https://twitter.com/mapifyit"],
-                  description:
-                    "Enterprise-grade mapping and location intelligence platform. Deploy sovereign GIS, fleet tracking, field force management, and identity verification.",
-                },
-                {
-                  "@type": "WebSite",
-                  "@id": "https://mapifyit.com/#website",
-                  url: "https://mapifyit.com",
-                  name: "Mapifyit",
-                  publisher: {
-                    "@id": "https://mapifyit.com/#organization",
-                  },
-                  potentialAction: {
-                    "@type": "SearchAction",
-                    target: "https://mapifyit.com/?s={search_term_string}",
-                    "query-input": "required name=search_term_string",
-                  },
-                },
-              ],
-            }),
-          }}
-        />
       </head>
       <body
         suppressHydrationWarning
