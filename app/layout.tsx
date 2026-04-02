@@ -113,6 +113,7 @@ export default function RootLayout({
         />
       </head>
       <body
+        suppressHydrationWarning
         className={`${geistSans.variable} ${geistMono.variable} antialiased selection:bg-blue-500/30 overflow-x-hidden`}
       >
         <div className="min-h-screen bg-[#03060D] text-slate-300 font-sans">
