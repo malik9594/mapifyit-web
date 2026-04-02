@@ -3,7 +3,7 @@ import { ShieldCheck, Zap } from 'lucide-react';
 import Link from 'next/link';
 import { Reveal } from './Reveal';
 import IsometricMap from './IsometricMap';
-import PhoneMockup from './PhoneMockup';
+import PhoneMockup from './PhoneMockupLazy';
 
 /**
  * Hero Section: The flagship visual component of the landing page.

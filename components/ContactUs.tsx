@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { Phone, Mail, MapPin, Send, User, MessageSquare, CheckCircle2 } from 'lucide-react';
 
 // ─── Mapifyit Config ────────────────────────────────────────────────────────
@@ -11,11 +11,49 @@ const DUBAI_LAT = 25.1840;
 export default function ContactUs({ standalone = false }: { standalone?: boolean }) {
     const mapContainerRef = useRef<HTMLDivElement>(null);
     const formRef = useRef<HTMLFormElement>(null);
-    const mapRef = useRef<any>(null);
+    const mapRef = useRef<{ remove: () => void } | null>(null);
     const mapInitStarted = useRef(false);
+    const [shouldLoadMap, setShouldLoadMap] = useState(false);
+    const [hasInteractiveMap, setHasInteractiveMap] = useState(false);
     const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
 
     useEffect(() => {
+        const container = mapContainerRef.current;
+        if (!container) return;
+
+        const connection = (
+            navigator as Navigator & {
+                connection?: { saveData?: boolean; effectiveType?: string };
+            }
+        ).connection;
+
+        const isSlowNetwork = ["slow-2g", "2g", "3g"].includes(connection?.effectiveType ?? "");
+        const isSmallViewport = window.innerWidth < 768;
+        if (isSmallViewport || connection?.saveData || isSlowNetwork) return;
+
+        let observer: IntersectionObserver | null = new IntersectionObserver(
+            (entries) => {
+                if (entries.some((entry) => entry.isIntersecting)) {
+                    setShouldLoadMap(true);
+                    if (observer) {
+                        observer.disconnect();
+                        observer = null;
+                    }
+                }
+            },
+            { rootMargin: "120px 0px" }
+        );
+
+        observer.observe(container);
+
+        return () => {
+            if (observer) observer.disconnect();
+        };
+    }, []);
+
+    useEffect(() => {
+        if (!shouldLoadMap) return;
+
         let isMounted = true;
         const preloadEngine = import('maplibre-gl');
 
@@ -53,6 +91,7 @@ export default function ContactUs({ standalone = false }: { standalone?: boolean
                 });
 
                 mapRef.current = map;
+                setHasInteractiveMap(true);
             } catch (e) {
                 console.error('[Mapifyit] Map failed:', e);
             }
@@ -62,11 +101,13 @@ export default function ContactUs({ standalone = false }: { standalone?: boolean
         return () => {
             isMounted = false;
             if (mapRef.current) mapRef.current.remove();
+            mapRef.current = null;
+            setHasInteractiveMap(false);
             mapInitStarted.current = false;
         };
-    }, []);
+    }, [shouldLoadMap]);
 
-    const handleSubmit = async (e: React.FormEvent) => {
+    const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
         if (!formRef.current) return;
 
@@ -91,7 +132,6 @@ export default function ContactUs({ standalone = false }: { standalone?: boolean
                 throw new Error(errorText || 'Failed to send message');
             }
 
-            console.log('Email sent successfully via SMTP');
             setStatus('sent');
             formRef.current?.reset();
         } catch (error) {
@@ -123,7 +163,25 @@ export default function ContactUs({ standalone = false }: { standalone?: boolean
 
                         {/* Integrated Map Viewport */}
                         <div className="relative w-full h-[300px] rounded-3xl overflow-hidden border border-blue-900/30 shadow-2xl group">
-                            <div ref={mapContainerRef} className="w-full h-full transition-all duration-700" />
+                            <div
+                                ref={mapContainerRef}
+                                className={`w-full h-full transition-all duration-700 ${hasInteractiveMap ? 'opacity-100' : 'opacity-0'}`}
+                            />
+                            {!hasInteractiveMap && (
+                                <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-[#07101E] to-[#0A172A]">
+                                    <div className="absolute inset-0 bg-[radial-gradient(rgba(34,211,238,0.08)_1px,transparent_1px)] bg-[size:1.2rem_1.2rem]" />
+                                    <div className="absolute inset-0 flex items-center justify-center">
+                                        <div className="text-center px-6">
+                                            <p className="text-xs font-semibold text-slate-300 uppercase tracking-widest">
+                                                {shouldLoadMap ? "Loading interactive map..." : "Fast mode enabled for mobile"}
+                                            </p>
+                                            <p className="mt-2 text-xs text-slate-500">
+                                                Business Bay, Dubai, UAE
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
                             <div className="absolute bottom-4 left-4 right-4 p-3 bg-slate-950/80 backdrop-blur-md border border-white/5 rounded-xl flex items-center gap-3">
                                 <div className="p-2 bg-cyan-500/20 rounded-lg"><MapPin className="w-4 h-4 text-cyan-400" /></div>
                                 <span className="text-xs text-slate-300 font-mono">Business Bay, Dubai, UAE</span>
