@@ -9,11 +9,11 @@ export default function GoogleAnalytics() {
     <>
       <Script
         src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
-        strategy="lazyOnload"
+        strategy="afterInteractive"
       />
       <Script
         src={`/scripts/google-analytics-init.js?id=${gaMeasurementId}`}
-        strategy="lazyOnload"
+        strategy="afterInteractive"
       />
     </>
   );
