@@ -1,0 +1,22 @@
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is MapifyIt?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "MapifyIt is an AI-powered mapping and GIS platform for enterprise location intelligence."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is MapifyIt scalable?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, MapifyIt is built for massive enterprise scalability and mission-critical operations."
+      }
+    }
+  ]
+}
