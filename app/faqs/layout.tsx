@@ -15,23 +15,15 @@ const faqJsonLd = {
       "name": "What is MapifyIt?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "MapifyIt is an AI-powered mapping and GIS platform that helps businesses build, analyze, and scale location-based solutions using advanced geospatial intelligence."
+        "text": "MapifyIt is an AI-powered mapping and GIS platform for enterprise location intelligence."
       }
     },
     {
       "@type": "Question",
-      "name": "How is MapifyIt different from Google Maps or other providers?",
+      "name": "Is MapifyIt scalable?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Unlike traditional map providers, MapifyIt offers deep localization, offline-first functionality, full data ownership (data sovereignty), and flexible deployment options including cloud, on-premise, or private cloud."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is MapifyIt scalable for large businesses?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, MapifyIt is built for massive scalability and can support both startups and enterprise-level operations with flexible infrastructure and modular pricing."
+        "text": "Yes, MapifyIt is built for massive enterprise scalability and mission-critical operations."
       }
     }
   ]
