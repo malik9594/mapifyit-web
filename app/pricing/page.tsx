@@ -2,6 +2,7 @@
 import React from 'react';
 import { Check, ArrowLeft, ArrowRight, DollarSign, Shield, Database, Box, PieChart, Info, X, Zap, Target, Star, Crown, Server, Map, Lock } from 'lucide-react';
 import Link from 'next/link';
+import Script from 'next/script';
 import { useRouter } from 'next/navigation';
 import { Reveal } from '@/components/Reveal';
 
@@ -75,7 +76,7 @@ export default function PricingPage() {
 
     return (
         <main className="min-h-screen bg-[#03060D] text-white pt-20 pb-20 overflow-x-hidden relative">
-            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+            <Script id="pricing-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
             <div className="max-w-7xl mx-auto px-4">
                 <header className="mb-12">

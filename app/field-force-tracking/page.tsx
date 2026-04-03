@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Script from 'next/script';
 import { motion } from 'framer-motion';
 import {
     Map,
@@ -576,7 +577,8 @@ const Footer = () => (
 export default function Page() {
     return (
         <div className="min-h-screen bg-[#0B0F14] text-white font-sans selection:bg-[#2F80FF]/30">
-            <script
+            <Script
+                id="fft-jsonld"
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
             />

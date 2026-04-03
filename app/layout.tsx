@@ -66,7 +66,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head suppressHydrationWarning>
-        <GoogleAnalytics />
+        {/* Google Analytics */}
         {/* Preconnect to speed up initial Mapifyit API handshakes */}
         <link rel="preconnect" href="https://client.mapifyit.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://tiles.mapifyit.com" crossOrigin="anonymous" />
@@ -78,6 +78,7 @@ export default function RootLayout({
         suppressHydrationWarning
         className={`${geistSans.variable} ${geistMono.variable} antialiased selection:bg-blue-500/30 overflow-x-hidden`}
       >
+        <GoogleAnalytics />
         <div className="min-h-screen bg-[#03060D] text-slate-300 font-sans">
           <Navbar />
           {children}
