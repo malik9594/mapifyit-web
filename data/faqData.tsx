@@ -20,15 +20,15 @@ export const faqCategories: FAQCategory[] = [
     faqs: [
       {
         question: "What is MapifyIt?",
-        answer: "MapifyIt is an AI-powered mapping and GIS platform for enterprise location intelligence."
+        answer: "An AI-powered mapping and GIS platform for enterprise location intelligence."
       },
       {
         question: "How is MapifyIt different from Google Maps or other providers?",
-        answer: "Unlike traditional map providers, MapifyIt offers deep localization, offline-first functionality, data sovereignty, and flexible deployment."
+        answer: "We focus on localization, offline-first use, data sovereignty, and flexible deployment."
       },
       {
         question: "What industries can use MapifyIt?",
-        answer: "MapifyIt is suitable for logistics, smart cities, defense, enterprise software, and mobility/transportation."
+        answer: "Logistics, smart cities, defense, enterprise apps, and mobility."
       }
     ]
   },
@@ -40,11 +40,11 @@ export const faqCategories: FAQCategory[] = [
     faqs: [
       {
         question: "What are the main features of MapifyIt?",
-        answer: "MapifyIt offers mapping, GIS visualization, search, routing, real-time tracking, and AI spatial intelligence."
+        answer: "Mapping, GIS visualization, search, routing, live tracking, and AI spatial intelligence."
       },
       {
         question: "Can MapifyIt work without internet?",
-        answer: "Yes, MapifyIt is designed to work in low-bandwidth or offline environments, ideal for remote or secure operations."
+        answer: "Yes. It runs in low-bandwidth or offline environments for remote or secure ops."
       }
     ]
   },
@@ -56,11 +56,11 @@ export const faqCategories: FAQCategory[] = [
     faqs: [
       {
         question: "Is MapifyIt scalable?",
-        answer: "Yes, MapifyIt is built for massive enterprise-level operations with modular pricing."
+        answer: "Yes. Built for large enterprise workloads."
       },
       {
         question: "How does pricing work?",
-        answer: "MapifyIt uses transparent, usage-based pricing with no hidden costs."
+        answer: "Transparent, usage-based pricing with no hidden costs."
       }
     ]
   }

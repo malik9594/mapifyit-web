@@ -1,12 +1,5 @@
 import React from 'react';
-import { ChevronDown, HelpCircle, ShieldCheck, MessageCircle } from 'lucide-react';
 import { faqCategories } from '@/data/faqData';
-
-const IconMap = {
-  general: HelpCircle,
-  features: ShieldCheck,
-  platform: MessageCircle,
-};
 
 interface FAQSectionProps {
   categoryId: string;
@@ -21,13 +14,11 @@ export default function FAQSection({ categoryId, defaultOpen = false }: FAQSecti
   const category = faqCategories.find((c) => c.id === categoryId);
   if (!category) return null;
 
-  const CategoryIcon = IconMap[category.iconId];
-
   return (
     <section id={category.id} className="scroll-mt-32">
       <div className="flex items-center gap-3 mb-6">
-        <div className={`w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center ${category.colorClass}`}>
-          <CategoryIcon className="w-4 h-4" />
+        <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-xs text-blue-300">
+          FAQ
         </div>
         <h2 className="text-2xl font-semibold text-white">{category.title}</h2>
       </div>
@@ -41,7 +32,7 @@ export default function FAQSection({ categoryId, defaultOpen = false }: FAQSecti
           >
             <summary className="list-none cursor-pointer px-5 py-4 flex items-center justify-between text-left text-white text-base md:text-lg font-medium">
               <span>{faq.question}</span>
-              <ChevronDown className="w-4 h-4 text-slate-400 transition-transform duration-300 group-open:rotate-180" />
+              <span className="text-slate-400 transition-transform duration-300 group-open:rotate-180">▼</span>
             </summary>
             <div className="px-5 pb-5 text-slate-400 leading-relaxed text-sm md:text-base">
               {faq.answer}
