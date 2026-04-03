@@ -3,15 +3,20 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
-import { FAQCategory } from '@/data/faqData';
+import { faqCategories } from '@/data/faqData';
 
 interface FAQSectionProps {
-  category: FAQCategory;
+  categoryId: string;
   defaultOpen?: boolean;
 }
 
-export default function FAQSection({ category, defaultOpen = false }: FAQSectionProps) {
+export default function FAQSection({ categoryId, defaultOpen = false }: FAQSectionProps) {
+  // We import the data directly into the client component
+  // This ensures the data is in the JS bundle, NOT "inline" in the HTML for serialization.
+  const category = faqCategories.find(c => c.id === categoryId);
   const [openIndex, setOpenIndex] = useState<number | null>(defaultOpen ? 0 : null);
+
+  if (!category) return null;
 
   const toggleFaq = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);

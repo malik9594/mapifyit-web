@@ -56,7 +56,7 @@ export default function FAQPage() {
                                 {faqCategories.map((category, index) => (
                                     <FAQSection 
                                         key={category.id} 
-                                        category={category} 
+                                        categoryId={category.id} 
                                         defaultOpen={index === 0} 
                                     />
                                 ))}
