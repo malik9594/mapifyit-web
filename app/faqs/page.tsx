@@ -49,7 +49,7 @@ export default function FAQPage() {
                             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">Support & FAQs.</h1>
                             
                             <div className="text-lg text-slate-400 mb-12 leading-relaxed bg-white/[0.02] border border-white/5 p-6 rounded-xl">
-                                <p>Everything you need to know about the product and billing. Can’t find the answer you’re looking for? Please contact our friendly team.</p>
+                                <p>Find quick answers about Mapifyit. If you need more help, contact our team.</p>
                             </div>
                             
                             <div className="space-y-16">
@@ -81,21 +81,6 @@ export default function FAQPage() {
                                     </div>
                                 </section>
 
-                                <section className="pt-10">
-                                    <div className="rounded-2xl border border-white/10 bg-[#080F1D] p-6 md:p-8">
-                                        <h2 className="text-2xl font-semibold text-white mb-4">Mapifyit FAQ Guide For Evaluation Teams</h2>
-                                        <p className="text-slate-300 leading-relaxed mb-4">
-                                            This FAQ page is designed to help decision-makers, product teams, and technical leads quickly understand how Mapifyit fits into real-world location intelligence programs. When companies evaluate mapping platforms, they usually compare more than just visual map quality. They also look at routing accuracy, geocoding relevance, scaling behavior under heavy traffic, data sovereignty options, and long-term commercial predictability. The answers above summarize these core topics so teams can evaluate technical fit before deeper implementation planning.
-                                        </p>
-                                        <p className="text-slate-300 leading-relaxed mb-4">
-                                            If your organization is building logistics, field-force automation, mobility, GIS analytics, or identity-linked geospatial workflows, the most important step is defining clear operational goals. That includes latency targets, update frequency, offline requirements, compliance constraints, and expected user growth. Once these requirements are clear, platform selection becomes faster and more objective. Our documentation and support team can help map these requirements to specific APIs and deployment options.
-                                        </p>
-                                        <p className="text-slate-300 leading-relaxed">
-                                            For teams that need additional clarity, the next step is a focused technical session where we review your current stack, integration surface, and rollout phases. This approach helps reduce migration risk, improve launch confidence, and ensure the platform is aligned with both engineering and business outcomes.
-                                        </p>
-                                    </div>
-                                </section>
-
                             </div>
                         </Reveal>
                     </div>
@@ -104,3 +89,5 @@ export default function FAQPage() {
         </div>
     );
 }
+
+
