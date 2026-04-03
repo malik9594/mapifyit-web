@@ -1,7 +1,4 @@
-"use client";
-
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React from 'react';
 import { ChevronDown, HelpCircle, ShieldCheck, MessageCircle } from 'lucide-react';
 import { faqCategories } from '@/data/faqData';
 
@@ -16,18 +13,15 @@ interface FAQSectionProps {
   defaultOpen?: boolean;
 }
 
+/**
+ * Server component version of the FAQ accordion.
+ * Uses native <details>/<summary> so no client-side JS or hydration is needed.
+ */
 export default function FAQSection({ categoryId, defaultOpen = false }: FAQSectionProps) {
-  // We import the data directly into the client component
-  // This ensures the data is in the JS bundle, NOT "inline" in the HTML for serialization.
-  const category = faqCategories.find(c => c.id === categoryId);
-  const [openIndex, setOpenIndex] = useState<number | null>(defaultOpen ? 0 : null);
-
+  const category = faqCategories.find((c) => c.id === categoryId);
   if (!category) return null;
-  const CategoryIcon = IconMap[category.iconId];
 
-  const toggleFaq = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
+  const CategoryIcon = IconMap[category.iconId];
 
   return (
     <section id={category.id} className="scroll-mt-32">
@@ -37,48 +31,23 @@ export default function FAQSection({ categoryId, defaultOpen = false }: FAQSecti
         </div>
         <h2 className="text-2xl font-semibold text-white">{category.title}</h2>
       </div>
-      
-      <div className="space-y-4 lg:pl-11">
-        {category.faqs.map((faq, index) => {
-          const isOpen = openIndex === index;
-          return (
-            <motion.div 
-              key={index}
-              initial={false}
-              animate={{ backgroundColor: isOpen ? 'rgba(59, 130, 246, 0.05)' : 'rgba(255, 255, 255, 0.02)' }}
-              className={`border rounded-xl overflow-hidden transition-colors duration-300 ${isOpen ? 'border-blue-500/30' : 'border-white/5 hover:border-white/10'}`}
-            >
-              <button
-                onClick={() => toggleFaq(index)}
-                className="w-full flex items-center justify-between p-5 text-left focus:outline-none"
-              >
-                <span className="text-base md:text-lg font-medium text-white">{faq.question}</span>
-                <motion.div
-                  animate={{ rotate: isOpen ? 180 : 0 }}
-                  transition={{ duration: 0.3 }}
-                  className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 ml-4 ${isOpen ? 'bg-blue-500 text-white' : 'bg-white/5 text-slate-400'}`}
-                >
-                  <ChevronDown className="w-4 h-4" />
-                </motion.div>
-              </button>
 
-              <AnimatePresence initial={false}>
-                {isOpen && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: 'auto', opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3, ease: 'easeInOut' }}
-                  >
-                    <div className="px-5 pb-5 pt-0 text-slate-400 leading-relaxed text-sm md:text-base">
-                      {faq.answer}
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
-          );
-        })}
+      <div className="space-y-4 lg:pl-11">
+        {category.faqs.map((faq, index) => (
+          <details
+            key={faq.question}
+            className="group border border-white/5 rounded-xl bg-white/5 open:bg-blue-500/5 open:border-blue-500/30 transition-colors duration-300"
+            open={defaultOpen && index === 0}
+          >
+            <summary className="list-none cursor-pointer px-5 py-4 flex items-center justify-between text-left text-white text-base md:text-lg font-medium">
+              <span>{faq.question}</span>
+              <ChevronDown className="w-4 h-4 text-slate-400 transition-transform duration-300 group-open:rotate-180" />
+            </summary>
+            <div className="px-5 pb-5 text-slate-400 leading-relaxed text-sm md:text-base">
+              {faq.answer}
+            </div>
+          </details>
+        ))}
       </div>
     </section>
   );

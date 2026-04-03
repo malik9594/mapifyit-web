@@ -1,9 +1,10 @@
 import React from 'react';
 import Link from 'next/link';
 import { HelpCircle, FileText, ShieldCheck, MessageCircle } from 'lucide-react';
-import { Reveal } from '@/components/Reveal';
 import { faqCategories } from '@/data/faqData';
 import FAQSection from '@/components/FAQSection';
+
+export const dynamic = 'force-static';
 
 export default function FAQPage() {
     return (
