@@ -42,48 +42,46 @@ export default function FAQPage() {
 
                     {/* Main Content Area */}
                     <div className="lg:col-span-8">
-                        <Reveal>
-                            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-xs font-bold uppercase tracking-wider text-blue-400 mb-6">
-                                <HelpCircle className="w-3.5 h-3.5" /> Frequently Asked Questions
-                            </div>
-                            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">Support & FAQs.</h1>
-                            
-                            <div className="text-lg text-slate-400 mb-12 leading-relaxed bg-white/[0.02] border border-white/5 p-6 rounded-xl">
-                                <p>Find quick answers about Mapifyit. If you need more help, contact our team.</p>
-                            </div>
-                            
-                            <div className="space-y-16">
-                                {faqCategories.map((category, index) => (
-                                    <FAQSection 
-                                        key={category.id} 
-                                        categoryId={category.id} 
-                                        defaultOpen={index === 0} 
-                                    />
-                                ))}
+                        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-xs font-bold uppercase tracking-wider text-blue-400 mb-6">
+                            <HelpCircle className="w-3.5 h-3.5" /> Frequently Asked Questions
+                        </div>
+                        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">Support & FAQs.</h1>
+                        
+                        <div className="text-lg text-slate-400 mb-12 leading-relaxed bg-white/[0.02] border border-white/5 p-6 rounded-xl">
+                            <p>Find quick answers about Mapifyit. If you need more help, contact our team.</p>
+                        </div>
+                        
+                        <div className="space-y-16">
+                            {faqCategories.map((category, index) => (
+                                <FAQSection 
+                                    key={category.id} 
+                                    categoryId={category.id} 
+                                    defaultOpen={index === 0} 
+                                />
+                            ))}
 
-                                <section className="pt-8 mt-12 border-t border-white/10">
-                                    <div className="bg-gradient-to-br from-blue-900/20 to-transparent border border-blue-500/20 p-6 md:p-8 rounded-xl flex flex-col md:flex-row items-center justify-between gap-6">
-                                        <div className="flex items-center gap-4">
-                                            <div className="w-12 h-12 bg-blue-500/10 rounded-full flex items-center justify-center shrink-0">
-                                                <MessageCircle className="text-blue-400 w-6 h-6" />
-                                            </div>
-                                            <div>
-                                                <h3 className="text-white font-bold text-lg">Still have questions?</h3>
-                                                <p className="text-slate-400 text-sm md:text-base">Can&apos;t find the answer you&apos;re looking for? Please contact our friendly team.</p>
-                                            </div>
+                            <section className="pt-8 mt-12 border-t border-white/10">
+                                <div className="bg-gradient-to-br from-blue-900/20 to-transparent border border-blue-500/20 p-6 md:p-8 rounded-xl flex flex-col md:flex-row items-center justify-between gap-6">
+                                    <div className="flex items-center gap-4">
+                                        <div className="w-12 h-12 bg-blue-500/10 rounded-full flex items-center justify-center shrink-0">
+                                            <MessageCircle className="text-blue-400 w-6 h-6" />
                                         </div>
-                                        <Link 
-                                            href="/contact-us" 
-                                            className="bg-blue-600 hover:bg-blue-500 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 whitespace-nowrap shadow-[0_0_20px_rgba(37,99,235,0.3)] shrink-0"
-                                        >
-                                            Get in touch
-                                        </Link>
+                                        <div>
+                                            <h3 className="text-white font-bold text-lg">Still have questions?</h3>
+                                            <p className="text-slate-400 text-sm md:text-base">Can&apos;t find the answer you&apos;re looking for? Please contact our friendly team.</p>
+                                        </div>
                                     </div>
-                                </section>
-
-                            </div>
-                        </Reveal>
+                                    <Link 
+                                        href="/contact-us" 
+                                        className="bg-blue-600 hover:bg-blue-500 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 whitespace-nowrap shadow-[0_0_20px_rgba(37,99,235,0.3)] shrink-0"
+                                    >
+                                        Get in touch
+                                    </Link>
+                                </div>
+                            </section>
+                        </div>
                     </div>
+
                 </div>
             </div>
         </div>

@@ -2,8 +2,14 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, HelpCircle, ShieldCheck, MessageCircle } from 'lucide-react';
 import { faqCategories } from '@/data/faqData';
+
+const IconMap = {
+  general: HelpCircle,
+  features: ShieldCheck,
+  platform: MessageCircle,
+};
 
 interface FAQSectionProps {
   categoryId: string;
@@ -17,6 +23,7 @@ export default function FAQSection({ categoryId, defaultOpen = false }: FAQSecti
   const [openIndex, setOpenIndex] = useState<number | null>(defaultOpen ? 0 : null);
 
   if (!category) return null;
+  const CategoryIcon = IconMap[category.iconId];
 
   const toggleFaq = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -26,7 +33,7 @@ export default function FAQSection({ categoryId, defaultOpen = false }: FAQSecti
     <section id={category.id} className="scroll-mt-32">
       <div className="flex items-center gap-3 mb-6">
         <div className={`w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center ${category.colorClass}`}>
-          {category.icon}
+          <CategoryIcon className="w-4 h-4" />
         </div>
         <h2 className="text-2xl font-semibold text-white">{category.title}</h2>
       </div>
