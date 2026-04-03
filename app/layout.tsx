@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import dynamic from "next/dynamic";
+import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-
-const Navbar = dynamic(() => import("@/components/Navbar"), { ssr: false });
-const WhatsAppButton = dynamic(() => import("@/components/WhatsAppButton"), { ssr: false });
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
