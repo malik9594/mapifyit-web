@@ -1,105 +1,17 @@
-"use client";
-
-import React, { useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
+import { HelpCircle, FileText, ShieldCheck, MessageCircle } from 'lucide-react';
 import { Reveal } from '@/components/Reveal';
-import { ChevronDown, MessageCircle, HelpCircle, FileText, ShieldCheck } from 'lucide-react';
-
-const faqCategories = [
-    {
-        id: "general",
-        title: "General Overview",
-        icon: <HelpCircle className="w-4 h-4" />,
-        colorClass: "text-blue-400",
-        faqs: [
-            {
-                question: "What is MapifyIt?",
-                answer: "MapifyIt is an AI-powered mapping and GIS platform that helps businesses build, analyze, and scale location-based solutions using advanced geospatial intelligence."
-            },
-            {
-                question: "How is MapifyIt different from Google Maps or other providers?",
-                answer: "Unlike traditional map providers, MapifyIt offers deep localization, offline-first functionality, full data ownership (data sovereignty), and flexible deployment options including cloud, on-premise, or private cloud."
-            },
-            {
-                question: "What industries can use MapifyIt?",
-                answer: "MapifyIt is suitable for logistics & fleet management, smart cities, defense & security, enterprise software, and mobility/transportation. Any business that relies on location data can benefit from our spatial intelligence."
-            },
-            {
-                question: "What is location intelligence in MapifyIt?",
-                answer: "Location intelligence refers to analyzing geographic data to understand patterns, optimize operations, and make smarter business decisions in real time using our advanced spatial engine."
-            }
-        ]
-    },
-    {
-        id: "features",
-        title: "Features & Technology",
-        icon: <ShieldCheck className="w-4 h-4" />,
-        colorClass: "text-indigo-400",
-        faqs: [
-            {
-                question: "What are the main features of MapifyIt?",
-                answer: "MapifyIt offers mapping & visualization APIs, search, routing & navigation, real-time traffic analytics, fleet tracking, geofencing, and AI-driven spatial intelligence."
-            },
-            {
-                question: "Can MapifyIt work without internet?",
-                answer: "Yes, MapifyIt is designed to work in low-bandwidth or completely offline environments, making it ideal for remote or secure operations where connectivity is limited."
-            },
-            {
-                question: "Does MapifyIt provide APIs for developers?",
-                answer: "Yes, MapifyIt provides developer-friendly APIs and SDKs that allow easy integration across web, mobile, and enterprise applications with minimal effort."
-            },
-            {
-                question: "How does MapifyIt use AI?",
-                answer: "MapifyIt combines AI with geospatial data to predict trends, provide real-time insights, improve decision-making, and automate complex location-based workflows."
-            },
-            {
-                question: "Can MapifyIt be used for real-time tracking?",
-                answer: "Yes, MapifyIt supports real-time tracking, routing, and monitoring, making it ideal for high-precision fleet management and logistics operations."
-            }
-        ]
-    },
-    {
-        id: "platform",
-        title: "Platform & Pricing",
-        icon: <MessageCircle className="w-4 h-4" />,
-        colorClass: "text-emerald-400",
-        faqs: [
-            {
-                question: "Is MapifyIt scalable for large businesses?",
-                answer: "Yes, MapifyIt is built for massive scalability and can support both startups and enterprise-level operations with flexible infrastructure and modular pricing."
-            },
-            {
-                question: "How does pricing work?",
-                answer: "MapifyIt uses transparent, usage-based pricing, allowing businesses to pay only for what they use without hidden costs or complex licensing agreements."
-            },
-            {
-                question: "Can I start using MapifyIt for free?",
-                answer: "Yes, MapifyIt offers a free tier so users can explore the platform and test our APIs before upgrading to advanced enterprise features."
-            }
-        ]
-    }
-];
+import { faqCategories } from '@/data/faqData';
+import FAQSection from '@/components/FAQSection';
 
 export default function FAQPage() {
-    // Map to keep track of which FAQ is open. Format: { categoryId: faqIndex }
-    const [openIndex, setOpenIndex] = useState<{ [category: string]: number | null }>({
-        "general": 0 // Open the first FAQ in the first category by default
-    });
-
-    const toggleFaq = (categoryId: string, index: number) => {
-        setOpenIndex(prev => ({
-            ...prev,
-            [categoryId]: prev[categoryId] === index ? null : index
-        }));
-    };
-
     return (
         <div className="pt-32 pb-24 bg-[#030712] min-h-screen">
             <div className="max-w-7xl mx-auto px-6">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
                     
-                    {/* Left Navigation Sidebar */}
+                    {/* Left Navigation Sidebar - Static on Server */}
                     <div className="lg:col-span-3 hidden lg:block">
                         <div className="sticky top-32">
                             <h3 className="text-white text-sm font-bold uppercase tracking-wider mb-6">Support Center</h3>
@@ -141,58 +53,12 @@ export default function FAQPage() {
                             </div>
                             
                             <div className="space-y-16">
-                                {faqCategories.map((category) => (
-                                    <section key={category.id} id={category.id} className="scroll-mt-32">
-                                        <div className="flex items-center gap-3 mb-6">
-                                            <div className={`w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center ${category.colorClass}`}>
-                                                {category.icon}
-                                            </div>
-                                            <h2 className="text-2xl font-semibold text-white">{category.title}</h2>
-                                        </div>
-                                        
-                                        <div className="space-y-4 lg:pl-11">
-                                            {category.faqs.map((faq, index) => {
-                                                const isOpen = openIndex[category.id] === index;
-                                                return (
-                                                    <motion.div 
-                                                        key={index}
-                                                        initial={false}
-                                                        animate={{ backgroundColor: isOpen ? 'rgba(59, 130, 246, 0.05)' : 'rgba(255, 255, 255, 0.02)' }}
-                                                        className={`border rounded-xl overflow-hidden transition-colors duration-300 ${isOpen ? 'border-blue-500/30' : 'border-white/5 hover:border-white/10'}`}
-                                                    >
-                                                        <button
-                                                            onClick={() => toggleFaq(category.id, index)}
-                                                            className="w-full flex items-center justify-between p-5 text-left focus:outline-none"
-                                                        >
-                                                            <span className="text-base md:text-lg font-medium text-white">{faq.question}</span>
-                                                            <motion.div
-                                                                animate={{ rotate: isOpen ? 180 : 0 }}
-                                                                transition={{ duration: 0.3 }}
-                                                                className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 ml-4 ${isOpen ? 'bg-blue-500 text-white' : 'bg-white/5 text-slate-400'}`}
-                                                            >
-                                                                <ChevronDown className="w-4 h-4" />
-                                                            </motion.div>
-                                                        </button>
-
-                                                        <AnimatePresence initial={false}>
-                                                            {isOpen && (
-                                                                <motion.div
-                                                                    initial={{ height: 0, opacity: 0 }}
-                                                                    animate={{ height: 'auto', opacity: 1 }}
-                                                                    exit={{ height: 0, opacity: 0 }}
-                                                                    transition={{ duration: 0.3, ease: 'easeInOut' }}
-                                                                >
-                                                                    <div className="px-5 pb-5 pt-0 text-slate-400 leading-relaxed text-sm md:text-base">
-                                                                        {faq.answer}
-                                                                    </div>
-                                                                </motion.div>
-                                                            )}
-                                                        </AnimatePresence>
-                                                    </motion.div>
-                                                );
-                                            })}
-                                        </div>
-                                    </section>
+                                {faqCategories.map((category, index) => (
+                                    <FAQSection 
+                                        key={category.id} 
+                                        category={category} 
+                                        defaultOpen={index === 0} 
+                                    />
                                 ))}
 
                                 <section className="pt-8 mt-12 border-t border-white/10">
@@ -206,12 +72,12 @@ export default function FAQPage() {
                                                 <p className="text-slate-400 text-sm md:text-base">Can&apos;t find the answer you&apos;re looking for? Please contact our friendly team.</p>
                                             </div>
                                         </div>
-                                        <a 
+                                        <Link 
                                             href="/contact-us" 
                                             className="bg-blue-600 hover:bg-blue-500 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 whitespace-nowrap shadow-[0_0_20px_rgba(37,99,235,0.3)] shrink-0"
                                         >
                                             Get in touch
-                                        </a>
+                                        </Link>
                                     </div>
                                 </section>
 
