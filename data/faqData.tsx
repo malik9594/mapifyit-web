@@ -1,6 +1,3 @@
-import { HelpCircle, ShieldCheck, MessageCircle } from 'lucide-react';
-import React from 'react';
-
 export interface FAQ {
   question: string;
   answer: string;
