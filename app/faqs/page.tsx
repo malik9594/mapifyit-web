@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { HelpCircle, FileText, ShieldCheck, MessageCircle } from 'lucide-react';
 import { faqCategories } from '@/data/faqData';
-import FAQSection from '@/components/FAQSection';
+import FAQClient from '@/components/FAQClient';
 
 export const dynamic = 'force-static';
 
@@ -54,10 +54,10 @@ export default function FAQPage() {
                         
                         <div className="space-y-16">
                             {faqCategories.map((category, index) => (
-                                <FAQSection 
-                                    key={category.id} 
-                                    categoryId={category.id} 
-                                    defaultOpen={index === 0} 
+                                <FAQClient
+                                    key={category.id}
+                                    categoryId={category.id}
+                                    defaultOpen={index === 0}
                                 />
                             ))}
 
