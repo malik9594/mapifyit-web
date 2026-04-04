@@ -1,7 +1,6 @@
 "use client";
 
-import React, { useMemo, useState } from "react";
-import { ChevronDown } from "lucide-react";
+import React, { useState } from "react";
 
 export interface CompactFAQ {
   question: string;
@@ -14,17 +13,15 @@ interface FAQClientProps {
   defaultOpenFirst?: boolean;
 }
 
+// Ultra-light accordion (no icon library) to keep the client bundle tiny
 export default function FAQClient({ faqs, title = "FAQs", defaultOpenFirst = true }: FAQClientProps) {
-  const initialState = useMemo(
+  const [openItems, setOpenItems] = useState<Record<string, boolean>>(
     () =>
       faqs.reduce<Record<string, boolean>>((acc, faq, index) => {
         acc[faq.question] = defaultOpenFirst && index === 0;
         return acc;
-      }, {}),
-    [faqs, defaultOpenFirst]
+      }, {})
   );
-
-  const [openItems, setOpenItems] = useState<Record<string, boolean>>(initialState);
 
   const toggleItem = (question: string) => {
     setOpenItems((prev) => ({ ...prev, [question]: !prev[question] }));
@@ -58,14 +55,15 @@ export default function FAQClient({ faqs, title = "FAQs", defaultOpenFirst = tru
                 className="w-full px-5 py-4 flex items-center justify-between text-left text-white text-base md:text-lg font-medium"
               >
                 <span>{faq.question}</span>
-                <ChevronDown
+                <span
+                  aria-hidden
                   className={`text-slate-400 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
-                  size={18}
-                />
+                >
+                  ▾
+                </span>
               </button>
               {isOpen && (
                 <div
-                  id={questionId}
                   className="px-5 pb-5 text-slate-400 leading-relaxed text-sm md:text-base border-t border-white/5 bg-blue-500/5"
                 >
                   {faq.answer}
