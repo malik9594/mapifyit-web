@@ -1,58 +1,53 @@
 "use client";
 
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useMemo, useState } from "react";
 import { ChevronDown } from "lucide-react";
-import { faqCategories } from "@/data/faqData";
 
-interface FAQClientProps {
-  categoryId: string;
-  defaultOpen?: boolean;
+export interface CompactFAQ {
+  question: string;
+  answer: string;
 }
 
-export default function FAQClient({ categoryId, defaultOpen = false }: FAQClientProps) {
-  const category = faqCategories.find((c) => c.id === categoryId);
+interface FAQClientProps {
+  faqs: CompactFAQ[];
+  title?: string;
+  defaultOpenFirst?: boolean;
+}
 
-  const initialState = useMemo(() => {
-    if (!category) return {};
-
-    return category.faqs.reduce<Record<string, boolean>>((acc, faq, index) => {
-      acc[faq.question] = defaultOpen && index === 0;
-      return acc;
-    }, {});
-  }, [category, defaultOpen]);
+export default function FAQClient({ faqs, title = "FAQs", defaultOpenFirst = true }: FAQClientProps) {
+  const initialState = useMemo(
+    () =>
+      faqs.reduce<Record<string, boolean>>((acc, faq, index) => {
+        acc[faq.question] = defaultOpenFirst && index === 0;
+        return acc;
+      }, {}),
+    [faqs, defaultOpenFirst]
+  );
 
   const [openItems, setOpenItems] = useState<Record<string, boolean>>(initialState);
 
-  useEffect(() => {
-    setOpenItems(initialState);
-  }, [initialState]);
-
-  if (!category) return null;
-
   const toggleItem = (question: string) => {
-    setOpenItems((prev) => ({
-      ...prev,
-      [question]: !prev[question],
-    }));
+    setOpenItems((prev) => ({ ...prev, [question]: !prev[question] }));
   };
 
   return (
-    <section id={category.id} className="scroll-mt-32">
+    <section className="scroll-mt-32">
       <div className="flex items-center gap-3 mb-6">
         <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-xs text-blue-300">
           FAQ
         </div>
-        <h2 className="text-2xl font-semibold text-white">{category.title}</h2>
+        <h2 className="text-2xl font-semibold text-white">{title}</h2>
       </div>
 
       <div className="space-y-4 lg:pl-11">
-        {category.faqs.map((faq) => {
+        {faqs.map((faq) => {
           const isOpen = !!openItems[faq.question];
-          const questionId = `${category.id}-${faq.question.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
+          const questionId = faq.question.toLowerCase().replace(/[^a-z0-9]+/g, "-");
 
           return (
             <div
               key={faq.question}
+              id={questionId}
               className="group border border-white/5 rounded-xl bg-white/5 transition-colors duration-300"
             >
               <button
