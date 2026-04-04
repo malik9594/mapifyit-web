@@ -15,12 +15,6 @@ export default function FAQLayout({
 }) {
   return (
     <>
-      <Script
-        id="faq-jsonld"
-        type="application/ld+json"
-        strategy="afterInteractive"
-        src="/schema/faq.json"
-      />
       {children}
     </>
   );
