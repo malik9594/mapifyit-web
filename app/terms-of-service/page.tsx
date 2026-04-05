@@ -2,6 +2,9 @@ import React from 'react';
 import { Scale, Activity, Link as LinkIcon, Database, HardDrive, CreditCard, ShieldCheck, HelpCircle } from 'lucide-react';
 import Link from 'next/link';
 
+export const dynamic = 'force-static';
+export const revalidate = 86400;
+
 export default function TermsOfServicePage() {
     const sections = [
         { id: "use-of-services", label: "Use of Services" },

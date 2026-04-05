@@ -1,10 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import Script from "next/script";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import WhatsAppButton from "@/components/WhatsAppButton";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -95,8 +91,6 @@ export const metadata: Metadata = {
   },
 };
 
-import GoogleAnalytics from "@/components/GoogleAnalytics";
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -105,30 +99,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <GoogleAnalytics />
         {/* Preconnect to speed up initial Mapifyit API handshakes */}
         <link rel="preconnect" href="https://client.mapifyit.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://tiles.mapifyit.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://client.mapifyit.com" />
         <link rel="dns-prefetch" href="https://tiles.mapifyit.com" />
-
-        {/* Global JSON-LD: Organization + WebSite structured data */}
-        <Script
-          id="global-jsonld"
-          type="application/ld+json"
-          src="/schema/organization.json"
-          strategy="afterInteractive"
-        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased selection:bg-blue-500/30 overflow-x-hidden`}
       >
-        <div className="min-h-screen bg-[#03060D] text-slate-300 font-sans">
-          <Navbar />
-          {children}
-          <WhatsAppButton />
-          <Footer />
-        </div>
+        <div className="min-h-screen bg-[#03060D] text-slate-300 font-sans">{children}</div>
       </body>
     </html>
   );
