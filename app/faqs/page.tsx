@@ -64,6 +64,10 @@ const faqsCategories = [
             {
                 question: "Does MapifyIt support custom map styling and branding?",
                 answer: "Absolutely. MapifyIt provides extensive customization options, allowing you to tailor the map’s aesthetics to match your brand identity. You can customize colors, fonts, icons, and layers using our intuitive map styling tool, ensuring a seamless experience for your end users."
+            },
+            {
+                question: "Does MapifyIt support geofencing and automated alerts?",
+                answer: "Yes, MapifyIt includes a robust geofencing engine that allows you to define virtual boundaries and trigger real-time notifications via Webhooks or SMS whenever an asset enters or exits a predefined zone, enabling automated workflows and enhanced operational security."
             }
         ]
     },
