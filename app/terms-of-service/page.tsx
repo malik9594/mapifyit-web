@@ -52,6 +52,8 @@ export default function TermsOfServicePage() {
                                 <Scale className="w-3.5 h-3.5" /> Legal Framework
                             </div>
                             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">Terms & Conditions.</h1>
+                        </Reveal>
+
                             
                             <div className="text-lg text-slate-400 mb-12 leading-relaxed bg-white/[0.02] border border-white/5 p-6 rounded-xl">
                                 <p>Welcome to Mapifyit (“Mapifyit”, “we”, “our”, or “us”). These Terms & Conditions (“Terms”) govern your access to and use of the Mapifyit website, APIs, SDKs, software, platforms, data services, and related offerings (collectively, the “Services”).</p>
@@ -173,8 +175,8 @@ export default function TermsOfServicePage() {
                                 </section>
 
                             </div>
-                        </Reveal>
                     </div>
+
                 </div>
             </div>
         </div>

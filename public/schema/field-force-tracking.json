@@ -1,0 +1,12 @@
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "MapifyIt FFT - Field Force Tracking",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web, Android, iOS, Windows Server, Linux",
+  "provider": {
+    "@type": "Organization",
+    "name": "MapifyIt"
+  },
+  "description": "Enterprise Field Force Tracking software with real-time GPS agent tracking, geofence automation, task dispatching, and workforce productivity analytics. Available as SaaS, Private Cloud, or completely On-Premises."
+}

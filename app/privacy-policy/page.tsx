@@ -52,6 +52,8 @@ export default function PrivacyPolicyPage() {
                                 <Shield className="w-3.5 h-3.5" /> Data Security & Privacy
                             </div>
                             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">Privacy Policy.</h1>
+                        </Reveal>
+
                             <p className="text-lg text-slate-400 mb-12 leading-relaxed">
                                 We are committed to maintaining the highest standard of data privacy and security for our enterprise users. This policy outlines how we handle data on our platform.
                             </p>
@@ -158,8 +160,8 @@ export default function PrivacyPolicyPage() {
                                 </section>
 
                             </div>
-                        </Reveal>
                     </div>
+
                 </div>
             </div>
         </div>

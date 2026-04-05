@@ -1,0 +1,40 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Mapifyit Enterprise Mapping API",
+  "description": "Predictable flat-rate pricing for enterprise mapping APIs. Transparent location intelligence infrastructure with no vendor lock-in.",
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "Free Tier",
+      "price": "0",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "description": "Up to 10k calls/month"
+    },
+    {
+      "@type": "Offer",
+      "name": "Starter",
+      "price": "69",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "description": "Up to 75k calls/month"
+    },
+    {
+      "@type": "Offer",
+      "name": "Business",
+      "price": "199",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "description": "Up to 250k calls/month"
+    },
+    {
+      "@type": "Offer",
+      "name": "Enterprise",
+      "price": "449",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "description": "Up to 750k calls/month"
+    }
+  ]
+}

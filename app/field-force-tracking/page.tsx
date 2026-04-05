@@ -1,4 +1,5 @@
 "use client";
+import Script from "next/script";
 
 import React from 'react';
 import Link from 'next/link';
@@ -576,10 +577,13 @@ const Footer = () => (
 export default function Page() {
     return (
         <div className="min-h-screen bg-[#0B0F14] text-white font-sans selection:bg-[#2F80FF]/30">
-            <script
+            <Script
+                id="fft-jsonld"
                 type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+                src="/schema/field-force-tracking.json"
+                strategy="afterInteractive"
             />
+
             <main>
                 <Hero />
                 {/* <Introduction /> */}
