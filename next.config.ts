@@ -44,6 +44,14 @@ const nextConfig: NextConfig = {
           { key: "Strict-Transport-Security", value: `max-age=${ONE_YEAR}; includeSubDomains; preload` },
         ],
       },
+      {
+        // Public root asset
+        source: "/mapify-white-bg.png",
+        headers: [
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "Strict-Transport-Security", value: `max-age=${ONE_YEAR}; includeSubDomains; preload` },
+        ],
+      },
     ];
   },
 };
