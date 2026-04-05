@@ -1,4 +1,4 @@
-"use client";
+// Server component for Google Analytics
 
 import Script from "next/script";
 

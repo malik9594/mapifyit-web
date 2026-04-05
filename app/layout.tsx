@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -113,42 +114,11 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://tiles.mapifyit.com" />
 
         {/* Global JSON-LD: Organization + WebSite structured data */}
-        <script
+        <Script
+          id="global-jsonld"
           type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@graph": [
-                {
-                  "@type": "Organization",
-                  "@id": "https://mapifyit.com/#organization",
-                  name: "Mapifyit",
-                  url: "https://mapifyit.com",
-                  logo: {
-                    "@type": "ImageObject",
-                    url: "https://mapifyit.com/fullwhitebackground logo.png",
-                  },
-                  sameAs: ["https://twitter.com/mapifyit"],
-                  description:
-                    "Enterprise-grade mapping and location intelligence platform. Deploy sovereign GIS, fleet tracking, field force management, and identity verification.",
-                },
-                {
-                  "@type": "WebSite",
-                  "@id": "https://mapifyit.com/#website",
-                  url: "https://mapifyit.com",
-                  name: "Mapifyit",
-                  publisher: {
-                    "@id": "https://mapifyit.com/#organization",
-                  },
-                  potentialAction: {
-                    "@type": "SearchAction",
-                    target: "https://mapifyit.com/?s={search_term_string}",
-                    "query-input": "required name=search_term_string",
-                  },
-                },
-              ],
-            }),
-          }}
+          src="/schema/organization.json"
+          strategy="afterInteractive"
         />
       </head>
       <body
