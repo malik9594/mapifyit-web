@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Reveal } from '@/components/Reveal';
 import { ChevronDown, MessageCircle, HelpCircle, FileText, ShieldCheck } from 'lucide-react';
 
-const faqCategories = [
+const faqsCategories = [
     {
         id: "general",
         title: "General Overview",
@@ -28,6 +28,10 @@ const faqCategories = [
             {
                 question: "What is location intelligence in MapifyIt?",
                 answer: "Location intelligence refers to analyzing geographic data to understand patterns, optimize operations, and make smarter business decisions in real time using our advanced spatial engine."
+            },
+            {
+                question: "Can MapifyIt handle complex data visualization for large datasets?",
+                answer: "Yes, MapifyIt is built on a high-performance rendering engine that can visualize millions of data points smoothly. Our platform supports vector tiles and GPU-accelerated rendering, ensuring that your geographic insights are delivered without lag, even with massive enterprise datasets."
             }
         ]
     },
@@ -56,6 +60,10 @@ const faqCategories = [
             {
                 question: "Can MapifyIt be used for real-time tracking?",
                 answer: "Yes, MapifyIt supports real-time tracking, routing, and monitoring, making it ideal for high-precision fleet management and logistics operations."
+            },
+            {
+                question: "Does MapifyIt support custom map styling and branding?",
+                answer: "Absolutely. MapifyIt provides extensive customization options, allowing you to tailor the map’s aesthetics to match your brand identity. You can customize colors, fonts, icons, and layers using our intuitive map styling tool, ensuring a seamless experience for your end users."
             }
         ]
     },
@@ -81,13 +89,13 @@ const faqCategories = [
     }
 ];
 
-export default function FAQPage() {
-    // Map to keep track of which FAQ is open. Format: { categoryId: faqIndex }
+export default function FAQsPage() {
+    // Map to keep track of which FAQs is open. Format: { categoryId: faqsIndex }
     const [openIndex, setOpenIndex] = useState<{ [category: string]: number | null }>({
-        "general": 0 // Open the first FAQ in the first category by default
+        "general": 0 // Open the first FAQs in the first category by default
     });
 
-    const toggleFaq = (categoryId: string, index: number) => {
+    const toggleFaqs = (categoryId: string, index: number) => {
         setOpenIndex(prev => ({
             ...prev,
             [categoryId]: prev[categoryId] === index ? null : index
@@ -104,7 +112,7 @@ export default function FAQPage() {
                         <div className="sticky top-32">
                             <h3 className="text-white text-sm font-bold uppercase tracking-wider mb-6">Support Center</h3>
                             <nav className="flex flex-col space-y-3">
-                                {faqCategories.map((category) => (
+                                {faqsCategories.map((category) => (
                                     <a 
                                         key={category.id} 
                                         href={`#${category.id}`}
@@ -132,7 +140,7 @@ export default function FAQPage() {
                     <div className="lg:col-span-8">
                         <Reveal>
                             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-xs font-bold uppercase tracking-wider text-blue-400 mb-6">
-                                <HelpCircle className="w-3.5 h-3.5" /> Frequently Asked Questions
+                                <HelpCircle className="w-3.5 h-3.5" /> Frequently Asked Questions (FAQs)
                             </div>
                             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">Support & FAQs.</h1>
                             
@@ -141,7 +149,7 @@ export default function FAQPage() {
                             </div>
                             
                             <div className="space-y-16">
-                                {faqCategories.map((category) => (
+                                        {faqsCategories.map((category) => (
                                     <section key={category.id} id={category.id} className="scroll-mt-32">
                                         <div className="flex items-center gap-3 mb-6">
                                             <div className={`w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center ${category.colorClass}`}>
@@ -151,7 +159,7 @@ export default function FAQPage() {
                                         </div>
                                         
                                         <div className="space-y-4 lg:pl-11">
-                                            {category.faqs.map((faq, index) => {
+                                            {category.faqs.map((faqs, index) => {
                                                 const isOpen = openIndex[category.id] === index;
                                                 return (
                                                     <motion.div 
@@ -161,10 +169,10 @@ export default function FAQPage() {
                                                         className={`border rounded-xl overflow-hidden transition-colors duration-300 ${isOpen ? 'border-blue-500/30' : 'border-white/5 hover:border-white/10'}`}
                                                     >
                                                         <button
-                                                            onClick={() => toggleFaq(category.id, index)}
+                                                            onClick={() => toggleFaqs(category.id, index)}
                                                             className="w-full flex items-center justify-between p-5 text-left focus:outline-none"
                                                         >
-                                                            <span className="text-base md:text-lg font-medium text-white">{faq.question}</span>
+                                                            <span className="text-base md:text-lg font-medium text-white">{faqs.question}</span>
                                                             <motion.div
                                                                 animate={{ rotate: isOpen ? 180 : 0 }}
                                                                 transition={{ duration: 0.3 }}
@@ -183,7 +191,7 @@ export default function FAQPage() {
                                                                     transition={{ duration: 0.3, ease: 'easeInOut' }}
                                                                 >
                                                                     <div className="px-5 pb-5 pt-0 text-slate-400 leading-relaxed text-sm md:text-base">
-                                                                        {faq.answer}
+                                                                        {faqs.answer}
                                                                     </div>
                                                                 </motion.div>
                                                             )}
