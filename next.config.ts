@@ -6,28 +6,40 @@ const nextConfig: NextConfig = {
   output: "standalone",
   async headers() {
     return [
-      // Ensure all Next static assets get the security headers too.
       {
-        source: "/_next/static/(.*)",
+        // Apply security headers to all routes
+        source: "/:path*",
         headers: [
-          {
-            key: "Strict-Transport-Security",
-            value: `max-age=${ONE_YEAR}; includeSubDomains; preload`,
-          },
           {
             key: "X-Content-Type-Options",
             value: "nosniff",
           },
+          {
+            key: "Strict-Transport-Security",
+            value: `max-age=${ONE_YEAR}; includeSubDomains; preload`,
+          },
+          {
+            key: "X-XSS-Protection",
+            value: "1; mode=block",
+          },
+          {
+            key: "X-Frame-Options",
+            value: "SAMEORIGIN",
+          },
+          {
+            key: "Referrer-Policy",
+            value: "origin-when-cross-origin",
+          },
+          {
+            key: "X-DNS-Prefetch-Control",
+            value: "on",
+          },
         ],
       },
       {
-        source: "/(.*)",
+        // Specific headers for static assets if needed (already covered by /:path* but good for clarity)
+        source: "/_next/static/:path*",
         headers: [
-          {
-            key: "Strict-Transport-Security",
-            // Start with one year; lower this if you need a safer ramp-up.
-            value: `max-age=${ONE_YEAR}; includeSubDomains; preload`,
-          },
           {
             key: "X-Content-Type-Options",
             value: "nosniff",
