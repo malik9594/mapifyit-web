@@ -1,8 +1,23 @@
 import type { NextConfig } from "next";
 
+const ONE_YEAR = 31536000; // seconds
+
 const nextConfig: NextConfig = {
-  /* config options here */
   output: "standalone",
+  async headers() {
+    return [
+      {
+        source: "/(.*)",
+        headers: [
+          {
+            key: "Strict-Transport-Security",
+            // Start with one year; lower this if you need a safer ramp-up.
+            value: `max-age=${ONE_YEAR}; includeSubDomains; preload`,
+          },
+        ],
+      },
+    ];
+  },
 };
 
 export default nextConfig;
