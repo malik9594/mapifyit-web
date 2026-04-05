@@ -6,6 +6,20 @@ const nextConfig: NextConfig = {
   output: "standalone",
   async headers() {
     return [
+      // Ensure all Next static assets get the security headers too.
+      {
+        source: "/_next/static/(.*)",
+        headers: [
+          {
+            key: "Strict-Transport-Security",
+            value: `max-age=${ONE_YEAR}; includeSubDomains; preload`,
+          },
+          {
+            key: "X-Content-Type-Options",
+            value: "nosniff",
+          },
+        ],
+      },
       {
         source: "/(.*)",
         headers: [
