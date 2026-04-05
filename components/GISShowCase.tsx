@@ -716,9 +716,9 @@ const GISVisualEngine = () => {
                     <div className="w-[30px] h-[1px] bg-[#2E6BFF]" />
                     Module <span ref={indexRef}>01</span> // 10
                 </div>
-                <h1 ref={titleRef} className="text-2xl md:text-[32px] font-semibold leading-[1.2] m-0 drop-shadow-[0_0_20px_rgba(46,107,255,0.3)] text-white">
+                <h2 ref={titleRef} className="text-2xl md:text-[32px] font-semibold leading-[1.2] m-0 drop-shadow-[0_0_20px_rgba(46,107,255,0.3)] text-white">
                     Initializing...
-                </h1>
+                </h2>
                 <p ref={descRef} className="text-sm md:text-base text-slate-400 leading-[1.6] font-light m-0 pr-4">
                     Loading geospatial environment...
                 </p>
