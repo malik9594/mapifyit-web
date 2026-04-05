@@ -146,7 +146,7 @@ export default function Footer() {
                             { name: "Privacy Policy", href: "/privacy-policy" },
                             { name: "Terms of Service", href: "/terms-of-service" },
                             // { name: "Cookie Policy", href: "#" }
-                            { name: "FAQ", href: "/faqs" }
+                            { name: "FAQs", href: "/faqs" }
                         ].map((item) => (
                             <Link
                                 key={item.name}
