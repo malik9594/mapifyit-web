@@ -194,7 +194,6 @@ export default function ContactUs({ standalone = false }: { standalone?: boolean
 
                         <form ref={formRef} onSubmit={handleSubmit} className="relative lg:h-full flex flex-col bg-[#0A101F] border border-blue-900/30 p-8 md:p-10 rounded-[2.5rem] shadow-3xl">
                             <div className="flex flex-col flex-1 gap-6">
-                                {/* Name Input */}
                                 <div className="space-y-2 shrink-0">
                                     <label className="text-[10px] font-bold text-cyan-500 uppercase tracking-[0.2em] ml-1">Full Name</label>
                                     <div className="relative group">
