@@ -59,7 +59,7 @@ const faqsCategories = [
             },
             {
                 question: "Can MapifyIt be used for real-time tracking?",
-                answer: "Yes, MapifyIt supports real-time tracking, routing, and monitoring, making it ideal for high-precision fleet management and logistics operations."
+                answer: "Yes, MapifyIt is engineered for high-performance real-time tracking, providing live GPS updates with sub-second latency. Beyond simple location monitoring, it offers advanced routing optimization, geofencing alerts, and historical playback, making it a comprehensive solution for high-precision fleet management, asset security, and complex logistics operations."
             },
             {
                 question: "Does MapifyIt support custom map styling and branding?",
@@ -110,15 +110,15 @@ export default function FAQsPage() {
         <div className="pt-32 pb-24 bg-[#030712] min-h-screen">
             <div className="max-w-7xl mx-auto px-6">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
-                    
+
                     {/* Left Navigation Sidebar */}
                     <div className="lg:col-span-3 hidden lg:block">
                         <div className="sticky top-32">
                             <h3 className="text-white text-sm font-bold uppercase tracking-wider mb-6">Support Center</h3>
                             <nav className="flex flex-col space-y-3">
                                 {faqsCategories.map((category) => (
-                                    <a 
-                                        key={category.id} 
+                                    <a
+                                        key={category.id}
                                         href={`#${category.id}`}
                                         className="text-slate-400 hover:text-blue-400 text-sm transition-colors"
                                     >
@@ -126,7 +126,7 @@ export default function FAQsPage() {
                                     </a>
                                 ))}
                             </nav>
-                            
+
                             <div className="mt-12 flex flex-col space-y-4">
                                 <Link href="/terms-of-service" className="flex items-center gap-3 text-slate-500 hover:text-slate-300 text-sm transition-colors group">
                                     <FileText className="w-4 h-4 group-hover:text-blue-400 transition-colors" />
@@ -147,13 +147,13 @@ export default function FAQsPage() {
                                 <HelpCircle className="w-3.5 h-3.5" /> Frequently Asked Questions (FAQs)
                             </div>
                             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">Support & FAQs.</h1>
-                            
+
                             <div className="text-lg text-slate-400 mb-12 leading-relaxed bg-white/[0.02] border border-white/5 p-6 rounded-xl">
                                 <p>Everything you need to know about the product and billing. Can’t find the answer you’re looking for? Please contact our friendly team.</p>
                             </div>
-                            
+
                             <div className="space-y-16">
-                                        {faqsCategories.map((category) => (
+                                {faqsCategories.map((category) => (
                                     <section key={category.id} id={category.id} className="scroll-mt-32">
                                         <div className="flex items-center gap-3 mb-6">
                                             <div className={`w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center ${category.colorClass}`}>
@@ -161,12 +161,12 @@ export default function FAQsPage() {
                                             </div>
                                             <h2 className="text-2xl font-semibold text-white">{category.title}</h2>
                                         </div>
-                                        
+
                                         <div className="space-y-4 lg:pl-11">
                                             {category.faqs.map((faqs, index) => {
                                                 const isOpen = openIndex[category.id] === index;
                                                 return (
-                                                    <motion.div 
+                                                    <motion.div
                                                         key={index}
                                                         initial={false}
                                                         animate={{ backgroundColor: isOpen ? 'rgba(59, 130, 246, 0.05)' : 'rgba(255, 255, 255, 0.02)' }}
@@ -218,8 +218,8 @@ export default function FAQsPage() {
                                                 <p className="text-slate-400 text-sm md:text-base">Can't find the answer you're looking for? Please contact our friendly team.</p>
                                             </div>
                                         </div>
-                                        <a 
-                                            href="/contact-us" 
+                                        <a
+                                            href="/contact-us"
                                             className="bg-blue-600 hover:bg-blue-500 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 whitespace-nowrap shadow-[0_0_20px_rgba(37,99,235,0.3)] shrink-0"
                                         >
                                             Get in touch
