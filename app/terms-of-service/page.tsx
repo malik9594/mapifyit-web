@@ -54,7 +54,7 @@ export default function TermsOfServicePage() {
                         </div>
 
                         <div className="text-lg text-slate-400 mb-12 leading-relaxed bg-white/[0.02] border border-white/5 p-6 rounded-xl">
-                            <p>Welcome to Mapifyit (“Mapifyit”, “we”, “our”, or “us”). These Terms & Conditions (“Terms”) govern your access to and use of the Mapifyit website, APIs, SDKs, software, platforms, data services, and related offerings (collectively, the “Services”).</p>
+                            <p>Welcome to Mapifyit ("Mapifyit", "we", "our", or "us"). These Terms & Conditions ("Terms") govern your access to and use of the Mapifyit website, APIs, SDKs, software, platforms, data services, and related offerings (collectively, the "Services").</p>
                             <p className="mt-4">By accessing or using Mapifyit, you agree to be bound by these Terms. If you do not agree, you may not use our Services.</p>
                         </div>
                         
@@ -155,7 +155,7 @@ export default function TermsOfServicePage() {
                             <section id="liability" className="scroll-mt-32">
                                 <h2 className="text-2xl font-semibold text-white mb-4">Liability & Indemnification</h2>
                                 <div className="text-slate-400 leading-relaxed space-y-4">
-                                    <p>The Services are provided “as is” and “as available.” Mapifyit disclaims all warranties. To the maximum extent permitted by law, Mapifyit shall not be liable for indirect, incidental, or consequential damages. Our absolute liability shall not exceed the amount paid by you during the preceding 12 months.</p>
+                                    <p>The Services are provided "as is" and "as available." Mapifyit disclaims all warranties. To the maximum extent permitted by law, Mapifyit shall not be liable for indirect, incidental, or consequential damages. Our absolute liability shall not exceed the amount paid by you during the preceding 12 months.</p>
                                     <p>You agree to indemnify Mapifyit from claims arising out of misuse of the Services, agreement violations, or third-party rights violations.</p>
                                 </div>
                             </section>
@@ -165,8 +165,8 @@ export default function TermsOfServicePage() {
                                 <div className="bg-gradient-to-br from-blue-900/20 to-transparent border border-blue-500/20 p-6 rounded-xl text-slate-400">
                                     <p>For inquiries, please contact our legal team:</p>
                                     <ul className="mt-4 space-y-2">
-                                        <li>📧 Email: <a href="mailto:hi@mapifyit.com" className="text-blue-400 hover:text-blue-300">hi@mapifyit.com</a></li>
-                                        <li>🌐 Web: <a href="https://www.mapifyit.com" className="text-blue-400 hover:text-blue-300">https://mapifyit.com</a></li>
+                                        <li>Email: <a href="mailto:hi@mapifyit.com" className="text-blue-400 hover:text-blue-300">hi@mapifyit.com</a></li>
+                                        <li>Web: <a href="https://www.mapifyit.com" className="text-blue-400 hover:text-blue-300">https://mapifyit.com</a></li>
                                     </ul>
                                 </div>
                             </section>

@@ -5,7 +5,6 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
-import GlobalMapPrewarmer from "@/components/GlobalMapPrewarmer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -126,7 +125,6 @@ export default function RootLayout({
       >
         <div className="min-h-screen bg-[#03060D] text-slate-300 font-sans">
           <Navbar />
-          <GlobalMapPrewarmer />
           {children}
           <WhatsAppButton />
           <Footer />
