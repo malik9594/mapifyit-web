@@ -84,6 +84,10 @@ const faqsCategories = [
             {
                 question: "Can I start using MapifyIt for free?",
                 answer: "Yes, MapifyIt offers a free tier so users can explore the platform and test our APIs before upgrading to advanced enterprise features."
+            },
+            {
+                question: "Does MapifyIt provide dedicated enterprise support?",
+                answer: "Yes, we offer premium service-level agreements (SLAs) for enterprise clients, including 24/7 dedicated technical support, personalized onboarding, and architecture consulting for large-scale GIS deployments."
             }
         ]
     }
