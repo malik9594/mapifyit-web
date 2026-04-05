@@ -37,13 +37,11 @@ const nextConfig: NextConfig = {
         ],
       },
       {
-        // Specific headers for static assets if needed (already covered by /:path* but good for clarity)
-        source: "/_next/static/:path*",
+        // Explicit coverage for all _next assets (static chunks, images, turbopack, etc.)
+        source: "/_next/:path*",
         headers: [
-          {
-            key: "X-Content-Type-Options",
-            value: "nosniff",
-          },
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "Strict-Transport-Security", value: `max-age=${ONE_YEAR}; includeSubDomains; preload` },
         ],
       },
     ];
