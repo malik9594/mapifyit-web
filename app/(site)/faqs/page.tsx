@@ -32,6 +32,10 @@ const faqsCategories = [
             {
                 question: "Can MapifyIt handle complex data visualization for large datasets?",
                 answer: "Yes, MapifyIt is built on a high-performance rendering engine that can visualize millions of data points smoothly. Our platform supports vector tiles and GPU-accelerated rendering, ensuring that your geographic insights are delivered without lag, even with massive enterprise datasets."
+            },
+            {
+                question: "How fast can we get to a production pilot?",
+                answer: "Most teams reach a production-grade pilot in 2–4 weeks. We provide starter templates, sample data, and hands-on solution engineers to help you ship quickly and validate performance, coverage, and pricing before scaling."
             }
         ]
     },
@@ -68,6 +72,10 @@ const faqsCategories = [
             {
                 question: "Does MapifyIt support geofencing and automated alerts?",
                 answer: "Yes, MapifyIt includes a robust geofencing engine that allows you to define virtual boundaries and trigger real-time notifications via Webhooks or SMS whenever an asset enters or exits a predefined zone, enabling automated workflows and enhanced operational security."
+            },
+            {
+                question: "Is MapifyIt compliant with data privacy and security standards?",
+                answer: "Yes. We support GDPR-aligned data handling, regional data residency, SSO/SAML, role-based access controls, audit logs, and encrypted transit/storage. We also offer private cloud or on-prem options for regulated environments."
             }
         ]
     },
