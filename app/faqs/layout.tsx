@@ -4,7 +4,7 @@ import Script from "next/script";
 export const dynamic = 'force-static';
 
 export const metadata: Metadata = {
-  title: "Support & Frequently Asked Questions (FAQs) | Mapifyit",
+  title: "Support & Frequently Asked Questions",
   description: "Find answers to frequently asked questions (FAQs) about Mapifyit's enterprise mapping, GIS, and location intelligence solutions. Learn about pricing, integration, and platform capabilities.",
 };
 
