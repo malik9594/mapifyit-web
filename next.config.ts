@@ -14,6 +14,10 @@ const nextConfig: NextConfig = {
             // Start with one year; lower this if you need a safer ramp-up.
             value: `max-age=${ONE_YEAR}; includeSubDomains; preload`,
           },
+          {
+            key: "X-Content-Type-Options",
+            value: "nosniff",
+          },
         ],
       },
     ];
