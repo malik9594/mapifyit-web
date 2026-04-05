@@ -8,6 +8,12 @@ export function proxy(_req: NextRequest) {
   const res = NextResponse.next();
   res.headers.set("Strict-Transport-Security", HSTS);
   res.headers.set("X-Content-Type-Options", "nosniff");
+
+  // Strip identifying headers
+  res.headers.delete("server");
+  res.headers.delete("x-powered-by");
+  res.headers.delete("x-aspnet-version");
+  res.headers.delete("x-aspnetmvc-version");
   return res;
 }
 
