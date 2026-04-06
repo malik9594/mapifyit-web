@@ -4,6 +4,7 @@ const ONE_YEAR = 31536000; // seconds
 
 const nextConfig: NextConfig = {
   output: "standalone",
+  poweredByHeader: false,
   async headers() {
     return [
       {
