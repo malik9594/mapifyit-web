@@ -17,13 +17,13 @@ export const metadata: Metadata = {
         "data sovereignty KYC",
     ],
     openGraph: {
-        title: "Next-Gen eKYC – Identity Verification | Mapifyit",
+        title: "Next-Gen eKYC – Identity Verification",
         description:
             "Sovereign AI identity verification with biometric face matching, OCR, and liveness detection — deployed entirely on your infrastructure.",
         url: "https://mapifyit.com/ngekyc",
     },
     twitter: {
-        title: "Next-Gen eKYC – Identity Verification | Mapifyit",
+        title: "Next-Gen eKYC – Identity Verification",
         description:
             "Sovereign AI identity verification with biometric face matching, OCR, and liveness detection — deployed entirely on your infrastructure.",
     },
