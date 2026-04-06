@@ -42,6 +42,7 @@ const nextConfig: NextConfig = {
         headers: [
           { key: "X-Content-Type-Options", value: "nosniff" },
           { key: "Strict-Transport-Security", value: `max-age=${ONE_YEAR}; includeSubDomains; preload` },
+          { key: "X-Robots-Tag", value: "noindex, nofollow" },
         ],
       },
       {
