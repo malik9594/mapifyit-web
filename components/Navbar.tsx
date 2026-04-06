@@ -113,7 +113,7 @@ export default function Navbar() {
               onMouseLeave={() => setSolutionsOpen(false)}
             >
               <button
-                className={`flex items-center gap-1 text-sm font-medium transition-colors ${solutionsOpen || pathname.includes('/fleet-management-system') ? 'text-white font-bold text-lg  underline' : 'text-slate-300 hover:text-white'}`}
+                className={`flex items-center gap-1 text-sm font-medium transition-colors ${solutionsOpen || pathname?.includes('/fleet-management-system') ? 'text-white font-bold text-lg  underline' : 'text-slate-300 hover:text-white'}`}
               >
                 Solutions <ChevronDown size={14} className={`transition-transform duration-300 ${solutionsOpen ? 'rotate-180' : ''}`} />
               </button>
@@ -205,7 +205,7 @@ export default function Navbar() {
         <MobileMenu 
            isOpen={mobileMenuOpen} 
            onClose={() => setMobileMenuOpen(false)} 
-           pathname={pathname} 
+           pathname={pathname || ""} 
         />
       )}
     </>

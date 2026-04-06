@@ -14,8 +14,9 @@ export default function SiteLayout({
       <Script
         id="global-jsonld"
         type="application/ld+json"
-        src="/schema/organization.json"
-        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(require("@/public/schema/organization.json"))
+        }}
       />
       <div className="min-h-screen bg-[#03060D] text-slate-300 font-sans">
         <Navbar />
