@@ -17,8 +17,8 @@ export default function Footer() {
     const socialLinks = [
         // { icon: Twitter, href: "#", label: "Twitter" },
         { icon: Linkedin, href: "https://linkedin.com/company/mapifyit", label: "LinkedIn" },
-        // { icon: Facebook, href: "#", label: "Facebook" },
-        // { icon: Instagram, href: "#", label: "Instagram" },
+        { icon: Facebook, href: "https://www.facebook.com/share/1BUY6FUDwd/?mibextid=wwXIfr", label: "Facebook" },
+        { icon: Instagram, href: "https://www.instagram.com/mapifyit_?igsh=NjZ2aGN2M214Nnk=", label: "Instagram" },
         // { icon: Github, href: "#", label: "GitHub" },
     ];
 
@@ -66,6 +66,7 @@ export default function Footer() {
                                 <a
                                     key={social.label}
                                     href={social.href}
+                                    target='_blank'
                                     className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-slate-400 hover:text-white hover:border-blue-500/50 hover:bg-blue-500/10 transition-all duration-300 group"
                                     aria-label={social.label}
                                 >
