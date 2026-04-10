@@ -63,9 +63,9 @@ export default function Hero() {
       <div className="mt-10 lg:mt-10">
         <div className="text-center mb-12">
           <h2 className="text-[10px] md:text-sm font-bold text-blue-500 uppercase tracking-[0.4em] mb-4">Enterprise Spatial Engine Status</h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-transparent mx-auto" />
+          {/* <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-transparent mx-auto" /> */}
         </div>
-        <div className="max-w-6xl mx-auto rounded-[2rem] overflow-hidden border border-white/5 bg-slate-950/50 backdrop-blur-sm">
+        <div className="max-w-6xl mx-auto">
           <IsometricMap />
         </div>
       </div>
