@@ -1,108 +1,68 @@
-"use client"
-import React, { useEffect, useRef, useState } from 'react';
-import { Phone, Mail, MapPin, Send, User, MessageSquare, CheckCircle2 } from 'lucide-react';
-
-// ─── Mapifyit Config ────────────────────────────────────────────────────────
-const MAPIFYIT_STYLE_URL = 'https://dev-client.mapifyit.com/api/v1/proxy/tiles/dark';
-const MAPIFYIT_TOKEN = 'mfy_8b0755c081c9204caa20681ddab91d2856c3667a6ad8d9e8';
-const DUBAI_LNG = 55.2608;
-const DUBAI_LAT = 25.1840;
+"use client";
+import React, { useEffect, useRef, useState } from "react";
+import { Phone, Mail, MapPin, Send, User, MessageSquare, CheckCircle2 } from "lucide-react";
+import { useMapContext } from "@/context/MapContext";
 
 export default function ContactUs({ standalone = false }: { standalone?: boolean }) {
-    const mapContainerRef = useRef<HTMLDivElement>(null);
+    // Slot = the div ContactUs owns; we move the global map node into it on mount
+    const slotRef = useRef<HTMLDivElement>(null);
     const formRef = useRef<HTMLFormElement>(null);
-    const mapRef = useRef<any>(null);
-    const mapInitStarted = useRef(false);
-    const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
+    const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+
+    const { mapReady, attachMapTo, detachMap } = useMapContext();
 
     useEffect(() => {
-        let isMounted = true;
-        const preloadEngine = import('maplibre-gl');
+        if (!slotRef.current) return;
+        // If the map is already rendered in the offscreen parking div,
+        // this just moves that DOM node here — instant, no re-init.
+        attachMapTo(slotRef.current);
 
-        async function initMap() {
-            if (!mapContainerRef.current || mapRef.current || mapInitStarted.current) return;
-            mapInitStarted.current = true;
-
-            try {
-                const maplibregl = (await preloadEngine).default;
-                if (!isMounted) return;
-
-                const map = new maplibregl.Map({
-                    container: mapContainerRef.current!,
-                    style: MAPIFYIT_STYLE_URL,
-                    center: [DUBAI_LNG, DUBAI_LAT],
-                    zoom: 14,
-                    pitch: 45,
-                    attributionControl: false,
-                    transformRequest: (url: string) => {
-                        if (url.includes('mapifyit.com')) {
-                            return {
-                                url,
-                                headers: { Authorization: `Bearer ${MAPIFYIT_TOKEN}` },
-                            };
-                        }
-                        return { url };
-                    },
-                });
-
-                map.on('load', () => {
-                    if (!isMounted) return;
-                    new maplibregl.Marker({ color: '#22D3EE' })
-                        .setLngLat([DUBAI_LNG, DUBAI_LAT])
-                        .addTo(map);
-                });
-
-                mapRef.current = map;
-            } catch (e) {
-                console.error('[Mapifyit] Map failed:', e);
-            }
-        }
-
-        initMap();
         return () => {
-            isMounted = false;
-            if (mapRef.current) mapRef.current.remove();
-            mapInitStarted.current = false;
+            // On unmount, return map to the offscreen parking div so it
+            // stays alive and ready for the next visit.
+            detachMap();
         };
-    }, []);
+    }, [attachMapTo, detachMap]);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         if (!formRef.current) return;
 
-        setStatus('sending');
+        setStatus("sending");
 
         const formData = new FormData(formRef.current);
         const payload = {
-            name: (formData.get('name') ?? '').toString().trim(),
-            email: (formData.get('email') ?? '').toString().trim(),
-            message: (formData.get('message') ?? '').toString().trim(),
+            name: (formData.get("name") ?? "").toString().trim(),
+            email: (formData.get("email") ?? "").toString().trim(),
+            message: (formData.get("message") ?? "").toString().trim(),
         };
 
         try {
-            const res = await fetch('/api/contact', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+            const res = await fetch("/api/contact", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(payload),
             });
 
             if (!res.ok) {
                 const errorText = await res.text();
-                throw new Error(errorText || 'Failed to send message');
+                throw new Error(errorText || "Failed to send message");
             }
 
-            console.log('Email sent successfully via SMTP');
-            setStatus('sent');
+            setStatus("sent");
             formRef.current?.reset();
         } catch (error) {
-            console.error('Failed to send email:', error);
-            setStatus('error');
-            setTimeout(() => setStatus('idle'), 3000);
+            console.error("Failed to send email:", error);
+            setStatus("error");
+            setTimeout(() => setStatus("idle"), 3000);
         }
     };
 
     return (
-        <section id="contact" className={`relative w-full bg-[#030712] overflow-hidden ${standalone ? 'py-0' : 'py-24'}`}>
+        <section
+            id="contact"
+            className={`relative w-full bg-[#030712] overflow-hidden ${standalone ? "py-0" : "py-24"}`}
+        >
             {/* Ambient Background Glows */}
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-cyan-600/5 rounded-full blur-[120px] pointer-events-none" />
             <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-600/5 rounded-full blur-[120px] pointer-events-none" />
@@ -121,18 +81,55 @@ export default function ContactUs({ standalone = false }: { standalone?: boolean
                             </p>
                         </div>
 
-                        {/* Integrated Map Viewport */}
-                        <div className="relative w-full h-[300px] rounded-3xl overflow-hidden border border-blue-900/30 shadow-2xl group">
-                            <div ref={mapContainerRef} className="w-full h-full transition-all duration-700" />
-                            <div className="absolute bottom-4 left-4 right-4 p-3 bg-slate-950/80 backdrop-blur-md border border-white/5 rounded-xl flex items-center gap-3">
-                                <div className="p-2 bg-cyan-500/20 rounded-lg"><MapPin className="w-4 h-4 text-cyan-400" /></div>
+                        {/* Map Viewport */}
+                        <div className="relative w-full h-[300px] rounded-3xl overflow-hidden border border-blue-900/30 shadow-2xl">
+                            {/*
+                             * slotRef: the global pre-rendered map node is moved into here on mount.
+                             * If mapReady is still false (very fast navigation), the shimmer shows.
+                             */}
+                            {/* z-0 keeps the map canvas below the shimmer layer */}
+                            <div ref={slotRef} className="absolute inset-0 w-full h-full z-0" />
+
+                            {/* Shimmer skeleton – z-10 guarantees it's always above MapLibre's canvas */}
+                            <div
+                                className={`absolute inset-0 z-10 transition-opacity duration-700 ease-in-out ${mapReady ? "opacity-0 pointer-events-none" : "opacity-100"}`}
+                                aria-hidden="true"
+                            >
+                                <div className="absolute inset-0 bg-[#060D1A]" />
+                                <div
+                                    className="absolute inset-0"
+                                    style={{
+                                        backgroundImage:
+                                            "linear-gradient(rgba(34,211,238,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(34,211,238,0.05) 1px, transparent 1px)",
+                                        backgroundSize: "40px 40px",
+                                    }}
+                                />
+                                <div className="absolute inset-0 flex items-center justify-center">
+                                    <div className="flex flex-col items-center gap-3">
+                                        <div className="relative w-10 h-10">
+                                            <div className="absolute inset-0 rounded-full border-2 border-cyan-500/30 animate-ping" />
+                                            <div className="absolute inset-1 rounded-full bg-cyan-500/20 flex items-center justify-center">
+                                                <MapPin className="w-4 h-4 text-cyan-400" />
+                                            </div>
+                                        </div>
+                                        <span className="text-[10px] text-cyan-500/60 font-mono uppercase tracking-widest">
+                                            Loading map…
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Location badge – z-20 so it's above the shimmer (z-10) */}
+                            <div className="absolute bottom-4 left-4 right-4 p-3 bg-slate-950/80 backdrop-blur-md border border-white/5 rounded-xl flex items-center gap-3 z-20">
+                                <div className="p-2 bg-cyan-500/20 rounded-lg">
+                                    <MapPin className="w-4 h-4 text-cyan-400" />
+                                </div>
                                 <span className="text-xs text-slate-300 font-mono">Business Bay, Dubai, UAE</span>
                             </div>
                         </div>
 
                         {/* Contact Details Panel */}
                         <div className="p-7 rounded-[2rem] bg-gradient-to-b from-white/[0.04] to-transparent border border-white/5 shadow-2xl space-y-7">
-                            {/* Actionable Links */}
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pb-7 border-b border-white/5">
                                 <a href="mailto:hi@mapifyit.com" className="flex items-center gap-4 group">
                                     <div className="flex items-center justify-center w-12 h-12 rounded-full bg-cyan-500/10 text-cyan-400 group-hover:bg-cyan-500 group-hover:text-slate-900 transition-all duration-300 shadow-[0_0_20px_rgba(34,211,238,0)] group-hover:shadow-[0_0_20px_rgba(34,211,238,0.4)] shrink-0">
@@ -154,7 +151,6 @@ export default function ContactUs({ standalone = false }: { standalone?: boolean
                                 </a>
                             </div>
 
-                            {/* Global Offices */}
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-6 pt-1">
                                 <div className="flex items-start gap-4 group">
                                     <div className="flex items-center justify-center w-12 h-12 rounded-full bg-cyan-500/10 text-cyan-400 shrink-0">
@@ -176,7 +172,7 @@ export default function ContactUs({ standalone = false }: { standalone?: boolean
                                         <MapPin className="w-5 h-5" />
                                     </div>
                                     <div className="pt-0.5">
-                                        <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1 flex items-center gap-2">
+                                        <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">
                                             USA Branch
                                         </p>
                                         <p className="text-sm text-slate-400 leading-[1.7] font-medium group-hover:text-slate-200 transition-colors">
@@ -186,13 +182,18 @@ export default function ContactUs({ standalone = false }: { standalone?: boolean
                                     </div>
                                 </div>
                             </div>
-                        </div>                    </div>
+                        </div>
+                    </div>
 
                     {/* RIGHT: The Form */}
                     <div className="relative lg:h-full">
                         <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-[2.5rem] blur opacity-10" />
 
-                        <form ref={formRef} onSubmit={handleSubmit} className="relative lg:h-full flex flex-col bg-[#0A101F] border border-blue-900/30 p-8 md:p-10 rounded-[2.5rem] shadow-3xl">
+                        <form
+                            ref={formRef}
+                            onSubmit={handleSubmit}
+                            className="relative lg:h-full flex flex-col bg-[#0A101F] border border-blue-900/30 p-8 md:p-10 rounded-[2.5rem] shadow-3xl"
+                        >
                             <div className="flex flex-col flex-1 gap-6">
                                 <div className="space-y-2 shrink-0">
                                     <label className="text-[10px] font-bold text-cyan-500 uppercase tracking-[0.2em] ml-1">Full Name</label>
@@ -208,7 +209,6 @@ export default function ContactUs({ standalone = false }: { standalone?: boolean
                                     </div>
                                 </div>
 
-                                {/* Email Input */}
                                 <div className="space-y-2 shrink-0">
                                     <label className="text-[10px] font-bold text-cyan-500 uppercase tracking-[0.2em] ml-1">Email</label>
                                     <div className="relative group">
@@ -223,7 +223,6 @@ export default function ContactUs({ standalone = false }: { standalone?: boolean
                                     </div>
                                 </div>
 
-                                {/* Message Input */}
                                 <div className="space-y-2 flex-1 flex flex-col">
                                     <label className="text-[10px] font-bold text-cyan-500 uppercase tracking-[0.2em] ml-1 shrink-0">Project Requirements</label>
                                     <div className="relative group flex-1 min-h-[140px]">
@@ -238,22 +237,21 @@ export default function ContactUs({ standalone = false }: { standalone?: boolean
                                 </div>
 
                                 <div className="shrink-0 space-y-6 pt-2">
-                                    {/* Submit Button */}
                                     <button
-                                        disabled={status === 'sending' || status === 'sent'}
+                                        disabled={status === "sending" || status === "sent"}
                                         className="w-full group relative flex items-center justify-center gap-3 bg-gradient-to-r from-cyan-500 to-blue-600 p-4 rounded-xl text-slate-950 font-bold hover:shadow-[0_0_20px_rgba(34,211,238,0.4)] transition-all disabled:opacity-50"
                                     >
-                                        {status === 'sent' ? (
+                                        {status === "sent" ? (
                                             <>Request Sent! <CheckCircle2 className="w-5 h-5 text-slate-900" /></>
                                         ) : (
                                             <>
-                                                {status === 'sending' ? 'Sending...' : 'Send Request'}
-                                                <Send className={`w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1 ${status === 'sending' ? 'animate-pulse' : ''}`} />
+                                                {status === "sending" ? "Sending..." : "Send Request"}
+                                                <Send className={`w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1 ${status === "sending" ? "animate-pulse" : ""}`} />
                                             </>
                                         )}
                                     </button>
 
-                                    {status === 'error' && (
+                                    {status === "error" && (
                                         <p className="text-[10px] text-center text-red-500 uppercase tracking-widest font-mono">
                                             Failed to send. Please try again or email hi@mapifyit.com
                                         </p>

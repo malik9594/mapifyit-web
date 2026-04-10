@@ -9,15 +9,6 @@ import { useRouter } from 'next/navigation';
  * Dedicated route for getting in touch. 
  */
 export default function ContactPage() {
-    const [mounted, setMounted] = React.useState(false);
-
-    React.useEffect(() => {
-        const timer = setTimeout(() => {
-            setMounted(true);
-        }, 350);
-        return () => clearTimeout(timer);
-    }, []);
-
     const router = useRouter();
 
     return (
@@ -30,9 +21,7 @@ export default function ContactPage() {
                     </button>
                 </div>
 
-                <div className={`relative z-10 transition-opacity duration-300 ${mounted ? 'opacity-100' : 'opacity-0'}`}>
-                    <ContactUs standalone={true} />
-                </div>
+                <ContactUs standalone={true} />
 
                 <section className="mt-16 rounded-2xl border border-white/10 bg-[#080F1D] p-6 md:p-10">
                     <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { MapProvider } from "@/context/MapContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -99,16 +100,34 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Preconnect to speed up initial Mapifyit API handshakes */}
+        {/* DNS + TLS preconnect for all Mapifyit API origins */}
+        <link rel="preconnect" href="https://dev-client.mapifyit.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://client.mapifyit.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://tiles.mapifyit.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://dev-client.mapifyit.com" />
         <link rel="dns-prefetch" href="https://client.mapifyit.com" />
         <link rel="dns-prefetch" href="https://tiles.mapifyit.com" />
+        {/* Prefetch the map style JSON so it’s cached before MapLibre requests it */}
+        <link
+          rel="prefetch"
+          href="https://dev-client.mapifyit.com/api/v1/proxy/tiles/dark"
+          as="fetch"
+          crossOrigin="anonymous"
+        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased selection:bg-blue-500/30 overflow-x-hidden`}
       >
-        <div className="min-h-screen bg-[#03060D] text-slate-300 font-sans">{children}</div>
+        {/*
+         * MapProvider boots the MapLibre map into an offscreen div immediately.
+         * By the time the user navigates to /contact-us the map is fully rendered
+         * and ContactUs just relocates the existing DOM node – zero re-init delay.
+         */}
+        <MapProvider>
+          <div className="min-h-screen bg-[#03060D] text-slate-300 font-sans">
+            {children}
+          </div>
+        </MapProvider>
       </body>
     </html>
   );
