@@ -1,5 +1,7 @@
+"use client";
 import React from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import {
     Twitter,
     Linkedin,
@@ -14,6 +16,15 @@ import {
 } from 'lucide-react';
 
 export default function Footer() {
+    const pathname = usePathname();
+
+    const handleLogoClick = (e: React.MouseEvent) => {
+        if (pathname === '/') {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    };
+
     const socialLinks = [
         // { icon: Twitter, href: "#", label: "Twitter" },
         { icon: Linkedin, href: "https://linkedin.com/company/mapifyit", label: "LinkedIn" },
@@ -54,7 +65,9 @@ export default function Footer() {
                     {/* Brand Section */}
                     <div className="lg:col-span-4">
                         <div className="flex items-center gap-2 mb-8">
-                            <img src="/mapify-white-bg.png" alt="Mapifyit Logo" className="h-10 w-auto object-contain" />
+                            <Link href="/" onClick={handleLogoClick}>
+                                <img src="/mapify-white-bg.png" alt="Mapifyit Logo" className="h-10 w-auto object-contain cursor-pointer" />
+                            </Link>
                         </div>
                         <p className="text-slate-400 text-[15px] leading-relaxed mb-8 max-w-sm">
                             The enterprise-grade location intelligence platform for modern organizations. Build sovereign, high-performance geospatial applications with 100% on-premise security.
@@ -143,7 +156,15 @@ export default function Footer() {
                 {/* Bottom Bar */}
                 <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
                     <div className="text-slate-500 text-xs tracking-wide">
-                        &copy; {new Date().getFullYear()} <Link href="/" className="text-slate-300 font-medium cursor-pointer" >Mapifyit</Link>. All rights reserved.
+                        &copy; {new Date().getFullYear()}{" "}
+                        <Link
+                            href="/"
+                            onClick={handleLogoClick}
+                            className="text-slate-300 font-medium cursor-pointer"
+                        >
+                            Mapifyit
+                        </Link>
+                        . All rights reserved.
                     </div>
 
                     <div className="flex gap-8">
