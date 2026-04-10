@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import Script from "next/script";
+import fs from "fs";
+import path from "path";
 
 export const dynamic = 'force-static';
 
@@ -13,13 +14,15 @@ export default function FAQsLayout({
 }: {
   children: React.ReactNode;
 }) {
+  // Read the JSON-LD schema from the filesystem for SSR inlining
+  const schemaPath = path.join(process.cwd(), "public", "schema", "faq.json");
+  const schemaContent = fs.readFileSync(schemaPath, "utf8");
+
   return (
     <>
-      <Script
-        id="faq-jsonld"
+      <script
         type="application/ld+json"
-        src="/schema/faq.json"
-        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{ __html: schemaContent }}
       />
       {children}
     </>
