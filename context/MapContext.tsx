@@ -62,6 +62,12 @@ export function MapProvider({ children }: { children: React.ReactNode }) {
         let isMounted = true;
 
         async function initMap() {
+            // Secure Warm-Boot: Fetch the style JSON with token immediately.
+            // This pre-warms the browser cache so MapLibre's later request is local/instant.
+            fetch(MAPIFYIT_STYLE_URL, {
+                headers: { Authorization: `Bearer ${MAPIFYIT_TOKEN}` }
+            }).catch(() => { /* silent fail, MapLibre will retry */ });
+
             // Await the module-level promise — already in-flight since module load.
             const maplibregl = (await maplibrePromise).default;
             if (!isMounted || !parkingRef.current) return;
@@ -90,7 +96,8 @@ export function MapProvider({ children }: { children: React.ReactNode }) {
                 pitch: 45,
                 attributionControl: false,
                 transformRequest: (url: string) => {
-                    if (url.includes("mapifyit.com")) {
+                    // Send token to our proxy (production or local)
+                    if (url.includes("mapifyit.com") || url.includes("localhost")) {
                         return {
                             url,
                             headers: { Authorization: `Bearer ${MAPIFYIT_TOKEN}` },

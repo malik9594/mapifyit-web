@@ -100,20 +100,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* DNS + TLS preconnect for all Mapifyit API origins */}
+        {/* DNS + TLS preconnect for Mapifyit API origins */}
         <link rel="preconnect" href="https://dev-client.mapifyit.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://client.mapifyit.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://tiles.mapifyit.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://dev-client.mapifyit.com" />
-        <link rel="dns-prefetch" href="https://client.mapifyit.com" />
         <link rel="dns-prefetch" href="https://tiles.mapifyit.com" />
-        {/* Prefetch the map style JSON so it’s cached before MapLibre requests it */}
-        <link
-          rel="prefetch"
-          href="https://dev-client.mapifyit.com/api/v1/proxy/tiles/dark"
-          as="fetch"
-          crossOrigin="anonymous"
-        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased selection:bg-blue-500/30 overflow-x-hidden`}
