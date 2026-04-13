@@ -5,6 +5,25 @@ const ONE_YEAR = 31536000; // seconds
 const nextConfig: NextConfig = {
   output: "standalone",
   poweredByHeader: false,
+  async redirects() {
+    return [
+      {
+        source: "/terms-of-services",
+        destination: "/terms-of-service",
+        permanent: true,
+      },
+      {
+        source: "/geoenvironmental",
+        destination: "/gis",
+        permanent: true,
+      },
+      {
+        source: "/geoenvironmental/",
+        destination: "/gis",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {
