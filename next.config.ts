@@ -13,6 +13,11 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/terms-of-services/",
+        destination: "/terms-of-service",
+        permanent: true,
+      },
+      {
         source: "/geoenvironmental",
         destination: "/gis",
         permanent: true,
