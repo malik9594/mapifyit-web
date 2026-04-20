@@ -128,7 +128,7 @@ export default function Home() {
         </div>
       </section>
 
-      <FAQSection showHeader={true} />
+      <FAQSection showHeader={false} />
 
     </div >
   );

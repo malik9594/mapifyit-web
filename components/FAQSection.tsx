@@ -269,13 +269,13 @@ export default function FAQSection({ type = 'home', showHeader = false }: { type
     };
 
     return (
-        <section className="py-2 md:py-4 relative overflow-hidden bg-[#030712]">
+        <section className="py-1 relative overflow-hidden bg-[#030712]">
             {/* Ambient Background Glows */}
             <div className="absolute top-0 right-0 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-blue-600/5 rounded-full blur-[80px] md:blur-[150px] pointer-events-none" />
             <div className="absolute bottom-0 left-0 w-[250px] md:w-[500px] h-[250px] md:h-[500px] bg-indigo-600/5 rounded-full blur-[70px] md:blur-[120px] pointer-events-none" />
 
             <div className="max-w-7xl mx-auto px-6 relative z-10">
-                {showHeader && (
+                {/* {showHeader && (
                     <Reveal>
                         <div className="text-center mb-20 md:mb-28">
                             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-[10px] font-bold uppercase tracking-widest text-blue-400 mb-6">
@@ -289,7 +289,7 @@ export default function FAQSection({ type = 'home', showHeader = false }: { type
                             </p>
                         </div>
                     </Reveal>
-                )}
+                )} */}
 
                 <Reveal>
                     <div className="grid grid-cols-1 gap-12 max-w-7xl mx-auto">
