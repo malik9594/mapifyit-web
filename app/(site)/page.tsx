@@ -12,7 +12,7 @@ import { Map, Layers, ShieldCheck, ChevronRight, Activity } from 'lucide-react';
  */
 export default function Home() {
   return (
-    <div className="relative z-10 pt-1 pb-0">
+    <div className="relative z-10 pt-25 pb-20">
 
       {/* GLOBAL ANIMATION KEYFRAMES - Kept for component-specific animations */}
       <style>{`
