@@ -69,24 +69,9 @@ export default function Footer() {
                                 <img src="/mapify-white-bg.png" alt="Mapifyit Logo" className="h-10 w-auto object-contain cursor-pointer" />
                             </Link>
                         </div>
-                        <p className="text-slate-400 text-[15px] leading-relaxed mb-8 max-w-sm">
+                        <p className="text-slate-400 text-[15px] leading-relaxed max-w-sm">
                             The enterprise-grade location intelligence platform for modern organizations. Build sovereign, high-performance geospatial applications with 100% on-premise security.
                         </p>
-
-                        {/* Social Icons */}
-                        <div className="flex gap-4">
-                            {socialLinks.map((social) => (
-                                <a
-                                    key={social.label}
-                                    href={social.href}
-                                    target='_blank'
-                                    className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-slate-400 hover:text-white hover:border-blue-500/50 hover:bg-blue-500/10 transition-all duration-300 group"
-                                    aria-label={social.label}
-                                >
-                                    <social.icon className="w-5 h-5 group-hover:scale-110 transition-transform" />
-                                </a>
-                            ))}
-                        </div>
                     </div>
 
                     {/* Link Columns */}
@@ -152,6 +137,48 @@ export default function Footer() {
                         </div> */}
                     </div>
                 </div>
+
+                {/* Social & App Row - One Line Flight */}
+                <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-8 mb-12">
+                    {/* Social Icons - Left Side */}
+                    <div className="flex gap-4">
+                        {socialLinks.map((social) => (
+                            <a
+                                key={social.label}
+                                href={social.href}
+                                target="_blank"
+                                className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-slate-400 hover:text-white hover:border-blue-500/50 hover:bg-blue-500/10 transition-all duration-300 group"
+                                aria-label={social.label}
+                            >
+                                <social.icon className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                            </a>
+                        ))}
+                    </div>
+
+                    {/* App Buttons - Right Side */}
+                    <div className="flex flex-row items-center gap-4">
+                        <h4 className="text-white font-bold text-[10px] uppercase tracking-[0.2em] opacity-50 mr-2">Experience Mapifyit on Mobile</h4>
+                        <div className="flex gap-3">
+                            <a 
+                                href="#" 
+                                className="flex items-center gap-2.5 px-4 py-2 rounded-xl bg-white/5 border border-white/10 hover:border-blue-500/40 hover:bg-white/[0.07] transition-all"
+                            >
+                                <svg viewBox="0 0 24 24" className="w-4 h-4 fill-white" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.1 2.48-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                                </svg>
+                                <span className="text-[11px] font-bold text-white uppercase tracking-tighter">App Store</span>
+                            </a>
+                            <a 
+                                href="#" 
+                                className="flex items-center gap-2.5 px-4 py-2 rounded-xl bg-white/5 border border-white/10 hover:border-emerald-500/40 hover:bg-white/[0.07] transition-all"
+                            >
+                                <svg viewBox="0 0 24 24" className="w-4 h-4 fill-white" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.61 3,21.09 3,20.5M16.81,15.12L18.05,15.81C19.72,16.74 20.44,18.52 20.44,18.52C20.44,18.52 17.65,13.96 14.4,12.74L16.81,15.12M14.4,11.26C17.65,10.04 20.44,5.48 20.44,5.48C20.44,5.48 19.72,7.26 18.05,8.19L16.81,8.88L14.4,11.26M15.1,12L18.74,15.39L21.46,13.88C22.42,13.34 22.42,12.63 22.42,12C22.42,11.37 22.42,10.66 21.46,10.12L18.74,8.61L15.1,12Z"/>
+                                </svg>
+                                <span className="text-[11px] font-bold text-white uppercase tracking-tighter">Play Store</span>
+                            </a>
+                        </div>
+                    </div>
 
                 {/* Bottom Bar */}
                 <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
