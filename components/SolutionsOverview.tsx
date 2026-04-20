@@ -59,7 +59,7 @@ const solutions = [
 
 export default function SolutionsOverview() {
     return (
-        <section className="py-20 md:py-32 relative overflow-hidden bg-[#030712]">
+        <section className="py-6 md:py-12 relative overflow-hidden bg-[#030712]">
             {/* Background decorative elements */}
             <div className="absolute top-0 right-0 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-blue-600/5 rounded-full blur-[80px] md:blur-[150px] pointer-events-none" />
             <div className="absolute bottom-0 left-0 w-[250px] md:w-[500px] h-[250px] md:h-[500px] bg-indigo-600/5 rounded-full blur-[70px] md:blur-[120px] pointer-events-none" />

@@ -1,6 +1,7 @@
 import React from 'react';
 import Hero from '@/components/Hero';
 import SolutionsOverview from '@/components/SolutionsOverview';
+import FAQSection from '@/components/FAQSection';
 import Link from 'next/link';
 import { Map, Layers, ShieldCheck, ChevronRight, Activity } from 'lucide-react';
 
@@ -11,7 +12,7 @@ import { Map, Layers, ShieldCheck, ChevronRight, Activity } from 'lucide-react';
  */
 export default function Home() {
   return (
-    <div className="relative z-10 pt-25 pb-20">
+    <div className="relative z-10 pt-1 pb-0">
 
       {/* GLOBAL ANIMATION KEYFRAMES - Kept for component-specific animations */}
       <style>{`
@@ -127,6 +128,7 @@ export default function Home() {
         </div>
       </section>
 
+      <FAQSection showHeader={true} />
 
     </div >
   );

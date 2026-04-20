@@ -312,6 +312,8 @@ import { Map, Layers, Code, Globe, Route, Navigation, Search, Database, Check, C
 import { Reveal } from '@/components/Reveal';
 import { useRouter } from 'next/navigation';
 
+import FAQSection from '@/components/FAQSection';
+
 const useTypewriter = (words: string[], speed = 100) => {
     const [index, setIndex] = useState(0);
     const [subIndex, setSubIndex] = useState(0);
@@ -608,7 +610,7 @@ export default function MapsPage() {
                     </div>
                 </div>
             </div>
-
+            <FAQSection type="maps" showHeader={false} />
         </div>
     );
 }
