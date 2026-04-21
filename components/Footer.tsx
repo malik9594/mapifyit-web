@@ -50,6 +50,7 @@ export default function Footer() {
             { name: "Documentation", href: "https://dev.mapifyit.com/documentation" },
             { name: "Contact Us", href: "/contact-us" },
             { name: "About Us", href: "#" },
+            { name: "Sitemap", href: "/sitemap.xml" },
         ]
     };
 

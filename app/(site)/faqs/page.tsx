@@ -118,8 +118,29 @@ export default function FAQsPage() {
         }));
     };
 
+    // Schema.org FAQ Data
+    const faqSchema = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": faqsCategories.flatMap(category => 
+            category.faqs.map(faq => ({
+                "@type": "Question",
+                "name": faq.question,
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": faq.answer
+                }
+            }))
+        )
+    };
+
     return (
         <div className="pt-32 pb-24 bg-[#030712] min-h-screen">
+            {/* FAQ Structured Data */}
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+            />
             <div className="max-w-7xl mx-auto px-6">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
 
