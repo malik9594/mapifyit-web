@@ -69,9 +69,9 @@ export default function PricingPage() {
         "description": "Predictable flat-rate pricing for enterprise mapping APIs. Transparent location intelligence infrastructure with no vendor lock-in.",
         "offers": [
             { "@type": "Offer", "name": "Free Tier", "price": "0", "priceCurrency": "USD", "eligibilityToPurchase": "Up to 10k calls/month" },
-            { "@type": "Offer", "name": "Starter", "price": "69", "priceCurrency": "USD", "eligibilityToPurchase": "Up to 75k calls/month" },
-            { "@type": "Offer", "name": "Business", "price": "199", "priceCurrency": "USD", "eligibilityToPurchase": "Up to 250k calls/month" },
-            { "@type": "Offer", "name": "Enterprise", "price": "449", "priceCurrency": "USD", "eligibilityToPurchase": "Up to 750k calls/month" }
+            { "@type": "Offer", "name": "Starter", "price": "149", "priceCurrency": "USD", "eligibilityToPurchase": "Up to 75k calls/month" },
+            { "@type": "Offer", "name": "Business", "price": "399", "priceCurrency": "USD", "eligibilityToPurchase": "Up to 250k calls/month" },
+            { "@type": "Offer", "name": "Enterprise", "price": "899", "priceCurrency": "USD", "eligibilityToPurchase": "Up to 750k calls/month" }
         ]
     };
 
