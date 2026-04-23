@@ -303,7 +303,7 @@ export default function FAQSection({ type = 'home', showHeader = false }: { type
                                         <h3 className="text-2xl md:text-3xl font-bold text-white tracking-tight">{category.title}</h3>
                                     </div>
 
-                                    <div className="space-y-4 md:pl-12">
+                                    <div className="space-y-4 md:pl-2">
                                         {category.faqs.map((faqs, index) => {
                                             const isOpen = openIndex[category.id] === index;
                                             return (
