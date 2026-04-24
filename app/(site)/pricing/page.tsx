@@ -127,7 +127,7 @@ export default function PricingPage() {
                             />
                             <PricingCard
                                 title="Starter"
-                                price="$69"
+                                price="$149"
                                 highlightedText="75,000 monthly calls"
                                 description="For growing apps needing reliability."
                                 icon={Target}
@@ -135,7 +135,7 @@ export default function PricingPage() {
                             />
                             <PricingCard
                                 title="Business"
-                                price="$199"
+                                price="$399"
                                 highlightedText="250,000 monthly calls"
                                 description="For apps serving thousands of users."
                                 icon={Star}
@@ -144,7 +144,7 @@ export default function PricingPage() {
                             />
                             <PricingCard
                                 title="Enterprise"
-                                price="$449"
+                                price="$899"
                                 highlightedText="750,000+ monthly calls"
                                 description="Bespoke infrastructure for global scale."
                                 icon={Crown}
