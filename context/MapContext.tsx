@@ -11,8 +11,11 @@ import React, {
 // ─── Mapifyit Config ────────────────────────────────────────────────────────
 const MAPIFYIT_STYLE_URL = "https://client.mapifyit.com/api/v1/proxy/tiles/dark";
 const MAPIFYIT_TOKEN = "mfy_8b0755c081c9204caa20681ddab91d2856c3667a6ad8d9e8";
-const DUBAI_LNG = 55.2608;
-const DUBAI_LAT = 25.184;
+// const DUBAI_LNG = 55.2608;
+// const DUBAI_LAT = 25.184;
+
+const DUBAI_LNG = -95.516887;
+const DUBAI_LAT = 29.705662;
 
 /**
  * Kick off the maplibre-gl download at module evaluation time (as early as

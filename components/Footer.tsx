@@ -109,18 +109,18 @@ export default function Footer() {
                                 <span>hi@mapifyit.com</span>
                             </div>
                             <div className="space-y-3">
-                                <div className="flex items-center gap-4 text-slate-400 hover:text-slate-200 transition-colors text-sm group">
+                                {/* <div className="flex items-center gap-4 text-slate-400 hover:text-slate-200 transition-colors text-sm group">
                                     <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-blue-500/10 transition-colors">
                                         <Phone className="w-4 h-4 text-blue-500" />
                                     </div>
                                     <span>+971 4 442 9622</span>
-                                </div>
-                                <div className="flex items-center gap-4 text-slate-400 hover:text-slate-200 transition-colors text-sm group">
+                                </div> */}
+                                {/* <div className="flex items-center gap-4 text-slate-400 hover:text-slate-200 transition-colors text-sm group">
                                     <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-blue-500/10 transition-colors">
                                         <Phone className="w-4 h-4 text-blue-500" />
                                     </div>
                                     <span>+966 53 540 5691</span>
-                                </div>
+                                </div> */}
                                 <div className="flex items-center gap-4 text-slate-400 hover:text-slate-200 transition-colors text-sm group">
                                     <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-blue-500/10 transition-colors">
                                         <Phone className="w-4 h-4 text-blue-500" />

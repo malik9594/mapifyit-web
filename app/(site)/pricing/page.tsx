@@ -123,7 +123,7 @@ export default function PricingPage() {
                                 highlightedText="10,000 monthly calls"
                                 description="Perfect for testing and side-projects."
                                 icon={Zap}
-                                features={["Standard Support", "Basic REST APIs", "Community Forum Access"]}
+                                features={["Email Support", "Vector Tiles", "Standard Support", "Basic REST APIs", "Basic Analytics Dashboard", "Community Forum Access"]}
                             />
                             <PricingCard
                                 title="Starter"
@@ -131,7 +131,7 @@ export default function PricingPage() {
                                 highlightedText="75,000 monthly calls"
                                 description="For growing apps needing reliability."
                                 icon={Target}
-                                features={["Email Support", "Vector Tiles", "Basic Analytics Dashboard"]}
+                                features={["Email Support", "Vector Tiles", "Standard Suppport", "Basic REST APIs", "Basic Analytics Dashboard", "Community Forum Access"]}
                             />
                             <PricingCard
                                 title="Business"
@@ -140,7 +140,7 @@ export default function PricingPage() {
                                 description="For apps serving thousands of users."
                                 icon={Star}
                                 highlighted={true}
-                                features={["Priority Support", "Dynamic Vector Tiles", "Advanced Autocomplete", "SLA Guarantees"]}
+                                features={["Email Support", "Vector Tiles", "Standard Suppport", "Basic REST APIs", "Basic Analytics Dashboard", "Community Forum Access"]}
                             />
                             <PricingCard
                                 title="Enterprise"
@@ -148,7 +148,7 @@ export default function PricingPage() {
                                 highlightedText="750,000+ monthly calls"
                                 description="Bespoke infrastructure for global scale."
                                 icon={Crown}
-                                features={["Dedicated Tech Manager", "Custom Geodata & SLA", "White-label Options"]}
+                                features={["Email Support", "Vector Tiles", "Standard Suppport", "Basic REST APIs", "Basic Analytics Dashboard", "Community Forum Access"]}
                             />
                         </div>
                     </Reveal>

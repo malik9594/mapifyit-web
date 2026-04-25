@@ -124,7 +124,7 @@ export default function ContactUs({ standalone = false }: { standalone?: boolean
                                 <div className="p-2 bg-cyan-500/20 rounded-lg">
                                     <MapPin className="w-4 h-4 text-cyan-400" />
                                 </div>
-                                <span className="text-xs text-slate-300 font-mono">Business Bay, Dubai, UAE</span>
+                                <span className="text-xs text-slate-300 font-mono">Southwest Fwy Houstan,TX 77074, USA</span>
                             </div>
                         </div>
 
