@@ -162,9 +162,16 @@ export default function Navbar() {
               Documentation
             </Link>
 
+            {/* <Link
+              href="/blog"
+              className={`text-sm font-medium transition-colors ${pathname === '/blog' ? 'text-white font-bold text-lg' : 'text-slate-300 hover:text-white'}`}
+            >
+              Blog
+            </Link> */}
+
             <Link
               href="/pricing"
-              className={`text-sm font-medium transition-colors ${pathname === '/pricing' ? 'text-white' : 'text-slate-300 hover:text-white'}`}
+              className={`text-sm font-medium transition-colors ${pathname === '/pricing' ? 'text-white font-bold text-lg' : 'text-slate-300 hover:text-white'}`}
             >
               Pricing
             </Link>

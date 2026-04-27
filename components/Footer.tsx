@@ -51,6 +51,7 @@ export default function Footer() {
             { name: "Contact Us", href: "/contact-us" },
             { name: "About Us", href: "#" },
             { name: "Sitemap", href: "/sitemap.xml" },
+            { name: "Blog", href: "/blog" }
         ]
     };
 
@@ -81,18 +82,32 @@ export default function Footer() {
                             <div key={title}>
                                 <h4 className="text-white font-semibold mb-6 text-sm uppercase tracking-widest">{title}</h4>
                                 <ul className="space-y-4">
-                                    {links.map((link) => (
-                                        <li key={link.name}>
-                                            <a
-                                                href={link.href}
-                                                target='_blank'
-                                                className="text-slate-400 hover:text-cyan-400 text-[14px] transition-all flex items-center group relative pl-0 hover:pl-5"
-                                            >
-                                                <ChevronRight className="w-3 h-3 absolute left-0 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
-                                                {link.name}
-                                            </a>
-                                        </li>
-                                    ))}
+                                    {links.map((link) => {
+                                        const isInternal = link.href.startsWith('/');
+                                        return (
+                                            <li key={link.name}>
+                                                {isInternal ? (
+                                                    <Link
+                                                        href={link.href}
+                                                        className="text-slate-400 hover:text-cyan-400 text-[14px] transition-all flex items-center group relative pl-0 hover:pl-5"
+                                                    >
+                                                        <ChevronRight className="w-3 h-3 absolute left-0 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
+                                                        {link.name}
+                                                    </Link>
+                                                ) : (
+                                                    <a
+                                                        href={link.href}
+                                                        target='_blank'
+                                                        rel="noopener noreferrer"
+                                                        className="text-slate-400 hover:text-cyan-400 text-[14px] transition-all flex items-center group relative pl-0 hover:pl-5"
+                                                    >
+                                                        <ChevronRight className="w-3 h-3 absolute left-0 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
+                                                        {link.name}
+                                                    </a>
+                                                )}
+                                            </li>
+                                        );
+                                    })}
                                 </ul>
                             </div>
                         ))}

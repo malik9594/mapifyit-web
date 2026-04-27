@@ -76,6 +76,14 @@ export default function MobileMenu({ isOpen, onClose, pathname }: MobileMenuProp
                     </Link>
 
                     <Link
+                        href="/blog"
+                        onClick={onClose}
+                        className={`block text-xl font-bold border-b border-white/5 pb-4 ${pathname === '/blog' ? 'text-blue-500' : 'text-white'}`}
+                    >
+                        Blog
+                    </Link>
+
+                    <Link
                         href="/pricing"
                         onClick={onClose}
                         className={`block text-xl font-bold border-b border-white/5 pb-4 ${pathname === '/pricing' ? 'text-blue-500' : 'text-white'}`}
