@@ -124,7 +124,7 @@ export default function ContactUs({ standalone = false }: { standalone?: boolean
                                 <div className="p-2 bg-cyan-500/20 rounded-lg">
                                     <MapPin className="w-4 h-4 text-cyan-400" />
                                 </div>
-                                <span className="text-xs text-slate-300 font-mono">Southwest Fwy Houstan,TX 77074, USA</span>
+                                <span className="text-xs text-slate-300 font-mono">Office #9100, Southwest Fwy Houston,TX 77074, USA</span>
                             </div>
                         </div>
 
@@ -140,13 +140,13 @@ export default function ContactUs({ standalone = false }: { standalone?: boolean
                                         <p className="text-sm font-medium text-slate-200 group-hover:text-white transition-colors truncate">hi@mapifyit.com</p>
                                     </div>
                                 </a>
-                                <a href="tel:+97144429622" className="flex items-center gap-4 group">
+                                <a href="tel:(281) 980-2206" className="flex items-center gap-4 group">
                                     <div className="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/10 text-blue-400 group-hover:bg-blue-500 group-hover:text-slate-900 transition-all duration-300 shadow-[0_0_20px_rgba(59,130,246,0)] group-hover:shadow-[0_0_20px_rgba(59,130,246,0.4)] shrink-0">
                                         <Phone className="w-5 h-5" />
                                     </div>
                                     <div>
                                         <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">Call Us</p>
-                                        <p className="text-sm font-medium text-slate-200 group-hover:text-white transition-colors truncate">+971 4 442 9622</p>
+                                        <p className="text-sm font-medium text-slate-200 group-hover:text-white transition-colors truncate">(281) 980-2206</p>
                                     </div>
                                 </a>
                             </div>
@@ -158,7 +158,7 @@ export default function ContactUs({ standalone = false }: { standalone?: boolean
                                     </div>
                                     <div className="pt-0.5">
                                         <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1 flex items-center gap-2">
-                                            Dubai HQ
+                                            Dubai BRANCH
                                             <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 shadow-[0_0_8px_rgba(34,211,238,0.8)] animate-pulse" />
                                         </p>
                                         <p className="text-sm text-slate-400 leading-[1.7] font-medium group-hover:text-slate-200 transition-colors">
@@ -173,7 +173,7 @@ export default function ContactUs({ standalone = false }: { standalone?: boolean
                                     </div>
                                     <div className="pt-0.5">
                                         <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">
-                                            USA Branch
+                                            USA HQ
                                         </p>
                                         <p className="text-sm text-slate-400 leading-[1.7] font-medium group-hover:text-slate-200 transition-colors">
                                             Office #9100 Southwest Fwy<br />
