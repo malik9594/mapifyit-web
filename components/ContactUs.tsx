@@ -140,33 +140,19 @@ export default function ContactUs({ standalone = false }: { standalone?: boolean
                                         <p className="text-sm font-medium text-slate-200 group-hover:text-white transition-colors truncate">hi@mapifyit.com</p>
                                     </div>
                                 </a>
-                                <a href="tel:(281) 980-2206" className="flex items-center gap-4 group">
+                                <a href="tel:+1 281 980 2206" className="flex items-center gap-4 group">
                                     <div className="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/10 text-blue-400 group-hover:bg-blue-500 group-hover:text-slate-900 transition-all duration-300 shadow-[0_0_20px_rgba(59,130,246,0)] group-hover:shadow-[0_0_20px_rgba(59,130,246,0.4)] shrink-0">
                                         <Phone className="w-5 h-5" />
                                     </div>
                                     <div>
                                         <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">Call Us</p>
-                                        <p className="text-sm font-medium text-slate-200 group-hover:text-white transition-colors truncate">(281) 980-2206</p>
+                                        <p className="text-sm font-medium text-slate-200 group-hover:text-white transition-colors truncate">+1 281 980 2206</p>
                                     </div>
                                 </a>
                             </div>
 
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-6 pt-1">
-                                <div className="flex items-start gap-4 group">
-                                    <div className="flex items-center justify-center w-12 h-12 rounded-full bg-cyan-500/10 text-cyan-400 shrink-0">
-                                        <MapPin className="w-5 h-5" />
-                                    </div>
-                                    <div className="pt-0.5">
-                                        <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1 flex items-center gap-2">
-                                            Dubai BRANCH
-                                            <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 shadow-[0_0_8px_rgba(34,211,238,0.8)] animate-pulse" />
-                                        </p>
-                                        <p className="text-sm text-slate-400 leading-[1.7] font-medium group-hover:text-slate-200 transition-colors">
-                                            Office #1508 Citadel Tower<br />
-                                            Business Bay, Dubai, UAE
-                                        </p>
-                                    </div>
-                                </div>
+
                                 <div className="flex items-start gap-4 group">
                                     <div className="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/10 text-blue-400 shrink-0">
                                         <MapPin className="w-5 h-5" />
@@ -174,10 +160,25 @@ export default function ContactUs({ standalone = false }: { standalone?: boolean
                                     <div className="pt-0.5">
                                         <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">
                                             USA HQ
+                                            <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 shadow-[0_0_8px_rgba(34,211,238,0.8)] animate-pulse" />
                                         </p>
                                         <p className="text-sm text-slate-400 leading-[1.7] font-medium group-hover:text-slate-200 transition-colors">
                                             Office #9100 Southwest Fwy<br />
                                             Houston, TX 77074, USA
+                                        </p>
+                                    </div>
+                                </div>
+                                <div className="flex items-start gap-4 group">
+                                    <div className="flex items-center justify-center w-12 h-12 rounded-full bg-cyan-500/10 text-cyan-400 shrink-0">
+                                        <MapPin className="w-5 h-5" />
+                                    </div>
+                                    <div className="pt-0.5">
+                                        <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1 flex items-center gap-2">
+                                            Dubai BRANCH
+                                        </p>
+                                        <p className="text-sm text-slate-400 leading-[1.7] font-medium group-hover:text-slate-200 transition-colors">
+                                            Office #1508 Citadel Tower<br />
+                                            Business Bay, Dubai, UAE
                                         </p>
                                     </div>
                                 </div>
