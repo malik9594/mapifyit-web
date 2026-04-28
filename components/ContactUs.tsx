@@ -124,7 +124,7 @@ export default function ContactUs({ standalone = false }: { standalone?: boolean
                                 <div className="p-2 bg-cyan-500/20 rounded-lg">
                                     <MapPin className="w-4 h-4 text-cyan-400" />
                                 </div>
-                                <span className="text-xs text-slate-300 font-mono">Office #9100, Southwest Fwy Houston,TX 77074, USA</span>
+                                <span className="text-xs text-slate-300 font-mono">9100, Southwest Fwy Houston,TX 77074, USA</span>
                             </div>
                         </div>
 
@@ -174,7 +174,7 @@ export default function ContactUs({ standalone = false }: { standalone?: boolean
                                     </div>
                                     <div className="pt-0.5">
                                         <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1 flex items-center gap-2">
-                                            Dubai BRANCH
+                                            Middle East BRANCH
                                         </p>
                                         <p className="text-sm text-slate-400 leading-[1.7] font-medium group-hover:text-slate-200 transition-colors">
                                             Office #1508 Citadel Tower<br />

@@ -2,59 +2,8 @@
 
 import Link from "next/link";
 import { Reveal } from "@/components/Reveal";
-import { Globe, ArrowRight, Clock, Map as MapIcon, Layers, Activity, Lock, Zap } from "lucide-react";
-
-// Moving data directly here to solve any potential import/caching issues
-const blogPosts = [
-    {
-        slug: "mapifyit-maps-gis-enterprise-alternative",
-        title: "MapifyIt Maps & GIS: The Complete Enterprise Alternative to Google Maps, Mapbox, and Traditional GIS Platforms",
-        excerpt: "Location is no longer just a feature—it’s infrastructure. From logistics and ride-hailing to delivery, fintech, and smart cities, modern applications depend heavily on mapping APIs.",
-        category: "Industry Insights",
-        date: "April 28, 2026",
-        readTime: "8 min read",
-    },
-    {
-        slug: "what-is-mapifyit-full-stack-gis-platform",
-        title: "What is MapifyIt? The Full-Stack Mapping & GIS Platform",
-        excerpt: "MapifyIt is designed for businesses that want to build, scale, and control their own geospatial infrastructure without relying on expensive third-party APIs.",
-        category: "Product Overview",
-        date: "April 27, 2026",
-        readTime: "6 min read",
-    },
-    {
-        slug: "mapifyit-vs-google-maps-mapbox-esri",
-        title: "A Detailed Comparison: MapifyIt vs Google Maps, Mapbox, and Esri",
-        excerpt: "This is where things become clear. We compare cost structures, deployment options, customization levels, and data ownership across the top mapping platforms.",
-        category: "Comparison",
-        date: "April 26, 2026",
-        readTime: "10 min read",
-    },
-    {
-        slug: "real-world-use-cases-logistics-ride-hailing-smart-cities",
-        title: "Real-World Use Cases: Powering Critical Infrastructure Across Industries",
-        excerpt: "From logistics and ride-hailing to delivery, fintech, and smart cities, see how MapifyIt is being used to build scalable location intelligence systems.",
-        category: "Use Cases",
-        date: "April 25, 2026",
-        readTime: "7 min read",
-    },
-    {
-        slug: "high-performance-map-rendering-vector-tiles",
-        title: "High-Performance Map Rendering: The Power of Vector Tiles",
-        excerpt: "How MapifyIt uses optimized vector tiles to deliver fast, smooth maps across mobile and web applications, even with massive datasets.",
-        category: "Engineering",
-        date: "April 24, 2026",
-        readTime: "5 min read",
-    },
-    {
-        slug: "enterprise-security-privacy-on-premise-deployment",
-        title: "Enterprise Security & Privacy: Why On-Premise Matters",
-        excerpt: "For government and financial institutions, data sovereignty is non-negotiable. Learn how MapifyIt supports air-gapped and private infrastructure.",
-        category: "Security",
-        date: "April 23, 2026",
-        readTime: "6 min read",
-    }
-];
+import { Globe, ArrowRight, Clock } from "lucide-react";
+import { blogPosts } from "./data/posts";
 
 export default function BlogPage() {
     return (
@@ -62,7 +11,6 @@ export default function BlogPage() {
             {/* Ambient background effects */}
             <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none" />
             <div className="absolute bottom-1/3 right-0 w-[500px] h-[500px] bg-indigo-600/10 rounded-full blur-[100px] pointer-events-none" />
-            <div className="absolute top-1/2 left-0 w-[400px] h-[400px] bg-emerald-600/5 rounded-full blur-[100px] pointer-events-none" />
 
             <div className="max-w-7xl mx-auto px-6 relative z-10">
                 {/* Blog Header */}
@@ -80,39 +28,43 @@ export default function BlogPage() {
                     </Reveal>
                 </section>
 
-                {/* Posts Grid */}
-                <section className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {/* Single Post Display */}
+                <div className="max-w-4xl mx-auto">
                     {blogPosts.map((post) => (
-                        <article key={post.slug} className="group h-full flex flex-col bg-white/5 p-8 rounded-[32px] border border-white/10 hover:border-blue-500/30 transition-all duration-500 hover:-translate-y-2 backdrop-blur-xl">
-                            <div className="flex items-center gap-4 mb-6">
-                                <span className="px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-[10px] font-bold uppercase tracking-wider text-blue-400">
-                                    {post.category}
-                                </span>
-                                <div className="flex items-center gap-1.5 text-slate-500 text-xs">
-                                    <Clock className="w-3.5 h-3.5" /> {post.readTime}
+                        <Reveal key={post.slug}>
+                            <article className="group bg-white/5 p-8 md:p-12 rounded-[40px] border border-white/10 hover:border-blue-500/30 transition-all duration-500 backdrop-blur-xl relative overflow-hidden">
+                                <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/5 blur-[80px] -mr-32 -mt-32 rounded-full" />
+
+                                <div className="flex items-center gap-4 mb-8">
+                                    <span className="px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-xs font-bold uppercase tracking-wider text-blue-400">
+                                        {post.category}
+                                    </span>
+                                    <div className="flex items-center gap-1.5 text-slate-500 text-sm">
+                                        <Clock className="w-4 h-4" /> {post.readTime}
+                                    </div>
                                 </div>
-                            </div>
 
-                            <h2 className="text-2xl font-bold text-white mb-4 group-hover:text-blue-400 transition-colors line-clamp-2">
-                                {post.title}
-                            </h2>
+                                <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 group-hover:text-blue-400 transition-colors leading-[1.2]">
+                                    {post.title}
+                                </h2>
 
-                            <p className="text-slate-400 mb-8 line-clamp-3 text-sm leading-relaxed">
-                                {post.excerpt}
-                            </p>
+                                <p className="text-slate-400 text-lg mb-10 leading-relaxed line-clamp-3">
+                                    {post.excerpt}
+                                </p>
 
-                            <div className="mt-auto pt-6 border-t border-white/5 flex items-center justify-between">
-                                <Link
-                                    href={`/blog/${post.slug}`}
-                                    className="inline-flex items-center gap-2 text-white font-bold hover:gap-3 transition-all duration-300"
-                                >
-                                    Read Article <ArrowRight className="w-4 h-4 text-blue-400" />
-                                </Link>
-                                <span className="text-[10px] font-medium text-slate-500 uppercase tracking-widest">{post.date}</span>
-                            </div>
-                        </article>
+                                <div className="flex items-center justify-between pt-8 border-t border-white/5">
+                                    <Link
+                                        href={`/blog/${post.slug}`}
+                                        className="inline-flex items-center gap-3 text-white text-xl font-bold hover:gap-5 transition-all duration-300"
+                                    >
+                                        Read Full Article <ArrowRight className="w-6 h-6 text-blue-400" />
+                                    </Link>
+                                    <span className="text-sm font-medium text-slate-500 uppercase tracking-[0.2em]">{post.date}</span>
+                                </div>
+                            </article>
+                        </Reveal>
                     ))}
-                </section>
+                </div>
             </div>
         </main>
     );
