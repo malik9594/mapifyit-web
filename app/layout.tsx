@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     siteName: "Mapifyit",
     title: "Enterprise GIS & Mapping Platform | MapifyIt",
     description:
-      "Looking for GIS Maps & MapifyIt offers GIS mapping, unlimited APIs, & enterprise-grade solutions tailored for businesses.",
+      "Looking for GIS Maps & MapifyIt offers GIS mapping, unlimited APIs & enterprise-grade solutions tailored for businesses.",
     images: [
       {
         url: "/fullwhitebackground logo.png",
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Enterprise GIS & Mapping Platform | MapifyIt",
     description:
-      "Looking for GIS Maps & MapifyIt offers GIS mapping, unlimited APIs, & enterprise-grade solutions tailored for businesses.",
+      "Looking for GIS Maps & MapifyIt offers GIS mapping, unlimited APIs & enterprise-grade solutions tailored for businesses.",
     images: ["/fullwhite-background.png"],
     creator: "@mapifyit",
   },

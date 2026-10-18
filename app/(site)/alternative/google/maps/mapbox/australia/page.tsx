@@ -7,7 +7,7 @@ import FAQSection from '@/components/FAQSection';
 
 export const metadata: Metadata = {
     title: 'Enterprise GIS & Mapping Platform & Mapbox Alternative in Australia | MapifyIt',
-    description: 'Looking for Google Maps & Mapbox alternative in the Australia? MapifyIt offers GIS mapping, unlimited APIs, & enterprise-grade solutions tailored for businesses.',
+    description: 'Looking for Google Maps & Mapbox alternative in the Australia? MapifyIt offers GIS mapping, unlimited APIs & enterprise-grade solutions tailored for businesses.',
     keywords: [
         'Google map alternative Australia',
         'Mapbox alternative Australia',
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     ],
     openGraph: {
         title: 'Enterprise GIS & Mapping Platform & Mapbox Alternative in Australia | MapifyIt',
-        description: 'Looking for Google Maps & Mapbox alternative in the Australia? MapifyIt offers GIS mapping, unlimited APIs, & enterprise-grade solutions tailored for businesses.',
+        description: 'Looking for Google Maps & Mapbox alternative in the Australia? MapifyIt offers GIS mapping, unlimited APIs & enterprise-grade solutions tailored for businesses.',
         url: 'https://mapifyit.com/alternative/google/maps/mapbox/australia',
     },
     alternates: {
@@ -44,7 +44,7 @@ export default function AlternativeAustraliaPage() {
                             Best Google Maps & Mapbox Alternative in the Australia – MapifyIt
                         </h1>
                         <h3 className="text-xl text-gray-400 max-w-4xl">
-                            Looking for a reliable mapping solution? MapifyIt offers robust GIS mapping, unlimited APIs, & enterprise-grade solutions tailored for businesses in Australia. Build modern mapping applications using our high-performance Maps API platform.
+                            Looking for a reliable mapping solution? MapifyIt offers robust GIS mapping, unlimited APIs & enterprise-grade solutions tailored for businesses in Australia. Build modern mapping applications using our high-performance Maps API platform.
                         </h3>
                     </Reveal>
                 </div>
