@@ -15,11 +15,11 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Enterprise GIS & Mapping Platform in USA | MapifyIt",
+    default: "Enterprise GIS & Mapping Platform| MapifyIt",
     template: "%s | Mapifyit",
   },
   description:
-    "Looking for Maps & Mapbox alternative in the USA? MapifyIt offers GIS mapping, unlimited APIs, & enterprise-grade solutions tailored for businesses.",
+    "Looking for Maps & MapifyIt offers GIS mapping, unlimited APIs, & enterprise-grade solutions tailored for businesses.",
   keywords: [
     "GIS, Maps alternative USA",
     "Mapbox alternative USA",
