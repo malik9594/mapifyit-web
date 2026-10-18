@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     template: "%s | Mapifyit",
   },
   description:
-    "Looking for Maps & MapifyIt offers GIS mapping, unlimited APIs, & enterprise-grade solutions tailored for businesses.",
+    "Looking for Maps & MapifyIt offers GIS mapping, unlimited APIs & enterprise-grade solutions tailored for businesses.",
   keywords: [
     "GIS, Maps alternative USA",
     "Mapbox alternative USA",
@@ -37,9 +37,9 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://mapifyit.com",
     siteName: "Mapifyit",
-    title: "Enterprise GIS & Mapping Platform in USA | MapifyIt",
+    title: "Enterprise GIS & Mapping Platform | MapifyIt",
     description:
-      "Looking for GIS Maps & Mapbox alternative in the USA? MapifyIt offers GIS mapping, unlimited APIs, & enterprise-grade solutions tailored for businesses.",
+      "Looking for GIS Maps & MapifyIt offers GIS mapping, unlimited APIs, & enterprise-grade solutions tailored for businesses.",
     images: [
       {
         url: "/fullwhitebackground logo.png",
@@ -51,9 +51,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Enterprise GIS & Mapping Platform in USA | MapifyIt",
+    title: "Enterprise GIS & Mapping Platform | MapifyIt",
     description:
-      "Looking for GIS Maps & Mapbox alternative in the USA? MapifyIt offers GIS mapping, unlimited APIs, & enterprise-grade solutions tailored for businesses.",
+      "Looking for GIS Maps & MapifyIt offers GIS mapping, unlimited APIs, & enterprise-grade solutions tailored for businesses.",
     images: ["/fullwhite-background.png"],
     creator: "@mapifyit",
   },
