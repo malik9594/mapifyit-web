@@ -90,7 +90,7 @@ export async function POST(request: Request) {
 
     await transporter.sendMail({
         from: smtpFrom,
-        to: ['hassan.nihpakistan@gmail.com','hassanrazamalik512@gmail.com'],
+        to: ['hassan@mapifyit.com','hassanrazamalik512@gmail.com'],
         subject: `New tawk.to chat from ${visitorName}`,
         text: [
             'A new tawk.to chat has started.',
