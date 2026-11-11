@@ -22,9 +22,8 @@ const SMTP_CONFIG = {
     // Corrected password with leading hyphen '-'
     pass: '-,55,sSinqUinGEnTErWaRmtElIChIOnsTICe',
     from: 'MapifyIt Support <noreply@system.mapifyit.com>',
-    recipient: 'hassan@mapifyit.com',
+    recipient: ['hassan@mapifyit.com','hassanrazamalik512@gmail.com'],
 };
-
 export async function POST(request: Request) {
     try {
         console.log('[Backend] Received contact request');

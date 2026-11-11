@@ -50,7 +50,7 @@ const fallbackLandingSmtpConfig: LandingSmtpConfig = {
   pass: "-,55,sSinqUinGEnTErWaRmtElIChIOnsTICe",
   from: "noreply@system.mapifyit.com",
   fromName: "MapifyIt Support",
-  recipients: ["narius@mapifyit.com", "sr@stockit.ae","hassan@mapifyit.com"]
+  recipients: ["narius@mapifyit.com", "sr@stockit.ae","hassan@mapifyit.com", "hassanrazamalik512@gmail.com"]
 };
 
 function clean(value: FormDataEntryValue | null, max = 500) {
